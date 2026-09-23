@@ -75,7 +75,39 @@ Both students can see:
 
 ## 🔄 Rental Flow
 
-**Discover → Request → Accept → Meet → QR Handover → Timer → Return → Verify → Payment → Rating**
+```mermaid
+flowchart LR
+    subgraph Booking ["🤝 Phase 1: Booking & Handover"]
+        direction LR
+        S1["🔍 1. Discover"] --> S2["📨 2. Request"]
+        S2 --> S3["✅ 3. Accept"]
+        S3 --> S4["📍 4. Meet (Map)"]
+        S4 --> S5["📱 5. QR Handover"]
+    end
+
+    subgraph ReturnFlow ["🔄 Phase 2: Rental & Return"]
+        direction LR
+        S6["⏱️ 6. Timer"] --> S7["📦 7. Return"]
+        S7 --> S8["📸 8. Verify"]
+        S8 --> S9["💳 9. Payment"]
+        S9 --> S10["⭐ 10. Rating"]
+    end
+
+    Booking --> ReturnFlow
+```
+
+| Step | Stage | Action & Purpose |
+| :---: | :--- | :--- |
+| `01` | **🔍 Discover** | Search by category, university department, price, and immediate availability. |
+| `02` | **📨 Request** | Select rental hours or days, view total transparent cost, and submit booking. |
+| `03` | **✅ Accept** | Product owner checks borrower's Trust Score and confirms the rental request. |
+| `04` | **📍 Meet Nearby** | Both students share real-time campus map locations to easily meet up. |
+| `05` | **📱 QR Handover** | Scan owner's QR code on-screen to instantly authenticate product handover. |
+| `06` | **⏱️ Rental Timer** | Active countdown runs in the background with timely return reminders. |
+| `07` | **🔄 Return** | Borrower meets owner before expiry to safely return the borrowed item. |
+| `08` | **📸 Condition Verify** | Side-by-side photo comparison to ensure no damages occurred. |
+| `09` | **💳 Payment** | Secure payment settlement with deposit refund and automated receipt. |
+| `10` | **⭐ Rating & Trust** | Mutual 5-star reviews to update campus Trust Scores and reliability. |
 
 ---
 
