@@ -1,0 +1,230 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" width="100%" height="100%" role="img" aria-label="BorrowBox Nearby Sharing Live Map">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="mapBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1e"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#080c18"/>
+    </linearGradient>
+
+    <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <filter id="glowA" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="glowRoute" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="1" stroke-opacity="0.04"/>
+    </pattern>
+
+    <style>
+      @keyframes radarPing {
+        0% { r: 14px; opacity: 0.9; stroke-width: 3px; }
+        60% { opacity: 0.4; }
+        100% { r: 50px; opacity: 0; stroke-width: 1px; }
+      }
+      @keyframes dashMove {
+        to { stroke-dashoffset: -32; }
+      }
+      @keyframes pulsePoint {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.08); opacity: 0.9; }
+      }
+      @keyframes liveDot {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.3; transform: scale(0.8); }
+      }
+      .ping-ring-a {
+        animation: radarPing 2.4s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+        transform-origin: 210px 240px;
+      }
+      .ping-ring-b {
+        animation: radarPing 2.4s cubic-bezier(0.2, 0.8, 0.4, 1) infinite 1.2s;
+        transform-origin: 630px 170px;
+      }
+      .route-active {
+        stroke-dasharray: 10 6;
+        animation: dashMove 1.2s linear infinite;
+      }
+      .radar-dot {
+        animation: liveDot 1.6s ease-in-out infinite;
+        transform-origin: center;
+      }
+      .badge-glow {
+        animation: pulsePoint 3s ease-in-out infinite;
+        transform-origin: 420px 200px;
+      }
+      text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+    </style>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="840" height="400" rx="20" fill="url(#mapBg)"/>
+  <rect width="840" height="400" rx="20" fill="url(#grid)"/>
+
+  <!-- Simulated Campus Buildings (Footprints) -->
+  <g fill="#1e293b" fill-opacity="0.35" stroke="#334155" stroke-opacity="0.4" stroke-width="1.5">
+    <!-- Academic Building -->
+    <rect x="70" y="70" width="130" height="90" rx="8"/>
+    <!-- Central Library -->
+    <rect x="580" y="50" width="160" height="75" rx="8"/>
+    <!-- Student Center / TSC -->
+    <rect x="360" y="60" width="120" height="60" rx="8"/>
+    <!-- Cafeteria & Ground -->
+    <rect x="110" y="270" width="100" height="70" rx="8"/>
+    <!-- Science Complex -->
+    <rect x="620" y="260" width="140" height="80" rx="8"/>
+    <!-- Auditorium -->
+    <rect x="370" y="280" width="100" height="60" rx="8"/>
+  </g>
+
+  <!-- Campus Building Labels -->
+  <g fill="#64748b" font-size="11" font-weight="600" letter-spacing="0.5">
+    <text x="135" y="118" text-anchor="middle">CSE BUILDING</text>
+    <text x="660" y="92" text-anchor="middle">CENTRAL LIBRARY</text>
+    <text x="420" y="95" text-anchor="middle">CAMPUS TSC</text>
+    <text x="160" y="310" text-anchor="middle">CAFETERIA</text>
+    <text x="690" y="305" text-anchor="middle">SCIENCE LABS</text>
+    <text x="420" y="315" text-anchor="middle">AUDITORIUM</text>
+  </g>
+
+  <!-- Campus Road Networks -->
+  <g fill="none" stroke="#1e293b" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Main Road Horizontals -->
+    <path d="M 30 170 Q 240 170 420 170 T 810 170"/>
+    <path d="M 30 240 L 420 240 L 420 170 L 630 170 L 630 240 L 810 240"/>
+    <!-- Vertical Crossway -->
+    <path d="M 210 30 L 210 370"/>
+    <path d="M 420 30 L 420 370"/>
+    <path d="M 630 30 L 630 370"/>
+  </g>
+  <g fill="none" stroke="#334155" stroke-opacity="0.6" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 30 170 Q 240 170 420 170 T 810 170"/>
+    <path d="M 30 240 L 420 240 L 420 170 L 630 170 L 630 240 L 810 240"/>
+    <path d="M 210 30 L 210 370"/>
+    <path d="M 420 30 L 420 370"/>
+    <path d="M 630 30 L 630 370"/>
+  </g>
+  <!-- Road Center Dashed Line -->
+  <g fill="none" stroke="#475569" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="6 6">
+    <path d="M 30 170 L 810 170"/>
+    <path d="M 210 30 L 210 370"/>
+    <path d="M 420 30 L 420 370"/>
+    <path d="M 630 30 L 630 370"/>
+  </g>
+
+  <!-- GPS Active Handover Route -->
+  <!-- Glowing Underlay -->
+  <path d="M 210 240 L 420 240 L 420 170 L 630 170" fill="none" stroke="url(#routeGrad)" stroke-width="8" stroke-opacity="0.3" filter="url(#glowRoute)"/>
+  <!-- Base Route -->
+  <path d="M 210 240 L 420 240 L 420 170 L 630 170" fill="none" stroke="url(#routeGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Animated Moving Dashes (Walking Direction) -->
+  <path d="M 210 240 L 420 240 L 420 170 L 630 170" class="route-active" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.9"/>
+
+  <!-- Radar Pulse Rings -->
+  <!-- Student A Pulse -->
+  <circle cx="210" cy="240" r="14" class="ping-ring-a" fill="none" stroke="#6366f1"/>
+  <!-- Student B Pulse -->
+  <circle cx="630" cy="170" r="14" class="ping-ring-b" fill="none" stroke="#10b981"/>
+
+  <!-- Meeting Point Indicator -->
+  <g transform="translate(420, 205)">
+    <!-- Target Circle -->
+    <circle cx="0" cy="0" r="18" fill="#fbbf24" fill-opacity="0.15" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4 2"/>
+    <circle cx="0" cy="0" r="6" fill="#fbbf24"/>
+    <!-- Flag / Callout -->
+    <rect x="-65" y="-36" width="130" height="24" rx="12" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="0" y="-20" fill="#fef08a" font-size="10.5" font-weight="700" text-anchor="middle">🎯 Handover Point</text>
+  </g>
+
+  <!-- Student A Marker (Borrower) -->
+  <g transform="translate(210, 240)">
+    <!-- Glow Pin -->
+    <circle cx="0" cy="0" r="16" fill="#4f46e5" filter="url(#glowA)"/>
+    <circle cx="0" cy="0" r="13" fill="#6366f1"/>
+    <circle cx="0" cy="0" r="6" fill="#ffffff"/>
+
+    <!-- Callout Box -->
+    <g transform="translate(0, -56)">
+      <rect x="-70" y="0" width="140" height="44" rx="10" fill="url(#cardGrad)" stroke="#6366f1" stroke-width="1.5"/>
+      <!-- Pointer Triangle -->
+      <polygon points="-6,44 6,44 0,50" fill="#1e293b"/>
+      <circle cx="-50" cy="22" r="5" fill="#6366f1"/>
+      <text x="-38" y="18" fill="#ffffff" font-size="12" font-weight="700">Student A</text>
+      <text x="-38" y="32" fill="#94a3b8" font-size="10" font-weight="500">Borrower · CSE Dept</text>
+    </g>
+  </g>
+
+  <!-- Student B Marker (Owner) -->
+  <g transform="translate(630, 170)">
+    <!-- Glow Pin -->
+    <circle cx="0" cy="0" r="16" fill="#059669" filter="url(#glowA)"/>
+    <circle cx="0" cy="0" r="13" fill="#10b981"/>
+    <circle cx="0" cy="0" r="6" fill="#ffffff"/>
+
+    <!-- Callout Box -->
+    <g transform="translate(0, -56)">
+      <rect x="-70" y="0" width="140" height="44" rx="10" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.5"/>
+      <!-- Pointer Triangle -->
+      <polygon points="-6,44 6,44 0,50" fill="#1e293b"/>
+      <circle cx="-50" cy="22" r="5" fill="#10b981"/>
+      <text x="-38" y="18" fill="#ffffff" font-size="12" font-weight="700">Student B</text>
+      <text x="-38" y="32" fill="#94a3b8" font-size="10" font-weight="500">Owner · Library</text>
+    </g>
+  </g>
+
+  <!-- Live Distance Floating HUD Badge -->
+  <g class="badge-glow">
+    <rect x="330" y="130" width="180" height="38" rx="19" fill="#0b1120" stroke="#818cf8" stroke-width="1.5" filter="url(#glowRoute)"/>
+    <circle cx="348" cy="149" r="4" fill="#34d399" class="radar-dot"/>
+    <text x="360" y="154" fill="#ffffff" font-size="13" font-weight="800">500 m</text>
+    <text x="412" y="154" fill="#94a3b8" font-size="11" font-weight="600">· ~4 min walk</text>
+  </g>
+
+  <!-- Top Status HUD Bar -->
+  <g transform="translate(24, 20)">
+    <rect width="792" height="38" rx="10" fill="#0d1527" fill-opacity="0.85" stroke="#334155" stroke-opacity="0.5" stroke-width="1"/>
+    
+    <!-- Live GPS Indicator -->
+    <circle cx="20" cy="19" r="4.5" fill="#10b981" class="radar-dot"/>
+    <text x="32" y="23" fill="#10b981" font-size="11" font-weight="700" letter-spacing="1">LIVE CAMPUS RADAR</text>
+
+    <!-- Center Status -->
+    <text x="396" y="23" fill="#cbd5e1" font-size="11.5" font-weight="600" text-anchor="middle">
+      Mutual Real-Time GPS Tracking Activated
+    </text>
+
+    <!-- Handover Time Remaining -->
+    <rect x="670" y="7" width="112" height="24" rx="6" fill="#1e293b"/>
+    <text x="726" y="23" fill="#fbbf24" font-size="11" font-weight="700" text-anchor="middle">⏱ ETA: 3 MIN</text>
+  </g>
+
+  <!-- Bottom Coordinates & Map Legend -->
+  <g transform="translate(30, 375)" fill="#64748b" font-size="10" font-weight="500">
+    <text x="0" y="0">📍 GPS Accuracy: ±2.5m · Map Engine: Google Maps Platform</text>
+    <text x="780" y="0" text-anchor="end">Safe Campus Handover Zone</text>
+  </g>
+</svg>

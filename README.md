@@ -50,15 +50,9 @@ Students can list products, set rental prices and availability, request products
 
 When two students confirm a rental handover, BorrowBox helps them find each other.
 
-```text
-      📍 Student A
-           │
-           │  500 m
-           │
-      📍 Student B
-           
-        🗺️ Map
-```
+<div align="center">
+  <img src="https://raw.githubusercontent.com/tanjeem180hz/BorrowBox/main/nearby-sharing-map.svg" alt="Nearby Sharing Live Map" width="100%" />
+</div>
 
 Both students can see:
 
