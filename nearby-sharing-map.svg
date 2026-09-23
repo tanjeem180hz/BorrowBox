@@ -252,12 +252,14 @@
     </g>
   </g>
 
-  <!-- Live Distance Floating HUD Badge -->
-  <g transform="translate(510, 395)" class="hud-float" filter="url(#pinShadow)">
-    <rect x="0" y="0" width="165" height="34" rx="17" fill="#0b1120" stroke="#3b82f6" stroke-width="1.5"/>
-    <circle cx="18" cy="17" r="4" fill="#34d399" class="live-dot"/>
-    <text x="30" y="21" fill="#ffffff" font-size="12" font-weight="800">350 m</text>
-    <text x="75" y="21" fill="#94a3b8" font-size="10.5" font-weight="600">· ~3 min walk</text>
+  <!-- Live Distance Floating HUD Badge (Prominently Placed at Top Center) -->
+  <g transform="translate(330, 72)" class="hud-float" filter="url(#pinShadow)">
+    <rect x="0" y="0" width="220" height="38" rx="19" fill="#0b1120" stroke="#3b82f6" stroke-width="1.8"/>
+    <circle cx="22" cy="19" r="4.5" fill="#10b981" class="live-dot"/>
+    <text x="36" y="24" fill="#ffffff" font-size="13" font-weight="800">350 m</text>
+    <text x="86" y="24" fill="#93c5fd" font-size="11" font-weight="600">· ~3 min walk</text>
+    <rect x="165" y="8" width="45" height="22" rx="11" fill="#1e293b"/>
+    <text x="187" y="23" fill="#fbbf24" font-size="9.5" font-weight="700" text-anchor="middle">LIVE</text>
   </g>
 
   <!-- Top Google Maps Header Bar -->
@@ -274,13 +276,17 @@
     </text>
 
     <!-- Subtitle / Coordinates -->
-    <text x="480" y="25" fill="#64748b" font-size="10.5" font-weight="500">
-      23.8769° N, 90.3202° E · Live Handover Radar
+    <text x="450" y="25" fill="#64748b" font-size="10.5" font-weight="500">
+      23.8769° N, 90.3202° E · Handover Radar
     </text>
 
-    <!-- ETA Badge -->
-    <rect x="735" y="8" width="95" height="26" rx="6" fill="#1e293b" stroke="#f59e0b" stroke-width="1"/>
-    <text x="782" y="25" fill="#fbbf24" font-size="10.5" font-weight="800" text-anchor="middle">⏱ ETA: 3 MIN</text>
+    <!-- Live Distance & ETA Pill in Header Bar -->
+    <g transform="translate(680, 7)">
+      <rect width="150" height="28" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="1.2"/>
+      <circle cx="16" cy="14" r="4" fill="#10b981" class="live-dot"/>
+      <text x="28" y="18" fill="#ffffff" font-size="11.5" font-weight="800">350 m</text>
+      <text x="72" y="18" fill="#fbbf24" font-size="10.5" font-weight="700">· ETA 3m</text>
+    </g>
   </g>
 
   <!-- Bottom Legend Footer -->
