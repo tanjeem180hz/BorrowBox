@@ -6,7 +6,11 @@
 
 **A university-focused short-term product sharing platform.**
 
-[🚀 Live Demo](https://tanjeem180hz.github.io/Hello/)
+<br>
+
+<a href="https://tanjeem180hz.github.io/Hello/">
+  <img src="https://img.shields.io/badge/🚀%20EXPLORE%20BORROWBOX-Live%20Demo-111827?style=for-the-badge&labelColor=2563EB" alt="Explore BorrowBox">
+</a>
 
 </div>
 
@@ -16,7 +20,7 @@
 
 **BorrowBox** is an Android application that allows university students to **share and borrow products for short periods** instead of purchasing them.
 
-Students can list products, set rental prices and availability, request products from others, complete verified handovers, track rental time, and return products safely.
+Students can list products, set rental prices and availability, request products from other students, complete verified handovers, track rental time, and return products safely.
 
 ---
 
@@ -24,36 +28,38 @@ Students can list products, set rental prices and availability, request products
 
 * 👤 Student profile with university & department
 * 📦 Product listing with price, condition & availability
-* 🔎 Search and filter available products
+* 🔎 Search & filter available products
 * 🤝 Rental request & owner approval
 * 📱 QR-based product handover & return
 * ⏱️ Rental timer & return reminders
-* 💳 Rental cost, deposit & late-fee calculation
+* 💳 Rental cost, security deposit & late-fee calculation
 * 📸 Product condition & damage verification
 * ⭐ Ratings & Trust Score
 * 🚨 Emergency rental requests
-* 📍 **Nearby Sharing Map** — after both students confirm the sharing/handover, the app shows **both users' locations and the distance between them on a map**
+* 📍 **Nearby Sharing Map** — after both students confirm the meeting, both users can see **each other's location and the distance between them on a map**
 
 ---
 
 ## 📍 Nearby Sharing
 
-When both students are ready to meet for a rental:
+When two students confirm a rental handover, BorrowBox helps them find each other.
 
 ```text
-Student A ─────── Distance ─────── Student B
-    📍              500 m              📍
-             🗺️ Map View
+      📍 Student A
+           │
+           │  500 m
+           │
+      📍 Student B
+           
+        🗺️ Map
 ```
 
-Both users can see:
+Both students can see:
 
-* Their own location
+* Their current location
 * The other student's location
 * Distance between them
-* Meeting location on the map
-
-This makes product handover easier and more convenient within the university community.
+* Meeting point on the map
 
 ---
 
@@ -65,14 +71,7 @@ This makes product handover easier and more convenient within the university com
 
 ## 🛠️ Technology
 
-* **Java**
-* **OOP**
-* **Android Studio**
-* **SQLite / Firebase**
-* **QR Code**
-* **Google Maps / Location Services**
-* **Android Notifications**
-* **Payment System**
+**Java · OOP · Android Studio · SQLite/Firebase · QR Code · Google Maps · Location Services · Android Notifications · Payment System**
 
 ---
 
@@ -80,10 +79,18 @@ This makes product handover easier and more convenient within the university com
 
 To create a **trusted university sharing community** where students can quickly access products they need for a short time without unnecessary purchases.
 
+---
+
 <div align="center">
 
 ### 📦 BorrowBox
 
 **Share what you have. Borrow what you need.**
+
+<br>
+
+<a href="https://tanjeem180hz.github.io/Hello/">
+  <img src="https://img.shields.io/badge/OPEN%20LIVE%20DEMO-→-2563EB?style=for-the-badge&labelColor=111827" alt="Open Live Demo">
+</a>
 
 </div>
