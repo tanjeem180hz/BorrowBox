@@ -48,7 +48,7 @@ Students can list products, set rental prices and availability, request products
 
 ## 📍 Nearby Sharing
 
-When two students confirm a rental handover, BorrowBox helps them find each other on campus. Illustrated below using the official blueprint and coordinates (`23.8770° N, 90.3201° E`) of **Daffodil International University — Daffodil Smart City (Birulia, Savar)**, featuring **AB-4 (CSE Dept)**, **Central Library (Knowledge Tower)**, **DIU Lake & Bridge**, and the designated meeting point at **Daffodil TSC Plaza**:
+When two students confirm a rental handover, BorrowBox helps them find each other on campus. Illustrated below using the official Google Maps layout and coordinates (`23.8769° N, 90.3202° E`) of **Daffodil International University (Daffodil Smart City)** — showing **Student A (Borrower)** walking from **YKSG-1 Hall** along **DIU Rd** and **Student B (Owner)** at **DIU Library**, safely meeting at **DIU Kathal Tola**:
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/tanjeem180hz/BorrowBox/main/nearby-sharing-map.svg" alt="Nearby Sharing Live Map" width="100%" />
@@ -56,10 +56,10 @@ When two students confirm a rental handover, BorrowBox helps them find each othe
 
 Both students can see:
 
-* **Campus Geofence & Safe Zones:** Real-time campus blueprint with landmark recognition (AB-4, Central Library, TSC, YKSG Hall).
+* **Campus Map & Familiar Landmarks:** Accurate Google Maps layout featuring **DIU Library**, **DIU Kathal Tola**, **Central Playground**, **YKSG-1 Hall**, and **Shahid Minar**.
 * **Live Student Movement:** Active GPS tracking showing both borrower and owner moving in real-time.
-* **Proximity & Walking ETA:** Dynamic distance calculation (e.g., `500 m · ~4 min walk · ETA: 3 min`).
-* **Designated Safe Handover Zone:** Pre-set central meeting hub on campus (e.g., **Daffodil TSC Plaza**).
+* **Proximity & Walking ETA:** Dynamic distance calculation (e.g., `350 m · ~3 min walk · ETA: 3 min`).
+* **Designated Safe Handover Zone:** Pre-set central meeting hub on campus (e.g., **DIU Kathal Tola**).
 
 ## 🔄 Rental Flow
 
