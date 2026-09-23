@@ -81,7 +81,21 @@ Both students can see:
 
 ## 🛠️ Technology
 
-**Java · OOP · Android Studio · SQLite/Firebase · QR Code · Google Maps · Location Services · Android Notifications · Payment System**
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Android](https://img.shields.io/badge/Android-34A853?style=for-the-badge&logo=android&logoColor=white)
+![Android Studio](https://img.shields.io/badge/Android%20Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![Google Maps](https://img.shields.io/badge/Google%20Maps-4285F4?style=for-the-badge&logo=googlemaps&logoColor=white)
+![Location Services](https://img.shields.io/badge/Location%20Services-34A853?style=for-the-badge&logo=googlemaps&logoColor=white)
+![QR Verification](https://img.shields.io/badge/QR%20Verification-111827?style=for-the-badge&logo=qr-code&logoColor=white)
+![Notifications](https://img.shields.io/badge/Push%20Notifications-FFCA28?style=for-the-badge&logo=firebasecloudmessaging&logoColor=black)
+
+* **Language & Architecture:** Java · Object-Oriented Programming (OOP)
+* **Platform & IDE:** Android SDK · Android Studio
+* **Database & Cloud:** SQLite (Local) · Firebase (Realtime Database & Authentication)
+* **Location & Handover:** Google Maps Platform · GPS Location Services · QR Code Scanner
+* **Services & Alerts:** Android Notifications (FCM) · Payment & Security Deposit Calculation
 
 ---
 
