@@ -24,15 +24,13 @@
 
 </div>
 
----
+<br>
 
 ## 📖 About
 
 **BorrowBox** is an Android application that allows university students to **share and borrow products for short periods** instead of purchasing them.
 
 Students can list products, set rental prices and availability, request products from other students, complete verified handovers, track rental time, and return products safely.
-
----
 
 ## ✨ Core Features
 
@@ -47,8 +45,6 @@ Students can list products, set rental prices and availability, request products
 * ⭐ Ratings & Trust Score
 * 🚨 Emergency rental requests
 * 📍 **Nearby Sharing Map** — after both students confirm the meeting, both users can see **each other's location and the distance between them on a map**
-
----
 
 ## 📍 Nearby Sharing
 
@@ -70,8 +66,6 @@ Both students can see:
 * The other student's location
 * Distance between them
 * Meeting point on the map
-
----
 
 ## 🔄 Rental Flow
 
@@ -109,8 +103,6 @@ flowchart LR
 | `09` | **💳 Payment** | Secure payment settlement with deposit refund and automated receipt. |
 | `10` | **⭐ Rating & Trust** | Mutual 5-star reviews to update campus Trust Scores and reliability. |
 
----
-
 ## 🛠️ Technology
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
@@ -129,13 +121,9 @@ flowchart LR
 * **Location & Handover:** Google Maps Platform · GPS Location Services · QR Code Scanner
 * **Services & Alerts:** Android Notifications (FCM) · Payment & Security Deposit Calculation
 
----
-
 ## 🎯 Goal
 
 To create a **trusted university sharing community** where students can quickly access products they need for a short time without unnecessary purchases.
-
----
 
 ## 👥 Contributors
 
@@ -147,7 +135,7 @@ To create a **trusted university sharing community** where students can quickly 
 | 4 | **Mst Tasnim Binty Ekram** | `252-15-074` |
 | 5 | **Md. Rafiul Islam Rafi** | `252-15-105` |
 
----
+<br>
 
 <div align="center">
 
