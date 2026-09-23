@@ -1,16 +1,26 @@
 <div align="center">
 
-# 📦 BorrowBox
+  <a href="https://tanjeem180hz.github.io/Hello/">
+    <img src="borrowbox-app-icon.svg" alt="BorrowBox App Icon" width="100" height="100" />
+  </a>
 
-### Share. Borrow. Return.
+  <br><br>
 
-**A university-focused short-term product sharing platform.**
+  <a href="https://tanjeem180hz.github.io/Hello/">
+    <img src="borrowbox-logo.svg" alt="BorrowBox Logo" width="350" />
+  </a>
 
-<br>
+  <br><br>
 
-<a href="https://tanjeem180hz.github.io/Hello/">
-  <img src="https://img.shields.io/badge/🚀%20EXPLORE%20BORROWBOX-Live%20Demo-111827?style=for-the-badge&labelColor=2563EB" alt="Explore BorrowBox">
-</a>
+  <h3>Share. Borrow. Return.</h3>
+
+  <p><strong>A university-focused short-term product sharing platform.</strong></p>
+
+  <br>
+
+  <a href="https://tanjeem180hz.github.io/Hello/">
+    <img src="https://img.shields.io/badge/🚀%20EXPLORE%20BORROWBOX-Live%20Demo-111827?style=for-the-badge&labelColor=2563EB" alt="Explore BorrowBox">
+  </a>
 
 </div>
 
@@ -83,14 +93,18 @@ To create a **trusted university sharing community** where students can quickly 
 
 <div align="center">
 
-### 📦 BorrowBox
+  <a href="https://tanjeem180hz.github.io/Hello/">
+    <img src="borrowbox-app-icon.svg" alt="BorrowBox App Icon" width="60" height="60" />
+  </a>
 
-**Share what you have. Borrow what you need.**
+  <h3>📦 BorrowBox</h3>
 
-<br>
+  <p><strong>Share what you have. Borrow what you need.</strong></p>
 
-<a href="https://tanjeem180hz.github.io/Hello/">
-  <img src="https://img.shields.io/badge/OPEN%20LIVE%20DEMO-→-2563EB?style=for-the-badge&labelColor=111827" alt="Open Live Demo">
-</a>
+  <br>
+
+  <a href="https://tanjeem180hz.github.io/Hello/">
+    <img src="https://img.shields.io/badge/OPEN%20LIVE%20DEMO-→-2563EB?style=for-the-badge&labelColor=111827" alt="Open Live Demo">
+  </a>
 
 </div>
