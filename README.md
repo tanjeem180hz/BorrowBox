@@ -48,7 +48,7 @@ Students can list products, set rental prices and availability, request products
 
 ## 📍 Nearby Sharing
 
-When two students confirm a rental handover, BorrowBox helps them find each other on campus (illustrated below at **Daffodil International University — Daffodil Smart City** between **AB-4 (CSE Dept)** and the **Central Library**, meeting at **Daffodil TSC**).
+When two students confirm a rental handover, BorrowBox helps them find each other on campus. Illustrated below using the official blueprint and coordinates (`23.8770° N, 90.3201° E`) of **Daffodil International University — Daffodil Smart City (Birulia, Savar)**, featuring **AB-4 (CSE Dept)**, **Central Library (Knowledge Tower)**, **DIU Lake & Bridge**, and the designated meeting point at **Daffodil TSC Plaza**:
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/tanjeem180hz/BorrowBox/main/nearby-sharing-map.svg" alt="Nearby Sharing Live Map" width="100%" />
@@ -56,10 +56,10 @@ When two students confirm a rental handover, BorrowBox helps them find each othe
 
 Both students can see:
 
-* Their current location on campus
-* The other student's live location
-* Real-time distance & estimated walking time (e.g., `500 m · ~4 min walk`)
-* Designated safe meeting point on the map (e.g., **Daffodil TSC**)
+* **Campus Geofence & Safe Zones:** Real-time campus blueprint with landmark recognition (AB-4, Central Library, TSC, YKSG Hall).
+* **Live Student Movement:** Active GPS tracking showing both borrower and owner moving in real-time.
+* **Proximity & Walking ETA:** Dynamic distance calculation (e.g., `500 m · ~4 min walk · ETA: 3 min`).
+* **Designated Safe Handover Zone:** Pre-set central meeting hub on campus (e.g., **Daffodil TSC Plaza**).
 
 ## 🔄 Rental Flow
 

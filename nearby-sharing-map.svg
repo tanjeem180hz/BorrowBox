@@ -1,25 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" width="100%" height="100%" role="img" aria-label="BorrowBox Nearby Sharing Live Map">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 430" width="100%" height="100%" role="img" aria-label="BorrowBox Nearby Sharing Live Map - DIU Daffodil Smart City">
   <defs>
-    <!-- Gradients -->
-    <linearGradient id="mapBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0a0e1e"/>
-      <stop offset="50%" stop-color="#0f172a"/>
-      <stop offset="100%" stop-color="#080c18"/>
+    <!-- Background Gradient -->
+    <linearGradient id="blueprintBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070b18"/>
+      <stop offset="50%" stop-color="#0c1328"/>
+      <stop offset="100%" stop-color="#060913"/>
     </linearGradient>
 
+    <!-- Walking Route Gradient -->
     <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#4f46e5"/>
-      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#a855f7"/>
       <stop offset="100%" stop-color="#10b981"/>
     </linearGradient>
 
-    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.85"/>
-      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95"/>
+    <!-- Lake Water Gradient -->
+    <linearGradient id="lakeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0.12"/>
     </linearGradient>
 
-    <filter id="glowA" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
+    <!-- Card Background -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.98"/>
+    </linearGradient>
+
+    <!-- Glow Filters -->
+    <filter id="glowPinA" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="glowPinB" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -34,46 +51,69 @@
       </feMerge>
     </filter>
 
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="1" stroke-opacity="0.04"/>
+    <!-- Blueprint CAD Grid Patterns -->
+    <pattern id="cadGridSmall" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#38bdf8" stroke-width="0.75" stroke-opacity="0.04"/>
+    </pattern>
+    <pattern id="cadGridLarge" width="100" height="100" patternUnits="userSpaceOnUse">
+      <rect width="100" height="100" fill="none" stroke="#38bdf8" stroke-width="1.25" stroke-opacity="0.08"/>
+      <path d="M 50 0 L 50 100 M 0 50 L 100 50" fill="none" stroke="#38bdf8" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.05"/>
     </pattern>
 
     <style>
       @keyframes radarPing {
-        0% { r: 14px; opacity: 0.9; stroke-width: 3px; }
-        60% { opacity: 0.4; }
-        100% { r: 50px; opacity: 0; stroke-width: 1px; }
+        0% { r: 12px; opacity: 0.95; stroke-width: 3px; }
+        60% { opacity: 0.35; }
+        100% { r: 54px; opacity: 0; stroke-width: 1px; }
       }
-      @keyframes dashMove {
+      @keyframes dashMoveForward {
         to { stroke-dashoffset: -32; }
       }
-      @keyframes pulsePoint {
+      @keyframes dashMoveReverse {
+        to { stroke-dashoffset: 32; }
+      }
+      @keyframes livePulse {
         0%, 100% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.08); opacity: 0.9; }
+        50% { transform: scale(1.05); opacity: 0.9; }
       }
-      @keyframes liveDot {
+      @keyframes blinkDot {
         0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.3; transform: scale(0.8); }
+        50% { opacity: 0.25; transform: scale(0.75); }
       }
-      .ping-ring-a {
+      @keyframes lakeRipple {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.55; }
+      }
+      .ping-a {
         animation: radarPing 2.4s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
-        transform-origin: 210px 240px;
+        transform-origin: 195px 230px;
       }
-      .ping-ring-b {
+      .ping-b {
         animation: radarPing 2.4s cubic-bezier(0.2, 0.8, 0.4, 1) infinite 1.2s;
-        transform-origin: 630px 170px;
+        transform-origin: 645px 165px;
       }
-      .route-active {
-        stroke-dasharray: 10 6;
-        animation: dashMove 1.2s linear infinite;
+      .ping-target {
+        animation: radarPing 2s cubic-bezier(0.2, 0.8, 0.4, 1) infinite 0.6s;
+        transform-origin: 420px 210px;
       }
-      .radar-dot {
-        animation: liveDot 1.6s ease-in-out infinite;
+      .route-a {
+        stroke-dasharray: 9 5;
+        animation: dashMoveForward 1.2s linear infinite;
+      }
+      .route-b {
+        stroke-dasharray: 9 5;
+        animation: dashMoveReverse 1.2s linear infinite;
+      }
+      .radar-blinker {
+        animation: blinkDot 1.4s ease-in-out infinite;
         transform-origin: center;
       }
-      .badge-glow {
-        animation: pulsePoint 3s ease-in-out infinite;
-        transform-origin: 420px 200px;
+      .lake-wave {
+        animation: lakeRipple 4s ease-in-out infinite;
+      }
+      .hud-glow {
+        animation: livePulse 3.2s ease-in-out infinite;
+        transform-origin: 420px 148px;
       }
       text {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -81,150 +121,256 @@
     </style>
   </defs>
 
-  <!-- Background Base -->
-  <rect width="840" height="400" rx="20" fill="url(#mapBg)"/>
-  <rect width="840" height="400" rx="20" fill="url(#grid)"/>
+  <!-- Base Blueprint Surface -->
+  <rect width="840" height="430" rx="18" fill="url(#blueprintBg)"/>
+  <rect width="840" height="430" rx="18" fill="url(#cadGridSmall)"/>
+  <rect width="840" height="430" rx="18" fill="url(#cadGridLarge)"/>
 
-  <!-- Simulated Campus Buildings (Footprints) -->
-  <g fill="#1e293b" fill-opacity="0.35" stroke="#334155" stroke-opacity="0.4" stroke-width="1.5">
-    <!-- Academic Building -->
-    <rect x="70" y="70" width="130" height="90" rx="8"/>
-    <!-- Central Library -->
-    <rect x="580" y="50" width="160" height="75" rx="8"/>
-    <!-- Student Center / TSC -->
-    <rect x="360" y="60" width="120" height="60" rx="8"/>
-    <!-- Cafeteria & Ground -->
-    <rect x="110" y="270" width="100" height="70" rx="8"/>
-    <!-- Science Complex -->
-    <rect x="620" y="260" width="140" height="80" rx="8"/>
-    <!-- Auditorium -->
-    <rect x="370" y="280" width="100" height="60" rx="8"/>
+  <!-- Blueprint Outer Tech Corners -->
+  <g stroke="#38bdf8" stroke-opacity="0.3" stroke-width="1.5" fill="none">
+    <path d="M 12 28 L 12 12 L 28 12"/>
+    <path d="M 828 28 L 828 12 L 812 12"/>
+    <path d="M 12 402 L 12 418 L 28 418"/>
+    <path d="M 828 402 L 828 418 L 812 418"/>
   </g>
 
-  <!-- Campus Building Labels -->
-  <g fill="#64748b" font-size="11" font-weight="600" letter-spacing="0.5">
-    <text x="135" y="118" text-anchor="middle">AB-4 (CSE DEPT)</text>
-    <text x="660" y="92" text-anchor="middle">CENTRAL LIBRARY</text>
-    <text x="420" y="95" text-anchor="middle">DAFFODIL TSC</text>
-    <text x="160" y="310" text-anchor="middle">FOOD VILLAGE</text>
-    <text x="690" y="305" text-anchor="middle">INNOVATION LAB</text>
-    <text x="420" y="315" text-anchor="middle">AUDITORIUM</text>
+  <!-- DIU Iconic Lake & Green Bridge Waterbody -->
+  <g>
+    <!-- Lake Body -->
+    <path d="M 480 75 Q 530 140 500 230 T 545 365 C 570 370 590 350 585 320 Q 555 240 575 160 Q 585 105 550 75 Z"
+          fill="url(#lakeGrad)" stroke="#38bdf8" stroke-opacity="0.35" stroke-width="1.5"/>
+    <!-- Lake Water Ripples -->
+    <path d="M 515 125 Q 545 155 525 185" fill="none" stroke="#38bdf8" stroke-opacity="0.25" stroke-width="1" class="lake-wave"/>
+    <path d="M 525 240 Q 555 270 540 300" fill="none" stroke="#38bdf8" stroke-opacity="0.25" stroke-width="1" class="lake-wave" style="animation-delay: 1.5s;"/>
+    <text x="548" y="215" fill="#38bdf8" fill-opacity="0.45" font-size="9" font-weight="700" letter-spacing="1" transform="rotate(75, 548, 215)">DIU LAKE &amp; GREEN WALKWAY</text>
+    
+    <!-- Wooden Green Bridge Crossing -->
+    <rect x="496" y="202" width="46" height="14" rx="2" fill="#0f172a" stroke="#10b981" stroke-width="1.2" stroke-opacity="0.7"/>
+    <line x1="496" y1="209" x2="542" y2="209" stroke="#10b981" stroke-width="1" stroke-dasharray="2 2" stroke-opacity="0.6"/>
   </g>
 
-  <!-- Campus Road Networks -->
-  <g fill="none" stroke="#1e293b" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Main Road Horizontals -->
-    <path d="M 30 170 Q 240 170 420 170 T 810 170"/>
-    <path d="M 30 240 L 420 240 L 420 170 L 630 170 L 630 240 L 810 240"/>
-    <!-- Vertical Crossway -->
-    <path d="M 210 30 L 210 370"/>
-    <path d="M 420 30 L 420 370"/>
-    <path d="M 630 30 L 630 370"/>
-  </g>
-  <g fill="none" stroke="#334155" stroke-opacity="0.6" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M 30 170 Q 240 170 420 170 T 810 170"/>
-    <path d="M 30 240 L 420 240 L 420 170 L 630 170 L 630 240 L 810 240"/>
-    <path d="M 210 30 L 210 370"/>
-    <path d="M 420 30 L 420 370"/>
-    <path d="M 630 30 L 630 370"/>
-  </g>
-  <!-- Road Center Dashed Line -->
-  <g fill="none" stroke="#475569" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="6 6">
-    <path d="M 30 170 L 810 170"/>
-    <path d="M 210 30 L 210 370"/>
-    <path d="M 420 30 L 420 370"/>
-    <path d="M 630 30 L 630 370"/>
-  </g>
+  <!-- DIU Daffodil Smart City Real Architectural Layout (Buildings) -->
+  <g fill="#131d35" fill-opacity="0.65" stroke="#334155" stroke-width="1.5">
+    <!-- Academic Building 4 (AB-4) - CSE / FSIT Dept (West Hub) -->
+    <rect x="65" y="75" width="140" height="95" rx="8"/>
+    <rect x="75" y="85" width="55" height="75" rx="4" fill="#1e293b" fill-opacity="0.5" stroke="#475569" stroke-width="1"/>
+    <rect x="140" y="85" width="55" height="75" rx="4" fill="#1e293b" fill-opacity="0.5" stroke="#475569" stroke-width="1"/>
 
-  <!-- GPS Active Handover Route -->
-  <!-- Glowing Underlay -->
-  <path d="M 210 240 L 420 240 L 420 170 L 630 170" fill="none" stroke="url(#routeGrad)" stroke-width="8" stroke-opacity="0.3" filter="url(#glowRoute)"/>
-  <!-- Base Route -->
-  <path d="M 210 240 L 420 240 L 420 170 L 630 170" fill="none" stroke="url(#routeGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Animated Moving Dashes (Walking Direction) -->
-  <path d="M 210 240 L 420 240 L 420 170 L 630 170" class="route-active" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.9"/>
+    <!-- Knowledge Tower & Central Library (East Hub) -->
+    <rect x="610" y="75" width="165" height="85" rx="8"/>
+    <circle cx="692" cy="117" r="24" fill="#1e293b" fill-opacity="0.4" stroke="#475569" stroke-width="1"/>
 
-  <!-- Radar Pulse Rings -->
-  <!-- Student A Pulse -->
-  <circle cx="210" cy="240" r="14" class="ping-ring-a" fill="none" stroke="#6366f1"/>
-  <!-- Student B Pulse -->
-  <circle cx="630" cy="170" r="14" class="ping-ring-b" fill="none" stroke="#10b981"/>
+    <!-- Central Playground & Green Field (North Central) -->
+    <rect x="330" y="75" width="130" height="60" rx="8" stroke="#10b981" stroke-opacity="0.4" stroke-dasharray="4 3"/>
 
-  <!-- Meeting Point Indicator -->
-  <g transform="translate(420, 205)">
-    <!-- Target Circle -->
-    <circle cx="0" cy="0" r="18" fill="#fbbf24" fill-opacity="0.15" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4 2"/>
-    <circle cx="0" cy="0" r="6" fill="#fbbf24"/>
-    <!-- Flag / Callout -->
-    <rect x="-70" y="-36" width="140" height="24" rx="12" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="0" y="-20" fill="#fef08a" font-size="10.5" font-weight="700" text-anchor="middle">🎯 Handover: Daffodil TSC</text>
+    <!-- Daffodil TSC & Food Village (Central Meeting Hub) -->
+    <rect x="345" y="180" width="150" height="65" rx="8"/>
+    <rect x="355" y="190" width="60" height="45" rx="4" fill="#1e293b" fill-opacity="0.5" stroke="#475569" stroke-width="1"/>
+    <rect x="425" y="190" width="60" height="45" rx="4" fill="#1e293b" fill-opacity="0.5" stroke="#475569" stroke-width="1"/>
+
+    <!-- Yunus Khan Scholar Garden (YKSG Hall - Student Dormitory) -->
+    <rect x="630" y="215" width="145" height="60" rx="8"/>
+
+    <!-- Innovation Lab & DIIC (Research Hub) -->
+    <rect x="630" y="295" width="145" height="65" rx="8"/>
+
+    <!-- Food Village / Cafeteria Plaza (South West) -->
+    <rect x="65" y="280" width="140" height="75" rx="8"/>
+
+    <!-- Central Auditorium & Amphitheater (South Central) -->
+    <rect x="340" y="295" width="125" height="65" rx="8"/>
   </g>
 
-  <!-- Student A Marker (Borrower) -->
-  <g transform="translate(210, 240)">
-    <!-- Glow Pin -->
-    <circle cx="0" cy="0" r="16" fill="#4f46e5" filter="url(#glowA)"/>
-    <circle cx="0" cy="0" r="13" fill="#6366f1"/>
-    <circle cx="0" cy="0" r="6" fill="#ffffff"/>
+  <!-- Campus Building Architectural Labels -->
+  <g fill="#94a3b8" font-size="10" font-weight="700" letter-spacing="0.5">
+    <!-- AB-4 Label -->
+    <text x="135" y="122" text-anchor="middle" fill="#c7d2fe">AB-4 (FSIT / CSE)</text>
+    <text x="135" y="137" text-anchor="middle" fill="#64748b" font-size="8.5" font-weight="500">Computer Labs &amp; Faculty</text>
 
-    <!-- Callout Box -->
-    <g transform="translate(0, -56)">
-      <rect x="-75" y="0" width="150" height="44" rx="10" fill="url(#cardGrad)" stroke="#6366f1" stroke-width="1.5"/>
-      <!-- Pointer Triangle -->
-      <polygon points="-6,44 6,44 0,50" fill="#1e293b"/>
-      <circle cx="-55" cy="22" r="5" fill="#6366f1"/>
-      <text x="-42" y="18" fill="#ffffff" font-size="12" font-weight="700">Student A</text>
-      <text x="-42" y="32" fill="#94a3b8" font-size="10" font-weight="500">Borrower · DIU CSE (AB-4)</text>
+    <!-- Central Library Label -->
+    <text x="692" y="114" text-anchor="middle" fill="#99f6e4">CENTRAL LIBRARY</text>
+    <text x="692" y="127" text-anchor="middle" fill="#64748b" font-size="8.5" font-weight="500">Knowledge Tower · 10 Fl</text>
+
+    <!-- Playground Label -->
+    <text x="395" y="110" text-anchor="middle" fill="#34d399" font-size="9.5">CENTRAL PLAYGROUND</text>
+
+    <!-- TSC Label -->
+    <text x="420" y="228" text-anchor="middle" fill="#fde68a" font-size="9.5">DAFFODIL TSC PLAZA</text>
+
+    <!-- YKSG Hall Label -->
+    <text x="702" y="244" text-anchor="middle" fill="#cbd5e1">YKSG RESIDENTIAL HALL</text>
+    <text x="702" y="258" text-anchor="middle" fill="#64748b" font-size="8.5" font-weight="500">Male &amp; Female Wings</text>
+
+    <!-- Innovation Lab Label -->
+    <text x="702" y="325" text-anchor="middle" fill="#cbd5e1">INNOVATION LAB (DIIC)</text>
+    <text x="702" y="339" text-anchor="middle" fill="#64748b" font-size="8.5" font-weight="500">Robotics &amp; AI Studio</text>
+
+    <!-- Food Village Label -->
+    <text x="135" y="318" text-anchor="middle" fill="#cbd5e1">FOOD VILLAGE</text>
+    <text x="135" y="332" text-anchor="middle" fill="#64748b" font-size="8.5" font-weight="500">Student Canteen &amp; Cafe</text>
+
+    <!-- Auditorium Label -->
+    <text x="402" y="333" text-anchor="middle" fill="#cbd5e1">AUDITORIUM 71</text>
+  </g>
+
+  <!-- DSC Highway & Campus Avenues Network -->
+  <g fill="none" stroke="#17223b" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Birulia Road Entrance to DSC Loop -->
+    <path d="M 25 230 L 195 230 L 420 210 L 496 209"/>
+    <path d="M 542 209 L 645 165 L 795 165"/>
+    <path d="M 195 75 L 195 365"/>
+    <path d="M 420 145 L 420 285"/>
+    <path d="M 645 75 L 645 365"/>
+  </g>
+  <g fill="none" stroke="#253555" stroke-opacity="0.85" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 25 230 L 195 230 L 420 210 L 496 209"/>
+    <path d="M 542 209 L 645 165 L 795 165"/>
+    <path d="M 195 75 L 195 365"/>
+    <path d="M 420 145 L 420 285"/>
+    <path d="M 645 75 L 645 365"/>
+  </g>
+  <!-- Road Center Striped Guideline -->
+  <g fill="none" stroke="#60a5fa" stroke-opacity="0.35" stroke-width="1.5" stroke-dasharray="6 6">
+    <path d="M 25 230 L 195 230 L 420 210 M 496 209 L 542 209 M 542 209 L 645 165 L 795 165"/>
+    <path d="M 195 75 L 195 365"/>
+    <path d="M 645 75 L 645 365"/>
+  </g>
+
+  <!-- Campus Main Gate Callout (Birulia Highway Access) -->
+  <g transform="translate(18, 222)">
+    <rect x="0" y="-12" width="76" height="24" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="38" y="3" fill="#94a3b8" font-size="8.5" font-weight="700" text-anchor="middle">MAIN GATE</text>
+    <text x="38" y="18" fill="#64748b" font-size="7.5" font-weight="600" text-anchor="middle">Birulia Rd</text>
+  </g>
+
+  <!-- GPS Real-Time Handover Walking Route -->
+  <!-- Glowing Underlay Path -->
+  <path d="M 195 230 L 420 210" fill="none" stroke="#6366f1" stroke-width="8" stroke-opacity="0.35" filter="url(#glowRoute)"/>
+  <path d="M 645 165 L 542 209 L 496 209 L 420 210" fill="none" stroke="#10b981" stroke-width="8" stroke-opacity="0.35" filter="url(#glowRoute)"/>
+
+  <!-- Solid Route Track -->
+  <path d="M 195 230 L 420 210" fill="none" stroke="#6366f1" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M 645 165 L 542 209 L 496 209 L 420 210" fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Animated Walking Directional Dashes -->
+  <!-- Student A walking toward TSC -->
+  <path d="M 195 230 L 420 210" class="route-a" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <!-- Student B walking toward TSC across Bridge -->
+  <path d="M 420 210 L 496 209 L 542 209 L 645 165" class="route-b" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Radar Concentric Pulse Waves -->
+  <!-- Student A (AB-4 CSE) Pulse -->
+  <circle cx="195" cy="230" r="14" class="ping-a" fill="none" stroke="#818cf8"/>
+  <circle cx="195" cy="230" r="28" fill="none" stroke="#818cf8" stroke-opacity="0.25" stroke-dasharray="3 3"/>
+
+  <!-- Student B (Central Library) Pulse -->
+  <circle cx="645" cy="165" r="14" class="ping-b" fill="none" stroke="#34d399"/>
+  <circle cx="645" cy="165" r="28" fill="none" stroke="#34d399" stroke-opacity="0.25" stroke-dasharray="3 3"/>
+
+  <!-- Handover Target Pulse -->
+  <circle cx="420" cy="210" r="14" class="ping-target" fill="none" stroke="#fbbf24"/>
+
+  <!-- Designated Handover Spot Marker (Daffodil TSC Plaza) -->
+  <g transform="translate(420, 210)">
+    <!-- Concentric Target Circles -->
+    <circle cx="0" cy="0" r="22" fill="#fbbf24" fill-opacity="0.12" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <circle cx="0" cy="0" r="8" fill="#fbbf24" stroke="#ffffff" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="3" fill="#78350f"/>
+
+    <!-- Handover Callout Flag -->
+    <g transform="translate(0, -32)">
+      <rect x="-85" y="-12" width="170" height="26" rx="13" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
+      <circle cx="-68" cy="1" r="4" fill="#fbbf24" class="radar-blinker"/>
+      <text x="3" y="5" fill="#fef08a" font-size="10.5" font-weight="800" text-anchor="middle">🎯 Handover Point: Daffodil TSC</text>
     </g>
   </g>
 
-  <!-- Student B Marker (Owner) -->
-  <g transform="translate(630, 170)">
+  <!-- Student A Marker (Borrower at AB-4 / CSE Dept) -->
+  <g transform="translate(195, 230)">
     <!-- Glow Pin -->
-    <circle cx="0" cy="0" r="16" fill="#059669" filter="url(#glowA)"/>
-    <circle cx="0" cy="0" r="13" fill="#10b981"/>
-    <circle cx="0" cy="0" r="6" fill="#ffffff"/>
+    <circle cx="0" cy="0" r="16" fill="#4f46e5" filter="url(#glowPinA)"/>
+    <circle cx="0" cy="0" r="13" fill="#6366f1"/>
+    <circle cx="0" cy="0" r="5.5" fill="#ffffff"/>
 
     <!-- Callout Box -->
-    <g transform="translate(0, -56)">
-      <rect x="-75" y="0" width="150" height="44" rx="10" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.5"/>
+    <g transform="translate(0, -64)">
+      <rect x="-82" y="0" width="164" height="48" rx="10" fill="url(#cardGrad)" stroke="#6366f1" stroke-width="1.5"/>
       <!-- Pointer Triangle -->
-      <polygon points="-6,44 6,44 0,50" fill="#1e293b"/>
-      <circle cx="-55" cy="22" r="5" fill="#10b981"/>
-      <text x="-42" y="18" fill="#ffffff" font-size="12" font-weight="700">Student B</text>
-      <text x="-42" y="32" fill="#94a3b8" font-size="10" font-weight="500">Owner · DIU Library</text>
+      <polygon points="-6,48 6,48 0,54" fill="#1e293b"/>
+      <circle cx="-62" cy="24" r="5" fill="#6366f1"/>
+      <text x="-48" y="20" fill="#ffffff" font-size="12" font-weight="700">Student A</text>
+      <text x="-48" y="36" fill="#a5b4fc" font-size="9.5" font-weight="600">Borrower · AB-4 (CSE Dept)</text>
+    </g>
+  </g>
+
+  <!-- Student B Marker (Owner at Central Library / Knowledge Tower) -->
+  <g transform="translate(645, 165)">
+    <!-- Glow Pin -->
+    <circle cx="0" cy="0" r="16" fill="#059669" filter="url(#glowPinB)"/>
+    <circle cx="0" cy="0" r="13" fill="#10b981"/>
+    <circle cx="0" cy="0" r="5.5" fill="#ffffff"/>
+
+    <!-- Callout Box -->
+    <g transform="translate(0, -64)">
+      <rect x="-82" y="0" width="164" height="48" rx="10" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.5"/>
+      <!-- Pointer Triangle -->
+      <polygon points="-6,48 6,48 0,54" fill="#1e293b"/>
+      <circle cx="-62" cy="24" r="5" fill="#10b981"/>
+      <text x="-48" y="20" fill="#ffffff" font-size="12" font-weight="700">Student B</text>
+      <text x="-48" y="36" fill="#6ee7b7" font-size="9.5" font-weight="600">Owner · Central Library</text>
     </g>
   </g>
 
   <!-- Live Distance Floating HUD Badge -->
-  <g class="badge-glow">
-    <rect x="330" y="130" width="180" height="38" rx="19" fill="#0b1120" stroke="#818cf8" stroke-width="1.5" filter="url(#glowRoute)"/>
-    <circle cx="348" cy="149" r="4" fill="#34d399" class="radar-dot"/>
-    <text x="360" y="154" fill="#ffffff" font-size="13" font-weight="800">500 m</text>
-    <text x="412" y="154" fill="#94a3b8" font-size="11" font-weight="600">· ~4 min walk</text>
+  <g class="hud-glow">
+    <rect x="320" y="132" width="200" height="38" rx="19" fill="#0b1120" stroke="#818cf8" stroke-width="1.5" filter="url(#glowRoute)"/>
+    <circle cx="338" cy="151" r="4.5" fill="#34d399" class="radar-blinker"/>
+    <text x="350" y="156" fill="#ffffff" font-size="13" font-weight="800">500 m</text>
+    <text x="404" y="156" fill="#94a3b8" font-size="11" font-weight="600">· ~4 min walk</text>
   </g>
 
   <!-- Top Status HUD Bar -->
-  <g transform="translate(24, 20)">
-    <rect width="792" height="38" rx="10" fill="#0d1527" fill-opacity="0.85" stroke="#334155" stroke-opacity="0.5" stroke-width="1"/>
+  <g transform="translate(24, 16)">
+    <rect width="792" height="42" rx="10" fill="#0d1527" fill-opacity="0.92" stroke="#334155" stroke-opacity="0.6" stroke-width="1"/>
     
-    <!-- Live GPS Indicator -->
-    <circle cx="20" cy="19" r="4.5" fill="#10b981" class="radar-dot"/>
-    <text x="32" y="23" fill="#10b981" font-size="11" font-weight="700" letter-spacing="1">LIVE DIU RADAR</text>
+    <!-- Live GPS Radar Indicator -->
+    <circle cx="20" cy="21" r="5" fill="#10b981" class="radar-blinker"/>
+    <text x="32" y="25" fill="#10b981" font-size="11" font-weight="800" letter-spacing="1">LIVE DIU RADAR</text>
 
-    <!-- Center Status -->
-    <text x="396" y="23" fill="#cbd5e1" font-size="11.5" font-weight="600" text-anchor="middle">
-      Daffodil Smart City (DSC) · Real-Time GPS Tracking
+    <!-- Campus & Geocoordinates Status -->
+    <text x="408" y="25" fill="#cbd5e1" font-size="11.5" font-weight="600" text-anchor="middle">
+      Daffodil Smart City (DSC) · 23.8770° N, 90.3201° E · Live Handover
     </text>
 
-    <!-- Handover Time Remaining -->
-    <rect x="670" y="7" width="112" height="24" rx="6" fill="#1e293b"/>
-    <text x="726" y="23" fill="#fbbf24" font-size="11" font-weight="700" text-anchor="middle">⏱ ETA: 3 MIN</text>
+    <!-- Handover Time Remaining Badge -->
+    <rect x="672" y="9" width="112" height="24" rx="6" fill="#1e293b" stroke="#f59e0b" stroke-width="1"/>
+    <text x="728" y="25" fill="#fbbf24" font-size="10.5" font-weight="800" text-anchor="middle">⏱ ETA: 3 MIN</text>
   </g>
 
-  <!-- Bottom Coordinates & Map Legend -->
-  <g transform="translate(30, 375)" fill="#64748b" font-size="10" font-weight="500">
-    <text x="0" y="0">📍 GPS Accuracy: ±2.5m · Daffodil International University, Ashulia</text>
-    <text x="780" y="0" text-anchor="end">Safe Campus Handover Zone · DSC</text>
+  <!-- Bottom Blueprint Technical Coordinates & Scale -->
+  <g transform="translate(30, 408)" fill="#64748b" font-size="9.5" font-weight="600">
+    <!-- Geofence & Campus Details -->
+    <text x="0" y="0">
+      📍 Geofence: Daffodil International University, Birulia, Savar · Accuracy: ±2.5m
+    </text>
+
+    <!-- Architectural Scale Bar -->
+    <g transform="translate(560, -3)">
+      <line x1="0" y1="0" x2="100" y2="0" stroke="#64748b" stroke-width="1.5"/>
+      <line x1="0" y1="-4" x2="0" y2="4" stroke="#64748b" stroke-width="1.5"/>
+      <line x1="50" y1="-3" x2="50" y2="3" stroke="#64748b" stroke-width="1"/>
+      <line x1="100" y1="-4" x2="100" y2="4" stroke="#64748b" stroke-width="1.5"/>
+      <text x="0" y="-7" font-size="8" text-anchor="middle">0m</text>
+      <text x="50" y="-7" font-size="8" text-anchor="middle">250m</text>
+      <text x="100" y="-7" font-size="8" text-anchor="middle">500m</text>
+    </g>
+
+    <!-- Compass Indicator -->
+    <g transform="translate(775, -2)">
+      <circle cx="0" cy="0" r="10" fill="none" stroke="#475569" stroke-width="1"/>
+      <polygon points="0,-8 3,0 0,2 -3,0" fill="#ef4444"/>
+      <polygon points="0,8 3,0 0,-2 -3,0" fill="#94a3b8"/>
+      <text x="0" y="-12" font-size="8" font-weight="800" fill="#ef4444" text-anchor="middle">N</text>
+    </g>
   </g>
 </svg>
