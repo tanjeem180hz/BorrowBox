@@ -48,7 +48,7 @@ Students can list products, set rental prices and availability, request products
 
 ## 📍 Nearby Sharing
 
-When two students confirm a rental handover, BorrowBox helps them find each other.
+When two students confirm a rental handover, BorrowBox helps them find each other on campus (illustrated below at **Daffodil International University — Daffodil Smart City** between **AB-4 (CSE Dept)** and the **Central Library**, meeting at **Daffodil TSC**).
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/tanjeem180hz/BorrowBox/main/nearby-sharing-map.svg" alt="Nearby Sharing Live Map" width="100%" />
@@ -56,10 +56,10 @@ When two students confirm a rental handover, BorrowBox helps them find each othe
 
 Both students can see:
 
-* Their current location
-* The other student's location
-* Distance between them
-* Meeting point on the map
+* Their current location on campus
+* The other student's live location
+* Real-time distance & estimated walking time (e.g., `500 m · ~4 min walk`)
+* Designated safe meeting point on the map (e.g., **Daffodil TSC**)
 
 ## 🔄 Rental Flow
 
