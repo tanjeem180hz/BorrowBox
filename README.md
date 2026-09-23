@@ -1,13 +1,13 @@
 <div align="center">
 
   <a href="https://tanjeem180hz.github.io/Hello/">
-    <img src="borrowbox-app-icon.svg" alt="BorrowBox App Icon" width="100" height="100" />
+    <img src="https://raw.githubusercontent.com/tanjeem180hz/BorrowBox/main/borrowbox-app-icon.svg" alt="BorrowBox App Icon" width="100" height="100" />
   </a>
 
   <br><br>
 
   <a href="https://tanjeem180hz.github.io/Hello/">
-    <img src="borrowbox-logo.svg" alt="BorrowBox Logo" width="350" />
+    <img src="https://raw.githubusercontent.com/tanjeem180hz/BorrowBox/main/borrowbox-logo.svg" alt="BorrowBox Logo" width="350" />
   </a>
 
   <br><br>
@@ -94,7 +94,7 @@ To create a **trusted university sharing community** where students can quickly 
 <div align="center">
 
   <a href="https://tanjeem180hz.github.io/Hello/">
-    <img src="borrowbox-app-icon.svg" alt="BorrowBox App Icon" width="60" height="60" />
+    <img src="https://raw.githubusercontent.com/tanjeem180hz/BorrowBox/main/borrowbox-app-icon.svg" alt="BorrowBox App Icon" width="60" height="60" />
   </a>
 
   <h3>📦 BorrowBox</h3>
