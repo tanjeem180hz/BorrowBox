@@ -46,12 +46,23 @@ public class LocalUserRepository implements UserRepository {
         executors.diskIO().execute(() -> {
             Student student = studentDao.getStudentByEmail(email);
             if (student == null) {
+                // Check if this is a seeded demo student before initial DB callback completes
+                for (Student s : com.borrowbox.app.data.local.SeedData.getInitialStudents()) {
+                    if (s.getEmail().equalsIgnoreCase(email)) {
+                        studentDao.insert(s);
+                        student = s;
+                        break;
+                    }
+                }
+            }
+            if (student == null) {
                 executors.mainThread().execute(() -> callback.onError("Invalid email or password"));
                 return;
             }
             boolean match = SecurityUtils.verifyPassword(password, student.getSalt(), student.getPasswordHash());
             if (match) {
-                executors.mainThread().execute(() -> callback.onSuccess(student));
+                final Student authenticated = student;
+                executors.mainThread().execute(() -> callback.onSuccess(authenticated));
             } else {
                 executors.mainThread().execute(() -> callback.onError("Invalid email or password"));
             }

@@ -103,4 +103,33 @@ public final class SeedData {
 
         return list;
     }
+
+    public static List<com.borrowbox.app.model.Rental> getInitialRentals() {
+        List<com.borrowbox.app.model.Rental> list = new ArrayList<>();
+        long now = System.currentTimeMillis();
+
+        // 1. Active Rental: Laptop Charger borrowed by Tanjeem (id 1) from Sabbir (id 2)
+        com.borrowbox.app.model.Rental r1 = new com.borrowbox.app.model.Rental(
+                1, 1, 1, 2, 2, PriceUnit.HOUR, 40, 200,
+                com.borrowbox.app.model.RentalStatus.ACTIVE, "BB-892F", now - 30 * 60 * 1000L);
+        r1.setStartAt(now - 30 * 60 * 1000L);
+        r1.setEndAt(now + 90 * 60 * 1000L); // 1.5h remaining
+        list.add(r1);
+
+        // 2. Incoming Request: Scientific Calculator requested by Rafi (id 5) from Tanjeem (id 1)
+        com.borrowbox.app.model.Rental r2 = new com.borrowbox.app.model.Rental(
+                2, 2, 5, 1, 3, PriceUnit.HOUR, 45, 150,
+                com.borrowbox.app.model.RentalStatus.REQUESTED, "BB-103A", now - 10 * 60 * 1000L);
+        list.add(r2);
+
+        // 3. Completed Rental in History
+        com.borrowbox.app.model.Rental r3 = new com.borrowbox.app.model.Rental(
+                3, 4, 3, 1, 1, PriceUnit.DAY, 100, 500,
+                com.borrowbox.app.model.RentalStatus.RETURNED, "BB-442C", now - 86400000L);
+        r3.setStartAt(now - 86400000L);
+        r3.setEndAt(now - 86400000L + 3600000L * 4);
+        list.add(r3);
+
+        return list;
+    }
 }

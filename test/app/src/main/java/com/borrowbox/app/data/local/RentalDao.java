@@ -15,6 +15,9 @@ public interface RentalDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insert(Rental rental);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertAll(List<Rental> rentals);
+
     @Update
     void update(Rental rental);
 

@@ -36,6 +36,11 @@ public class BorrowBoxApp extends Application {
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         }
+
+        // 4. Pre-warm database
+        com.borrowbox.app.util.AppExecutors.getInstance().diskIO().execute(() -> {
+            com.borrowbox.app.data.local.AppDatabase.getInstance(this).studentDao().getAllStudents();
+        });
     }
 
     private void createNotificationChannels() {

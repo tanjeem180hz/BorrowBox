@@ -54,6 +54,7 @@ public class TimerFragment extends Fragment {
                 startTimerLoop();
             }
         });
+        startTimerLoop();
 
         // Fast-forward demo button
         binding.btnSimulateFastForward.setOnClickListener(v -> {
@@ -91,10 +92,11 @@ public class TimerFragment extends Fragment {
     }
 
     private void updateTimerDisplay() {
-        if (currentRental == null || binding == null) return;
+        if (binding == null) return;
 
         long now = System.currentTimeMillis();
-        long end = currentRental.getEndAt() > 0 ? currentRental.getEndAt() : now + (2 * 60 * 60 * 1000L);
+        long end = (currentRental != null && currentRental.getEndAt() > 0) ?
+                currentRental.getEndAt() : now + (2 * 60 * 60 * 1000L);
         long remaining = end - now;
 
         if (remaining > 0) {
@@ -102,7 +104,7 @@ public class TimerFragment extends Fragment {
             binding.tvCountdown.setTextColor(ContextCompat.getColor(requireContext(), R.color.brand_primary));
             binding.tvStatusSub.setText(R.string.timer_remaining);
 
-            long totalDuration = currentRental.getEndAt() - currentRental.getStartAt();
+            long totalDuration = currentRental != null ? (currentRental.getEndAt() - currentRental.getStartAt()) : (2 * 60 * 60 * 1000L);
             if (totalDuration > 0) {
                 float progress = ((float) remaining / (float) totalDuration) * 100f;
                 binding.circularProgress.setProgress(progress);

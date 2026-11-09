@@ -51,6 +51,7 @@ public abstract class AppDatabase extends RoomDatabase {
                                     database.studentDao().insert(s);
                                 }
                                 database.productDao().insertAll(SeedData.getInitialProducts());
+                                database.rentalDao().insertAll(SeedData.getInitialRentals());
                             });
                         }
                     })

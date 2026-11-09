@@ -31,6 +31,23 @@ public class Rental {
     public Rental() {
     }
 
+    @androidx.room.Ignore
+    public Rental(long id, long productId, long borrowerId, long ownerId, int durationValue,
+                  @NonNull PriceUnit durationUnit, int totalCost, int deposit,
+                  @NonNull RentalStatus status, @NonNull String qrToken, long requestedAt) {
+        this.id = id;
+        this.productId = productId;
+        this.borrowerId = borrowerId;
+        this.ownerId = ownerId;
+        this.durationValue = durationValue;
+        this.durationUnit = durationUnit;
+        this.totalCost = totalCost;
+        this.deposit = deposit;
+        this.status = status;
+        this.qrToken = qrToken;
+        this.requestedAt = requestedAt;
+    }
+
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
 

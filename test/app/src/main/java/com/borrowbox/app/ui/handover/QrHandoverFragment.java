@@ -93,10 +93,29 @@ public class QrHandoverFragment extends Fragment {
     }
 
     private void confirmHandover() {
-        if (currentRental == null || !isAdded()) return;
+        if (!isAdded()) return;
 
-        RentalStateMachine.validateTransition(currentRental.getStatus(), RentalStatus.ACTIVE);
-        currentRental.setStatus(RentalStatus.ACTIVE);
+        RentalRepository rentalRepository = RepositoryProvider.getInstance(requireContext()).getRentalRepository();
+        ProductRepository productRepository = RepositoryProvider.getInstance(requireContext()).getProductRepository();
+
+        if (currentRental == null) {
+            Bundle args = new Bundle();
+            args.putLong("rental_id", rentalId);
+            if (getView() != null) {
+                Navigation.findNavController(getView()).navigate(R.id.timerFragment, args);
+            }
+            return;
+        }
+
+        if (currentRental.getStatus() == RentalStatus.REQUESTED) {
+            currentRental.setStatus(RentalStatus.CONFIRMED);
+        }
+
+        if (currentRental.getStatus() != RentalStatus.ACTIVE) {
+            RentalStateMachine.validateTransition(currentRental.getStatus(), RentalStatus.ACTIVE);
+            currentRental.setStatus(RentalStatus.ACTIVE);
+        }
+
         long now = System.currentTimeMillis();
         currentRental.setStartAt(now);
 
@@ -105,9 +124,6 @@ public class QrHandoverFragment extends Fragment {
                 currentRental.getDurationValue() * 60 * 60 * 1000L;
 
         currentRental.setEndAt(now + durationMillis);
-
-        RentalRepository rentalRepository = RepositoryProvider.getInstance(requireContext()).getRentalRepository();
-        ProductRepository productRepository = RepositoryProvider.getInstance(requireContext()).getProductRepository();
 
         rentalRepository.updateRental(currentRental);
 
