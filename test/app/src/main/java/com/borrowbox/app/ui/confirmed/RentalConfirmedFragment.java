@@ -44,7 +44,7 @@ public class RentalConfirmedFragment extends Fragment {
         RentalRepository rentalRepository = RepositoryProvider.getInstance(requireContext()).getRentalRepository();
         rentalRepository.getRentalByIdLive(rentalId).observe(getViewLifecycleOwner(), rental -> {
             if (rental != null) {
-                String unit = rental.getDurationUnit().name().toLowerCase();
+                String unit = rental.getDurationUnit().name().toLowerCase(java.util.Locale.ROOT);
                 binding.tvSummaryRate.setText(rental.getDurationValue() + " " + unit + "(s) • "
                         + CurrencyUtils.format(rental.getTotalCost()));
             }

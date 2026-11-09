@@ -53,7 +53,7 @@ public class EmergencyFragment extends Fragment {
             urgentRental.setDeposit(200);
             urgentRental.setStatus(RentalStatus.CONFIRMED); // Auto-confirmed for urgent demo
             urgentRental.setConfirmedAt(System.currentTimeMillis());
-            urgentRental.setQrToken(UUID.randomUUID().toString().substring(0, 8).toUpperCase());
+            urgentRental.setQrToken(UUID.randomUUID().toString().substring(0, 8).toUpperCase(java.util.Locale.ROOT));
             urgentRental.setUrgent(true);
 
             rentalRepository.createRental(urgentRental, rentalId -> {

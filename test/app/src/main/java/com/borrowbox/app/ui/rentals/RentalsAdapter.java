@@ -69,7 +69,7 @@ public class RentalsAdapter extends ListAdapter<Rental, RentalsAdapter.RentalVie
             binding.tvRentalTitle.setText("Rental #" + rental.getId());
             binding.tvStatusBadge.setText(rental.getStatus().name());
 
-            String unit = rental.getDurationUnit().name().toLowerCase();
+            String unit = rental.getDurationUnit().name().toLowerCase(java.util.Locale.ROOT);
             binding.tvRentalDetails.setText(rental.getDurationValue() + " " + unit + "(s) • "
                     + CurrencyUtils.format(rental.getTotalCost()) + " • Deposit: "
                     + CurrencyUtils.format(rental.getDeposit()));

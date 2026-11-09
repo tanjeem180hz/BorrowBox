@@ -88,7 +88,7 @@ public class ProductDetailsViewModel extends AndroidViewModel {
         if (sessionManager.isAutoAcceptEnabled()) {
             rental.setConfirmedAt(System.currentTimeMillis());
         }
-        rental.setQrToken(UUID.randomUUID().toString().substring(0, 8).toUpperCase());
+        rental.setQrToken(UUID.randomUUID().toString().substring(0, 8).toUpperCase(java.util.Locale.ROOT));
         rental.setUrgent(isUrgent);
 
         rentalRepository.createRental(rental, rentalId -> requestSuccess.setValue(rentalId));
