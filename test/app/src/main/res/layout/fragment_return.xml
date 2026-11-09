@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_md">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:text="@string/return_title"
+            android:textColor="@color/ink"
+            android:textSize="@dimen/text_headline"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_instruction"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xs"
+            android:text="Drag slider to compare Before vs. After condition"
+            android:textColor="@color/muted"
+            android:textSize="@dimen/text_body"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        <!-- Draggable Comparison Slider -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_slider"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginTop="@dimen/spacing_md"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="4dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_instruction">
+
+            <com.borrowbox.app.ui.common.ComparisonSliderView
+                android:id="@+id/comparison_slider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Slider Labels -->
+        <LinearLayout
+            android:id="@+id/layout_slider_labels"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xs"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/card_slider">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="◀ Before Rental"
+                android:textColor="@color/muted"
+                android:textSize="@dimen/text_caption" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="After Rental ▶"
+                android:textColor="@color/muted"
+                android:textSize="@dimen/text_caption" />
+        </LinearLayout>
+
+        <!-- Camera Fallback Button (Emulator Friendly) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_sample_photo"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:text="@string/return_sample_photo"
+            android:textSize="@dimen/text_caption"
+            app:layout_constraintTop_toBottomOf="@id/layout_slider_labels" />
+
+        <!-- Condition Inspection Checklist -->
+        <TextView
+            android:id="@+id/tv_checklist_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_lg"
+            android:text="Condition Checklist"
+            android:textColor="@color/ink"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_sample_photo" />
+
+        <CheckBox
+            android:id="@+id/cb_working"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xs"
+            android:checked="true"
+            android:text="@string/return_check_working"
+            android:textColor="@color/ink"
+            app:layout_constraintTop_toBottomOf="@id/tv_checklist_header" />
+
+        <CheckBox
+            android:id="@+id/cb_nodamage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/return_check_nodamage"
+            android:textColor="@color/ink"
+            app:layout_constraintTop_toBottomOf="@id/cb_working" />
+
+        <CheckBox
+            android:id="@+id/cb_accessories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/return_check_accessories"
+            android:textColor="@color/ink"
+            app:layout_constraintTop_toBottomOf="@id/cb_nodamage" />
+
+        <!-- Confirm Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_confirm_return"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="@dimen/spacing_xl"
+            android:layout_marginBottom="@dimen/spacing_lg"
+            android:backgroundTint="@color/brand_primary"
+            android:text="@string/return_confirm_button"
+            android:textColor="@color/white"
+            app:cornerRadius="@dimen/button_corner_radius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cb_accessories" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

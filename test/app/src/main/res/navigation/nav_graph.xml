@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.borrowbox.app.ui.splash.SplashFragment"
+        android:label="Splash" />
+
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.borrowbox.app.ui.onboarding.OnboardingFragment"
+        android:label="Onboarding" />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.borrowbox.app.ui.auth.LoginFragment"
+        android:label="Login" />
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.borrowbox.app.ui.auth.RegisterFragment"
+        android:label="Register" />
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.borrowbox.app.ui.home.HomeFragment"
+        android:label="Home" />
+
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.borrowbox.app.ui.product.ProductDetailsFragment"
+        android:label="Product Details" />
+
+    <fragment
+        android:id="@+id/addEditProductFragment"
+        android:name="com.borrowbox.app.ui.product.AddEditProductFragment"
+        android:label="Add Product" />
+
+    <fragment
+        android:id="@+id/rentalConfirmedFragment"
+        android:name="com.borrowbox.app.ui.confirmed.RentalConfirmedFragment"
+        android:label="Rental Confirmed" />
+
+    <fragment
+        android:id="@+id/nav_map"
+        android:name="com.borrowbox.app.ui.map.MapFragment"
+        android:label="Campus Map" />
+
+    <fragment
+        android:id="@+id/qrHandoverFragment"
+        android:name="com.borrowbox.app.ui.handover.QrHandoverFragment"
+        android:label="Handover Verification" />
+
+    <fragment
+        android:id="@+id/timerFragment"
+        android:name="com.borrowbox.app.ui.timer.TimerFragment"
+        android:label="Rental Timer" />
+
+    <fragment
+        android:id="@+id/returnFragment"
+        android:name="com.borrowbox.app.ui.returnflow.ReturnFragment"
+        android:label="Return Condition" />
+
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.borrowbox.app.ui.payment.PaymentFragment"
+        android:label="Settlement" />
+
+    <fragment
+        android:id="@+id/ratingFragment"
+        android:name="com.borrowbox.app.ui.rating.RatingFragment"
+        android:label="Rate Experience" />
+
+    <fragment
+        android:id="@+id/emergencyFragment"
+        android:name="com.borrowbox.app.ui.emergency.EmergencyFragment"
+        android:label="Emergency Request" />
+
+    <fragment
+        android:id="@+id/nav_rentals"
+        android:name="com.borrowbox.app.ui.rentals.RentalsFragment"
+        android:label="My Rentals" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.borrowbox.app.ui.profile.ProfileFragment"
+        android:label="Student Profile" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.borrowbox.app.ui.settings.SettingsFragment"
+        android:label="Settings" />
+
+</navigation>

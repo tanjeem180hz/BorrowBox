@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_md">
+
+        <!-- Product Hero Image / Graphic -->
+        <ImageView
+            android:id="@+id/img_hero"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@drawable/sample_product_photo"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:text="Laptop Charger"
+            android:textColor="@color/ink"
+            android:textSize="@dimen/text_headline"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/tv_price_tag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_hero" />
+
+        <TextView
+            android:id="@+id/tv_price_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:text="৳20/h"
+            android:textColor="@color/brand_primary"
+            android:textSize="@dimen/text_headline"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_hero" />
+
+        <!-- Status & Condition Badges -->
+        <LinearLayout
+            android:id="@+id/layout_badges"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+            <TextView
+                android:id="@+id/tv_condition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/brand_tint"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="Condition: Excellent"
+                android:textColor="@color/brand_primary"
+                android:textSize="@dimen/text_caption"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_availability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_sm"
+                android:background="#D1FAE5"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="Available Now"
+                android:textColor="@color/success"
+                android:textSize="@dimen/text_caption"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Owner Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_owner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/card_elevation_subtle"
+            app:layout_constraintTop_toBottomOf="@id/layout_badges"
+            app:strokeColor="@color/divider"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_md">
+
+                <TextView
+                    android:id="@+id/tv_owner_avatar"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/ic_launcher_background"
+                    android:gravity="center"
+                    android:text="S"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_title"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_md"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_owner_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Md. Sabbir Hossain Shamim"
+                        android:textColor="@color/ink"
+                        android:textSize="@dimen/text_body"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_owner_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⭐ 4.9 • CSE, DIU"
+                        android:textColor="@color/muted"
+                        android:textSize="@dimen/text_caption" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_owner_trust"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/brand_tint"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:text="Trust 92"
+                    android:textColor="@color/brand_primary"
+                    android:textSize="@dimen/text_caption"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:lineSpacingExtra="4dp"
+            android:text="Product description text..."
+            android:textColor="@color/muted"
+            android:textSize="@dimen/text_body"
+            app:layout_constraintTop_toBottomOf="@id/card_owner" />
+
+        <!-- Duration Selector Title -->
+        <TextView
+            android:id="@+id/tv_duration_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_lg"
+            android:text="@string/product_duration"
+            android:textColor="@color/ink"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+        <!-- Duration Chips -->
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xs"
+            app:layout_constraintTop_toBottomOf="@id/tv_duration_title"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_1h"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 Hour" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_2h"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="2 Hours" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_3h"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 Hours" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_1d"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 Day" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <!-- Total Calculation Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/card_elevation_subtle"
+            app:layout_constraintTop_toBottomOf="@id/chip_group_duration">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_md">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/product_total_cost"
+                    android:textColor="@color/ink"
+                    android:textSize="@dimen/text_body"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_total_calculated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="৳40"
+                    android:textColor="@color/brand_primary"
+                    android:textSize="@dimen/text_headline"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Warning / Status Info -->
+        <TextView
+            android:id="@+id/tv_request_status_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:gravity="center"
+            android:textColor="@color/danger"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/card_total" />
+
+        <!-- Request Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_request_rental"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:layout_marginBottom="@dimen/spacing_lg"
+            android:backgroundTint="@color/brand_primary"
+            android:text="@string/product_request_button"
+            android:textColor="@color/white"
+            app:cornerRadius="@dimen/button_corner_radius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_request_status_msg" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

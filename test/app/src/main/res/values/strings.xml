@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Meta & Brand -->
+    <string name="app_name">BorrowBox</string>
+    <string name="tagline_splash">Borrow what you need. When you need it.</string>
+    <string name="tagline_trust">Built around student-to-student trust.</string>
+    <string name="tagline_discover">Find what you need from students around you.</string>
+    <string name="tagline_meet">Find each other. Meet nearby.</string>
+    <string name="tagline_handover">Secure handover with QR verification.</string>
+    <string name="tagline_timer">Never lose track of your rental.</string>
+    <string name="tagline_history">Clear pricing. Transparent rental history.</string>
+    <string name="tagline_rating">Every successful rental builds trust.</string>
+    <string name="tagline_urgent">Get what you need — when you need it.</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_map">Nearby Map</string>
+    <string name="nav_rentals">My Rentals</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_get_started">Get Started</string>
+    <string name="onboarding_title_1">Need something for just a few hours?</string>
+    <string name="onboarding_desc_1">Borrow laptop chargers, calculators, or lab equipment from peers instead of buying full price.</string>
+    <string name="onboarding_title_2">Borrow Nearby on Campus</string>
+    <string name="onboarding_desc_2">Locate available items within walking distance on campus with live distance tracking.</string>
+    <string name="onboarding_title_3">Build Your Campus Trust</string>
+    <string name="onboarding_desc_3">Return on time, maintain gear condition, and grow your student Trust Score.</string>
+
+    <!-- Authentication -->
+    <string name="auth_login_title">Welcome Back</string>
+    <string name="auth_login_subtitle">Sign in to your university peer network</string>
+    <string name="auth_register_title">Join BorrowBox</string>
+    <string name="auth_register_subtitle">Register with your university student email</string>
+    <string name="auth_email">University Email</string>
+    <string name="auth_password">Password</string>
+    <string name="auth_name">Full Name</string>
+    <string name="auth_university">University</string>
+    <string name="auth_department">Department</string>
+    <string name="auth_student_id">Student ID</string>
+    <string name="auth_login_button">Sign In</string>
+    <string name="auth_register_button">Create Student Account</string>
+    <string name="auth_dont_have_account">Don\'t have an account? Register</string>
+    <string name="auth_already_have_account">Already registered? Sign In</string>
+    <string name="auth_error_invalid_email">Enter a valid email address</string>
+    <string name="auth_error_short_password">Password must be at least 6 characters</string>
+    <string name="auth_error_empty_fields">Please fill in all required fields</string>
+    <string name="auth_error_failed">Invalid email or password</string>
+    <string name="auth_error_exists">An account with this email already exists</string>
+    <string name="auth_logout">Log Out</string>
+
+    <!-- Home & Discover -->
+    <string name="home_search_hint">What do you need?</string>
+    <string name="category_all">All</string>
+    <string name="category_electronics">Electronics</string>
+    <string name="category_study">Study</string>
+    <string name="category_accessories">Accessories</string>
+    <string name="category_camera">Camera</string>
+    <string name="category_emergency">Emergency</string>
+    <string name="home_available_now">Available Now</string>
+    <string name="home_urgent_fab">Need it urgently?</string>
+    <string name="home_empty">No products found matching your search.</string>
+
+    <!-- Product Details -->
+    <string name="product_condition">Condition</string>
+    <string name="product_owner">Offered by</string>
+    <string name="product_trust_score">Trust Score</string>
+    <string name="product_duration">Select Duration</string>
+    <string name="product_total_cost">Total Rental Cost</string>
+    <string name="product_request_button">Request Rental</string>
+    <string name="product_request_owner_warning">You own this product</string>
+    <string name="product_request_unavailable">Currently Rented</string>
+    <string name="product_condition_excellent">Excellent</string>
+    <string name="product_condition_good">Good</string>
+    <string name="product_condition_fair">Fair</string>
+
+    <!-- Rental Request & Confirmed -->
+    <string name="rental_request_sent">✓ Rental Request Sent</string>
+    <string name="rental_confirmed_title">Rental Confirmed</string>
+    <string name="rental_ready_handover">Ready for handover</string>
+    <string name="rental_open_map">Open Campus Map</string>
+    <string name="rental_tab_active">Active</string>
+    <string name="rental_tab_requests">Requests</string>
+    <string name="rental_tab_history">History</string>
+    <string name="rental_accept">Accept</string>
+    <string name="rental_reject">Reject</string>
+    <string name="rental_simulate_accept">Auto-accept (demo)</string>
+
+    <!-- Map & Distance -->
+    <string name="map_title">Campus Handover Map</string>
+    <string name="map_simulate_meeting">Simulate Meeting Step</string>
+    <string name="map_almost_there">You\'re almost there</string>
+    <string name="map_ready_handover">Ready for Handover</string>
+    <string name="map_start_handover">Start Handover</string>
+    <string name="map_permission_rationale">Location access helps calculate distance to your meeting point.</string>
+
+    <!-- QR Handover -->
+    <string name="qr_handover_title">Handover Verification</string>
+    <string name="qr_scan_instruction">Scan borrower\'s QR code to confirm handover</string>
+    <string name="qr_simulate_scan">Simulate QR Scan</string>
+    <string name="qr_confirmed">✓ Handover Confirmed</string>
+    <string name="qr_invalid">Invalid or expired QR token</string>
+
+    <!-- Timer & Return -->
+    <string name="timer_title">Active Rental Timer</string>
+    <string name="timer_remaining">Time Remaining</string>
+    <string name="timer_overdue">OVERDUE - Late Fee Applying</string>
+    <string name="return_title">Time to Return</string>
+    <string name="return_before_photo">Before Rental Photo</string>
+    <string name="return_after_photo">After Rental Photo</string>
+    <string name="return_sample_photo">Use Sample Photo</string>
+    <string name="return_check_working">Item is fully functional</string>
+    <string name="return_check_nodamage">No new scratches or damage</string>
+    <string name="return_check_accessories">All cables &amp; accessories included</string>
+    <string name="return_confirm_button">Confirm Return &amp; Proceed to Payment</string>
+    <string name="return_confirmed">✓ Return Confirmed</string>
+
+    <!-- Payment & Late Fee -->
+    <string name="payment_title">Rental Settlement</string>
+    <string name="payment_rental_cost">Rental Cost</string>
+    <string name="payment_security_deposit">Security Deposit (Refundable)</string>
+    <string name="payment_late_fee">Late Fee</string>
+    <string name="payment_total">Total Due</string>
+    <string name="payment_method_cash">Cash Handover</string>
+    <string name="payment_method_bkash">bKash (Mock)</string>
+    <string name="payment_method_nagad">Nagad (Mock)</string>
+    <string name="payment_pay_button">Confirm &amp; Settle Payment</string>
+    <string name="payment_success">✓ Payment Completed</string>
+
+    <!-- Rating & Trust Score -->
+    <string name="rating_title">Rate Your Experience</string>
+    <string name="rating_subtitle">Help build trust in our campus community</string>
+    <string name="rating_chip_smooth">Smooth handover and great product condition</string>
+    <string name="rating_chip_ontime">Punctual and friendly communication</string>
+    <string name="rating_chip_recommended">Highly recommended peer</string>
+    <string name="rating_submit">Submit Review</string>
+
+    <!-- Emergency Flow -->
+    <string name="emergency_title">Campus Emergency Request</string>
+    <string name="emergency_desc">Need equipment urgently before an exam or lab?</string>
+    <string name="emergency_select_item">Select Item Type</string>
+    <string name="emergency_nearby_title">Available Nearby (Sorted by Proximity)</string>
+    <string name="emergency_request_button">Send Urgent Request</string>
+
+    <!-- Profile & Settings -->
+    <string name="profile_trust_score_label">Trust Score</string>
+    <string name="profile_completed_rentals">Completed Rentals</string>
+    <string name="profile_badge_student">Student</string>
+    <string name="profile_badge_verified">Verified</string>
+    <string name="profile_badge_reliable">Reliable</string>
+    <string name="profile_switch_user">Switch Demo User</string>
+    <string name="profile_my_products">My Listed Products</string>
+    <string name="profile_add_product">Add New Product</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_dark_mode">Dark Theme</string>
+    <string name="settings_notifications">Push Notifications</string>
+    <string name="settings_demo_mode">Demo Simulation Mode</string>
+    <string name="settings_about">About BorrowBox</string>
+    <string name="settings_version">Version 1.0.0 (Java OOP Lab Project)</string>
+
+    <!-- Common Actions & Notifications -->
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_close">Close</string>
+    <string name="notif_channel_reminders">Rental Reminders</string>
+    <string name="notif_channel_requests">Rental Requests</string>
+    <string name="notif_request_title">New Rental Request Received</string>
+    <string name="notif_request_msg">A student requested to borrow your item.</string>
+    <string name="notif_reminder_15m_title">Rental ending in 15 minutes</string>
+    <string name="notif_reminder_15m_msg">Please prepare to meet the owner for return.</string>
+    <string name="notif_reminder_0m_title">Rental Time Expired!</string>
+    <string name="notif_reminder_0m_msg">Your rental is now overdue. Late charges are applying.</string>
+</resources>

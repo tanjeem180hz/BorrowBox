@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/spacing_md"
+    android:layout_marginTop="@dimen/spacing_sm"
+    android:layout_marginEnd="@dimen/spacing_md"
+    android:layout_marginBottom="@dimen/spacing_sm"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="@dimen/card_elevation_subtle"
+    app:strokeColor="@color/divider"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_md">
+
+        <ImageView
+            android:id="@+id/img_product_icon"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/sample_product_photo"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_product_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:layout_marginEnd="@dimen/spacing_sm"
+            android:text="Laptop Charger"
+            android:textColor="@color/ink"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/tv_price"
+            app:layout_constraintStart_toEndOf="@id/img_product_icon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="৳20/hour"
+            android:textColor="@color/brand_primary"
+            android:textSize="@dimen/text_title"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_xxs"
+            android:text="Electronics"
+            android:textColor="@color/muted"
+            android:textSize="@dimen/text_caption"
+            app:layout_constraintStart_toEndOf="@id/img_product_icon"
+            app:layout_constraintTop_toBottomOf="@id/tv_product_name" />
+
+        <TextView
+            android:id="@+id/tv_trust_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:background="@color/brand_tint"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:text="⭐ Trust 92"
+            android:textColor="@color/brand_primary"
+            android:textSize="@dimen/text_caption"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_product_icon" />
+
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_sm"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:text="📍 350 m away"
+            android:textColor="@color/muted"
+            android:textSize="@dimen/text_caption"
+            app:layout_constraintStart_toEndOf="@id/tv_trust_score"
+            app:layout_constraintTop_toBottomOf="@id/img_product_icon" />
+
+        <TextView
+            android:id="@+id/tv_availability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:text="@string/home_available_now"
+            android:textColor="@color/success"
+            android:textSize="@dimen/text_caption"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_product_icon" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="@dimen/spacing_md">
+
+    <!-- Header -->
+    <ImageView
+        android:id="@+id/img_urgent_icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:contentDescription="@string/emergency_title"
+        android:src="@drawable/ic_urgent_flash"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_sm"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:text="@string/emergency_title"
+        android:textColor="@color/danger"
+        android:textSize="@dimen/text_headline"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img_urgent_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_xs"
+        android:text="@string/emergency_desc"
+        android:textColor="@color/muted"
+        android:textSize="@dimen/text_body"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+    <!-- Category / Item Type Filter Chips -->
+    <TextView
+        android:id="@+id/tv_pick_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:text="@string/emergency_select_item"
+        android:textColor="@color/ink"
+        android:textSize="@dimen/text_title"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_desc" />
+
+    <HorizontalScrollView
+        android:id="@+id/scroll_chips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_xs"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/tv_pick_item">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_emergency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_calculator"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Calculator" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_charger"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Laptop Charger" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_powerbank"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Power Bank" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_hdmi"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HDMI Cable" />
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/tv_nearby_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:text="@string/emergency_nearby_title"
+        android:textColor="@color/ink"
+        android:textSize="@dimen/text_title"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scroll_chips" />
+
+    <!-- RecyclerView sorted by distance -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_emergency"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_sm"
+        app:layout_constraintBottom_toTopOf="@id/tv_tagline"
+        app:layout_constraintTop_toBottomOf="@id/tv_nearby_header" />
+
+    <TextView
+        android:id="@+id/tv_tagline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/spacing_sm"
+        android:text="@string/tagline_urgent"
+        android:textColor="@color/muted"
+        android:textSize="@dimen/text_caption"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
