@@ -1,0 +1,38 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.BorrowBox" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/brand_tint</item>
+        <item name="colorOnPrimaryContainer">@color/brand_primary</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/brand_primary_light</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/brand_lid</item>
+        <item name="colorOnSecondaryContainer">@color/ink</item>
+
+        <!-- Background & Surface -->
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorOnBackground">@color/ink</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/ink</item>
+        <item name="colorSurfaceVariant">@color/background</item>
+        <item name="colorOnSurfaceVariant">@color/muted</item>
+
+        <!-- Status & Navigation Bar -->
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/surface</item>
+
+        <!-- Components styling -->
+        <item name="cardViewStyle">@style/Widget.BorrowBox.Card</item>
+    </style>
+
+    <style name="Widget.BorrowBox.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardBackgroundColor">@color/surface</item>
+    </style>
+</resources>

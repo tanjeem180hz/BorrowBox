@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="@dimen/spacing_lg">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:text="@string/timer_title"
+        android:textColor="@color/ink"
+        android:textSize="@dimen/text_headline"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_product_rate_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_xs"
+        android:text="Laptop Charger • ৳20/hour"
+        android:textColor="@color/muted"
+        android:textSize="@dimen/text_body"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+    <!-- Timer Ring Frame -->
+    <FrameLayout
+        android:id="@+id/frame_timer"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="@dimen/spacing_xl"
+        app:layout_constraintBottom_toTopOf="@id/card_timer_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_rate_line">
+
+        <com.borrowbox.app.ui.common.CircularProgressView
+            android:id="@+id/circular_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_countdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01:59:45"
+                android:textColor="@color/brand_primary"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_status_sub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:text="@string/timer_remaining"
+                android:textColor="@color/muted"
+                android:textSize="@dimen/text_caption" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Info / Late Charge Banner -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_timer_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_lg"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_elevation_subtle"
+        app:layout_constraintBottom_toTopOf="@id/btn_simulate_fast_forward"
+        app:layout_constraintTop_toBottomOf="@id/frame_timer"
+        app:strokeColor="@color/divider"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_md">
+
+            <TextView
+                android:id="@+id/tv_late_fee_ticker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Late Fee Policy: ৳10 per started 20 minutes"
+                android:textColor="@color/ink"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:text="@string/tagline_timer"
+                android:textColor="@color/muted"
+                android:textSize="@dimen/text_caption" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Demo Helper: Fast-forward timer to test Overdue & Late Fee -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_simulate_fast_forward"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginBottom="@dimen/spacing_sm"
+        android:text="Demo: Fast-Forward to Overdue (25 mins late)"
+        android:textColor="@color/danger"
+        app:layout_constraintBottom_toTopOf="@id/btn_proceed_return" />
+
+    <!-- Proceed Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_proceed_return"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginBottom="@dimen/spacing_lg"
+        android:backgroundTint="@color/brand_primary"
+        android:text="Proceed to Return &amp; Condition Check"
+        android:textColor="@color/white"
+        app:cornerRadius="@dimen/button_corner_radius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
