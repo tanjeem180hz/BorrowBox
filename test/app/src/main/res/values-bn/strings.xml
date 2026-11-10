@@ -95,6 +95,19 @@
     <string name="map_ready_handover">হস্তান্তরের জন্য প্রস্তুত</string>
     <string name="map_start_handover">কিউআর হস্তান্তরে যান</string>
     <string name="map_permission_rationale">মিটিং পয়েন্টের দূরত্ব নির্ধারণে লোকেশন অ্যাক্সেস প্রয়োজন।</string>
+    <string name="map_open_gmaps">Google Maps এ ডিরেকশন দেখুন</string>
+    <string name="map_layer_satellite">স্যাটেলাইট</string>
+    <string name="map_layer_roadmap">রোডম্যাপ</string>
+    <string name="map_my_location">আমার অবস্থান</string>
+    <string name="map_layer_toast_satellite">Google Maps স্যাটেলাইট ভিউ চালু করা হয়েছে</string>
+    <string name="map_layer_toast_roadmap">Google Maps রোডম্যাপ ভিউ চালু করা হয়েছে</string>
+    <string name="map_meeting_point_diu">মিটিং পয়েন্ট: ডিআইইউ নলেজ টাওয়ার / লাইব্রেরি</string>
+    <string name="map_owner_label">মালিক: সাব্বির (কাঁঠাল তলা)</string>
+    <string name="map_you_label">আপনি (গ্রহীতা)</string>
+    <string name="map_hud_distance">%1$d মিটার দূরে</string>
+    <string name="map_hud_ready">• হস্তান্তরের জন্য প্রস্তুত!</string>
+    <string name="map_hud_near">• আপনি খুব কাছাকাছি আছেন!</string>
+    <string name="map_hud_moving">• মিটিং পয়েন্টের দিকে এগোচ্ছেন</string>
 
     <!-- QR Handover -->
     <string name="qr_handover_title">হস্তান্তর ভেরিফিকেশন</string>

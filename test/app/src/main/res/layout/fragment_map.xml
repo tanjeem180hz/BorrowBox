@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <!-- OpenStreetMap View (osmdroid) -->
+    <!-- Live Google Maps Engine View -->
     <org.osmdroid.views.MapView
         android:id="@+id/map_view"
         android:layout_width="0dp"
@@ -63,6 +63,98 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
+    <!-- Top-Right Floating Controls (Layer Toggle & Re-Center) -->
+    <LinearLayout
+        android:id="@+id/layout_floating_controls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginEnd="@dimen/spacing_md"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Layer Toggle Button (Roadmap / Satellite) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_toggle_layer"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:clickable="true"
+            android:contentDescription="@string/map_layer_satellite"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="6dp"
+            app:strokeColor="#1A000000"
+            app:strokeWidth="1dp">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/map_layer_satellite"
+                android:src="@drawable/ic_layers"
+                app:tint="@color/ink" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- My Location Re-center Button -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_my_location"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:clickable="true"
+            android:contentDescription="@string/map_my_location"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="6dp"
+            app:strokeColor="#1A000000"
+            app:strokeWidth="1dp">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/map_my_location"
+                android:src="@drawable/ic_my_location"
+                app:tint="@color/brand_primary" />
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <!-- Google Maps Attribution Watermark Badge -->
+    <LinearLayout
+        android:id="@+id/badge_google"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_md"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_google_watermark"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/card_bottom_controls"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.02"
+            android:text="Google"
+            android:textColor="#5F6368"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_active_layer_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="• Maps"
+            android:textColor="#80868B"
+            android:textSize="11sp" />
+    </LinearLayout>
+
     <!-- Bottom Controls Card -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_bottom_controls"
@@ -81,20 +173,36 @@
             android:orientation="vertical"
             android:padding="@dimen/spacing_md">
 
-            <TextView
-                android:id="@+id/tv_meeting_point_info"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Meeting Point: DIU Library Front Desk / Kathal Tola"
-                android:textColor="@color/ink"
-                android:textSize="@dimen/text_body"
-                android:textStyle="bold" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:contentDescription="Meeting Point"
+                    android:src="@drawable/ic_gmaps_pin_meeting" />
+
+                <TextView
+                    android:id="@+id/tv_meeting_point_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/map_meeting_point_diu"
+                    android:textColor="@color/ink"
+                    android:textSize="@dimen/text_body"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_handover_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_xxs"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/tagline_meet"
                 android:textColor="@color/muted"
                 android:textSize="@dimen/text_caption" />
@@ -106,26 +214,39 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_simulate_meeting"
+                    android:id="@+id/btn_open_google_maps"
                     style="@style/Widget.Material3.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
                     android:layout_marginEnd="@dimen/spacing_xs"
                     android:layout_weight="1"
-                    android:text="@string/map_simulate_meeting"
-                    android:textSize="@dimen/text_caption" />
+                    android:text="@string/map_open_gmaps"
+                    android:textSize="@dimen/text_caption"
+                    app:icon="@drawable/ic_gmaps_directions"
+                    app:iconGravity="textStart"
+                    app:iconSize="16dp"
+                    app:iconTint="@color/brand_primary" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_start_handover"
+                    android:id="@+id/btn_simulate_meeting"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
                     android:layout_marginStart="@dimen/spacing_xs"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/brand_primary"
-                    android:text="@string/map_start_handover"
-                    android:textColor="@color/white"
+                    android:text="@string/map_simulate_meeting"
                     android:textSize="@dimen/text_caption" />
             </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_start_handover"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:backgroundTint="@color/brand_primary"
+                android:text="@string/map_start_handover"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_caption" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

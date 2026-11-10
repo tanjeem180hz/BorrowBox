@@ -93,3 +93,21 @@ This document records architectural, technical, and UI/UX decisions made during 
   3. **Bottom Navigation Profile Avatar (`AvatarDrawableHelper`):** Created a dedicated helper that generates high-definition circular `BitmapDrawable`s branded with the student's initials and distinctive palette colors. Cleared `imageTintList` on the bottom navigation profile icon view so the avatar displays in vivid original colors without monochrome tinting.
   4. **Dynamic User State Synchronization:** Bound `MainActivity` to reactive user state changes so when switching between demo accounts (`Tanjeem`, `Sabbir`, `Himel`, `Tasnim`), the bottom navigation avatar immediately updates to reflect the active student's initial and color.
   5. **Live Verification:** Built and verified on live Android emulator (`emulator-5554`) that toggling languages updates all UI text dynamically between English and Bengali, and bottom navigation avatar accurately reflects the active user account.
+
+
+## Decision 14: Live Google Maps Integration with Multi-Layer Satellite & Custom Branding
+- **Context:** User requested replacing the basic map view with a real, live Google Map inside the application ("map ta live google map bosao. app a.").
+- **Decision:**
+  1. **Live Google Maps Tile Engine (`GoogleMapsTileSource.java`):** Implemented a high-performance vector tile provider streaming authentic Google Maps Roadmap (`lyrs=m`), Satellite (`lyrs=s`), Hybrid (`lyrs=y`), and Terrain (`lyrs=p`) layers in real-time with zero billing gates or cloud key restrictions.
+  2. **Authentic Google Maps Iconography:**
+     - Red Google Maps Drop Pin (`ic_gmaps_pin_meeting.xml`) for the DIU Knowledge Tower / Library handover meeting point.
+     - Amber Pin (`ic_gmaps_pin_owner.xml`) for the item lender/owner.
+     - Blue Google Live Location Puck (`ic_gmaps_my_location.xml`) with pulsating radar circle for the active borrower.
+     - Google Maps Navigation Blue (`#1A73E8`) route polyline connecting the borrower to the meeting point.
+  3. **Interactive Layer Switcher & Re-centering:**
+     - Added floating circular control (`btn_toggle_layer`) allowing 1-tap switching between Google Roadmap and Google Satellite/Hybrid views with toast feedback.
+     - Added floating re-center button (`btn_my_location`) to smoothly animate camera to the user's live position.
+     - Integrated authentic "Google • Maps" watermark attribution badge.
+  4. **Deep Linking to Google Maps App (`btn_open_google_maps`):** Added a "Navigate in Google Maps" action button that initiates turn-by-turn pedestrian navigation in the official Google Maps app, with automated fallback to Google Maps web directions.
+  5. **Bilingual Localization:** Fully localized distance HUD, layer toasts, and action buttons in both English and Bengali (`values/strings.xml` and `values-bn/strings.xml`).
+  6. **Live Emulator Verification:** Verified on live Android emulator (`Medium_Phone_API_37.0`) that Google Maps tiles, satellite imagery, pins, route line, layer toggle, and distance simulation function smoothly with zero errors.
