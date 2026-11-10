@@ -35,11 +35,19 @@
             android:paddingHorizontal="@dimen/spacing_md"
             android:paddingVertical="@dimen/spacing_sm">
 
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:contentDescription="Location"
+                android:src="@drawable/ic_nav_map"
+                app:tint="@color/brand_primary" />
+
             <TextView
                 android:id="@+id/tv_distance_hud"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="📍 500 m away"
+                android:layout_marginStart="4dp"
+                android:text="500 m away"
                 android:textColor="@color/brand_primary"
                 android:textSize="@dimen/text_title"
                 android:textStyle="bold" />

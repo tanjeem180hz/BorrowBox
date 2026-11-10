@@ -142,7 +142,7 @@ public class MapFragment extends Fragment {
     }
 
     private void updateDistanceDisplay(int distanceMeters) {
-        binding.tvDistanceHud.setText("📍 " + distanceMeters + " m away");
+        binding.tvDistanceHud.setText(distanceMeters + " m away");
 
         if (distanceMeters <= 50) {
             binding.tvProximityStatus.setText("• Ready for Handover!");

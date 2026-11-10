@@ -33,14 +33,29 @@
                     android:textSize="@dimen/text_headline"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_campus_badge"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_xxs"
-                    android:text="📍 Daffodil Smart City Campus"
-                    android:textColor="@color/muted"
-                    android:textSize="@dimen/text_caption" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:contentDescription="Campus Location"
+                        android:src="@drawable/ic_nav_map"
+                        app:tint="@color/muted" />
+
+                    <TextView
+                        android:id="@+id/tv_campus_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="Daffodil Smart City Campus"
+                        android:textColor="@color/muted"
+                        android:textSize="@dimen/text_caption" />
+                </LinearLayout>
             </LinearLayout>
 
             <!-- Search Bar -->

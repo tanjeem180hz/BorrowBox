@@ -52,6 +52,7 @@ public class SettingsFragment extends Fragment {
             sessionManager.applyAppTheme();
         });
 
+        binding.switchAutoAccept.setChecked(sessionManager.isAutoAcceptEnabled());
         binding.switchAutoAccept.setOnCheckedChangeListener((buttonView, isChecked) -> {
             sessionManager.setAutoAcceptEnabled(isChecked);
         });

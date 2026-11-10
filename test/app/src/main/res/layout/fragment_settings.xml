@@ -10,8 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/spacing_md">
+        android:paddingHorizontal="@dimen/spacing_md"
+        android:paddingTop="@dimen/spacing_md"
+        android:paddingBottom="@dimen/spacing_xl">
 
+        <!-- Top Navigation Bar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,10 +25,11 @@
                 android:id="@+id/btn_back"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:padding="8dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Back"
-                android:src="@drawable/ic_arrow_back" />
+                android:padding="8dp"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/ink" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,17 +37,29 @@
                 android:layout_marginStart="@dimen/spacing_sm"
                 android:text="@string/settings_title"
                 android:textColor="@color/ink"
-                android:textSize="@dimen/text_headline"
+                android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Preferences Group -->
+        <!-- SECTION: PREFERENCES -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="@dimen/spacing_lg"
+            android:layout_marginBottom="@dimen/spacing_xs"
+            android:letterSpacing="0.08"
+            android:text="PREFERENCES"
+            android:textColor="@color/muted"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_lg"
-            app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="@dimen/card_elevation_subtle"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
             app:strokeColor="@color/divider"
             app:strokeWidth="1dp">
 
@@ -53,96 +69,270 @@
                 android:orientation="vertical"
                 android:padding="@dimen/spacing_md">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- Theme Section Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Appearance &amp; Theme"
-                    android:textColor="@color/ink"
-                    android:textSize="@dimen/text_title"
-                    android:textStyle="bold" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="Automatically adapt to device theme or select manually."
-                    android:textColor="@color/muted"
-                    android:textSize="@dimen/text_caption" />
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:contentDescription="Theme"
+                        android:src="@drawable/ic_theme"
+                        app:tint="@color/muted" />
 
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_md"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Appearance"
+                            android:textColor="@color/ink"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Choose your preferred theme"
+                            android:textColor="@color/muted"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Professional Segmented Theme Radio Group (Clean, No Emojis) -->
                 <RadioGroup
                     android:id="@+id/rg_theme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_sm">
+                    android:layout_marginTop="@dimen/spacing_sm"
+                    android:paddingStart="34dp">
 
                     <RadioButton
                         android:id="@+id/rb_theme_system"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingVertical="4dp"
-                        android:text="📱 Follow Device Theme (Automatic)"
+                        android:text="System Default"
                         android:textColor="@color/ink"
-                        android:textSize="@dimen/text_body" />
+                        android:textSize="14sp" />
 
                     <RadioButton
                         android:id="@+id/rb_theme_light"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingVertical="4dp"
-                        android:text="☀️ Light Theme"
+                        android:text="Light"
                         android:textColor="@color/ink"
-                        android:textSize="@dimen/text_body" />
+                        android:textSize="14sp" />
 
                     <RadioButton
                         android:id="@+id/rb_theme_dark"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingVertical="4dp"
-                        android:text="🌙 Dark Theme"
+                        android:text="Dark"
                         android:textColor="@color/ink"
-                        android:textSize="@dimen/text_body" />
+                        android:textSize="14sp" />
                 </RadioGroup>
 
+                <!-- Divider -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginVertical="@dimen/spacing_sm"
+                    android:layout_marginVertical="@dimen/spacing_md"
                     android:background="@color/divider" />
 
-                <!-- Auto-Accept Demo Switch -->
-                <com.google.android.material.materialswitch.MaterialSwitch
-                    android:id="@+id/switch_auto_accept"
+                <!-- Push Notifications Row -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Auto-Accept Requests (Demo Mode)"
-                    android:textColor="@color/ink"
-                    android:textSize="@dimen/text_body" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:contentDescription="Notifications"
+                        android:src="@drawable/ic_bell"
+                        app:tint="@color/muted" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_md"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Push Notifications"
+                            android:textColor="@color/ink"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Rental reminders and request alerts"
+                            android:textColor="@color/muted"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switch_notifications"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true" />
+                </LinearLayout>
+
+                <!-- Divider -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginVertical="@dimen/spacing_sm"
+                    android:layout_marginVertical="@dimen/spacing_md"
                     android:background="@color/divider" />
 
-                <!-- Notifications Switch -->
-                <com.google.android.material.materialswitch.MaterialSwitch
-                    android:id="@+id/switch_notifications"
+                <!-- Instant Confirmation Row -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="@string/settings_notifications"
-                    android:textColor="@color/ink"
-                    android:textSize="@dimen/text_body" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:contentDescription="Instant Confirmation"
+                        android:src="@drawable/ic_urgent_flash"
+                        app:tint="@color/muted" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_md"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Instant Handover Confirmation"
+                            android:textColor="@color/ink"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Automatically accept incoming requests"
+                            android:textColor="@color/muted"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switch_auto_accept"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- About App Card -->
+        <!-- SECTION: ACCOUNT -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="@dimen/spacing_lg"
+            android:layout_marginBottom="@dimen/spacing_xs"
+            android:letterSpacing="0.08"
+            android:text="ACCOUNT &amp; SECURITY"
+            android:textColor="@color/muted"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
+            app:strokeColor="@color/divider"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_md">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:contentDescription="Security"
+                        android:src="@drawable/ic_shield"
+                        app:tint="@color/muted" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_md"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="University Verification"
+                            android:textColor="@color/ink"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Verified DIU Student Email"
+                            android:textColor="@color/muted"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="Verified"
+                        android:src="@drawable/ic_verified_check" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- SECTION: ABOUT APP (Professional, No Academic/OOP Lab Jargon) -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_lg"
-            app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="@dimen/card_elevation_subtle"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="1dp"
             app:strokeColor="@color/divider"
             app:strokeWidth="1dp">
 
@@ -151,11 +341,12 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="@dimen/spacing_lg">
+                android:paddingVertical="@dimen/spacing_lg"
+                android:paddingHorizontal="@dimen/spacing_md">
 
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_borrowbox_logo" />
 
@@ -164,25 +355,25 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_sm"
                     android:text="@string/app_name"
-                    android:textColor="@color/brand_primary"
-                    android:textSize="@dimen/text_title"
+                    android:textColor="@color/ink"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_xxs"
+                    android:layout_marginTop="2dp"
                     android:text="@string/tagline_splash"
                     android:textColor="@color/muted"
-                    android:textSize="@dimen/text_caption" />
+                    android:textSize="13sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_sm"
+                    android:layout_marginTop="@dimen/spacing_xs"
                     android:text="@string/settings_version"
                     android:textColor="@color/muted"
-                    android:textSize="11sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

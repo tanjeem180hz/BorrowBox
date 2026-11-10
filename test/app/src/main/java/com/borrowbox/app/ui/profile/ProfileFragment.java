@@ -37,7 +37,7 @@ public class ProfileFragment extends Fragment {
                 binding.tvStudentName.setText(student.getName());
                 binding.tvAvatar.setText(student.getName().substring(0, 1));
                 binding.tvStudentMeta.setText("ID: " + student.getStudentId() + " • " + student.getDepartment() + " • DIU");
-                binding.tvStats.setText("⭐ " + student.getRatingAverage() + " Average • " + student.getCompletedRentals() + " Completed");
+                binding.tvStats.setText(student.getRatingAverage() + " Rating • " + student.getCompletedRentals() + " Completed");
 
                 // Animate Trust Score
                 AnimatedCounter.animateValue(binding.tvTrustScoreValue, 0, student.getTrustScore(), "", "");

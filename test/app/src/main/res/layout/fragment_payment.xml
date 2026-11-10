@@ -175,7 +175,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_lg"
-            android:text="Select Simulated Payment Method"
+            android:text="@string/payment_method_title"
             android:textColor="@color/ink"
             android:textSize="@dimen/text_title"
             android:textStyle="bold"
