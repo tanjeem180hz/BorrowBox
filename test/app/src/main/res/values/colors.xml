@@ -4,27 +4,32 @@
     <color name="brand_primary">#4338CA</color>
     <color name="brand_primary_light">#6366F1</color>
     <color name="brand_lid">#A5B4FC</color>
-    <color name="brand_tint">#C7D2FE</color>
+    <color name="brand_tint">#EEF2FF</color>
 
-    <!-- Neutral & Typography Tokens -->
-    <color name="ink">#1E293B</color>
-    <color name="muted">#64748B</color>
-    <color name="surface">#FFFFFF</color>
-    <color name="background">#F8FAFF</color>
-    <color name="divider">#E2E8F0</color>
+    <!-- Neutral & Typography Tokens (Light Theme: High-contrast dark text on clean light surfaces) -->
+    <color name="ink">#0F172A</color>              <!-- Deep crisp dark charcoal -->
+    <color name="ink_secondary">#334155</color>    <!-- Readable secondary headings -->
+    <color name="muted">#64748B</color>            <!-- Clean readable secondary text -->
+    <color name="surface">#FFFFFF</color>          <!-- Pure crisp white cards -->
+    <color name="surface_variant">#F1F5F9</color>  <!-- Soft neutral container -->
+    <color name="background">#F8FAFC</color>       <!-- Light background -->
+    <color name="divider">#E2E8F0</color>          <!-- Subtle border/divider -->
+    <color name="search_bar_bg">#FFFFFF</color>
 
     <!-- Semantic Feedback Tokens -->
     <color name="success">#059669</color>
-    <color name="success_light">#34D399</color>
-    <color name="warning">#FBBF24</color>
+    <color name="success_light">#D1FAE5</color>
+    <color name="warning">#D97706</color>
+    <color name="warning_light">#FEF3C7</color>
     <color name="danger">#DC2626</color>
+    <color name="danger_light">#FEE2E2</color>
 
-    <!-- Dark Theme Specific Tokens -->
-    <color name="dark_background">#070A16</color>
-    <color name="dark_surface">#13192B</color>
+    <!-- Dark Theme Specific Tokens (legacy fallbacks) -->
+    <color name="dark_background">#0B0F19</color>
+    <color name="dark_surface">#1E293B</color>
     <color name="dark_ink">#F8FAFC</color>
     <color name="dark_muted">#94A3B8</color>
-    <color name="dark_divider">#1E293B</color>
+    <color name="dark_divider">#334155</color>
 
     <!-- System / Basic -->
     <color name="white">#FFFFFF</color>

@@ -2,9 +2,10 @@ package com.borrowbox.app.data.local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import androidx.appcompat.app.AppCompatDelegate;
 
 /**
- * Manages user login session and demo settings.
+ * Manages user login session, dynamic theme, and demo settings.
  */
 public class SessionManager {
 
@@ -13,7 +14,11 @@ public class SessionManager {
     private static final String KEY_IS_LOGGED_IN = "is_logged_in";
     private static final String KEY_ONBOARDING_COMPLETED = "onboarding_completed";
     private static final String KEY_AUTO_ACCEPT = "auto_accept_demo";
-    private static final String KEY_DARK_MODE = "dark_mode_enabled";
+    private static final String KEY_THEME_MODE = "app_theme_mode";
+
+    public static final int THEME_SYSTEM = 0; // Automatic device theme (Follow System)
+    public static final int THEME_LIGHT = 1;  // Explicit Light Mode
+    public static final int THEME_DARK = 2;   // Explicit Dark Mode
 
     private final SharedPreferences prefs;
 
@@ -59,11 +64,30 @@ public class SessionManager {
         prefs.edit().putBoolean(KEY_AUTO_ACCEPT, enabled).apply();
     }
 
+    public int getThemeMode() {
+        return prefs.getInt(KEY_THEME_MODE, THEME_SYSTEM); // default: System / Automatic
+    }
+
+    public void setThemeMode(int mode) {
+        prefs.edit().putInt(KEY_THEME_MODE, mode).apply();
+    }
+
+    public void applyAppTheme() {
+        int mode = getThemeMode();
+        if (mode == THEME_LIGHT) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else if (mode == THEME_DARK) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        }
+    }
+
     public boolean isDarkModeEnabled() {
-        return prefs.getBoolean(KEY_DARK_MODE, false);
+        return getThemeMode() == THEME_DARK;
     }
 
     public void setDarkModeEnabled(boolean enabled) {
-        prefs.edit().putBoolean(KEY_DARK_MODE, enabled).apply();
+        setThemeMode(enabled ? THEME_DARK : THEME_LIGHT);
     }
 }

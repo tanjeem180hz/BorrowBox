@@ -53,14 +53,55 @@
                 android:orientation="vertical"
                 android:padding="@dimen/spacing_md">
 
-                <!-- Dark Mode Switch -->
-                <com.google.android.material.materialswitch.MaterialSwitch
-                    android:id="@+id/switch_dark_mode"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Appearance &amp; Theme"
+                    android:textColor="@color/ink"
+                    android:textSize="@dimen/text_title"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Automatically adapt to device theme or select manually."
+                    android:textColor="@color/muted"
+                    android:textSize="@dimen/text_caption" />
+
+                <RadioGroup
+                    android:id="@+id/rg_theme"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_dark_mode"
-                    android:textColor="@color/ink"
-                    android:textSize="@dimen/text_body" />
+                    android:layout_marginTop="@dimen/spacing_sm">
+
+                    <RadioButton
+                        android:id="@+id/rb_theme_system"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="4dp"
+                        android:text="📱 Follow Device Theme (Automatic)"
+                        android:textColor="@color/ink"
+                        android:textSize="@dimen/text_body" />
+
+                    <RadioButton
+                        android:id="@+id/rb_theme_light"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="4dp"
+                        android:text="☀️ Light Theme"
+                        android:textColor="@color/ink"
+                        android:textSize="@dimen/text_body" />
+
+                    <RadioButton
+                        android:id="@+id/rb_theme_dark"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="4dp"
+                        android:text="🌙 Dark Theme"
+                        android:textColor="@color/ink"
+                        android:textSize="@dimen/text_body" />
+                </RadioGroup>
 
                 <View
                     android:layout_width="match_parent"

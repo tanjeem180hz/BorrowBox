@@ -47,3 +47,14 @@ This document records architectural, technical, and UI/UX decisions made during 
   2. Implemented subtle, natural typography hierarchy below the photo: bold price, 2-line title, and subtle metadata `Electronics • 350m • ★ 4.6`. Only if an item is actively rented out is a subtle `RENTED` badge shown.
   3. Redesigned `ProductDetailsFragment` with a floating circular back button (`btn_back`) over the hero image, replacing rectangular AI-style status boxes with a minimalist status row (`🟢 Available for borrow • Good condition`), and a human peer card with verified checkmark (`✔`) and circular avatar.
   4. Added dedicated back buttons with `Navigation.findNavController(v).navigateUp()` across `EmergencyFragment`, `AddEditProductFragment`, `SettingsFragment`, `QrHandoverFragment`, `TimerFragment`, `ReturnFragment`, `PaymentFragment`, `RatingFragment`, and `RentalConfirmedFragment`.
+
+
+## Decision 10: Dynamic Theme Engine & High-Contrast DayNight Typography
+- **Context:** Fonts were unreadable in dark mode because text colors referenced `@color/ink` without a matching `values-night/colors.xml` definition, causing dark text to blend into dark backgrounds. User requested full dynamic theme adaptation (automatic device theme sync + manual light/dark switching in settings) with crystal-clear font legibility across both themes.
+- **Decision:**
+  1. Created `res/values-night/colors.xml` with paired semantic color tokens (`@color/ink` = `#F8FAFC`, `@color/muted` = `#94A3B8`, `@color/surface` = `#1E293B`, `@color/background` = `#0B0F19`, `@color/brand_primary` = `#818CF8`).
+  2. Updated `res/values/colors.xml` with high-contrast light theme tokens (`@color/ink` = `#0F172A`, `@color/surface` = `#FFFFFF`, `@color/background` = `#F8FAFC`).
+  3. Upgraded `SessionManager.java` to support 3 dynamic theme modes: `THEME_SYSTEM` (Follow device theme), `THEME_LIGHT` (Force light), and `THEME_DARK` (Force dark).
+  4. Configured `BorrowBoxApp.java` to apply the dynamic theme mode on application startup.
+  5. Implemented a 3-way radio theme selector in `SettingsFragment` allowing instant switching between Automatic Device Theme, Light, and Dark modes.
+  6. Verified on live Android emulator that all fonts, cards, badges, and search bars render with high contrast and legibility across both themes.
