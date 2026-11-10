@@ -43,21 +43,38 @@ public class HomeFragment extends Fragment {
         binding.recyclerProducts.setLayoutManager(new androidx.recyclerview.widget.GridLayoutManager(requireContext(), 2));
         binding.recyclerProducts.setAdapter(adapter);
 
+        com.borrowbox.app.data.local.SessionManager sessionManager =
+                new com.borrowbox.app.data.local.SessionManager(requireContext());
+
         viewModel.getCurrentUserLive().observe(getViewLifecycleOwner(), student -> {
             if (student != null) {
                 String name = student.getName() != null && !student.getName().trim().isEmpty()
                         ? student.getName().trim() : "Student";
-                binding.tvGreeting.setText("Hello, " + name);
-                binding.tvHomeAvatar.setText(name.substring(0, 1).toUpperCase(java.util.Locale.ROOT));
+                binding.tvGreeting.setText(getString(R.string.auth_login_title) + ", " + name);
             }
         });
 
-        // Click on profile avatar or user greeting opens Profile screen
-        View.OnClickListener openProfileListener = v -> {
+        // Setup top Language Toggle Button
+        boolean isBengali = com.borrowbox.app.data.local.SessionManager.LANG_BN.equals(sessionManager.getLanguage());
+        binding.tvLangCurrent.setText(isBengali ? "EN" : "বাং");
+
+        binding.btnLanguageToggle.setOnClickListener(v -> {
+            String currentLang = sessionManager.getLanguage();
+            String targetLang = com.borrowbox.app.data.local.SessionManager.LANG_BN.equals(currentLang)
+                    ? com.borrowbox.app.data.local.SessionManager.LANG_EN
+                    : com.borrowbox.app.data.local.SessionManager.LANG_BN;
+            sessionManager.setLanguage(targetLang);
+
+            String message = com.borrowbox.app.data.local.SessionManager.LANG_BN.equals(targetLang)
+                    ? "ভাষা পরিবর্তন করা হয়েছে: বাংলা"
+                    : "Language switched to English";
+            android.widget.Toast.makeText(requireContext(), message, android.widget.Toast.LENGTH_SHORT).show();
+        });
+
+        // Click on greeting header opens Profile screen
+        binding.layoutUserHeader.setOnClickListener(v -> {
             Navigation.findNavController(view).navigate(R.id.nav_profile);
-        };
-        binding.tvHomeAvatar.setOnClickListener(openProfileListener);
-        binding.layoutUserHeader.setOnClickListener(openProfileListener);
+        });
 
         viewModel.getFilteredProducts().observe(getViewLifecycleOwner(), products -> {
             adapter.submitList(products);

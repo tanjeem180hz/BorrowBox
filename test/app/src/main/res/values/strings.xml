@@ -160,6 +160,11 @@
     <string name="settings_theme_system">System Default</string>
     <string name="settings_theme_light">Light</string>
     <string name="settings_theme_dark">Dark</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_bn">বাংলা</string>
+    <string name="lang_toggle_label">বাং</string>
+    <string name="lang_switch_toast">Language set to English</string>
     <string name="settings_notifications">Push Notifications</string>
     <string name="settings_auto_confirm">Instant Handover Confirmation</string>
     <string name="settings_auto_confirm_desc">Automatically accept incoming requests for your items</string>

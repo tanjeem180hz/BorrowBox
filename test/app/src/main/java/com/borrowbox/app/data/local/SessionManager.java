@@ -15,10 +15,14 @@ public class SessionManager {
     private static final String KEY_ONBOARDING_COMPLETED = "onboarding_completed";
     private static final String KEY_AUTO_ACCEPT = "auto_accept_demo";
     private static final String KEY_THEME_MODE = "app_theme_mode";
+    private static final String KEY_LANGUAGE = "app_language";
 
     public static final int THEME_SYSTEM = 0; // Automatic device theme (Follow System)
     public static final int THEME_LIGHT = 1;  // Explicit Light Mode
     public static final int THEME_DARK = 2;   // Explicit Dark Mode
+
+    public static final String LANG_EN = "en";
+    public static final String LANG_BN = "bn";
 
     private final SharedPreferences prefs;
 
@@ -89,5 +93,20 @@ public class SessionManager {
 
     public void setDarkModeEnabled(boolean enabled) {
         setThemeMode(enabled ? THEME_DARK : THEME_LIGHT);
+    }
+
+    public String getLanguage() {
+        return prefs.getString(KEY_LANGUAGE, LANG_EN);
+    }
+
+    public void setLanguage(String lang) {
+        prefs.edit().putString(KEY_LANGUAGE, lang).apply();
+        applyAppLanguage();
+    }
+
+    public void applyAppLanguage() {
+        String lang = getLanguage();
+        androidx.core.os.LocaleListCompat locales = androidx.core.os.LocaleListCompat.forLanguageTags(lang);
+        AppCompatDelegate.setApplicationLocales(locales);
     }
 }
