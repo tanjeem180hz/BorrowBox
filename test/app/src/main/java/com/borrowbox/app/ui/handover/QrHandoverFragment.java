@@ -57,6 +57,8 @@ public class QrHandoverFragment extends Fragment {
             rentalId = getArguments().getLong("rental_id", 1L);
         }
 
+        binding.btnBack.setOnClickListener(v -> androidx.navigation.Navigation.findNavController(v).navigateUp());
+
         // Animate scanning line
         scanLineAnimator = ObjectAnimator.ofFloat(binding.viewScanLine, "translationY", 0f, 600f);
         scanLineAnimator.setDuration(1800);

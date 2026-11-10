@@ -44,6 +44,8 @@ public class PaymentFragment extends Fragment {
             rentalId = getArguments().getLong("rental_id", 1L);
         }
 
+        binding.btnBack.setOnClickListener(v -> Navigation.findNavController(v).navigateUp());
+
         RentalRepository rentalRepository = RepositoryProvider.getInstance(requireContext()).getRentalRepository();
         rentalRepository.getRentalByIdLive(rentalId).observe(getViewLifecycleOwner(), rental -> {
             if (rental != null) {

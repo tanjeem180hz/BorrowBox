@@ -1,18 +1,18 @@
 package com.borrowbox.app.ui.home;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
-import com.borrowbox.app.R;
 import com.borrowbox.app.databinding.ItemProductBinding;
 import com.borrowbox.app.model.PriceUnit;
 import com.borrowbox.app.model.Product;
 import com.borrowbox.app.util.CurrencyUtils;
 import com.borrowbox.app.util.ProductImageHelper;
+import java.util.Locale;
 
 public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductViewHolder> {
 
@@ -75,21 +75,18 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
             binding.tvPrice.setText(CurrencyUtils.format(product.getPrice()) + unit);
             binding.tvCategory.setText(product.getCategory());
 
-            // Realistic seeded simulated distance and owner trust badges
             int pseudoDist = (int) (100 + ((product.getId() * 67) % 450));
-            binding.tvDistance.setText("📍 " + pseudoDist + "m");
+            binding.tvDistance.setText(pseudoDist + "m");
 
-            int pseudoTrust = (int) (80 + ((product.getId() * 7) % 19));
-            binding.tvTrustScore.setText("⭐ " + pseudoTrust);
+            double rating = 4.2 + ((product.getId() % 8) / 10.0);
+            binding.tvTrustScore.setText(String.format(Locale.ROOT, "★ %.1f", rating));
 
             if (product.isAvailable()) {
-                binding.tvAvailability.setText(binding.getRoot().getContext().getString(R.string.home_available_now));
-                binding.tvAvailability.setBackgroundResource(R.drawable.badge_pill_available);
-                binding.tvAvailability.setTextColor(ContextCompat.getColor(binding.getRoot().getContext(), R.color.success));
+                binding.tvRentedTag.setVisibility(View.GONE);
+                binding.imgProductIcon.setAlpha(1.0f);
             } else {
-                binding.tvAvailability.setText("Rented");
-                binding.tvAvailability.setBackgroundResource(R.drawable.badge_pill_rented);
-                binding.tvAvailability.setTextColor(ContextCompat.getColor(binding.getRoot().getContext(), R.color.muted));
+                binding.tvRentedTag.setVisibility(View.VISIBLE);
+                binding.imgProductIcon.setAlpha(0.6f);
             }
         }
     }

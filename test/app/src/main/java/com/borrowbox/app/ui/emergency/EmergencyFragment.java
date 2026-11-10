@@ -38,6 +38,8 @@ public class EmergencyFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        binding.btnBack.setOnClickListener(v -> Navigation.findNavController(v).navigateUp());
+
         ProductRepository productRepository = RepositoryProvider.getInstance(requireContext()).getProductRepository();
         RentalRepository rentalRepository = RepositoryProvider.getInstance(requireContext()).getRentalRepository();
 

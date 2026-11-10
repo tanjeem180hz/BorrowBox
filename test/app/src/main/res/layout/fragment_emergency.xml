@@ -6,40 +6,52 @@
     android:background="@color/background"
     android:padding="@dimen/spacing_md">
 
-    <!-- Header -->
+    <!-- Header with Back Button -->
     <ImageView
-        android:id="@+id/img_urgent_icon"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="@dimen/spacing_md"
-        android:contentDescription="@string/emergency_title"
-        android:src="@drawable/ic_urgent_flash"
+        android:id="@+id/btn_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Back"
+        android:src="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_urgent_icon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="@dimen/spacing_xs"
+        android:contentDescription="@string/emergency_title"
+        android:src="@drawable/ic_urgent_flash"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_sm"
-        android:layout_marginTop="@dimen/spacing_md"
         android:text="@string/emergency_title"
         android:textColor="@color/danger"
         android:textSize="@dimen/text_headline"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/img_urgent_icon"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
 
     <TextView
         android:id="@+id/tv_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_xs"
+        android:layout_marginTop="@dimen/spacing_sm"
         android:text="@string/emergency_desc"
         android:textColor="@color/muted"
         android:textSize="@dimen/text_body"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+        app:layout_constraintTop_toBottomOf="@id/btn_back" />
 
     <!-- Category / Item Type Filter Chips -->
     <TextView

@@ -30,6 +30,8 @@ public class RentalConfirmedFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        binding.btnBack.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.nav_home));
+
         // Animate checkmark
         binding.imgCheck.setScaleX(0.4f);
         binding.imgCheck.setScaleY(0.4f);

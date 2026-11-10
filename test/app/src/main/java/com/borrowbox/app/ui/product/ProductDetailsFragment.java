@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -14,7 +15,7 @@ import com.borrowbox.app.databinding.FragmentProductDetailsBinding;
 import com.borrowbox.app.model.PriceUnit;
 import com.borrowbox.app.model.Product;
 import com.borrowbox.app.util.CurrencyUtils;
-import com.google.android.material.snackbar.Snackbar;
+import com.borrowbox.app.util.ProductImageHelper;
 
 public class ProductDetailsFragment extends Fragment {
 
@@ -35,17 +36,30 @@ public class ProductDetailsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(ProductDetailsViewModel.class);
 
+        // Functional Back Button
+        binding.btnBack.setOnClickListener(v -> Navigation.findNavController(v).navigateUp());
+
         long productId = getArguments() != null ? getArguments().getLong("product_id", 1L) : 1L;
 
         viewModel.getProductLive(productId).observe(getViewLifecycleOwner(), product -> {
             if (product != null) {
                 currentProduct = product;
-                binding.imgHero.setImageResource(com.borrowbox.app.util.ProductImageHelper.getDrawableResForProduct(product));
+                binding.imgHero.setImageResource(ProductImageHelper.getDrawableResForProduct(product));
                 binding.tvTitle.setText(product.getName());
                 String unit = product.getPriceUnit() == PriceUnit.DAY ? "/day" : "/h";
                 binding.tvPriceTag.setText(CurrencyUtils.format(product.getPrice()) + unit);
-                binding.tvCondition.setText("Condition: " + product.getCondition());
+                binding.tvCondition.setText(product.getCondition() + " condition");
                 binding.tvDescription.setText(product.getDescription());
+
+                if (product.isAvailable()) {
+                    binding.dotStatus.setBackgroundResource(R.drawable.dot_green);
+                    binding.tvAvailability.setText("Available for borrow");
+                    binding.tvAvailability.setTextColor(ContextCompat.getColor(requireContext(), R.color.success));
+                } else {
+                    binding.dotStatus.setBackgroundResource(R.drawable.dot_gray);
+                    binding.tvAvailability.setText("Currently rented");
+                    binding.tvAvailability.setTextColor(ContextCompat.getColor(requireContext(), R.color.muted));
+                }
 
                 // Update duration calculation
                 viewModel.setDuration(2, product);
@@ -56,7 +70,7 @@ public class ProductDetailsFragment extends Fragment {
                         binding.tvOwnerName.setText(owner.getName());
                         binding.tvOwnerAvatar.setText(owner.getName().substring(0, 1));
                         binding.tvOwnerRating.setText("⭐ " + owner.getRatingAverage() + " • " + owner.getDepartment());
-                        binding.tvOwnerTrust.setText("Trust " + owner.getTrustScore());
+                        binding.tvOwnerTrust.setText("Trust " + owner.getTrustScore() + "%");
                     }
                 });
 
@@ -102,7 +116,6 @@ public class ProductDetailsFragment extends Fragment {
 
         viewModel.getRequestSuccess().observe(getViewLifecycleOwner(), rentalId -> {
             if (rentalId != null) {
-                Snackbar.make(view, R.string.rental_request_sent, Snackbar.LENGTH_SHORT).show();
                 Bundle args = new Bundle();
                 args.putLong("rental_id", rentalId);
                 Navigation.findNavController(view).navigate(R.id.rentalConfirmedFragment, args);
