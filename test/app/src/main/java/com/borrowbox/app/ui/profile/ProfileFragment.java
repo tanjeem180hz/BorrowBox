@@ -34,8 +34,10 @@ public class ProfileFragment extends Fragment {
 
         viewModel.getCurrentStudentLive().observe(getViewLifecycleOwner(), student -> {
             if (student != null) {
-                binding.tvStudentName.setText(student.getName());
-                binding.tvAvatar.setText(student.getName().substring(0, 1));
+                String name = student.getName() != null && !student.getName().trim().isEmpty()
+                        ? student.getName().trim() : "Student";
+                binding.tvStudentName.setText(name);
+                binding.tvAvatar.setText(name.substring(0, 1).toUpperCase(java.util.Locale.ROOT));
                 binding.tvStudentMeta.setText("ID: " + student.getStudentId() + " • " + student.getDepartment() + " • DIU");
                 binding.tvStats.setText(student.getRatingAverage() + " Rating • " + student.getCompletedRentals() + " Completed");
 
@@ -61,14 +63,17 @@ public class ProfileFragment extends Fragment {
 
         binding.btnLogout.setOnClickListener(v -> {
             viewModel.logout();
-            Navigation.findNavController(view).navigate(R.id.loginFragment);
+            androidx.navigation.NavOptions navOptions = new androidx.navigation.NavOptions.Builder()
+                    .setPopUpTo(R.id.nav_graph, true)
+                    .build();
+            Navigation.findNavController(view).navigate(R.id.loginFragment, null, navOptions);
         });
     }
 
     private void switchUser(long userId, String name) {
         viewModel.switchDemoUser(userId);
         if (getView() != null) {
-            Snackbar.make(getView(), "Switched to demo user: " + name, Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(getView(), "Switched account to: " + name, Snackbar.LENGTH_SHORT).show();
         }
     }
 

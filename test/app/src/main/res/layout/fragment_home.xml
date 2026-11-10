@@ -19,43 +19,69 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingHorizontal="@dimen/spacing_md"
                 android:paddingTop="@dimen/spacing_lg"
                 android:paddingBottom="@dimen/spacing_sm">
 
-                <TextView
-                    android:id="@+id/tv_greeting"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hello, Student"
-                    android:textColor="@color/ink"
-                    android:textSize="@dimen/text_headline"
-                    android:textStyle="bold" />
-
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:id="@+id/layout_user_header"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_xxs"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="14dp"
-                        android:layout_height="14dp"
-                        android:contentDescription="Campus Location"
-                        android:src="@drawable/ic_nav_map"
-                        app:tint="@color/muted" />
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground">
 
                     <TextView
-                        android:id="@+id/tv_campus_badge"
+                        android:id="@+id/tv_greeting"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:text="Daffodil Smart City Campus"
-                        android:textColor="@color/muted"
-                        android:textSize="@dimen/text_caption" />
+                        android:text="Hello, Student"
+                        android:textColor="@color/ink"
+                        android:textSize="@dimen/text_headline"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_xxs"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:contentDescription="Campus Location"
+                            android:src="@drawable/ic_nav_map"
+                            app:tint="@color/muted" />
+
+                        <TextView
+                            android:id="@+id/tv_campus_badge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="Daffodil Smart City Campus"
+                            android:textColor="@color/muted"
+                            android:textSize="@dimen/text_caption" />
+                    </LinearLayout>
                 </LinearLayout>
+
+                <!-- Clickable Avatar to quickly open Profile -->
+                <TextView
+                    android:id="@+id/tv_home_avatar"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/circle_avatar"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="S"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <!-- Search Bar -->
