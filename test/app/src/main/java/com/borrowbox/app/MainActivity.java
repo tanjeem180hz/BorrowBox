@@ -32,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
                         || id == R.id.loginFragment || id == R.id.registerFragment
                         || id == R.id.rentalConfirmedFragment || id == R.id.qrHandoverFragment
                         || id == R.id.returnFragment || id == R.id.paymentFragment
-                        || id == R.id.ratingFragment) {
+                        || id == R.id.ratingFragment || id == R.id.productDetailsFragment
+                        || id == R.id.emergencyFragment || id == R.id.addEditProductFragment
+                        || id == R.id.settingsFragment || id == R.id.timerFragment) {
                     binding.bottomNavigation.setVisibility(View.GONE);
                 } else {
                     binding.bottomNavigation.setVisibility(View.VISIBLE);

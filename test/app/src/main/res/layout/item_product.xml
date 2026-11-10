@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Visual Product Photo / Illustration Container -->
+        <!-- Visual Product Photo Container (Clean, unobstructed) -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="145dp"
@@ -31,35 +31,21 @@
                 android:contentDescription="@string/app_name"
                 android:scaleType="centerCrop" />
 
-            <!-- Availability Status Pill (Top Left) -->
+            <!-- Tasteful Rented Ribbon: Only shown when an item is actually rented out -->
             <TextView
-                android:id="@+id/tv_availability"
+                android:id="@+id/tv_rented_tag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top|start"
+                android:layout_gravity="bottom|start"
                 android:layout_margin="8dp"
-                android:background="@drawable/badge_pill_available"
+                android:background="#CC0F172A"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="3dp"
-                android:text="Available"
-                android:textColor="@color/success"
+                android:text="RENTED"
+                android:textColor="@color/white"
                 android:textSize="10sp"
-                android:textStyle="bold" />
-
-            <!-- Trust Score Pill (Top Right) -->
-            <TextView
-                android:id="@+id/tv_trust_score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|end"
-                android:layout_margin="8dp"
-                android:background="@drawable/badge_pill_trust"
-                android:paddingHorizontal="7dp"
-                android:paddingVertical="3dp"
-                android:text="⭐ 92"
-                android:textColor="@color/brand_primary"
-                android:textSize="10sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone" />
         </FrameLayout>
 
         <!-- Divider line -->
@@ -68,7 +54,7 @@
             android:layout_height="1dp"
             android:background="@color/divider" />
 
-        <!-- Details Section (Price, Title, Campus Distance) -->
+        <!-- Clean Product Details (Human marketplace typography) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,7 +63,7 @@
             android:paddingTop="8dp"
             android:paddingBottom="10dp">
 
-            <!-- Facebook Marketplace Style Hero Price -->
+            <!-- Facebook Marketplace Style Price -->
             <TextView
                 android:id="@+id/tv_price"
                 android:layout_width="match_parent"
@@ -100,7 +86,7 @@
                 android:textColor="@color/ink"
                 android:textSize="13sp" />
 
-            <!-- Category & Distance Footer -->
+            <!-- Clean Campus & Trust Info (Subtle, authentic text) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,24 +98,36 @@
                     android:id="@+id/tv_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/badge_pill_category"
-                    android:paddingHorizontal="6dp"
-                    android:paddingVertical="2dp"
                     android:text="Electronics"
                     android:textColor="@color/muted"
-                    android:textSize="10sp" />
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" • "
+                    android:textColor="@color/muted"
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/tv_distance"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
                     android:layout_weight="1"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="📍 350m away"
+                    android:text="350m"
                     android:textColor="@color/muted"
                     android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tv_trust_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="★ 4.9"
+                    android:textColor="#D97706"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

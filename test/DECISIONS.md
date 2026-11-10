@@ -38,3 +38,12 @@ This document records architectural, technical, and UI/UX decisions made during 
   2. Created 12 custom, scalable vector illustrations for each campus product (charger, Casio calculator, power bank, DSLR camera, HDMI cable, mouse, drawing tablet, lab coat, umbrella, USB hub, presentation pointer, Bluetooth headset).
   3. Redesigned `item_product.xml` with hero visual card, bold hero pricing (`৳20/hour`, `৳100/day`), compact 2-line title, location/distance badge, and floating status pill overlays (`Available Now`, `⭐ Trust`).
   4. Created `ProductImageHelper.java` to map product categories and names dynamically across the adapter and product details view.
+
+
+## Decision 9: Removal of Synthetic AI Badges & Universal Back Navigation
+- **Context:** User requested removing telltale AI-generated badge styles (e.g. artificial colored "Available Now" and "⭐ Trust" pills stamped onto photo corners) and adding dedicated back buttons across all sub-screens.
+- **Decision:**
+  1. Removed floating badge stickers from product photos in `item_product.xml`. Product images are now 100% clean and unobstructed, matching authentic human e-commerce marketplace standards.
+  2. Implemented subtle, natural typography hierarchy below the photo: bold price, 2-line title, and subtle metadata `Electronics • 350m • ★ 4.6`. Only if an item is actively rented out is a subtle `RENTED` badge shown.
+  3. Redesigned `ProductDetailsFragment` with a floating circular back button (`btn_back`) over the hero image, replacing rectangular AI-style status boxes with a minimalist status row (`🟢 Available for borrow • Good condition`), and a human peer card with verified checkmark (`✔`) and circular avatar.
+  4. Added dedicated back buttons with `Navigation.findNavController(v).navigateUp()` across `EmergencyFragment`, `AddEditProductFragment`, `SettingsFragment`, `QrHandoverFragment`, `TimerFragment`, `ReturnFragment`, `PaymentFragment`, `RatingFragment`, and `RentalConfirmedFragment`.

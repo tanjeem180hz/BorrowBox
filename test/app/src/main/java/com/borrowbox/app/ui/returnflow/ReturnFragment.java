@@ -45,6 +45,8 @@ public class ReturnFragment extends Fragment {
             rentalId = getArguments().getLong("rental_id", 1L);
         }
 
+        binding.btnBack.setOnClickListener(v -> Navigation.findNavController(v).navigateUp());
+
         loadSampleComparisonBitmaps();
 
         RentalRepository rentalRepository = RepositoryProvider.getInstance(requireContext()).getRentalRepository();

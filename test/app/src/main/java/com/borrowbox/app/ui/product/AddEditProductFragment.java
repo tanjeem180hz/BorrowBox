@@ -35,6 +35,8 @@ public class AddEditProductFragment extends Fragment {
         ProductRepository productRepository = RepositoryProvider.getInstance(requireContext()).getProductRepository();
         SessionManager sessionManager = new SessionManager(requireContext());
 
+        binding.btnBack.setOnClickListener(v -> Navigation.findNavController(v).navigateUp());
+
         binding.btnSaveProduct.setOnClickListener(v -> {
             String name = binding.etName.getText() != null ? binding.etName.getText().toString().trim() : "";
             String category = binding.etCategory.getText() != null ? binding.etCategory.getText().toString().trim() : "Electronics";

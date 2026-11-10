@@ -29,6 +29,8 @@ public class SettingsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         sessionManager = new SessionManager(requireContext());
 
+        binding.btnBack.setOnClickListener(v -> androidx.navigation.Navigation.findNavController(v).navigateUp());
+
         binding.switchDarkMode.setChecked(sessionManager.isDarkModeEnabled());
         binding.switchAutoAccept.setChecked(sessionManager.isAutoAcceptEnabled());
 
