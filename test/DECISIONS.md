@@ -81,3 +81,15 @@ This document records architectural, technical, and UI/UX decisions made during 
   3. **Direct Home Avatar Access:** Added an interactive circular avatar on the top right of `fragment_home.xml` (displaying the student's initial letter) and linked both the avatar and greeting to directly navigate to `nav_profile`.
   4. **Reactive Student State:** Upgraded `ProfileViewModel` and `HomeViewModel` to use `Transformations.switchMap` so switching accounts updates the UI reactively without requiring application restart.
   5. **Live Verification:** Verified on live Android emulator that both bottom navigation "Profile" and top avatar click navigate to `ProfileFragment` every time without fail.
+
+
+## Decision 13: Bilingual Language Support (English / Bengali) & Dynamic Bottom Navigation Avatar
+- **Context:**
+  1. The user requested replacing the top-right profile avatar on the Home screen with a bilingual language switcher supporting English (`en`) and Bengali (`bn`).
+  2. The user requested replacing the generic bottom navigation profile icon with the active student's circular profile avatar.
+- **Decision:**
+  1. **Bilingual Localization (`values-bn/strings.xml`):** Added complete Bengali localization covering all core strings, navigation labels, category chips, emergency actions, trust score descriptions, and settings options.
+  2. **Top-Right Language Toggle:** Replaced `tv_home_avatar` on the Home screen header with an interactive pill button (`btn_language_toggle`) featuring a vector globe icon and dynamic text badge (`বাং` when in English, `EN` when in Bengali). Tapping switches language seamlessly and persists preference via `SessionManager` and AndroidX `AppCompatDelegate.setApplicationLocales()`.
+  3. **Bottom Navigation Profile Avatar (`AvatarDrawableHelper`):** Created a dedicated helper that generates high-definition circular `BitmapDrawable`s branded with the student's initials and distinctive palette colors. Cleared `imageTintList` on the bottom navigation profile icon view so the avatar displays in vivid original colors without monochrome tinting.
+  4. **Dynamic User State Synchronization:** Bound `MainActivity` to reactive user state changes so when switching between demo accounts (`Tanjeem`, `Sabbir`, `Himel`, `Tasnim`), the bottom navigation avatar immediately updates to reflect the active student's initial and color.
+  5. **Live Verification:** Built and verified on live Android emulator (`emulator-5554`) that toggling languages updates all UI text dynamically between English and Bengali, and bottom navigation avatar accurately reflects the active user account.

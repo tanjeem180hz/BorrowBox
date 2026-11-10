@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Meta & Brand -->
+    <string name="app_name">BorrowBox</string>
+    <string name="tagline_splash">আপনার যখন যা প্রয়োজন, ধার নিন তখন।</string>
+    <string name="tagline_trust">শিক্ষার্থীদের পারস্পরিক আস্থায় গঠিত।</string>
+    <string name="tagline_discover">আশেপাশের সহপাঠীদের থেকে প্রয়োজনীয় জিনিস ধার নিন।</string>
+    <string name="tagline_meet">একে অপরকে খুঁজুন, ক্যাম্পাসে দেখা করুন।</string>
+    <string name="tagline_handover">কিউআর ভেরিফিকেশনের মাধ্যমে নিরাপদ হস্তান্তর।</string>
+    <string name="tagline_timer">আপনার চলমান রেন্টাল ট্র্যাক করুন রিয়েল-টাইমে।</string>
+    <string name="tagline_history">স্বচ্ছ মূল্য ও নির্ভুল রেন্টাল রেকর্ড।</string>
+    <string name="tagline_rating">প্রতিটি সফল ফেরত ক্যাম্পাসে আস্থা বাড়ায়।</string>
+    <string name="tagline_urgent">ল্যাব বা পরীক্ষার আগে প্রয়োজনীয় সামগ্রী নিন।</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">হোম</string>
+    <string name="nav_map">ক্যাম্পাস ম্যাপ</string>
+    <string name="nav_rentals">আমার রেন্টাল</string>
+    <string name="nav_profile">প্রোফাইল</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_skip">এড়িয়ে যান</string>
+    <string name="onboarding_next">এগিয়ে যান</string>
+    <string name="onboarding_get_started">শুরু করুন</string>
+    <string name="onboarding_title_1">কয়েক ঘণ্টার জন্য কিছু প্রয়োজন?</string>
+    <string name="onboarding_desc_1">নতুন না কিনে ল্যাপটপ চার্জার, ক্যালকুলেটর বা ল্যাব সামগ্রী ধার নিন সহপাঠীদের থেকে।</string>
+    <string name="onboarding_title_2">ক্যাম্পাসের কাছেই ধার নিন</string>
+    <string name="onboarding_desc_2">লাইভ দূরত্বের সাহায্যে ক্যাম্পাসে হাঁটার দূরত্বের মধ্যে সামগ্রী খুঁজুন।</string>
+    <string name="onboarding_title_3">তৈরি করুন আপনার ক্যাম্পাস ট্রাস্ট</string>
+    <string name="onboarding_desc_3">সঠিক সময়ে ফেরত দিন, সামগ্রীর যত্ন নিন এবং ট্রাস্ট স্কোর বাড়ান।</string>
+
+    <!-- Authentication -->
+    <string name="auth_login_title">স্বাগতম</string>
+    <string name="auth_login_subtitle">বিশ্ববিদ্যালয়ের পিয়ার নেটওয়ার্কে সাইন ইন করুন</string>
+    <string name="auth_register_title">অ্যাকাউন্ট তৈরি করুন</string>
+    <string name="auth_register_subtitle">বিশ্ববিদ্যালয়ের স্টুডেন্ট ইমেইল দিয়ে রেজিস্টার করুন</string>
+    <string name="auth_email">বিশ্ববিদ্যালয় ইমেইল</string>
+    <string name="auth_password">পাসওয়ার্ড</string>
+    <string name="auth_name">পুরো নাম</string>
+    <string name="auth_university">বিশ্ববিদ্যালয়</string>
+    <string name="auth_department">বিভাগ (ডিপার্টমেন্ট)</string>
+    <string name="auth_student_id">স্টুডেন্ট আইডি</string>
+    <string name="auth_login_button">সাইন ইন</string>
+    <string name="auth_register_button">স্টুডেন্ট অ্যাকাউন্ট তৈরি করুন</string>
+    <string name="auth_dont_have_account">অ্যাকাউন্ট নেই? সাইন আপ করুন</string>
+    <string name="auth_already_have_account">অ্যাকাউন্ট আছে? সাইন ইন করুন</string>
+    <string name="auth_error_invalid_email">সঠিক বিশ্ববিদ্যালয় ইমেইল দিন</string>
+    <string name="auth_error_short_password">পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে</string>
+    <string name="auth_error_empty_fields">সব প্রয়োজনীয় তথ্য পূরণ করুন</string>
+    <string name="auth_error_failed">ভুল ইমেইল বা পাসওয়ার্ড</string>
+    <string name="auth_error_exists">এই ইমেইলে ইতিমধ্যে একটি অ্যাকাউন্ট রয়েছে</string>
+    <string name="auth_logout">লগ আউট</string>
+
+    <!-- Home & Discover -->
+    <string name="home_search_hint">চার্জার, ক্যালকুলেটর, সামগ্রী খুঁজুন…</string>
+    <string name="category_all">সব সামগ্রী</string>
+    <string name="category_electronics">ইলেকট্রনিক্স</string>
+    <string name="category_study">পড়াশোনা</string>
+    <string name="category_accessories">অ্যাকসেসরিজ</string>
+    <string name="category_camera">ক্যামেরা</string>
+    <string name="category_emergency">জরুরি</string>
+    <string name="home_available_now">এখন পাওয়া যাচ্ছে</string>
+    <string name="home_urgent_fab">জরুরি প্রয়োজন</string>
+    <string name="home_empty">আপনার অনুসন্ধানের সাথে কোনো সামগ্রী মিল পাওয়া যায়নি।</string>
+
+    <!-- Product Details -->
+    <string name="product_condition">অবস্থা</string>
+    <string name="product_owner">মালিক</string>
+    <string name="product_trust_score">ট্রাস্ট স্কোর</string>
+    <string name="product_duration">রেন্টাল সময়কাল</string>
+    <string name="product_total_cost">মোট রেন্টাল খরচ</string>
+    <string name="product_request_button">ধার নেওয়ার অনুরোধ পাঠান</string>
+    <string name="product_request_owner_warning">আপনি নিজেই এই সামগ্রীর মালিক</string>
+    <string name="product_request_unavailable">বর্তমানে ভাড়া নেওয়া আছে</string>
+    <string name="product_condition_excellent">চমৎকার</string>
+    <string name="product_condition_good">ভালো</string>
+    <string name="product_condition_fair">গ্রহণযোগ্য</string>
+
+    <!-- Rental Request & Confirmed -->
+    <string name="rental_request_sent">রেন্টাল অনুরোধ পাঠানো হয়েছে</string>
+    <string name="rental_confirmed_title">বুকিং নিশ্চিত হয়েছে</string>
+    <string name="rental_ready_handover">হস্তান্তরের জন্য প্রস্তুত</string>
+    <string name="rental_open_map">মিটিং পয়েন্ট দেখুন</string>
+    <string name="rental_tab_active">চলমান</string>
+    <string name="rental_tab_requests">অনুরোধ</string>
+    <string name="rental_tab_history">হিস্ট্রি</string>
+    <string name="rental_accept">গ্রহণ করুন</string>
+    <string name="rental_reject">বাতিল</string>
+    <string name="rental_simulate_accept">হস্তান্তর নিশ্চিত করুন</string>
+
+    <!-- Map & Distance -->
+    <string name="map_title">মিটিং পয়েন্ট ম্যাপ</string>
+    <string name="map_simulate_meeting">দূরত্ব আপডেট করুন</string>
+    <string name="map_almost_there">আপনি মিটিং পয়েন্টের কাছাকাছি আছেন</string>
+    <string name="map_ready_handover">হস্তান্তরের জন্য প্রস্তুত</string>
+    <string name="map_start_handover">কিউআর হস্তান্তরে যান</string>
+    <string name="map_permission_rationale">মিটিং পয়েন্টের দূরত্ব নির্ধারণে লোকেশন অ্যাক্সেস প্রয়োজন।</string>
+
+    <!-- QR Handover -->
+    <string name="qr_handover_title">হস্তান্তর ভেরিফিকেশন</string>
+    <string name="qr_scan_instruction">রেন্টাল শুরু করতে কিউআর কোড স্ক্যান বা ভেরিফাই করুন</string>
+    <string name="qr_simulate_scan">কিউআর কোড ভেরিফাই করুন</string>
+    <string name="qr_confirmed">হস্তান্তর সফল হয়েছে</string>
+    <string name="qr_invalid">অবৈধ বা মেয়াদোত্তীর্ণ কোড</string>
+
+    <!-- Timer & Return -->
+    <string name="timer_title">রেন্টাল টাইমার</string>
+    <string name="timer_remaining">বাকি সময়</string>
+    <string name="timer_overdue">সময় শেষ — লেট ফি প্রযোজ্য</string>
+    <string name="timer_fast_forward">রিটার্ন সময় পরীক্ষা করুন</string>
+    <string name="return_title">ফেরত ও সামগ্রী যাচাই</string>
+    <string name="return_before_photo">প্রাথমিক অবস্থার ছবি</string>
+    <string name="return_after_photo">বর্তমান অবস্থার ছবি</string>
+    <string name="return_sample_photo">সামগ্রীর অবস্থা যাচাই করুন</string>
+    <string name="return_check_working">সামগ্রীটি সম্পূর্ণ সচল আছে</string>
+    <string name="return_check_nodamage">নতুন কোনো দাগ বা ক্ষতি হয়নি</string>
+    <string name="return_check_accessories">সব কেবল ও অ্যাকসেসরিজ বিদ্যমান</string>
+    <string name="return_confirm_button">ফেরত নিশ্চিত করে বিল পরিশোধে যান</string>
+    <string name="return_confirmed">ফেরত যাচাই সম্পন্ন</string>
+
+    <!-- Payment & Late Fee -->
+    <string name="payment_title">রেন্টাল বিল পরিশোধ</string>
+    <string name="payment_rental_cost">রেন্টাল ফি</string>
+    <string name="payment_security_deposit">জামানত (ফেরতযোগ্য)</string>
+    <string name="payment_late_fee">লেট ফি</string>
+    <string name="payment_total">মোট পরিশোধযোগ্য</string>
+    <string name="payment_method_title">পেমেন্ট মাধ্যম বেছে নিন</string>
+    <string name="payment_method_cash">নগদ (ক্যাশ)</string>
+    <string name="payment_method_bkash">বিকাশ</string>
+    <string name="payment_method_nagad">নগদ</string>
+    <string name="payment_pay_button">বিল পরিশোধ সম্পন্ন করুন</string>
+    <string name="payment_success">পরিশোধ সম্পন্ন হয়েছে</string>
+
+    <!-- Rating & Trust Score -->
+    <string name="rating_title">আপনার অভিজ্ঞতা রেট করুন</string>
+    <string name="rating_subtitle">ক্যাম্পাস কমিউনিটিতে আস্থা বজায় রাখতে সহায়তা করুন</string>
+    <string name="rating_chip_smooth">সহজ হস্তান্তর ও সামগ্রীর চমৎকার অবস্থা</string>
+    <string name="rating_chip_ontime">সময়নিষ্ঠ ও বিনয়ী যোগাযোগ</string>
+    <string name="rating_chip_recommended">অত্যন্ত প্রশংসনীয় সহপাঠী</string>
+    <string name="rating_submit">রিভিউ জমা দিন</string>
+
+    <!-- Emergency Flow -->
+    <string name="emergency_title">জরুরি ক্যাম্পাস অনুরোধ</string>
+    <string name="emergency_desc">ল্যাব বা পরীক্ষার আগে খুব জরুরি কিছু লাগবে?</string>
+    <string name="emergency_select_item">সামগ্রীর ধরন নির্বাচন করুন</string>
+    <string name="emergency_nearby_title">কাছাকাছি পাওয়া যাচ্ছে</string>
+    <string name="emergency_request_button">জরুরি অনুরোধ পাঠান</string>
+
+    <!-- Profile & Settings -->
+    <string name="profile_trust_score_label">ট্রাস্ট স্কোর</string>
+    <string name="profile_completed_rentals">সম্পন্ন রেন্টাল</string>
+    <string name="profile_badge_student">শিক্ষার্থী</string>
+    <string name="profile_badge_verified">ভেরিফাইড</string>
+    <string name="profile_badge_reliable">নির্ভরযোগ্য</string>
+    <string name="profile_switch_user">অ্যাকাউন্ট পরিবর্তন</string>
+    <string name="profile_my_products">আমার লিস্ট করা সামগ্রী</string>
+    <string name="profile_add_product">সামগ্রী ভাড়ার জন্য যোগ করুন</string>
+    <string name="settings_title">সেটিংস</string>
+    <string name="settings_theme">থিম</string>
+    <string name="settings_theme_system">সিস্টেম ডিফল্ট</string>
+    <string name="settings_theme_light">লাইট</string>
+    <string name="settings_theme_dark">ডার্ক</string>
+    <string name="settings_language">ভাষা</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_bn">বাংলা</string>
+    <string name="lang_toggle_label">EN</string>
+    <string name="lang_switch_toast">ভাষা পরিবর্তন করা হয়েছে: বাংলা</string>
+    <string name="settings_notifications">পুশ নোটিফিকেশন</string>
+    <string name="settings_auto_confirm">তাৎক্ষণিক হস্তান্তর সম্মতি</string>
+    <string name="settings_auto_confirm_desc">অনুরোধ এলে স্বয়ংক্রিয়ভাবে গ্রহণ করুন</string>
+    <string name="settings_about">পরিচিতি</string>
+    <string name="settings_version">ভার্সন ১.০.০</string>
+
+    <!-- Common Actions & Notifications -->
+    <string name="action_save">সংরক্ষণ করুন</string>
+    <string name="action_cancel">বাতিল</string>
+    <string name="action_close">বন্ধ করুন</string>
+    <string name="notif_channel_reminders">রেন্টাল রিমাইন্ডার</string>
+    <string name="notif_channel_requests">রেন্টাল অনুরোধ</string>
+    <string name="notif_request_title">নতুন রেন্টাল অনুরোধ এসেছে</string>
+    <string name="notif_request_msg">একজন শিক্ষার্থী আপনার সামগ্রী ধার নেওয়ার অনুরোধ করেছে।</string>
+    <string name="notif_reminder_15m_title">রেন্টাল শেষ হতে ১৫ মিনিট বাকি</string>
+    <string name="notif_reminder_15m_msg">সামগ্রী ফেরতের জন্য প্রস্তুত হোন।</string>
+    <string name="notif_reminder_0m_title">রেন্টালের নির্ধারিত সময় সমাপ্ত</string>
+    <string name="notif_reminder_0m_msg">আপনার রেন্টালের নির্ধারিত সময় পার হয়ে গিয়েছে।</string>
+</resources>

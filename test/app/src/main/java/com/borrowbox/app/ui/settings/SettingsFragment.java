@@ -56,6 +56,22 @@ public class SettingsFragment extends Fragment {
         binding.switchAutoAccept.setOnCheckedChangeListener((buttonView, isChecked) -> {
             sessionManager.setAutoAcceptEnabled(isChecked);
         });
+
+        // Language selection setup
+        String currentLang = sessionManager.getLanguage();
+        if (SessionManager.LANG_BN.equals(currentLang)) {
+            binding.rbLangBn.setChecked(true);
+        } else {
+            binding.rbLangEn.setChecked(true);
+        }
+
+        binding.rgLanguage.setOnCheckedChangeListener((group, checkedId) -> {
+            String targetLang = (checkedId == com.borrowbox.app.R.id.rb_lang_bn)
+                    ? SessionManager.LANG_BN : SessionManager.LANG_EN;
+            if (!targetLang.equals(sessionManager.getLanguage())) {
+                sessionManager.setLanguage(targetLang);
+            }
+        });
     }
 
     @Override

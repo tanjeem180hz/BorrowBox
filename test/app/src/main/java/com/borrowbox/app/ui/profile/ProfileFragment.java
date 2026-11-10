@@ -75,6 +75,9 @@ public class ProfileFragment extends Fragment {
         if (getView() != null) {
             Snackbar.make(getView(), "Switched account to: " + name, Snackbar.LENGTH_SHORT).show();
         }
+        if (getActivity() instanceof com.borrowbox.app.MainActivity) {
+            ((com.borrowbox.app.MainActivity) getActivity()).updateBottomNavAvatar();
+        }
     }
 
     @Override

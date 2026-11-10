@@ -29,9 +29,10 @@ public class BorrowBoxApp extends Application {
         // 2. Setup Notification Channels
         createNotificationChannels();
 
-        // 3. Apply saved dynamic theme
+        // 3. Apply saved dynamic theme & language
         SessionManager sessionManager = new SessionManager(this);
         sessionManager.applyAppTheme();
+        sessionManager.applyAppLanguage();
 
         // 4. Pre-warm database
         com.borrowbox.app.util.AppExecutors.getInstance().diskIO().execute(() -> {
