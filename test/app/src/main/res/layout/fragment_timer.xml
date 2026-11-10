@@ -122,15 +122,15 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Demo Helper: Fast-forward timer to test Overdue & Late Fee -->
+    <!-- Test Helper: Fast-forward timer to test Overdue & Late Fee -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_simulate_fast_forward"
         style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginBottom="@dimen/spacing_sm"
-        android:text="Demo: Fast-Forward to Overdue (25 mins late)"
-        android:textColor="@color/danger"
+        android:text="@string/timer_fast_forward"
+        android:textColor="@color/muted"
         app:layout_constraintBottom_toTopOf="@id/btn_proceed_return" />
 
     <!-- Proceed Button -->

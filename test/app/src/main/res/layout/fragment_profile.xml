@@ -105,7 +105,8 @@
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/settings_title"
-            android:src="@drawable/ic_nav_profile"
+            android:src="@drawable/ic_settings_gear"
+            app:tint="@color/muted"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_avatar" />
 
@@ -183,7 +184,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/spacing_xxs"
-                        android:text="⭐ 4.9 Average • 14 On-time"
+                        android:text="4.9 Rating • 14 Completed"
                         android:textColor="@color/muted"
                         android:textSize="@dimen/text_caption" />
 
@@ -199,15 +200,17 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Switch Demo User Section -->
+        <!-- Switch Account Section -->
         <TextView
             android:id="@+id/tv_demo_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="@dimen/spacing_lg"
-            android:text="Switch Demo User (Two-Person Flow Testing)"
-            android:textColor="@color/ink"
-            android:textSize="@dimen/text_title"
+            android:letterSpacing="0.08"
+            android:text="SWITCH ACCOUNT"
+            android:textColor="@color/muted"
+            android:textSize="11sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_trust_score" />
@@ -232,7 +235,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/spacing_xs"
-                    android:text="Tanjeem (Borrower)"
+                    android:text="Tanjeem"
                     android:textSize="@dimen/text_caption" />
 
                 <com.google.android.material.button.MaterialButton
@@ -241,7 +244,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/spacing_xs"
-                    android:text="Sabbir (Owner)"
+                    android:text="Sabbir"
                     android:textSize="@dimen/text_caption" />
 
                 <com.google.android.material.button.MaterialButton
@@ -250,7 +253,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/spacing_xs"
-                    android:text="Himel (Trust 96)"
+                    android:text="Himel"
                     android:textSize="@dimen/text_caption" />
 
                 <com.google.android.material.button.MaterialButton
@@ -258,7 +261,7 @@
                     style="@style/Widget.Material3.Button.OutlinedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tasnim (Trust 88)"
+                    android:text="Tasnim"
                     android:textSize="@dimen/text_caption" />
             </LinearLayout>
         </HorizontalScrollView>

@@ -58,3 +58,13 @@ This document records architectural, technical, and UI/UX decisions made during 
   4. Configured `BorrowBoxApp.java` to apply the dynamic theme mode on application startup.
   5. Implemented a 3-way radio theme selector in `SettingsFragment` allowing instant switching between Automatic Device Theme, Light, and Dark modes.
   6. Verified on live Android emulator that all fonts, cards, badges, and search bars render with high contrast and legibility across both themes.
+
+
+## Decision 11: Production-Grade UI Professionalization & Elimination of AI/Academic Artifacts
+- **Context:** User requested removing all traces of AI-generated template styling, demo labels, and academic jargon (specifically `"Version 1.0.0 (Java OOP Lab Project)"`, emojis in settings labels `📱/☀️/🌙`, `"(Demo Mode)"`, `"(Two-Person Flow Testing)"`, `"(Mock)"`, and simulated payment text) to give BorrowBox the authentic polish of a top-tier startup product.
+- **Decision:**
+  1. **Purged Academic & Demo Copy:** Replaced `"Version 1.0.0 (Java OOP Lab Project)"` with clean `"Version 1.0.0"`. Removed all emojis from theme selection (`System Default`, `Light`, `Dark`). Replaced `"bKash (Mock)"` and `"Nagad (Mock)"` with `"bKash"` and `"Nagad"`. Replaced `"Auto-Accept Requests (Demo Mode)"` with `"Instant Handover Confirmation"`. Replaced `"Select Simulated Payment Method"` with `"Select Payment Method"`.
+  2. **Clean Account Switcher:** Replaced clunky demo user testing headers with a clean `"SWITCH ACCOUNT"` section on the profile screen with sleek outlined student name chips (`Tanjeem`, `Sabbir`, `Himel`, `Tasnim`).
+  3. **Vector Iconography Over Emojis:** Replaced all emoji markers (`📍`, `⭐`, `⚡`) with lightweight Android vector drawables (`ic_nav_map`, `ic_urgent_flash`, `ic_settings_gear`, `ic_shield`, `ic_bell`, `ic_theme`).
+  4. **Settings Screen Re-architecture:** Rebuilt `fragment_settings.xml` into clean grouped card sections (`PREFERENCES`, `ACCOUNT & SECURITY`, `ABOUT`) with vector icons, Material 3 switches, and crisp typography.
+  5. **Verification & Testing:** Executed full unit test suite (24 tasks, 100% passing) and verified on live Android emulator across both Light and Dark modes with zero compilation errors, zero warnings, and high-contrast text legibility.
