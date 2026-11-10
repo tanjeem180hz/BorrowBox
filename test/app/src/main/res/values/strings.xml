@@ -95,6 +95,19 @@
     <string name="map_ready_handover">Ready for Handover</string>
     <string name="map_start_handover">Proceed to QR Handover</string>
     <string name="map_permission_rationale">Location access helps calculate distance to your meeting point.</string>
+    <string name="map_open_gmaps">Navigate in Google Maps</string>
+    <string name="map_layer_satellite">Satellite</string>
+    <string name="map_layer_roadmap">Roadmap</string>
+    <string name="map_my_location">My Location</string>
+    <string name="map_layer_toast_satellite">Switched to Google Maps Satellite View</string>
+    <string name="map_layer_toast_roadmap">Switched to Google Maps Roadmap View</string>
+    <string name="map_meeting_point_diu">Meeting Point: DIU Knowledge Tower / Library</string>
+    <string name="map_owner_label">Owner: Sabbir (Kathal Tola)</string>
+    <string name="map_you_label">You (Borrower)</string>
+    <string name="map_hud_distance">%1$d m away</string>
+    <string name="map_hud_ready">• Ready for Handover!</string>
+    <string name="map_hud_near">• You\'re almost there!</string>
+    <string name="map_hud_moving">• Moving towards Meeting Point</string>
 
     <!-- QR Handover -->
     <string name="qr_handover_title">Handover Verification</string>
