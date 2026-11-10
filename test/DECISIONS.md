@@ -29,3 +29,12 @@ This document records architectural, technical, and UI/UX decisions made during 
 ## Decision 7: Trust Score Engine Algorithm
 - **Context:** Bounded 0–100 student trust score.
 - **Decision:** Implemented formula: Base 50 + rating points (up to 30) + completed on-time rentals (up to 15) + verified student bonus (+5), minus late penalties and dispute deductions. Tested via JUnit.
+
+
+## Decision 8: Facebook Marketplace-Style Home Feed Redesign
+- **Context:** User requested redesigning the Home screen into a Facebook Marketplace-style visual browsing experience so students are immediately drawn to product photos when borrowing items.
+- **Decision:**
+  1. Replaced single-column linear layout with a 2-column grid (`GridLayoutManager(context, 2)`).
+  2. Created 12 custom, scalable vector illustrations for each campus product (charger, Casio calculator, power bank, DSLR camera, HDMI cable, mouse, drawing tablet, lab coat, umbrella, USB hub, presentation pointer, Bluetooth headset).
+  3. Redesigned `item_product.xml` with hero visual card, bold hero pricing (`৳20/hour`, `৳100/day`), compact 2-line title, location/distance badge, and floating status pill overlays (`Available Now`, `⭐ Trust`).
+  4. Created `ProductImageHelper.java` to map product categories and names dynamically across the adapter and product details view.

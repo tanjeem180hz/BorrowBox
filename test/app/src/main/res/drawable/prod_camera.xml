@@ -1,0 +1,65 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="160dp"
+    android:viewportWidth="200"
+    android:viewportHeight="160">
+    <path
+        android:fillColor="#FEF3C7"
+        android:pathData="M0,0h200v160h-200z" />
+    <path
+        android:fillColor="#FDE68A"
+        android:pathData="M100,80m-55,0a55,55 0 1,0 110,0a55,55 0 1,0 -110,0" />
+    <!-- Camera Body Silhouette -->
+    <path
+        android:fillColor="#18181B"
+        android:pathData="M45,55h20l8,-12h54l8,12h20a10,10 0 0,1 10,10v55a10,10 0 0,1 -10,10h-110a10,10 0 0,1 -10,-10v-55a10,10 0 0,1 10,-10z" />
+    <!-- Viewfinder / Hotshoe Pentaprism -->
+    <path
+        android:fillColor="#27272A"
+        android:pathData="M73,43h54l-6,-10h-42z" />
+    <path
+        android:fillColor="#71717A"
+        android:pathData="M92,30h16v4h-16z" />
+    <!-- Shutter Button & Mode Dial -->
+    <path
+        android:fillColor="#A1A1AA"
+        android:pathData="M52,47h12v7h-12z M136,47h14v7h-14z" />
+    <!-- Ergonomic Handgrip -->
+    <path
+        android:fillColor="#27272A"
+        android:pathData="M37,65h18v55h-18z" />
+    <!-- Red Canon Signature Ring -->
+    <path
+        android:fillColor="#DC2626"
+        android:pathData="M100,88m-38,0a38,38 0 1,0 76,0a38,38 0 1,0 -76,0" />
+    <!-- Outer Lens Barrel -->
+    <path
+        android:fillColor="#09090B"
+        android:pathData="M100,88m-36,0a36,36 0 1,0 72,0a36,36 0 1,0 -72,0" />
+    <!-- Lens Ribbed Grip Ring -->
+    <path
+        android:fillColor="#27272A"
+        android:pathData="M100,88m-30,0a30,30 0 1,0 60,0a30,30 0 1,0 -60,0" />
+    <!-- Optical Glass Aperture (Deep Dark) -->
+    <path
+        android:fillColor="#0284C7"
+        android:pathData="M100,88m-22,0a22,22 0 1,0 44,0a22,22 0 1,0 -44,0" />
+    <path
+        android:fillColor="#0C4A6E"
+        android:pathData="M100,88m-17,0a17,17 0 1,0 34,0a17,17 0 1,0 -34,0" />
+    <!-- Multi-coating Glass Reflection Arcs -->
+    <path
+        android:strokeColor="#38BDF8"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round"
+        android:pathData="M88,76 A16,16 0 0,1 112,76" />
+    <path
+        android:strokeColor="#34D399"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M95,100 A12,12 0 0,0 110,95" />
+    <!-- Lens Spec Text Highlight -->
+    <path
+        android:fillColor="#FAFAFA"
+        android:pathData="M100,88m-4,0a4,4 0 1,0 8,0a4,4 0 1,0 -8,0" />
+</vector>

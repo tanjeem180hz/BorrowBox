@@ -1,0 +1,72 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="160dp"
+    android:viewportWidth="200"
+    android:viewportHeight="160">
+    <!-- Background Card Canvas -->
+    <path
+        android:fillColor="#F0FDF4"
+        android:pathData="M0,0h200v160h-200z" />
+    <!-- Ambient glow circle -->
+    <path
+        android:fillColor="#E0F2FE"
+        android:pathData="M100,80m-55,0a55,55 0 1,0 110,0a55,55 0 1,0 -110,0" />
+
+    <!-- Rain Drops falling around -->
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M35,42 C35,39 38,34 38,34 C38,34 41,39 41,42 C41,44 38,46 35,42 Z
+                          M165,52 C165,49 168,44 168,44 C168,44 171,49 171,52 C171,54 168,56 165,52 Z
+                          M45,95 C45,92 48,87 48,87 C48,87 51,92 51,95 C51,97 48,99 45,95 Z
+                          M160,105 C160,102 163,97 163,97 C163,97 166,102 166,105 C166,107 163,109 160,105 Z" />
+
+    <!-- Umbrella Top Ferrule / Spire -->
+    <path
+        android:fillColor="#94A3B8"
+        android:pathData="M98,30h4v12h-4z M100,24l3,6h-6z" />
+
+    <!-- Umbrella Canopy Panels -->
+    <!-- Base Canopy Shape -->
+    <path
+        android:fillColor="#1E3A8A"
+        android:pathData="M100,38 C55,42 35,82 35,82 C48,78 62,78 75,82 C88,78 112,78 125,82 C138,78 152,78 165,82 C165,82 145,42 100,38 Z" />
+
+    <!-- Center Highlights (Navy & Royal Contrast) -->
+    <path
+        android:fillColor="#2563EB"
+        android:pathData="M100,38 C88,52 82,68 75,82 C88,78 112,78 125,82 C118,68 112,52 100,38 Z" />
+
+    <!-- Outer Left Panel -->
+    <path
+        android:fillColor="#1D4ED8"
+        android:pathData="M100,38 C75,48 55,64 35,82 C48,78 62,78 75,82 C82,68 88,52 100,38 Z" />
+
+    <!-- Outer Right Panel -->
+    <path
+        android:fillColor="#1E40AF"
+        android:pathData="M100,38 C125,48 145,64 165,82 C152,78 138,78 125,82 C118,68 112,52 100,38 Z" />
+
+    <!-- Rib Seams -->
+    <path
+        android:strokeColor="#60A5FA"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M100,38v42 M100,38 C88,52 80,66 75,82 M100,38 C112,52 120,66 125,82" />
+
+    <!-- Umbrella Central Shaft -->
+    <path
+        android:fillColor="#475569"
+        android:pathData="M98,80h4v48h-4z" />
+
+    <!-- Curved J-Handle -->
+    <path
+        android:strokeColor="#78350F"
+        android:strokeWidth="7"
+        android:strokeLineCap="round"
+        android:pathData="M100,128v6a10,10 0 0,1 -20,0v-4" />
+
+    <!-- Silver Handle Collar -->
+    <path
+        android:fillColor="#CBD5E1"
+        android:pathData="M97,125h6v4h-6z" />
+</vector>

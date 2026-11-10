@@ -3,13 +3,16 @@ package com.borrowbox.app.ui.home;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+import com.borrowbox.app.R;
 import com.borrowbox.app.databinding.ItemProductBinding;
 import com.borrowbox.app.model.PriceUnit;
 import com.borrowbox.app.model.Product;
 import com.borrowbox.app.util.CurrencyUtils;
+import com.borrowbox.app.util.ProductImageHelper;
 
 public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductViewHolder> {
 
@@ -58,7 +61,7 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
             super(binding.getRoot());
             this.binding = binding;
             itemView.setOnClickListener(v -> {
-                int pos = getAdapterPosition();
+                int pos = getBindingAdapterPosition();
                 if (pos != RecyclerView.NO_POSITION && listener != null) {
                     listener.onProductClick(getItem(pos));
                 }
@@ -66,6 +69,7 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
         }
 
         public void bind(Product product) {
+            binding.imgProductIcon.setImageResource(ProductImageHelper.getDrawableResForProduct(product));
             binding.tvProductName.setText(product.getName());
             String unit = product.getPriceUnit() == PriceUnit.DAY ? "/day" : "/hour";
             binding.tvPrice.setText(CurrencyUtils.format(product.getPrice()) + unit);
@@ -73,17 +77,19 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
 
             // Realistic seeded simulated distance and owner trust badges
             int pseudoDist = (int) (100 + ((product.getId() * 67) % 450));
-            binding.tvDistance.setText("📍 " + pseudoDist + " m away");
+            binding.tvDistance.setText("📍 " + pseudoDist + "m");
 
             int pseudoTrust = (int) (80 + ((product.getId() * 7) % 19));
-            binding.tvTrustScore.setText("⭐ Trust " + pseudoTrust);
+            binding.tvTrustScore.setText("⭐ " + pseudoTrust);
 
             if (product.isAvailable()) {
-                binding.tvAvailability.setText("Available Now");
-                binding.tvAvailability.setTextColor(androidx.core.content.ContextCompat.getColor(binding.getRoot().getContext(), com.borrowbox.app.R.color.success));
+                binding.tvAvailability.setText(binding.getRoot().getContext().getString(R.string.home_available_now));
+                binding.tvAvailability.setBackgroundResource(R.drawable.badge_pill_available);
+                binding.tvAvailability.setTextColor(ContextCompat.getColor(binding.getRoot().getContext(), R.color.success));
             } else {
-                binding.tvAvailability.setText("Currently Rented");
-                binding.tvAvailability.setTextColor(androidx.core.content.ContextCompat.getColor(binding.getRoot().getContext(), com.borrowbox.app.R.color.muted));
+                binding.tvAvailability.setText("Rented");
+                binding.tvAvailability.setBackgroundResource(R.drawable.badge_pill_rented);
+                binding.tvAvailability.setTextColor(ContextCompat.getColor(binding.getRoot().getContext(), R.color.muted));
             }
         }
     }

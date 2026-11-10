@@ -40,6 +40,7 @@ public class ProductDetailsFragment extends Fragment {
         viewModel.getProductLive(productId).observe(getViewLifecycleOwner(), product -> {
             if (product != null) {
                 currentProduct = product;
+                binding.imgHero.setImageResource(com.borrowbox.app.util.ProductImageHelper.getDrawableResForProduct(product));
                 binding.tvTitle.setText(product.getName());
                 String unit = product.getPriceUnit() == PriceUnit.DAY ? "/day" : "/h";
                 binding.tvPriceTag.setText(CurrencyUtils.format(product.getPrice()) + unit);

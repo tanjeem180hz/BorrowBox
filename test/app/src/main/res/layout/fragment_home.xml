@@ -153,6 +153,7 @@
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:nestedScrollingEnabled="false"
+                android:paddingHorizontal="10dp"
                 android:paddingBottom="80dp" />
 
             <TextView

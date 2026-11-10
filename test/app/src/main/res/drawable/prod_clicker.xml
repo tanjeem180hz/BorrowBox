@@ -1,0 +1,79 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="160dp"
+    android:viewportWidth="200"
+    android:viewportHeight="160">
+    <!-- Background Card Canvas -->
+    <path
+        android:fillColor="#FFFBEB"
+        android:pathData="M0,0h200v160h-200z" />
+    <!-- Ambient glow circle -->
+    <path
+        android:fillColor="#FEF3C7"
+        android:pathData="M100,80m-55,0a55,55 0 1,0 110,0a55,55 0 1,0 -110,0" />
+
+    <!-- Red Laser Beam Emission (pointing towards top right) -->
+    <path
+        android:strokeColor="#EF4444"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M100,32 L155,18" />
+    <!-- Laser Dot Target Burst -->
+    <path
+        android:fillColor="#EF4444"
+        android:pathData="M155,18m-4,0a4,4 0 1,0 8,0a4,4 0 1,0 -8,0" />
+    <path
+        android:strokeColor="#FCA5A5"
+        android:strokeWidth="1.5"
+        android:pathData="M155,11v14 M148,18h14" />
+
+    <!-- Remote Body Shadow -->
+    <path
+        android:fillColor="#FDE68A"
+        android:pathData="M84,136h32a10,10 0 0,0 10,-10v-4h-52v4a10,10 0 0,0 10,10z" />
+
+    <!-- Ergonomic Remote Wand Body -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M84,32h32a8,8 0 0,1 8,8v84a14,14 0 0,1 -14,14h-20a14,14 0 0,1 -14,-14v-84a8,8 0 0,1 8,-8z" />
+
+    <!-- Laser Lens Emitter Aperture at top -->
+    <path
+        android:fillColor="#DC2626"
+        android:pathData="M97,30h6a1,1 0 0,1 1,1v3a1,1 0 0,1 -1,1h-6a1,1 0 0,1 -1,-1v-3a1,1 0 0,1 1,-1z" />
+
+    <!-- Big Laser Trigger Button (Center Red Accent) -->
+    <path
+        android:fillColor="#DC2626"
+        android:pathData="M100,56m-8,0a8,8 0 1,0 16,0a8,8 0 1,0 -16,0" />
+    <!-- Sun/Laser Glyph -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M100,56m-3,0a3,3 0 1,0 6,0a3,3 0 1,0 -6,0" />
+
+    <!-- Forward / Next Slide Button (Triangle up) -->
+    <path
+        android:fillColor="#334155"
+        android:pathData="M88,72h24a4,4 0 0,1 4,4v14a4,4 0 0,1 -4,4h-24a4,4 0 0,1 -4,-4v-14a4,4 0 0,1 4,-4z" />
+    <path
+        android:fillColor="#F8FAFC"
+        android:pathData="M100,77l5,7h-10z" />
+
+    <!-- Back / Prev Slide Button (Triangle down) -->
+    <path
+        android:fillColor="#334155"
+        android:pathData="M88,98h24a4,4 0 0,1 4,4v14a4,4 0 0,1 -4,4h-24a4,4 0 0,1 -4,-4v-14a4,4 0 0,1 4,-4z" />
+    <path
+        android:fillColor="#F8FAFC"
+        android:pathData="M100,109l-5,-7h10z" />
+
+    <!-- Green LED Status Light -->
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M100,42m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0" />
+
+    <!-- Slide Blank Screen Button (Bottom small) -->
+    <path
+        android:fillColor="#475569"
+        android:pathData="M94,120h12a2,2 0 0,1 2,2v3a2,2 0 0,1 -2,2h-12a2,2 0 0,1 -2,-2v-3a2,2 0 0,1 2,-2z" />
+</vector>
