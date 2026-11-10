@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
             Navigation.findNavController(view).navigate(R.id.productDetailsFragment, args);
         });
 
-        binding.recyclerProducts.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.recyclerProducts.setLayoutManager(new androidx.recyclerview.widget.GridLayoutManager(requireContext(), 2));
         binding.recyclerProducts.setAdapter(adapter);
 
         viewModel.getCurrentUserLive().observe(getViewLifecycleOwner(), student -> {
