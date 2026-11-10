@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import com.borrowbox.app.data.local.SessionManager;
 import com.borrowbox.app.data.repository.ProductRepository;
 import com.borrowbox.app.data.repository.RepositoryProvider;
@@ -25,6 +26,8 @@ public class HomeViewModel extends AndroidViewModel {
     private final MutableLiveData<String> selectedCategory = new MutableLiveData<>("All");
     private final MutableLiveData<String> searchQuery = new MutableLiveData<>("");
     private final MediatorLiveData<List<Product>> filteredProducts = new MediatorLiveData<>();
+    private final MutableLiveData<Long> currentUserIdLive = new MutableLiveData<>();
+    private final LiveData<Student> currentUserLive;
 
     public HomeViewModel(@NonNull Application application) {
         super(application);
@@ -32,6 +35,10 @@ public class HomeViewModel extends AndroidViewModel {
         this.productRepository = provider.getProductRepository();
         this.userRepository = provider.getUserRepository();
         this.sessionManager = new SessionManager(application);
+
+        this.currentUserIdLive.setValue(sessionManager.getLoggedInUserId());
+        this.currentUserLive = Transformations.switchMap(currentUserIdLive, id ->
+                userRepository.getStudentLive(id != null ? id : 1L));
 
         LiveData<List<Product>> allProducts = productRepository.getAllProductsLive();
 
@@ -45,7 +52,11 @@ public class HomeViewModel extends AndroidViewModel {
     }
 
     public LiveData<Student> getCurrentUserLive() {
-        return userRepository.getStudentLive(sessionManager.getLoggedInUserId());
+        return currentUserLive;
+    }
+
+    public void refreshUser() {
+        currentUserIdLive.setValue(sessionManager.getLoggedInUserId());
     }
 
     public void setCategory(String category) {
@@ -64,16 +75,16 @@ public class HomeViewModel extends AndroidViewModel {
 
         List<Product> result = new ArrayList<>();
         String normalizedQuery = query != null ? query.trim().toLowerCase(Locale.ROOT) : "";
-        boolean isAll = category == null || category.equalsIgnoreCase("All");
+        boolean isAllCategory = category == null || "All".equalsIgnoreCase(category);
 
-        for (Product p : list) {
-            boolean matchesCategory = isAll || p.getCategory().equalsIgnoreCase(category);
-            boolean matchesSearch = normalizedQuery.isEmpty()
-                    || p.getName().toLowerCase(Locale.ROOT).contains(normalizedQuery)
-                    || p.getDescription().toLowerCase(Locale.ROOT).contains(normalizedQuery);
+        for (Product product : list) {
+            boolean matchesCategory = isAllCategory || product.getCategory().equalsIgnoreCase(category);
+            boolean matchesQuery = normalizedQuery.isEmpty()
+                    || product.getName().toLowerCase(Locale.ROOT).contains(normalizedQuery)
+                    || product.getDescription().toLowerCase(Locale.ROOT).contains(normalizedQuery);
 
-            if (matchesCategory && matchesSearch) {
-                result.add(p);
+            if (matchesCategory && matchesQuery) {
+                result.add(product);
             }
         }
         filteredProducts.setValue(result);

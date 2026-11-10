@@ -47,7 +47,10 @@ public class RegisterFragment extends Fragment {
 
         viewModel.getAuthSuccess().observe(getViewLifecycleOwner(), success -> {
             if (Boolean.TRUE.equals(success)) {
-                Navigation.findNavController(view).navigate(R.id.nav_home);
+                androidx.navigation.NavOptions navOptions = new androidx.navigation.NavOptions.Builder()
+                        .setPopUpTo(R.id.loginFragment, true)
+                        .build();
+                Navigation.findNavController(view).navigate(R.id.nav_home, null, navOptions);
             }
         });
 

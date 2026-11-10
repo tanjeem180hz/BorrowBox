@@ -68,3 +68,16 @@ This document records architectural, technical, and UI/UX decisions made during 
   3. **Vector Iconography Over Emojis:** Replaced all emoji markers (`📍`, `⭐`, `⚡`) with lightweight Android vector drawables (`ic_nav_map`, `ic_urgent_flash`, `ic_settings_gear`, `ic_shield`, `ic_bell`, `ic_theme`).
   4. **Settings Screen Re-architecture:** Rebuilt `fragment_settings.xml` into clean grouped card sections (`PREFERENCES`, `ACCOUNT & SECURITY`, `ABOUT`) with vector icons, Material 3 switches, and crisp typography.
   5. **Verification & Testing:** Executed full unit test suite (24 tasks, 100% passing) and verified on live Android emulator across both Light and Dark modes with zero compilation errors, zero warnings, and high-contrast text legibility.
+
+
+## Decision 12: Bottom Navigation Profile Bug Fix & Auth Backstack Cleansing
+- **Context:** Clicking "Profile" in the bottom navigation bar kept users on the Home page instead of opening ProfileFragment.
+- **Root Cause:**
+  1. Default `NavigationUI.setupWithNavController()` automatically sets up multiple back stacks with `saveState=true` and `restoreState=true`, popping up to the graph's start destination (`splashFragment`).
+  2. Because prior auth screens (`SplashFragment`, `LoginFragment`, `RegisterFragment`) pushed to `HomeFragment` without popping themselves, the saved state associated with the `nav_profile` destination contained a back stack with `HomeFragment` on top. When `NavigationUI` attempted to restore `nav_profile`, it restored that saved back stack, showing `HomeFragment`.
+- **Decision:**
+  1. **Custom Bottom Navigation Handler:** Replaced default `NavigationUI.setupWithNavController` with explicit `setOnItemSelectedListener` in `MainActivity.java` that navigates to the selected tab with `.setLaunchSingleTop(true).setPopUpTo(R.id.nav_home, false)`, preventing corrupted multi-stack restoration and ensuring every tab directly loads its fragment.
+  2. **Backstack Popping in Auth Flow:** Added `setPopUpTo` options across `SplashFragment`, `OnboardingFragment`, `LoginFragment`, `RegisterFragment`, and `ProfileFragment` logout to ensure splash and auth screens never pollute the navigation backstack.
+  3. **Direct Home Avatar Access:** Added an interactive circular avatar on the top right of `fragment_home.xml` (displaying the student's initial letter) and linked both the avatar and greeting to directly navigate to `nav_profile`.
+  4. **Reactive Student State:** Upgraded `ProfileViewModel` and `HomeViewModel` to use `Transformations.switchMap` so switching accounts updates the UI reactively without requiring application restart.
+  5. **Live Verification:** Verified on live Android emulator that both bottom navigation "Profile" and top avatar click navigate to `ProfileFragment` every time without fail.

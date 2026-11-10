@@ -1,11 +1,12 @@
 package com.borrowbox.app;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
 import com.borrowbox.app.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,21 +24,44 @@ public class MainActivity extends AppCompatActivity {
                 .findFragmentById(R.id.nav_host_fragment);
         if (navHostFragment != null) {
             navController = navHostFragment.getNavController();
-            NavigationUI.setupWithNavController(binding.bottomNavigation, navController);
 
-            // Hide bottom nav on splash, onboarding, and auth screens
+            // Robust bottom navigation handling without corrupted multi-stack state
+            binding.bottomNavigation.setOnItemSelectedListener(item -> {
+                int itemId = item.getItemId();
+                if (navController.getCurrentDestination() != null
+                        && navController.getCurrentDestination().getId() == itemId) {
+                    return true;
+                }
+
+                NavOptions options = new NavOptions.Builder()
+                        .setLaunchSingleTop(true)
+                        .setPopUpTo(R.id.nav_home, false)
+                        .build();
+
+                try {
+                    navController.navigate(itemId, null, options);
+                    return true;
+                } catch (Exception e) {
+                    return false;
+                }
+            });
+
+            binding.bottomNavigation.setOnItemReselectedListener(item -> {
+                // Do not recreate fragment on reselection
+            });
+
+            // Synchronize bottom nav visibility and selected item with navigation destination
             navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
                 int id = destination.getId();
-                if (id == R.id.splashFragment || id == R.id.onboardingFragment
-                        || id == R.id.loginFragment || id == R.id.registerFragment
-                        || id == R.id.rentalConfirmedFragment || id == R.id.qrHandoverFragment
-                        || id == R.id.returnFragment || id == R.id.paymentFragment
-                        || id == R.id.ratingFragment || id == R.id.productDetailsFragment
-                        || id == R.id.emergencyFragment || id == R.id.addEditProductFragment
-                        || id == R.id.settingsFragment || id == R.id.timerFragment) {
-                    binding.bottomNavigation.setVisibility(View.GONE);
-                } else {
+                if (id == R.id.nav_home || id == R.id.nav_map
+                        || id == R.id.nav_rentals || id == R.id.nav_profile) {
                     binding.bottomNavigation.setVisibility(View.VISIBLE);
+                    MenuItem menuItem = binding.bottomNavigation.getMenu().findItem(id);
+                    if (menuItem != null && !menuItem.isChecked()) {
+                        menuItem.setChecked(true);
+                    }
+                } else {
+                    binding.bottomNavigation.setVisibility(View.GONE);
                 }
             });
         }

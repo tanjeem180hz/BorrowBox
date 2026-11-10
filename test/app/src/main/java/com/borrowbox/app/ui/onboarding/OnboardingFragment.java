@@ -73,7 +73,10 @@ public class OnboardingFragment extends Fragment {
         SessionManager sessionManager = new SessionManager(requireContext());
         sessionManager.setOnboardingCompleted(true);
         if (getView() != null) {
-            Navigation.findNavController(getView()).navigate(R.id.loginFragment);
+            androidx.navigation.NavOptions navOptions = new androidx.navigation.NavOptions.Builder()
+                    .setPopUpTo(R.id.onboardingFragment, true)
+                    .build();
+            Navigation.findNavController(getView()).navigate(R.id.loginFragment, null, navOptions);
         }
     }
 

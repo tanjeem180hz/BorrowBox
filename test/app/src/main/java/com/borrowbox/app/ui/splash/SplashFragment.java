@@ -47,12 +47,15 @@ public class SplashFragment extends Fragment {
 
         navigateRunnable = () -> {
             if (!isAdded()) return;
+            androidx.navigation.NavOptions navOptions = new androidx.navigation.NavOptions.Builder()
+                    .setPopUpTo(R.id.splashFragment, true)
+                    .build();
             if (!sessionManager.isOnboardingCompleted()) {
-                Navigation.findNavController(view).navigate(R.id.onboardingFragment);
+                Navigation.findNavController(view).navigate(R.id.onboardingFragment, null, navOptions);
             } else if (!sessionManager.isLoggedIn()) {
-                Navigation.findNavController(view).navigate(R.id.loginFragment);
+                Navigation.findNavController(view).navigate(R.id.loginFragment, null, navOptions);
             } else {
-                Navigation.findNavController(view).navigate(R.id.nav_home);
+                Navigation.findNavController(view).navigate(R.id.nav_home, null, navOptions);
             }
         };
 

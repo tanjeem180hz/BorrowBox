@@ -45,9 +45,19 @@ public class HomeFragment extends Fragment {
 
         viewModel.getCurrentUserLive().observe(getViewLifecycleOwner(), student -> {
             if (student != null) {
-                binding.tvGreeting.setText("Hello, " + student.getName());
+                String name = student.getName() != null && !student.getName().trim().isEmpty()
+                        ? student.getName().trim() : "Student";
+                binding.tvGreeting.setText("Hello, " + name);
+                binding.tvHomeAvatar.setText(name.substring(0, 1).toUpperCase(java.util.Locale.ROOT));
             }
         });
+
+        // Click on profile avatar or user greeting opens Profile screen
+        View.OnClickListener openProfileListener = v -> {
+            Navigation.findNavController(view).navigate(R.id.nav_profile);
+        };
+        binding.tvHomeAvatar.setOnClickListener(openProfileListener);
+        binding.layoutUserHeader.setOnClickListener(openProfileListener);
 
         viewModel.getFilteredProducts().observe(getViewLifecycleOwner(), products -> {
             adapter.submitList(products);
@@ -82,6 +92,14 @@ public class HomeFragment extends Fragment {
         binding.fabEmergency.setOnClickListener(v -> {
             Navigation.findNavController(view).navigate(R.id.emergencyFragment);
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (viewModel != null) {
+            viewModel.refreshUser();
+        }
     }
 
     @Override
