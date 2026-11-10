@@ -29,13 +29,9 @@ public class BorrowBoxApp extends Application {
         // 2. Setup Notification Channels
         createNotificationChannels();
 
-        // 3. Apply saved theme
+        // 3. Apply saved dynamic theme
         SessionManager sessionManager = new SessionManager(this);
-        if (sessionManager.isDarkModeEnabled()) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-        }
+        sessionManager.applyAppTheme();
 
         // 4. Pre-warm database
         com.borrowbox.app.util.AppExecutors.getInstance().diskIO().execute(() -> {

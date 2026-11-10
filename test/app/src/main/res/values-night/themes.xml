@@ -2,34 +2,35 @@
     <!-- Dark application theme. -->
     <style name="Theme.BorrowBox" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/brand_primary_light</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="colorPrimaryContainer">@color/brand_primary</item>
-        <item name="colorOnPrimaryContainer">@color/white</item>
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorOnPrimary">#0B0F19</item>
+        <item name="colorPrimaryContainer">@color/brand_tint</item>
+        <item name="colorOnPrimaryContainer">@color/brand_primary_light</item>
 
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/brand_lid</item>
-        <item name="colorOnSecondary">@color/dark_background</item>
+        <item name="colorSecondary">@color/brand_primary_light</item>
+        <item name="colorOnSecondary">#0B0F19</item>
 
         <!-- Background & Surface -->
-        <item name="android:colorBackground">@color/dark_background</item>
-        <item name="colorOnBackground">@color/dark_ink</item>
-        <item name="colorSurface">@color/dark_surface</item>
-        <item name="colorOnSurface">@color/dark_ink</item>
-        <item name="colorSurfaceVariant">@color/dark_surface</item>
-        <item name="colorOnSurfaceVariant">@color/dark_muted</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorOnBackground">@color/ink</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/ink</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/muted</item>
 
         <!-- Status & Navigation Bar -->
-        <item name="android:statusBarColor">@color/dark_background</item>
+        <item name="android:statusBarColor">@color/background</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:navigationBarColor">@color/dark_surface</item>
+        <item name="android:navigationBarColor">@color/surface</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
 
         <item name="cardViewStyle">@style/Widget.BorrowBox.Card</item>
     </style>
 
     <style name="Widget.BorrowBox.Card" parent="Widget.Material3.CardView.Elevated">
         <item name="cardCornerRadius">@dimen/card_corner_radius</item>
-        <item name="cardElevation">@dimen/card_elevation</item>
-        <item name="cardBackgroundColor">@color/dark_surface</item>
+        <item name="cardElevation">@dimen/card_elevation_subtle</item>
+        <item name="cardBackgroundColor">@color/surface</item>
     </style>
 </resources>

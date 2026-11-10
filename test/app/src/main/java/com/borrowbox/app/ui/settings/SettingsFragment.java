@@ -31,16 +31,25 @@ public class SettingsFragment extends Fragment {
 
         binding.btnBack.setOnClickListener(v -> androidx.navigation.Navigation.findNavController(v).navigateUp());
 
-        binding.switchDarkMode.setChecked(sessionManager.isDarkModeEnabled());
-        binding.switchAutoAccept.setChecked(sessionManager.isAutoAcceptEnabled());
+        // Theme selection setup
+        int currentTheme = sessionManager.getThemeMode();
+        if (currentTheme == SessionManager.THEME_LIGHT) {
+            binding.rbThemeLight.setChecked(true);
+        } else if (currentTheme == SessionManager.THEME_DARK) {
+            binding.rbThemeDark.setChecked(true);
+        } else {
+            binding.rbThemeSystem.setChecked(true);
+        }
 
-        binding.switchDarkMode.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            sessionManager.setDarkModeEnabled(isChecked);
-            if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        binding.rgTheme.setOnCheckedChangeListener((group, checkedId) -> {
+            int newTheme = SessionManager.THEME_SYSTEM;
+            if (checkedId == com.borrowbox.app.R.id.rb_theme_light) {
+                newTheme = SessionManager.THEME_LIGHT;
+            } else if (checkedId == com.borrowbox.app.R.id.rb_theme_dark) {
+                newTheme = SessionManager.THEME_DARK;
             }
+            sessionManager.setThemeMode(newTheme);
+            sessionManager.applyAppTheme();
         });
 
         binding.switchAutoAccept.setOnCheckedChangeListener((buttonView, isChecked) -> {
