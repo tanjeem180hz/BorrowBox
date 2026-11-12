@@ -15,78 +15,128 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Top Floating Distance & Proximity HUD -->
+    <!-- Top Floating Google Maps Search & Route Header -->
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_hud"
-        android:layout_width="wrap_content"
+        android:id="@+id/card_top_search"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_md"
         android:layout_marginTop="@dimen/spacing_md"
-        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="24dp"
         app:cardElevation="6dp"
+        app:strokeColor="#1F000000"
+        app:strokeWidth="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/spacing_md"
-            android:paddingVertical="@dimen/spacing_sm">
+            android:paddingVertical="10dp">
 
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:contentDescription="Location"
-                android:src="@drawable/ic_nav_map"
-                app:tint="@color/brand_primary" />
+            <!-- Route Icon Badge -->
+            <FrameLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/circle_avatar">
 
-            <TextView
-                android:id="@+id/tv_distance_hud"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="500 m away"
-                android:textColor="@color/brand_primary"
-                android:textSize="@dimen/text_title"
-                android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="Navigation"
+                    android:src="@drawable/ic_directions_walk" />
+            </FrameLayout>
 
-            <TextView
-                android:id="@+id/tv_proximity_status"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_sm"
-                android:text="• Moving towards Meeting Point"
-                android:textColor="@color/muted"
-                android:textSize="@dimen/text_caption" />
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_search_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gmaps_search_title"
+                    android:textColor="@color/ink"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_walking_eta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="500 m • ~6 min walk to DIU Library"
+                    android:textColor="@color/muted"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btn_search_icon"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="@dimen/spacing_xs"
+                android:contentDescription="Search"
+                android:src="@drawable/ic_search"
+                app:tint="@color/muted" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Top-Right Floating Controls (Layer Toggle & Re-Center) -->
+    <!-- Right-Side Floating Action Controls (Compass, Layer, Location, Zoom In, Zoom Out) -->
     <LinearLayout
         android:id="@+id/layout_floating_controls"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_md"
+        android:layout_marginTop="@dimen/spacing_sm"
         android:layout_marginEnd="@dimen/spacing_md"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/card_top_search">
 
-        <!-- Layer Toggle Button (Roadmap / Satellite) -->
+        <!-- Compass Button (Rotates with map, taps to re-orient North) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_compass"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:clickable="true"
+            android:contentDescription="Compass"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="4dp"
+            app:strokeColor="#1F000000"
+            app:strokeWidth="1dp">
+
+            <ImageView
+                android:id="@+id/iv_compass_needle"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:contentDescription="Compass Needle"
+                android:src="@drawable/ic_compass" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Layer Selector Button (Default Roadmap, Satellite, Hybrid, Terrain) -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/btn_toggle_layer"
             android:layout_width="44dp"
             android:layout_height="44dp"
+            android:layout_marginTop="8dp"
             android:clickable="true"
             android:contentDescription="@string/map_layer_satellite"
             android:focusable="true"
             app:cardBackgroundColor="@color/surface"
             app:cardCornerRadius="22dp"
-            app:cardElevation="6dp"
-            app:strokeColor="#1A000000"
+            app:cardElevation="4dp"
+            app:strokeColor="#1F000000"
             app:strokeWidth="1dp">
 
             <ImageView
@@ -103,14 +153,14 @@
             android:id="@+id/btn_my_location"
             android:layout_width="44dp"
             android:layout_height="44dp"
-            android:layout_marginTop="@dimen/spacing_sm"
+            android:layout_marginTop="8dp"
             android:clickable="true"
             android:contentDescription="@string/map_my_location"
             android:focusable="true"
             app:cardBackgroundColor="@color/surface"
             app:cardCornerRadius="22dp"
-            app:cardElevation="6dp"
-            app:strokeColor="#1A000000"
+            app:cardElevation="4dp"
+            app:strokeColor="#1F000000"
             app:strokeWidth="1dp">
 
             <ImageView
@@ -120,6 +170,67 @@
                 android:contentDescription="@string/map_my_location"
                 android:src="@drawable/ic_my_location"
                 app:tint="@color/brand_primary" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Google Maps Zoom Controls Stack (+ and -) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_zoom_controls"
+            android:layout_width="44dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:strokeColor="#1F000000"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!-- Zoom In Button (+) -->
+                <FrameLayout
+                    android:id="@+id/btn_zoom_in"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:contentDescription="Zoom In"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Zoom In"
+                        android:src="@drawable/ic_zoom_in" />
+                </FrameLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E0E0E0" />
+
+                <!-- Zoom Out Button (-) -->
+                <FrameLayout
+                    android:id="@+id/btn_zoom_out"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:contentDescription="Zoom Out"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Zoom Out"
+                        android:src="@drawable/ic_zoom_out" />
+                </FrameLayout>
+            </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
@@ -155,14 +266,17 @@
             android:textSize="11sp" />
     </LinearLayout>
 
-    <!-- Bottom Controls Card -->
+    <!-- Bottom Google Maps Place Detail & Handover Card -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_bottom_controls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_md"
-        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
+        app:strokeColor="#1F000000"
+        app:strokeWidth="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -171,8 +285,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/spacing_md">
+            android:paddingHorizontal="@dimen/spacing_md"
+            android:paddingTop="10dp"
+            android:paddingBottom="@dimen/spacing_md">
 
+            <!-- Drag Handle -->
+            <View
+                android:layout_width="36dp"
+                android:layout_height="4dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_drag_handle" />
+
+            <!-- Place Header -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -180,73 +305,240 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
                     android:contentDescription="Meeting Point"
                     android:src="@drawable/ic_gmaps_pin_meeting" />
 
                 <TextView
-                    android:id="@+id/tv_meeting_point_info"
+                    android:id="@+id/tv_place_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:text="@string/map_meeting_point_diu"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/gmaps_place_name"
                     android:textColor="@color/ink"
-                    android:textSize="@dimen/text_body"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="4dp"
+                    android:contentDescription="Verified"
+                    android:src="@drawable/ic_verified_check"
+                    app:tint="@color/brand_primary" />
+            </LinearLayout>
+
+            <!-- Rating & Category -->
+            <TextView
+                android:id="@+id/tv_place_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/gmaps_place_details"
+                android:textColor="@color/muted"
+                android:textSize="12sp" />
+
+            <!-- Address -->
+            <TextView
+                android:id="@+id/tv_place_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/gmaps_place_address"
+                android:textColor="@color/muted"
+                android:textSize="12sp" />
+
+            <!-- Live Proximity Status Banner -->
+            <LinearLayout
+                android:id="@+id/layout_status_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_gmaps_status_pill"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="6dp">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:contentDescription="Status"
+                    android:src="@drawable/dot_green" />
+
+                <TextView
+                    android:id="@+id/tv_handover_status"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/map_hud_moving"
+                    android:textColor="#137333"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_handover_status"
-                android:layout_width="wrap_content"
+            <!-- Google Maps Action Chips Row (Directions, Navigate, Call, Share) -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="2dp"
-                android:text="@string/tagline_meet"
-                android:textColor="@color/muted"
-                android:textSize="@dimen/text_caption" />
+                android:layout_marginTop="10dp"
+                android:scrollbars="none">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Directions (Primary Blue Pill) -->
+                    <LinearLayout
+                        android:id="@+id/chip_directions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_gmaps_chip_primary"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="14dp">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:contentDescription="Directions"
+                            android:src="@drawable/ic_gmaps_directions" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="@string/gmaps_chip_directions"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Start Navigation Chip -->
+                    <LinearLayout
+                        android:id="@+id/chip_start"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_gmaps_chip_outline"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="14dp">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:contentDescription="Start"
+                            android:src="@drawable/ic_directions_walk" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="@string/gmaps_chip_start"
+                            android:textColor="#1A73E8"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Call Owner Chip -->
+                    <LinearLayout
+                        android:id="@+id/chip_call"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_gmaps_chip_outline"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="14dp">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:contentDescription="Call"
+                            android:src="@drawable/ic_phone" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="@string/gmaps_chip_call"
+                            android:textColor="#3C4043"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Share Location Chip -->
+                    <LinearLayout
+                        android:id="@+id/chip_share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_gmaps_chip_outline"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="14dp">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:contentDescription="Share"
+                            android:src="@drawable/ic_share" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="@string/gmaps_chip_share"
+                            android:textColor="#3C4043"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Bottom Handover Action Buttons -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_sm"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_open_google_maps"
-                    style="@style/Widget.Material3.Button.OutlinedButton"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="@dimen/spacing_xs"
-                    android:layout_weight="1"
-                    android:text="@string/map_open_gmaps"
-                    android:textSize="@dimen/text_caption"
-                    app:icon="@drawable/ic_gmaps_directions"
-                    app:iconGravity="textStart"
-                    app:iconSize="16dp"
-                    app:iconTint="@color/brand_primary" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_simulate_meeting"
                     style="@style/Widget.Material3.Button.OutlinedButton"
                     android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="@dimen/spacing_xs"
+                    android:layout_height="44dp"
+                    android:layout_marginEnd="@dimen/spacing_xs"
                     android:layout_weight="1"
                     android:text="@string/map_simulate_meeting"
-                    android:textSize="@dimen/text_caption" />
-            </LinearLayout>
+                    android:textSize="12sp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_start_handover"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="@dimen/spacing_xs"
-                android:backgroundTint="@color/brand_primary"
-                android:text="@string/map_start_handover"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_caption" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_start_handover"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="@dimen/spacing_xs"
+                    android:layout_weight="1.2"
+                    android:backgroundTint="@color/brand_primary"
+                    android:text="@string/map_start_handover"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

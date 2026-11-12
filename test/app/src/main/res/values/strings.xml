@@ -108,6 +108,22 @@
     <string name="map_hud_ready">• Ready for Handover!</string>
     <string name="map_hud_near">• You\'re almost there!</string>
     <string name="map_hud_moving">• Moving towards Meeting Point</string>
+    <string name="gmaps_search_title">Daffodil Smart City Campus</string>
+    <string name="gmaps_walking_eta">%1$d m • ~%2$d min walk to DIU Library</string>
+    <string name="gmaps_place_name">Daffodil International University (DIU)</string>
+    <string name="gmaps_place_details">4.8 ★★★★☆ (1,240) • Campus Landmark</string>
+    <string name="gmaps_place_address">📍 Birulia, Savar, Dhaka 1216 • Open 24h</string>
+    <string name="gmaps_chip_directions">Directions</string>
+    <string name="gmaps_chip_start">Start</string>
+    <string name="gmaps_chip_call">Call Owner</string>
+    <string name="gmaps_chip_share">Share</string>
+    <string name="gmaps_layer_sheet_title">Map Type</string>
+    <string name="gmaps_layer_default">Default</string>
+    <string name="gmaps_layer_satellite">Satellite</string>
+    <string name="gmaps_layer_terrain">Terrain</string>
+    <string name="gmaps_layer_hybrid">Hybrid</string>
+    <string name="gmaps_toast_recenter">Centered to your location</string>
+    <string name="gmaps_toast_north">Map oriented North</string>
 
     <!-- QR Handover -->
     <string name="qr_handover_title">Handover Verification</string>

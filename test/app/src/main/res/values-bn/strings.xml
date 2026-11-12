@@ -108,6 +108,22 @@
     <string name="map_hud_ready">• হস্তান্তরের জন্য প্রস্তুত!</string>
     <string name="map_hud_near">• আপনি খুব কাছাকাছি আছেন!</string>
     <string name="map_hud_moving">• মিটিং পয়েন্টের দিকে এগোচ্ছেন</string>
+    <string name="gmaps_search_title">ড্যাফোডিল স্মার্ট সিটি ক্যাম্পাস</string>
+    <string name="gmaps_walking_eta">%1$d মিটার • লাইব্রেরিতে হেঁটে যেতে ~%2$d মিনিট</string>
+    <string name="gmaps_place_name">ড্যাফোডিল ইন্টারন্যাশনাল ইউনিভার্সিটি (DIU)</string>
+    <string name="gmaps_place_details">৪.৮ ★★★★☆ (১,২৪০) • ক্যাম্পাস ল্যান্ডমার্ক</string>
+    <string name="gmaps_place_address">📍 বিরুলিয়া, সাভার, ঢাকা ১২১৬ • সার্বক্ষণিক খোলা</string>
+    <string name="gmaps_chip_directions">ডিরেকশন</string>
+    <string name="gmaps_chip_start">শুরু করুন</string>
+    <string name="gmaps_chip_call">মালিককে কল</string>
+    <string name="gmaps_chip_share">শেয়ার</string>
+    <string name="gmaps_layer_sheet_title">ম্যাপের ধরন</string>
+    <string name="gmaps_layer_default">ডিফল্ট</string>
+    <string name="gmaps_layer_satellite">স্যাটেলাইট</string>
+    <string name="gmaps_layer_terrain">টেরেন</string>
+    <string name="gmaps_layer_hybrid">হাইব্রিড</string>
+    <string name="gmaps_toast_recenter">আপনার অবস্থানে কেন্দ্র করা হয়েছে</string>
+    <string name="gmaps_toast_north">ম্যাপ উত্তরমুখী করা হয়েছে</string>
 
     <!-- QR Handover -->
     <string name="qr_handover_title">হস্তান্তর ভেরিফিকেশন</string>
