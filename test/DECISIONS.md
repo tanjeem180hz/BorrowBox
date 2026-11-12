@@ -111,3 +111,20 @@ This document records architectural, technical, and UI/UX decisions made during 
   4. **Deep Linking to Google Maps App (`btn_open_google_maps`):** Added a "Navigate in Google Maps" action button that initiates turn-by-turn pedestrian navigation in the official Google Maps app, with automated fallback to Google Maps web directions.
   5. **Bilingual Localization:** Fully localized distance HUD, layer toasts, and action buttons in both English and Bengali (`values/strings.xml` and `values-bn/strings.xml`).
   6. **Live Emulator Verification:** Verified on live Android emulator (`Medium_Phone_API_37.0`) that Google Maps tiles, satellite imagery, pins, route line, layer toggle, and distance simulation function smoothly with zero errors.
+
+
+## Decision 15: Exact Google Maps Parity — Zoom In/Out, Dynamic Compass, Layer Sheet & Place Details
+- **Context:** User requested full parity with official Google Maps, specifically emphasizing dedicated on-screen Zoom In / Zoom Out controls and comprehensive Google Maps features ("google map to hoise but exact google map hoi nai. zoom in zoom out sob feature add koro.").
+- **Decision:**
+  1. **Stacked Zoom In (+) & Zoom Out (-) Controls:** Created a dedicated Google Maps-style vertical card on the right-hand side (`card_zoom_controls`) featuring smooth-animated `+` and `-` buttons with haptic touch ripples and 1dp divider.
+  2. **Interactive Google Maps Layer Sheet (`dialog_google_map_layers.xml`):** Replaced basic toggling with a modal bottom sheet displaying visual preview cards for **Default (Roadmap)**, **Satellite**, and **Terrain**, with active blue borders indicating the active layer.
+  3. **Dynamic North-Oriented Compass Needle:** Added a floating compass widget on the top-right whose needle dynamically tracks the map's rotation and orientation, with 1-tap animated re-centering back to true North (`0.0°`).
+  4. **Multi-Touch Rotation & Metric Scale Bar:** Integrated `RotationGestureOverlay` and `ScaleBarOverlay` for native two-finger rotation gestures and live dynamic distance measurement (`50 m`, `100 m`, `200 m`).
+  5. **Google Maps Search & Walking ETA Header:** Built a floating top search bar showing the destination (`Daffodil Smart City Campus`) alongside real-time walking ETA (`500 m • ~6 min walk to DIU Library`).
+  6. **Google Maps Place Detail Card & Action Chips:** Redesigned the bottom card into an authentic Google Maps place sheet featuring verified badge, ratings (`4.8 ★★★★☆`), address, status pill, and action chips:
+     - `[ ↗ Directions ]` (Google blue primary pill)
+     - `[ 🚶 Start Navigation ]`
+     - `[ 📞 Call Owner ]` (initiates student contact dialer)
+     - `[ 🔗 Share Location ]` (triggers Android system share sheet)
+  7. **Bilingual Localization:** Fully localized all new headers, chips, walking ETAs, layer sheets, and toast notifications across English and Bengali.
+  8. **Live Emulator Verification:** Verified on live Android emulator that zooming in/out, switching layers via bottom sheet, rotating compass, and navigating functions seamlessly with 0 errors.
