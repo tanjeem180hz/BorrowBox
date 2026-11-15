@@ -101,4 +101,31 @@ public class DomainLogicTest {
         assertFalse(RentalStateMachine.canTransition(RentalStatus.REJECTED, RentalStatus.CONFIRMED));
         assertFalse(RentalStateMachine.canTransition(RentalStatus.CANCELLED, RentalStatus.REQUESTED));
     }
+
+    @Test
+    public void testChatMessageAttributesAndLikeStatus() {
+        com.borrowbox.app.model.ChatMessage msg = new com.borrowbox.app.model.ChatMessage(
+                1L, 10L, 1L, 2L, "Hi, is this charger available?",
+                System.currentTimeMillis(), true, "SENT", false
+        );
+
+        assertTrue(msg.isFromMe());
+        assertEquals("SENT", msg.getStatus());
+        assertFalse(msg.isLike());
+        assertEquals("Hi, is this charger available?", msg.getText());
+
+        msg.setStatus("DELIVERED");
+        assertEquals("DELIVERED", msg.getStatus());
+
+        msg.setStatus("SEEN");
+        assertEquals("SEEN", msg.getStatus());
+
+        // Test Like message
+        com.borrowbox.app.model.ChatMessage likeMsg = new com.borrowbox.app.model.ChatMessage(
+                2L, 10L, 1L, 2L, "👍",
+                System.currentTimeMillis(), true, "SENT", true
+        );
+        assertTrue(likeMsg.isLike());
+        assertEquals("👍", likeMsg.getText());
+    }
 }

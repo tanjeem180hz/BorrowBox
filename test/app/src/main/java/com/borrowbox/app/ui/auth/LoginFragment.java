@@ -30,6 +30,10 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(AuthViewModel.class);
 
+        // Automatic display cutout (notch/punch-hole) and keyboard/bottom cutout adaptation
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutout(binding.getRoot());
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyImeAndBottomCutout(binding.btnLogin);
+
         binding.btnLogin.setOnClickListener(v -> {
             String email = binding.etEmail.getText() != null ? binding.etEmail.getText().toString().trim() : "";
             String pass = binding.etPassword.getText() != null ? binding.etPassword.getText().toString() : "";

@@ -30,6 +30,10 @@ public class RentalConfirmedFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Automatic top display cutout and bottom navigation cutout adaptation
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutout(binding.getRoot());
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyBottomCutout(binding.btnQrHandover);
+
         binding.btnBack.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.nav_home));
 
         // Animate checkmark
