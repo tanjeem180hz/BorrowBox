@@ -200,3 +200,36 @@ This document records architectural, technical, and UI/UX decisions made during 
      - Added quick campus action dialog: share campus meeting points, student ID cards, and condition photos.
   6. **Comprehensive Unit Testing:**
      - Added unit tests in `DomainLogicTest.java` verifying `ChatConversation` aggregation, attachment types, and multi-user directionality. All 27 unit tests pass 100%.
+
+
+---
+
+### Decision 19: SRS-Compliant SQLite Database Schema, Real Student Registration, Role-Based Authentication, and Central Proctorial Admin Panel
+- **Context:** The user requested full alignment with the course Software Requirements Specification (`BorrowBox_SRS_v2.docx` / `BorrowBox_SRS_Short.docx`) for database persistence, real-life registration, secure login with suspension checks, a comprehensive admin console for student/listing moderation and dispute resolution, and realistic campus data.
+- **Architectural Implementation:**
+  1. **SRS Domain Hierarchy & Database Schema Alignment:**
+     - Extended base abstract class `User` with `role` (`ROLE_STUDENT`, `ROLE_ADMIN`), `phone`, and `phoneVisible`.
+     - Implemented concrete `Admin` model extending `User` with department authorization methods (`canSuspendStudents()`, `canModerateListings()`, `canResolveDisputes()`).
+     - Enhanced `Student` Room `@Entity` with `isSuspended`, `statusMessage`, `phone`, `lateReturnsCount`, and `disputePenaltiesCount`.
+     - Created `Dispute` Room `@Entity` (`disputes` table) and `DisputeDao` supporting the complete report lifecycle (`SUBMITTED` -> `UNDER_REVIEW` -> `RESOLVED` / `DISMISSED`) and escrow deposit adjustments per SRS Module 5 (FR-41 through FR-43).
+     - Upgraded `AppDatabase` to version 3 with destructive migration fallback and real-life campus seeds.
+  2. **SRS FR-39 Trust Score Engine:**
+     - Implemented exact SRS FR-39 formula: `Trust Score = 80 + 1.5 × Completed + 2.0 × AvgRating − 4.0 × LateReturns − 10.0 × DisputePenalties`, clamped between 0 and 100.
+     - Added "Trusted Campus Peer" badge eligibility checks (Score >= 90 with >= 10 completed rentals per FR-40).
+  3. **Real-Life Student Registration (`RegisterFragment` & `AuthViewModel`):**
+     - Mandatory field validations: Full Name, DIU Email (`@diu.edu.bd`), Student ID format, Mobile Number, Department, and Password (min 6 characters with confirmation check).
+     - Database uniqueness checks against existing emails and Student IDs in Room SQLite to prevent duplicates.
+     - Cryptographic password hashing using salted SHA-256 via `SecurityUtils`.
+  4. **Secure Authentication & Role-Based Access Control (`LoginFragment` & `SessionManager`):**
+     - Credential verification against Room SQLite database supporting both email and student ID login.
+     - Account suspension verification: blocks login with an administrative notice if `student.isSuspended()` is true.
+     - Role-based navigation routing: routes `ROLE_ADMIN` users directly to the Admin Dashboard and `ROLE_STUDENT` users to the main Home feed.
+     - Added Quick Switch chips (`Tanjeem`, `Sabbir`, `Admin`) for seamless evaluation and role switching.
+  5. **Comprehensive Proctorial Admin Console (`AdminDashboardFragment`):**
+     - Platform KPI cards connected to Room LiveData: Total Registered Students, Listed Equipment, Active Rentals, and Open Disputes.
+     - Students Directory Tab: View students, toggle verification badge, toggle suspension/reinstatement, and reset trust scores to baseline (80).
+     - Equipment Moderation Tab: Review listings, take down suspicious items, or reinstate approved items.
+     - Dispute Resolution Tab: Inspect dispute reports, review deposit amounts and evidence, issue administrative verdicts (Full Refund to Borrower, 50% Condition Penalty, or Dismissal).
+     - Quick access entry point added in Settings under Account & Security.
+  6. **Testing & Verification:**
+     - Added comprehensive unit tests in `DomainLogicTest.java` covering SRS FR-39 trust score calculations, badge thresholds, User/Admin OOP inheritance, student suspension states, dispute lifecycle transitions, and salted password hashing. 100% test pass rate.
