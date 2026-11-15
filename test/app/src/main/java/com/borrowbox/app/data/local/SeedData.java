@@ -132,4 +132,43 @@ public final class SeedData {
 
         return list;
     }
+
+    public static List<com.borrowbox.app.model.ChatMessage> getInitialChatMessages() {
+        List<com.borrowbox.app.model.ChatMessage> list = new ArrayList<>();
+        long now = System.currentTimeMillis();
+
+        // 1. Thread: Tanjeem (id 1) & Sabbir (id 2) on Product 1 (Laptop Charger)
+        list.add(new com.borrowbox.app.model.ChatMessage(
+                1, 1, 2, 1,
+                "আসসালামু আলাইকুম তানজীম ভাই! ল্যাপটপ চার্জারটি প্রয়োজন হলে জানাতে পারেন।",
+                now - (35 * 60 * 1000L), false, "SEEN", false));
+
+        list.add(new com.borrowbox.app.model.ChatMessage(
+                2, 1, 1, 2,
+                "ভাইয়া, চার্জারটি কি টাইপ-সি ম্যাকবুক এয়ার সাপোর্ট করে?",
+                now - (20 * 60 * 1000L), true, "SEEN", false));
+
+        list.add(new com.borrowbox.app.model.ChatMessage(
+                3, 1, 2, 1,
+                "হ্যাঁ সম্পূর্ণ সাপোর্ট করে, ৬৫ ওয়াট ফাস্ট চার্জিং টেস্ট করা। সেন্ট্রাল লাইব্রেরির সামনে এসে নিতে পারবেন।",
+                now - (12 * 60 * 1000L), false, "SEEN", false));
+
+        // 2. Thread: Tanjeem (id 1) & Tasnim (id 4) on Product 4 (DSLR Camera)
+        list.add(new com.borrowbox.app.model.ChatMessage(
+                4, 4, 4, 1,
+                "আসসালামু আলাইকুম! Canon DSLR ক্যামেরাটি আজ ক্লাব ইভেন্টের জন্য রেডি আছে।",
+                now - (60 * 60 * 1000L), false, "SEEN", false));
+
+        list.add(new com.borrowbox.app.model.ChatMessage(
+                5, 4, 1, 4,
+                "আপু, সাথে কি মেমরি কার্ড ও চার্জার দেওয়া হবে?",
+                now - (40 * 60 * 1000L), true, "SEEN", false));
+
+        list.add(new com.borrowbox.app.model.ChatMessage(
+                6, 4, 4, 1,
+                "হ্যাঁ, ৬৪ জিবি হাই-স্পিড মেমরি কার্ড, চার্জার এবং ব্যাগ একসাথে পেয়ে যাবেন।",
+                now - (25 * 60 * 1000L), false, "SEEN", false));
+
+        return list;
+    }
 }
