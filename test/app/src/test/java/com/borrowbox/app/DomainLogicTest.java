@@ -2,6 +2,8 @@ package com.borrowbox.app;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import com.borrowbox.app.domain.DailyPricing;
@@ -184,5 +186,116 @@ public class DomainLogicTest {
         // When Tasnim is logged in:
         msgFromTanjeem.setFromMe(msgFromTanjeem.getSenderId() == userTasnim);
         assertFalse(msgFromTanjeem.isFromMe());
+    }
+
+    @Test
+    public void testSrsTrustScoreFormula() {
+        // SRS FR-39 Formula:
+        // Trust Score = 80 + 1.5 * Completed + 2.0 * AvgRating - 4.0 * LateReturns - 10.0 * DisputePenalties
+        // For 10 completions, 5.0 avg rating, 0 late returns, 0 disputes:
+        // 80 + 15 + 10 = 105 -> clamped to 100
+        int scoreHigh = TrustScoreEngine.calculateSrsTrustScore(10, 5.0, 0, 0);
+        assertEquals(100, scoreHigh);
+
+        // Standard student: 4 completed, 4.5 rating, 1 late return, 0 disputes:
+        // 80 + (1.5 * 4 = 6) + (2.0 * 4.5 = 9) - 4 - 0 = 91
+        int scoreStandard = TrustScoreEngine.calculateSrsTrustScore(4, 4.5, 1, 0);
+        assertEquals(91, scoreStandard);
+
+        // Student with infractions: 2 completed, 3.0 rating, 3 late returns, 1 dispute penalty:
+        // 80 + 3 + 6 - 12 - 10 = 67
+        int scoreInfractions = TrustScoreEngine.calculateSrsTrustScore(2, 3.0, 3, 1);
+        assertEquals(67, scoreInfractions);
+
+        // Severe penalties clamped to 0
+        int scoreBanned = TrustScoreEngine.calculateSrsTrustScore(0, 1.0, 10, 8);
+        assertTrue(scoreBanned >= 0);
+    }
+
+    @Test
+    public void testTrustedCampusPeerBadge() {
+        // SRS FR-40: Trust Score >= 90 with >= 10 completed rentals
+        assertTrue(TrustScoreEngine.isTrustedCampusPeer(92, 14));
+        assertFalse(TrustScoreEngine.isTrustedCampusPeer(95, 5)); // Not enough rentals
+        assertFalse(TrustScoreEngine.isTrustedCampusPeer(85, 20)); // Score too low
+    }
+
+    @Test
+    public void testUserRoleAndAdminHierarchy() {
+        // Test OOP User -> Admin inheritance
+        com.borrowbox.app.model.Admin admin = new com.borrowbox.app.model.Admin(
+                99L, "DIU Campus Administrator", "admin@diu.edu.bd",
+                "hash", "salt", System.currentTimeMillis(), "CSE Department"
+        );
+        assertTrue(admin instanceof com.borrowbox.app.model.User);
+        assertTrue(admin.isAdmin());
+        assertEquals(com.borrowbox.app.model.User.ROLE_ADMIN, admin.getRole());
+        assertTrue(admin.canSuspendStudents());
+        assertTrue(admin.canModerateListings());
+        assertTrue(admin.canResolveDisputes());
+
+        // Test OOP User -> Student inheritance
+        com.borrowbox.app.model.Student student = new com.borrowbox.app.model.Student();
+        student.setName("Muhammad Tanjeem");
+        student.setEmail("tanjeem@diu.edu.bd");
+        student.setStudentId("252-15-817");
+        assertTrue(student instanceof com.borrowbox.app.model.User);
+        assertFalse(student.isAdmin());
+        assertEquals(com.borrowbox.app.model.User.ROLE_STUDENT, student.getRole());
+    }
+
+    @Test
+    public void testStudentSuspensionAndStatus() {
+        com.borrowbox.app.model.Student student = new com.borrowbox.app.model.Student();
+        assertFalse(student.isSuspended());
+        assertEquals("Active", student.getStatusMessage());
+
+        student.setSuspended(true);
+        student.setStatusMessage("Suspended by Proctorial Body: Under review");
+        assertTrue(student.isSuspended());
+        assertEquals("Suspended by Proctorial Body: Under review", student.getStatusMessage());
+    }
+
+    @Test
+    public void testDisputeLifecycleAndVerdicts() {
+        // SRS Module 5: Dispute report lifecycle
+        com.borrowbox.app.model.Dispute dispute = new com.borrowbox.app.model.Dispute(
+                1L, 3L, 1L, "Muhammad Tanjeem", 3L, "Chandan Acharjee Himel",
+                4L, "DSLR Camera", com.borrowbox.app.model.Dispute.TYPE_DAMAGED,
+                "Lens cap cracked on return", "evidence.jpg", 500.0,
+                com.borrowbox.app.model.Dispute.STATUS_SUBMITTED, "",
+                100, System.currentTimeMillis(), 0L
+        );
+
+        assertEquals(com.borrowbox.app.model.Dispute.STATUS_SUBMITTED, dispute.getStatus());
+        assertEquals(com.borrowbox.app.model.Dispute.TYPE_DAMAGED, dispute.getDisputeType());
+
+        // Admin reviews and transitions to RESOLVED
+        dispute.setStatus(com.borrowbox.app.model.Dispute.STATUS_RESOLVED);
+        dispute.setAdminVerdict("50% deposit deducted for replacement cap.");
+        dispute.setDepositRefundPercentage(50);
+        dispute.setResolvedAt(System.currentTimeMillis());
+
+        assertEquals(com.borrowbox.app.model.Dispute.STATUS_RESOLVED, dispute.getStatus());
+        assertEquals(50, dispute.getDepositRefundPercentage());
+        assertTrue(dispute.getResolvedAt() > 0);
+    }
+
+    @Test
+    public void testPasswordSecurityHashingAndVerification() {
+        String password = "SecureStudentPass2026!";
+        String salt = com.borrowbox.app.util.SecurityUtils.generateSalt();
+        assertNotNull(salt);
+        assertFalse(salt.isEmpty());
+
+        String hash = com.borrowbox.app.util.SecurityUtils.hashPassword(password, salt);
+        assertNotNull(hash);
+        assertNotEquals(password, hash);
+
+        // Verification succeeds with correct password
+        assertTrue(com.borrowbox.app.util.SecurityUtils.verifyPassword(password, salt, hash));
+
+        // Verification fails with wrong password
+        assertFalse(com.borrowbox.app.util.SecurityUtils.verifyPassword("WrongPassword123", salt, hash));
     }
 }
