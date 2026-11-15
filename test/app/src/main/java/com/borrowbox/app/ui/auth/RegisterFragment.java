@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import com.borrowbox.app.R;
 import com.borrowbox.app.databinding.FragmentRegisterBinding;
+import com.borrowbox.app.util.EdgeToEdgeHelper;
 
 public class RegisterFragment extends Fragment {
 
@@ -31,18 +33,20 @@ public class RegisterFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(AuthViewModel.class);
 
         // Automatic display cutout (notch/punch-hole) and keyboard/bottom cutout adaptation
-        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutout(binding.getRoot());
-        com.borrowbox.app.util.EdgeToEdgeHelper.applyImeAndBottomCutout(binding.btnRegister);
+        EdgeToEdgeHelper.applyTopCutout(binding.getRoot());
+        EdgeToEdgeHelper.applyImeAndBottomCutout(binding.btnRegister);
 
         binding.btnRegister.setOnClickListener(v -> {
             String name = binding.etName.getText() != null ? binding.etName.getText().toString().trim() : "";
             String email = binding.etEmail.getText() != null ? binding.etEmail.getText().toString().trim() : "";
             String studentId = binding.etStudentId.getText() != null ? binding.etStudentId.getText().toString().trim() : "";
-            String uni = binding.etUniversity.getText() != null ? binding.etUniversity.getText().toString().trim() : "";
+            String phone = binding.etPhone.getText() != null ? binding.etPhone.getText().toString().trim() : "";
             String dept = binding.etDepartment.getText() != null ? binding.etDepartment.getText().toString().trim() : "";
+            String uni = binding.etUniversity.getText() != null ? binding.etUniversity.getText().toString().trim() : "";
             String pass = binding.etPassword.getText() != null ? binding.etPassword.getText().toString() : "";
+            String confirmPass = binding.etConfirmPassword.getText() != null ? binding.etConfirmPassword.getText().toString() : "";
 
-            viewModel.register(name, email, pass, uni, dept, studentId);
+            viewModel.register(name, email, studentId, phone, uni, dept, pass, confirmPass);
         });
 
         binding.tvLoginLink.setOnClickListener(v -> {
@@ -51,6 +55,7 @@ public class RegisterFragment extends Fragment {
 
         viewModel.getAuthSuccess().observe(getViewLifecycleOwner(), success -> {
             if (Boolean.TRUE.equals(success)) {
+                Toast.makeText(requireContext(), "Account created successfully! Welcome to BorrowBox.", Toast.LENGTH_SHORT).show();
                 androidx.navigation.NavOptions navOptions = new androidx.navigation.NavOptions.Builder()
                         .setPopUpTo(R.id.loginFragment, true)
                         .build();
@@ -65,6 +70,10 @@ public class RegisterFragment extends Fragment {
             } else {
                 binding.tvError.setVisibility(View.GONE);
             }
+        });
+
+        viewModel.getLoading().observe(getViewLifecycleOwner(), loading -> {
+            binding.btnRegister.setEnabled(!Boolean.TRUE.equals(loading));
         });
     }
 
