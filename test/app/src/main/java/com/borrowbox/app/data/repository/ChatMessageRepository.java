@@ -1,93 +1,141 @@
 package com.borrowbox.app.data.repository;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
+import com.borrowbox.app.data.local.AppDatabase;
+import com.borrowbox.app.data.local.ChatMessageDao;
+import com.borrowbox.app.data.local.ProductDao;
+import com.borrowbox.app.data.local.StudentDao;
+import com.borrowbox.app.model.ChatConversation;
 import com.borrowbox.app.model.ChatMessage;
+import com.borrowbox.app.model.Product;
+import com.borrowbox.app.model.Student;
+import com.borrowbox.app.util.AppExecutors;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * Real-life persistent chat repository backed by Room SQLite.
+ * Supports multi-account two-way conversations, live Room observations, and simulated peer responses.
+ */
 public class ChatMessageRepository {
 
     private static volatile ChatMessageRepository instance;
+
+    private final ChatMessageDao chatMessageDao;
+    private final StudentDao studentDao;
+    private final ProductDao productDao;
+    private final AppExecutors executors;
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
-    private final AtomicLong idGenerator = new AtomicLong(100);
 
-    // Map of productId -> MutableLiveData<List<ChatMessage>>
-    private final Map<Long, MutableLiveData<List<ChatMessage>>> conversationsLive = new HashMap<>();
-    private final Map<Long, List<ChatMessage>> conversationsData = new HashMap<>();
-    private final Map<Long, MutableLiveData<Boolean>> typingLive = new HashMap<>();
+    private final Map<Long, MutableLiveData<Boolean>> typingLiveMap = new HashMap<>();
 
-    private ChatMessageRepository() {
+    public ChatMessageRepository(@NonNull ChatMessageDao chatMessageDao,
+                                 @NonNull StudentDao studentDao,
+                                 @NonNull ProductDao productDao,
+                                 @NonNull AppExecutors executors) {
+        this.chatMessageDao = chatMessageDao;
+        this.studentDao = studentDao;
+        this.productDao = productDao;
+        this.executors = executors;
     }
 
-    public static ChatMessageRepository getInstance() {
+    public static ChatMessageRepository getInstance(@NonNull Context context) {
         if (instance == null) {
             synchronized (ChatMessageRepository.class) {
                 if (instance == null) {
-                    instance = new ChatMessageRepository();
+                    AppDatabase db = AppDatabase.getInstance(context);
+                    instance = new ChatMessageRepository(
+                            db.chatMessageDao(),
+                            db.studentDao(),
+                            db.productDao(),
+                            AppExecutors.getInstance()
+                    );
                 }
             }
         }
         return instance;
     }
 
-    public synchronized LiveData<List<ChatMessage>> getMessagesLive(long productId, long borrowerId,
-                                                                    long lenderId, String productName,
-                                                                    boolean isBengali) {
-        if (!conversationsLive.containsKey(productId)) {
-            MutableLiveData<List<ChatMessage>> liveData = new MutableLiveData<>();
-            List<ChatMessage> initialList = new ArrayList<>();
+    /**
+     * Returns LiveData of chat messages for a product, automatically marking messages
+     * as 'from me' or 'from other' based on currently logged in user ID.
+     */
+    public LiveData<List<ChatMessage>> getMessagesLive(long productId, long currentUserId,
+                                                       long otherUserId, String productName,
+                                                       boolean isBengali) {
+        // Mark existing messages from other user as SEEN
+        executors.diskIO().execute(() -> {
+            chatMessageDao.markMessagesAsSeen(productId, currentUserId);
+            List<ChatMessage> existing = chatMessageDao.getMessagesForProductSync(productId);
+            if (existing == null || existing.isEmpty()) {
+                // Seed initial greeting message from the lender
+                long now = System.currentTimeMillis() - (15 * 60 * 1000L);
+                String welcome = isBengali
+                        ? "আসসালামু আলাইকুম! " + (productName != null ? productName : "সামগ্রীটি") + " সম্পর্কে কোনো তথ্য জানার থাকলে সরাসরি মেসেজ দিন।"
+                        : "Hello! If you need to borrow this " + (productName != null ? productName : "item") + " or have any questions, feel free to ask!";
 
-            // Seed an initial friendly welcome message from the owner
-            long now = System.currentTimeMillis() - (15 * 60 * 1000L); // 15 mins ago
-            String welcome = isBengali
-                    ? "আসসালামু আলাইকুম! " + (productName != null ? productName : "সামগ্রীটি") + " সম্পর্কে কোনো তথ্য জানার থাকলে সরাসরি মেসেজ দিন।"
-                    : "Hello! If you need to borrow this " + (productName != null ? productName : "item") + " or have any questions, feel free to ask!";
+                ChatMessage seed = new ChatMessage(
+                        0,
+                        productId,
+                        otherUserId,
+                        currentUserId,
+                        welcome,
+                        now,
+                        false,
+                        "SEEN",
+                        false,
+                        "TEXT",
+                        ""
+                );
+                chatMessageDao.insert(seed);
+            }
+        });
 
-            ChatMessage seed = new ChatMessage(
-                    idGenerator.incrementAndGet(),
-                    productId,
-                    lenderId,
-                    borrowerId,
-                    welcome,
-                    now,
-                    false,
-                    "SEEN",
-                    false
-            );
-            initialList.add(seed);
+        LiveData<List<ChatMessage>> roomLive = chatMessageDao.getMessagesForProductLive(productId);
 
-            conversationsData.put(productId, initialList);
-            liveData.setValue(new ArrayList<>(initialList));
-            conversationsLive.put(productId, liveData);
-        }
-        return conversationsLive.get(productId);
+        return Transformations.map(roomLive, list -> {
+            List<ChatMessage> result = new ArrayList<>();
+            if (list != null) {
+                for (ChatMessage m : list) {
+                    m.setFromMe(m.getSenderId() == currentUserId);
+                    result.add(m);
+                }
+            }
+            return result;
+        });
     }
 
     public synchronized LiveData<Boolean> getTypingLive(long productId) {
-        if (!typingLive.containsKey(productId)) {
-            typingLive.put(productId, new MutableLiveData<>(false));
+        if (!typingLiveMap.containsKey(productId)) {
+            typingLiveMap.put(productId, new MutableLiveData<>(false));
         }
-        return typingLive.get(productId);
+        return typingLiveMap.get(productId);
     }
 
-    public synchronized void sendMessage(long productId, long senderId, long receiverId,
-                                         String text, boolean isLike, String productName,
-                                         boolean isBengali) {
-        List<ChatMessage> list = conversationsData.get(productId);
-        if (list == null) {
-            list = new ArrayList<>();
-            conversationsData.put(productId, list);
+    public void setTyping(long productId, boolean isTyping) {
+        MutableLiveData<Boolean> typing = typingLiveMap.get(productId);
+        if (typing != null) {
+            typing.postValue(isTyping);
         }
+    }
 
-        long msgId = idGenerator.incrementAndGet();
+    /**
+     * Sends a chat message, saves it permanently to SQLite, and updates delivery receipts.
+     */
+    public void sendMessage(long productId, long senderId, long receiverId,
+                            String text, boolean isLike, String productName,
+                            boolean isBengali, String attachmentType, String attachmentUri) {
         ChatMessage myMsg = new ChatMessage(
-                msgId,
+                0,
                 productId,
                 senderId,
                 receiverId,
@@ -95,35 +143,36 @@ public class ChatMessageRepository {
                 System.currentTimeMillis(),
                 true,
                 "SENT",
-                isLike
+                isLike,
+                attachmentType != null ? attachmentType : "TEXT",
+                attachmentUri != null ? attachmentUri : ""
         );
-        list.add(myMsg);
-        postUpdate(productId);
 
-        // Step 1: Update status to DELIVERED after 400ms
-        mainHandler.postDelayed(() -> {
-            synchronized (ChatMessageRepository.this) {
+        executors.diskIO().execute(() -> {
+            long insertedId = chatMessageDao.insert(myMsg);
+            myMsg.setId(insertedId);
+
+            // Step 1: Status becomes DELIVERED after 400ms
+            mainHandler.postDelayed(() -> executors.diskIO().execute(() -> {
                 myMsg.setStatus("DELIVERED");
-                postUpdate(productId);
-            }
-        }, 400);
+                chatMessageDao.update(myMsg);
+            }), 400);
 
-        // Step 2: Update status to SEEN after 900ms and start typing
-        mainHandler.postDelayed(() -> {
-            synchronized (ChatMessageRepository.this) {
-                myMsg.setStatus("SEEN");
-                postUpdate(productId);
+            // Step 2: Status becomes SEEN after 900ms and owner starts typing
+            mainHandler.postDelayed(() -> {
+                executors.diskIO().execute(() -> {
+                    myMsg.setStatus("SEEN");
+                    chatMessageDao.update(myMsg);
+                });
                 setTyping(productId, true);
-            }
-        }, 900);
+            }, 900);
 
-        // Step 3: Owner replies after realistic typing delay (~2.2s)
-        mainHandler.postDelayed(() -> {
-            synchronized (ChatMessageRepository.this) {
+            // Step 3: Owner automated reply after 2.0s
+            mainHandler.postDelayed(() -> {
                 setTyping(productId, false);
-                String replyText = generateOwnerReply(text, isLike, productName, isBengali);
+                String replyText = generateOwnerReply(text, isLike, productName, isBengali, attachmentType);
                 ChatMessage ownerReply = new ChatMessage(
-                        idGenerator.incrementAndGet(),
+                        0,
                         productId,
                         receiverId,
                         senderId,
@@ -131,33 +180,84 @@ public class ChatMessageRepository {
                         System.currentTimeMillis(),
                         false,
                         "SEEN",
-                        isLike
+                        isLike,
+                        "TEXT",
+                        ""
                 );
-                List<ChatMessage> currentList = conversationsData.get(productId);
-                if (currentList != null) {
-                    currentList.add(ownerReply);
-                    postUpdate(productId);
+                executors.diskIO().execute(() -> chatMessageDao.insert(ownerReply));
+            }, 2000);
+        });
+    }
+
+    public void sendMessage(long productId, long senderId, long receiverId,
+                            String text, boolean isLike, String productName,
+                            boolean isBengali) {
+        sendMessage(productId, senderId, receiverId, text, isLike, productName, isBengali, "TEXT", "");
+    }
+
+    /**
+     * Returns a LiveData list of all active conversations for the current student's Messenger Inbox.
+     */
+    public LiveData<List<ChatConversation>> getInboxConversationsLive(long currentUserId) {
+        LiveData<List<ChatMessage>> allUserMessagesLive = chatMessageDao.getAllMessagesForUserLive(currentUserId);
+
+        return Transformations.map(allUserMessagesLive, messages -> {
+            Map<Long, ChatConversation> conversationMap = new LinkedHashMap<>();
+            if (messages == null || messages.isEmpty()) {
+                return new ArrayList<>();
+            }
+
+            for (ChatMessage msg : messages) {
+                long pId = msg.getProductId();
+                if (!conversationMap.containsKey(pId)) {
+                    long otherUserId = (msg.getSenderId() == currentUserId) ? msg.getReceiverId() : msg.getSenderId();
+
+                    Student otherStudent = studentDao.getStudentById(otherUserId);
+                    String otherName = otherStudent != null ? otherStudent.getName() : "Campus Peer";
+
+                    Product product = productDao.getProductById(pId);
+                    String pName = product != null ? product.getName() : "Campus Equipment";
+
+                    boolean isFromMe = (msg.getSenderId() == currentUserId);
+                    int unread = (!isFromMe && !"SEEN".equals(msg.getStatus())) ? 1 : 0;
+
+                    ChatConversation conv = new ChatConversation(
+                            pId,
+                            pName,
+                            otherUserId,
+                            otherName,
+                            msg.getText(),
+                            msg.getTimestamp(),
+                            unread,
+                            isFromMe,
+                            msg.isLike()
+                    );
+                    conversationMap.put(pId, conv);
                 }
             }
-        }, 2200);
+            return new ArrayList<>(conversationMap.values());
+        });
     }
 
-    private void setTyping(long productId, boolean isTyping) {
-        MutableLiveData<Boolean> typing = typingLive.get(productId);
-        if (typing != null) {
-            typing.postValue(isTyping);
+    /**
+     * Returns total unread messages count for badge indicators.
+     */
+    public LiveData<Integer> getUnreadCountLive(long currentUserId) {
+        return chatMessageDao.getUnreadCountLive(currentUserId);
+    }
+
+    private String generateOwnerReply(String userMessage, boolean isLike, String productName,
+                                      boolean isBengali, String attachmentType) {
+        if ("IMAGE".equalsIgnoreCase(attachmentType)) {
+            return isBengali
+                    ? "ছবিটি পেয়েছি, ধন্যবাদ! জিনিসটির কন্ডিশন একদম পরিষ্কার। আপনি কখন পিকআপ করতে চান?"
+                    : "Received the photo, thanks! Everything looks in great shape. When would you like to pick it up?";
         }
-    }
-
-    private void postUpdate(long productId) {
-        MutableLiveData<List<ChatMessage>> liveData = conversationsLive.get(productId);
-        List<ChatMessage> list = conversationsData.get(productId);
-        if (liveData != null && list != null) {
-            liveData.postValue(new ArrayList<>(list));
+        if ("AUDIO".equalsIgnoreCase(attachmentType)) {
+            return isBengali
+                    ? "ভয়েস মেসেজটি শুনেছি। কোনো সমস্যা নেই, আপনি আসার আগে কল অথবা মেসেজ দিলেই দেখা করব।"
+                    : "Heard your voice note! No problem at all, just text or call me before meeting.";
         }
-    }
-
-    private String generateOwnerReply(String userMessage, boolean isLike, String productName, boolean isBengali) {
         if (isLike) {
             return isBengali
                     ? "👍 দারুণ! আপনার লাগলে অ্যাপ থেকে 'Request to Borrow' চাপলেই আমি হ্যান্ডওভার নিশ্চিত করব।"

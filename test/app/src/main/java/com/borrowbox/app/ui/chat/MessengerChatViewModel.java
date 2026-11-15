@@ -26,7 +26,7 @@ public class MessengerChatViewModel extends AndroidViewModel {
         RepositoryProvider provider = RepositoryProvider.getInstance(application);
         this.productRepository = provider.getProductRepository();
         this.userRepository = provider.getUserRepository();
-        this.chatRepository = ChatMessageRepository.getInstance();
+        this.chatRepository = provider.getChatMessageRepository();
         this.sessionManager = new SessionManager(application);
     }
 
@@ -58,5 +58,12 @@ public class MessengerChatViewModel extends AndroidViewModel {
     public void sendMessage(long productId, long ownerId, String text, boolean isLike, String productName) {
         long myId = sessionManager.getLoggedInUserId();
         chatRepository.sendMessage(productId, myId, ownerId, text, isLike, productName, isBengali());
+    }
+
+    public void sendAttachment(long productId, long otherUserId, String text,
+                               String productName, String attachmentType, String attachmentUri) {
+        long myId = sessionManager.getLoggedInUserId();
+        chatRepository.sendMessage(productId, myId, otherUserId, text, false, productName,
+                isBengali(), attachmentType, attachmentUri);
     }
 }

@@ -17,6 +17,7 @@ public final class RepositoryProvider {
     private final RentalRepository rentalRepository;
     private final RatingRepository ratingRepository;
     private final PaymentRepository paymentRepository;
+    private final ChatMessageRepository chatMessageRepository;
 
     private RepositoryProvider(@NonNull Context context) {
         AppDatabase db = AppDatabase.getInstance(context);
@@ -27,6 +28,12 @@ public final class RepositoryProvider {
         this.rentalRepository = new LocalRentalRepository(db.rentalDao(), executors);
         this.ratingRepository = new LocalRatingRepository(db.ratingDao(), executors);
         this.paymentRepository = new LocalPaymentRepository(db.paymentDao(), executors);
+        this.chatMessageRepository = new ChatMessageRepository(
+                db.chatMessageDao(),
+                db.studentDao(),
+                db.productDao(),
+                executors
+        );
     }
 
     public static RepositoryProvider getInstance(@NonNull Context context) {
@@ -45,4 +52,5 @@ public final class RepositoryProvider {
     public RentalRepository getRentalRepository() { return rentalRepository; }
     public RatingRepository getRatingRepository() { return ratingRepository; }
     public PaymentRepository getPaymentRepository() { return paymentRepository; }
+    public ChatMessageRepository getChatMessageRepository() { return chatMessageRepository; }
 }
