@@ -49,16 +49,13 @@ public abstract class AppDatabase extends RoomDatabase {
                         @Override
                         public void onCreate(@NonNull SupportSQLiteDatabase db) {
                             super.onCreate(db);
-                            AppExecutors.getInstance().diskIO().execute(() -> {
-                                AppDatabase database = getInstance(context);
-                                for (Student s : SeedData.getInitialStudents()) {
-                                    database.studentDao().insert(s);
-                                }
-                                database.productDao().insertAll(SeedData.getInitialProducts());
-                                database.rentalDao().insertAll(SeedData.getInitialRentals());
-                                database.chatMessageDao().insertAll(SeedData.getInitialChatMessages());
-                                database.disputeDao().insertAll(SeedData.getInitialDisputes());
-                            });
+                            seedDatabase(context);
+                        }
+
+                        @Override
+                        public void onDestructiveMigration(@NonNull SupportSQLiteDatabase db) {
+                            super.onDestructiveMigration(db);
+                            seedDatabase(context);
                         }
                     })
                     .build();
@@ -66,5 +63,26 @@ public abstract class AppDatabase extends RoomDatabase {
             }
         }
         return instance;
+    }
+
+    public static void seedDatabase(final Context context) {
+        AppExecutors.getInstance().diskIO().execute(() -> {
+            AppDatabase database = getInstance(context);
+            for (Student s : SeedData.getInitialStudents()) {
+                if (database.studentDao().getStudentByEmail(s.getEmail()) == null) {
+                    database.studentDao().insert(s);
+                }
+            }
+            if (database.productDao().getProductCount() == 0) {
+                database.productDao().insertAll(SeedData.getInitialProducts());
+                database.rentalDao().insertAll(SeedData.getInitialRentals());
+                database.chatMessageDao().insertAll(SeedData.getInitialChatMessages());
+                database.disputeDao().insertAll(SeedData.getInitialDisputes());
+            }
+        });
+    }
+
+    public static void ensureSeeded(final Context context) {
+        seedDatabase(context);
     }
 }
