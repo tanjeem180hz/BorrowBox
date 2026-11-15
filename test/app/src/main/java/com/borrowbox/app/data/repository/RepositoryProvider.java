@@ -12,6 +12,7 @@ public final class RepositoryProvider {
 
     private static volatile RepositoryProvider instance;
 
+    private final AppDatabase database;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
     private final RentalRepository rentalRepository;
@@ -20,18 +21,18 @@ public final class RepositoryProvider {
     private final ChatMessageRepository chatMessageRepository;
 
     private RepositoryProvider(@NonNull Context context) {
-        AppDatabase db = AppDatabase.getInstance(context);
+        this.database = AppDatabase.getInstance(context);
         AppExecutors executors = AppExecutors.getInstance();
 
-        this.userRepository = new LocalUserRepository(db.studentDao(), executors);
-        this.productRepository = new LocalProductRepository(db.productDao(), executors);
-        this.rentalRepository = new LocalRentalRepository(db.rentalDao(), executors);
-        this.ratingRepository = new LocalRatingRepository(db.ratingDao(), executors);
-        this.paymentRepository = new LocalPaymentRepository(db.paymentDao(), executors);
+        this.userRepository = new LocalUserRepository(database.studentDao(), executors);
+        this.productRepository = new LocalProductRepository(database.productDao(), executors);
+        this.rentalRepository = new LocalRentalRepository(database.rentalDao(), executors);
+        this.ratingRepository = new LocalRatingRepository(database.ratingDao(), executors);
+        this.paymentRepository = new LocalPaymentRepository(database.paymentDao(), executors);
         this.chatMessageRepository = new ChatMessageRepository(
-                db.chatMessageDao(),
-                db.studentDao(),
-                db.productDao(),
+                database.chatMessageDao(),
+                database.studentDao(),
+                database.productDao(),
                 executors
         );
     }
@@ -47,6 +48,7 @@ public final class RepositoryProvider {
         return instance;
     }
 
+    public AppDatabase getDatabase() { return database; }
     public UserRepository getUserRepository() { return userRepository; }
     public ProductRepository getProductRepository() { return productRepository; }
     public RentalRepository getRentalRepository() { return rentalRepository; }

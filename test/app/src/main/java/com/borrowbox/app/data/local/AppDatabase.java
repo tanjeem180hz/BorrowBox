@@ -8,6 +8,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.borrowbox.app.model.ChatMessage;
+import com.borrowbox.app.model.Dispute;
 import com.borrowbox.app.model.Payment;
 import com.borrowbox.app.model.Product;
 import com.borrowbox.app.model.Rating;
@@ -16,8 +17,8 @@ import com.borrowbox.app.model.Student;
 import com.borrowbox.app.util.AppExecutors;
 
 @Database(
-        entities = {Student.class, Product.class, Rental.class, Rating.class, Payment.class, ChatMessage.class},
-        version = 2,
+        entities = {Student.class, Product.class, Rental.class, Rating.class, Payment.class, ChatMessage.class, Dispute.class},
+        version = 3,
         exportSchema = false
 )
 @TypeConverters({Converters.class})
@@ -32,6 +33,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract RatingDao ratingDao();
     public abstract PaymentDao paymentDao();
     public abstract ChatMessageDao chatMessageDao();
+    public abstract DisputeDao disputeDao();
 
     public static AppDatabase getInstance(final Context context) {
         if (instance == null) {
@@ -55,6 +57,7 @@ public abstract class AppDatabase extends RoomDatabase {
                                 database.productDao().insertAll(SeedData.getInitialProducts());
                                 database.rentalDao().insertAll(SeedData.getInitialRentals());
                                 database.chatMessageDao().insertAll(SeedData.getInitialChatMessages());
+                                database.disputeDao().insertAll(SeedData.getInitialDisputes());
                             });
                         }
                     })
