@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import com.borrowbox.app.data.local.AppDatabase;
@@ -199,44 +200,45 @@ public class ChatMessageRepository {
      * Returns a LiveData list of all active conversations for the current student's Messenger Inbox.
      */
     public LiveData<List<ChatConversation>> getInboxConversationsLive(long currentUserId) {
-        LiveData<List<ChatMessage>> allUserMessagesLive = chatMessageDao.getAllMessagesForUserLive(currentUserId);
+        MediatorLiveData<List<ChatConversation>> mediator = new MediatorLiveData<>();
+        LiveData<List<ChatMessage>> source = chatMessageDao.getAllMessagesForUserLive(currentUserId);
 
-        return Transformations.map(allUserMessagesLive, messages -> {
+        mediator.addSource(source, messages -> executors.diskIO().execute(() -> {
             Map<Long, ChatConversation> conversationMap = new LinkedHashMap<>();
-            if (messages == null || messages.isEmpty()) {
-                return new ArrayList<>();
-            }
+            if (messages != null && !messages.isEmpty()) {
+                for (ChatMessage msg : messages) {
+                    long pId = msg.getProductId();
+                    if (!conversationMap.containsKey(pId)) {
+                        long otherUserId = (msg.getSenderId() == currentUserId) ? msg.getReceiverId() : msg.getSenderId();
 
-            for (ChatMessage msg : messages) {
-                long pId = msg.getProductId();
-                if (!conversationMap.containsKey(pId)) {
-                    long otherUserId = (msg.getSenderId() == currentUserId) ? msg.getReceiverId() : msg.getSenderId();
+                        Student otherStudent = studentDao.getStudentById(otherUserId);
+                        String otherName = otherStudent != null ? otherStudent.getName() : "Campus Peer";
 
-                    Student otherStudent = studentDao.getStudentById(otherUserId);
-                    String otherName = otherStudent != null ? otherStudent.getName() : "Campus Peer";
+                        Product product = productDao.getProductById(pId);
+                        String pName = product != null ? product.getName() : "Campus Equipment";
 
-                    Product product = productDao.getProductById(pId);
-                    String pName = product != null ? product.getName() : "Campus Equipment";
+                        boolean isFromMe = (msg.getSenderId() == currentUserId);
+                        int unread = (!isFromMe && !"SEEN".equals(msg.getStatus())) ? 1 : 0;
 
-                    boolean isFromMe = (msg.getSenderId() == currentUserId);
-                    int unread = (!isFromMe && !"SEEN".equals(msg.getStatus())) ? 1 : 0;
-
-                    ChatConversation conv = new ChatConversation(
-                            pId,
-                            pName,
-                            otherUserId,
-                            otherName,
-                            msg.getText(),
-                            msg.getTimestamp(),
-                            unread,
-                            isFromMe,
-                            msg.isLike()
-                    );
-                    conversationMap.put(pId, conv);
+                        ChatConversation conv = new ChatConversation(
+                                pId,
+                                pName,
+                                otherUserId,
+                                otherName,
+                                msg.getText(),
+                                msg.getTimestamp(),
+                                unread,
+                                isFromMe,
+                                msg.isLike()
+                        );
+                        conversationMap.put(pId, conv);
+                    }
                 }
             }
-            return new ArrayList<>(conversationMap.values());
-        });
+            mediator.postValue(new ArrayList<>(conversationMap.values()));
+        }));
+
+        return mediator;
     }
 
     /**
