@@ -17,16 +17,17 @@ import java.util.Locale;
 
 public class ChatMessageAdapter extends ListAdapter<ChatMessage, ChatMessageAdapter.ChatViewHolder> {
 
-    private String ownerAvatarLetter = "S";
     private final SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a", Locale.getDefault());
+    private String ownerAvatarLetter = "S";
 
     public ChatMessageAdapter() {
         super(DIFF_CALLBACK);
     }
 
     public void setOwnerAvatarLetter(String letter) {
-        if (letter != null && !letter.isEmpty()) {
-            this.ownerAvatarLetter = letter.substring(0, 1).toUpperCase(Locale.ROOT);
+        if (letter != null && !letter.trim().isEmpty()) {
+            this.ownerAvatarLetter = letter.trim().substring(0, 1).toUpperCase(Locale.ROOT);
+            notifyDataSetChanged();
         }
     }
 
@@ -41,6 +42,7 @@ public class ChatMessageAdapter extends ListAdapter<ChatMessage, ChatMessageAdap
             return oldItem.getText().equals(newItem.getText())
                     && oldItem.getStatus().equals(newItem.getStatus())
                     && oldItem.isLike() == newItem.isLike()
+                    && oldItem.getAttachmentType().equals(newItem.getAttachmentType())
                     && oldItem.getTimestamp() == newItem.getTimestamp();
         }
     };
@@ -69,6 +71,7 @@ public class ChatMessageAdapter extends ListAdapter<ChatMessage, ChatMessageAdap
         public void bind(ChatMessage message) {
             Context context = itemView.getContext();
             String timeStr = timeFormat.format(new Date(message.getTimestamp()));
+            String attachType = message.getAttachmentType();
 
             if (message.isFromMe()) {
                 // Sent by current student (Right aligned, Messenger Blue)
@@ -78,9 +81,23 @@ public class ChatMessageAdapter extends ListAdapter<ChatMessage, ChatMessageAdap
                 if (message.isLike()) {
                     binding.imgSentLike.setVisibility(View.VISIBLE);
                     binding.tvSentText.setVisibility(View.GONE);
+                    binding.cardSentPhoto.setVisibility(View.GONE);
+                    binding.cardSentAudio.setVisibility(View.GONE);
+                } else if ("IMAGE".equalsIgnoreCase(attachType)) {
+                    binding.imgSentLike.setVisibility(View.GONE);
+                    binding.tvSentText.setVisibility(View.GONE);
+                    binding.cardSentPhoto.setVisibility(View.VISIBLE);
+                    binding.cardSentAudio.setVisibility(View.GONE);
+                } else if ("AUDIO".equalsIgnoreCase(attachType)) {
+                    binding.imgSentLike.setVisibility(View.GONE);
+                    binding.tvSentText.setVisibility(View.GONE);
+                    binding.cardSentPhoto.setVisibility(View.GONE);
+                    binding.cardSentAudio.setVisibility(View.VISIBLE);
                 } else {
                     binding.imgSentLike.setVisibility(View.GONE);
                     binding.tvSentText.setVisibility(View.VISIBLE);
+                    binding.cardSentPhoto.setVisibility(View.GONE);
+                    binding.cardSentAudio.setVisibility(View.GONE);
                     binding.tvSentText.setText(message.getText());
                 }
 
@@ -108,9 +125,23 @@ public class ChatMessageAdapter extends ListAdapter<ChatMessage, ChatMessageAdap
                 if (message.isLike()) {
                     binding.imgReceivedLike.setVisibility(View.VISIBLE);
                     binding.tvReceivedText.setVisibility(View.GONE);
+                    binding.cardReceivedPhoto.setVisibility(View.GONE);
+                    binding.cardReceivedAudio.setVisibility(View.GONE);
+                } else if ("IMAGE".equalsIgnoreCase(attachType)) {
+                    binding.imgReceivedLike.setVisibility(View.GONE);
+                    binding.tvReceivedText.setVisibility(View.GONE);
+                    binding.cardReceivedPhoto.setVisibility(View.VISIBLE);
+                    binding.cardReceivedAudio.setVisibility(View.GONE);
+                } else if ("AUDIO".equalsIgnoreCase(attachType)) {
+                    binding.imgReceivedLike.setVisibility(View.GONE);
+                    binding.tvReceivedText.setVisibility(View.GONE);
+                    binding.cardReceivedPhoto.setVisibility(View.GONE);
+                    binding.cardReceivedAudio.setVisibility(View.VISIBLE);
                 } else {
                     binding.imgReceivedLike.setVisibility(View.GONE);
                     binding.tvReceivedText.setVisibility(View.VISIBLE);
+                    binding.cardReceivedPhoto.setVisibility(View.GONE);
+                    binding.cardReceivedAudio.setVisibility(View.GONE);
                     binding.tvReceivedText.setText(message.getText());
                 }
 

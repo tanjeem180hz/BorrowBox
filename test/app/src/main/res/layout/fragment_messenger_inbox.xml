@@ -72,7 +72,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="8dp"
-                app:cardBackgroundColor="@color/surface_elevated"
+                app:cardBackgroundColor="@color/surface_variant"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
