@@ -76,6 +76,11 @@ public class SettingsFragment extends Fragment {
                 sessionManager.setLanguage(targetLang);
             }
         });
+
+        // Admin Console Navigation (SRS Module 5)
+        binding.rowAdminConsole.setOnClickListener(v -> {
+            androidx.navigation.Navigation.findNavController(v).navigate(com.borrowbox.app.R.id.adminDashboardFragment);
+        });
     }
 
     @Override

@@ -104,4 +104,9 @@
         android:name="com.borrowbox.app.ui.chat.MessengerInboxFragment"
         android:label="Chats" />
 
+    <fragment
+        android:id="@+id/adminDashboardFragment"
+        android:name="com.borrowbox.app.ui.admin.AdminDashboardFragment"
+        android:label="Admin Console" />
+
 </navigation>
