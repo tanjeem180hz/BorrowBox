@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Automatic edge-to-edge window setup with display cutout (notch) support
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyEdgeToEdge(this, binding.mainLayout);
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyBottomCutout(binding.bottomNavigation);
+
         sessionManager = new SessionManager(this);
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
@@ -86,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        com.borrowbox.app.util.EdgeToEdgeHelper.updateSystemBarIcons(this);
         updateBottomNavAvatar();
     }
 

@@ -74,6 +74,10 @@ public class MapFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Automatic top display cutout / notch and bottom navigation cutout adaptation
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutoutMargin(binding.cardTopSearch);
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyBottomCutoutMargin(binding.cardBottomControls);
+
         if (getArguments() != null) {
             rentalId = getArguments().getLong("rental_id", 1L);
         }

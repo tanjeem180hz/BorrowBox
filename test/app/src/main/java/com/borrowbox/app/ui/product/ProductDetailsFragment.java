@@ -36,6 +36,10 @@ public class ProductDetailsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(ProductDetailsViewModel.class);
 
+        // Automatic display cutout (notch/punch-hole) and bottom navigation cutout adaptation
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutout(binding.getRoot());
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyBottomCutout(binding.layoutBottomActions);
+
         // Functional Back Button
         binding.btnBack.setOnClickListener(v -> Navigation.findNavController(v).navigateUp());
 
@@ -71,6 +75,10 @@ public class ProductDetailsFragment extends Fragment {
                         binding.tvOwnerAvatar.setText(owner.getName().substring(0, 1));
                         binding.tvOwnerRating.setText("⭐ " + owner.getRatingAverage() + " • " + owner.getDepartment());
                         binding.tvOwnerTrust.setText("Trust " + owner.getTrustScore() + "%");
+
+                        String firstName = owner.getName().split(" ")[0];
+                        String defaultPrompt = getString(R.string.messenger_default_inquiry, firstName);
+                        binding.etMessengerPrompt.setText(defaultPrompt);
                     }
                 });
 
@@ -79,16 +87,37 @@ public class ProductDetailsFragment extends Fragment {
                     binding.btnRequestRental.setEnabled(false);
                     binding.tvRequestStatusMsg.setText(R.string.product_request_owner_warning);
                     binding.tvRequestStatusMsg.setVisibility(View.VISIBLE);
+                    binding.cardMessenger.setVisibility(View.GONE);
+                    binding.btnMessageOwner.setVisibility(View.GONE);
                 } else if (!product.isAvailable()) {
                     binding.btnRequestRental.setEnabled(false);
                     binding.tvRequestStatusMsg.setText(R.string.product_request_unavailable);
                     binding.tvRequestStatusMsg.setVisibility(View.VISIBLE);
+                    binding.cardMessenger.setVisibility(View.VISIBLE);
+                    binding.btnMessageOwner.setVisibility(View.VISIBLE);
                 } else {
                     binding.btnRequestRental.setEnabled(true);
                     binding.tvRequestStatusMsg.setVisibility(View.GONE);
+                    binding.cardMessenger.setVisibility(View.VISIBLE);
+                    binding.btnMessageOwner.setVisibility(View.VISIBLE);
                 }
             }
         });
+
+        // Wire up Facebook Messenger Actions
+        binding.btnOpenChat.setOnClickListener(v -> openMessengerChat(null));
+        binding.btnMessageOwner.setOnClickListener(v -> openMessengerChat(null));
+        binding.btnMessengerSendPrompt.setOnClickListener(v -> {
+            String prompt = binding.etMessengerPrompt.getText() != null
+                    ? binding.etMessengerPrompt.getText().toString().trim() : "";
+            openMessengerChat(prompt);
+        });
+        binding.detailChipAvailable.setOnClickListener(v ->
+                openMessengerChat(binding.detailChipAvailable.getText().toString()));
+        binding.detailChipMeet.setOnClickListener(v ->
+                openMessengerChat(binding.detailChipMeet.getText().toString()));
+        binding.detailChipPickup.setOnClickListener(v ->
+                openMessengerChat(binding.detailChipPickup.getText().toString()));
 
         viewModel.getCalculatedCost().observe(getViewLifecycleOwner(), cost -> {
             if (cost != null) {
@@ -121,6 +150,17 @@ public class ProductDetailsFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.rentalConfirmedFragment, args);
             }
         });
+    }
+
+    private void openMessengerChat(String initialMsg) {
+        if (currentProduct == null || getView() == null) return;
+        Bundle args = new Bundle();
+        args.putLong("product_id", currentProduct.getId());
+        args.putLong("owner_id", currentProduct.getOwnerId());
+        if (initialMsg != null && !initialMsg.trim().isEmpty()) {
+            args.putString("initial_message", initialMsg.trim());
+        }
+        Navigation.findNavController(requireView()).navigate(R.id.messengerChatFragment, args);
     }
 
     @Override

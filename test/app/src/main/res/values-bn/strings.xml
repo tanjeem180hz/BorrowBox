@@ -212,4 +212,29 @@
     <string name="notif_reminder_15m_msg">সামগ্রী ফেরতের জন্য প্রস্তুত হোন।</string>
     <string name="notif_reminder_0m_title">রেন্টালের নির্ধারিত সময় সমাপ্ত</string>
     <string name="notif_reminder_0m_msg">আপনার রেন্টালের নির্ধারিত সময় পার হয়ে গিয়েছে।</string>
+
+    <!-- Facebook Messenger Chat Tokens (Bengali) -->
+    <string name="messenger_title">মালিকের সাথে চ্যাট</string>
+    <string name="messenger_active_now">সক্রিয় আছেন</string>
+    <string name="messenger_send_seller_message">মালিককে মেসেজ পাঠান</string>
+    <string name="messenger_default_inquiry">আসসালামু আলাইকুম %s, এটি কি ধার নেওয়া যাবে?</string>
+    <string name="messenger_quick_chip_1">এটি কি এখনও ধার নেওয়া যাবে?</string>
+    <string name="messenger_quick_chip_2">লাইব্রেরির সামনে দেখা করা যাবে?</string>
+    <string name="messenger_quick_chip_3">এখনই কি ধার নেওয়া সম্ভব?</string>
+    <string name="messenger_quick_chip_4">আপনার লোকেশন কোথায়?</string>
+    <string name="messenger_type_hint">মেসেজ লিখুন…</string>
+    <string name="messenger_btn_send">পাঠান</string>
+    <string name="messenger_btn_message">মেসেজ</string>
+    <string name="messenger_marketplace_listing">BorrowBox মার্কেটপ্লেস লিস্টিং • সক্রিয়</string>
+    <string name="messenger_view_details">বিস্তারিত দেখুন</string>
+    <string name="messenger_seen">দেখা হয়েছে</string>
+    <string name="messenger_delivered">পৌঁছেছে</string>
+    <string name="messenger_sent">পাঠানো হয়েছে</string>
+    <string name="messenger_calling">%s-কে কল করা হচ্ছে…</string>
+    <string name="messenger_calling_subtitle">মেসেঞ্জার অডিও কল</string>
+    <string name="messenger_video_calling_subtitle">মেসেঞ্জার ভিডিও কল</string>
+    <string name="messenger_ringing">রিং হচ্ছে…</string>
+    <string name="messenger_end_call">কল সমাপ্ত</string>
+    <string name="messenger_typing">%s টাইপ করছেন…</string>
+    <string name="messenger_connected_hint">BorrowBox মেসেঞ্জারে আপনারা সংযুক্ত</string>
 </resources>

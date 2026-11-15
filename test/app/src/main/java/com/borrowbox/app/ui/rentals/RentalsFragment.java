@@ -37,6 +37,9 @@ public class RentalsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(RentalsViewModel.class);
 
+        // Automatic top display cutout / notch adaptation
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutout(binding.getRoot());
+
         binding.recyclerRentals.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         setupAdapter();

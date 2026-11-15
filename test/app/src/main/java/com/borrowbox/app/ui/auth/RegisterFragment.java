@@ -30,6 +30,10 @@ public class RegisterFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(AuthViewModel.class);
 
+        // Automatic display cutout (notch/punch-hole) and keyboard/bottom cutout adaptation
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutout(binding.getRoot());
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyImeAndBottomCutout(binding.btnRegister);
+
         binding.btnRegister.setOnClickListener(v -> {
             String name = binding.etName.getText() != null ? binding.etName.getText().toString().trim() : "";
             String email = binding.etEmail.getText() != null ? binding.etEmail.getText().toString().trim() : "";

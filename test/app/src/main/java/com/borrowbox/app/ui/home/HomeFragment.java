@@ -34,11 +34,22 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
-        adapter = new ProductAdapter(product -> {
-            Bundle args = new Bundle();
-            args.putLong("product_id", product.getId());
-            Navigation.findNavController(view).navigate(R.id.productDetailsFragment, args);
-        });
+        // Automatic top display cutout / notch and status bar adaptation
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutout(binding.layoutTopHeader);
+
+        adapter = new ProductAdapter(
+                product -> {
+                    Bundle args = new Bundle();
+                    args.putLong("product_id", product.getId());
+                    Navigation.findNavController(view).navigate(R.id.productDetailsFragment, args);
+                },
+                product -> {
+                    Bundle args = new Bundle();
+                    args.putLong("product_id", product.getId());
+                    args.putLong("owner_id", product.getOwnerId());
+                    Navigation.findNavController(view).navigate(R.id.messengerChatFragment, args);
+                }
+        );
 
         binding.recyclerProducts.setLayoutManager(new androidx.recyclerview.widget.GridLayoutManager(requireContext(), 2));
         binding.recyclerProducts.setAdapter(adapter);

@@ -1,0 +1,14 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Messenger Chat Bubble -->
+    <path
+        android:fillColor="@color/messenger_blue"
+        android:pathData="M12,2C6.48,2 2,6.15 2,11.26c0,2.91 1.46,5.51 3.73,7.22v3.52l3.39,-1.86c0.91,0.25 1.88,0.39 2.88,0.39 5.52,0 10,-4.15 10,-9.26C22,6.15 17.52,2 12,2z" />
+    <!-- Messenger Lightning Bolt -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M13.03,14.44l-2.62,-2.79 -5.11,2.79 5.62,-5.96 2.68,2.79 5.04,-2.79 -5.61,5.96z" />
+</vector>

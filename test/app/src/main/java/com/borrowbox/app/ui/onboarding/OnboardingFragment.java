@@ -41,6 +41,9 @@ public class OnboardingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutout(binding.getRoot());
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyBottomCutout(binding.getRoot());
+
         updatePage();
 
         binding.btnSkip.setOnClickListener(v -> finishOnboarding());

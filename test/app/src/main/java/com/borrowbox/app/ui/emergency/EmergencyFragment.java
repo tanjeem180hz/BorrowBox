@@ -38,6 +38,9 @@ public class EmergencyFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Automatic display cutout (notch/punch-hole) adaptation
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutout(binding.getRoot());
+
         binding.btnBack.setOnClickListener(v -> Navigation.findNavController(v).navigateUp());
 
         ProductRepository productRepository = RepositoryProvider.getInstance(requireContext()).getProductRepository();

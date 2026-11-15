@@ -32,6 +32,9 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
 
+        // Automatic top display cutout / notch adaptation
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutout(binding.getRoot());
+
         viewModel.getCurrentStudentLive().observe(getViewLifecycleOwner(), student -> {
             if (student != null) {
                 String name = student.getName() != null && !student.getName().trim().isEmpty()

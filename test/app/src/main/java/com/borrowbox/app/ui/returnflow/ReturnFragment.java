@@ -41,6 +41,10 @@ public class ReturnFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Automatic display cutout (notch) and bottom navigation cutout adaptation
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutout(binding.getRoot());
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyBottomCutout(binding.btnConfirmReturn);
+
         if (getArguments() != null) {
             rentalId = getArguments().getLong("rental_id", 1L);
         }
