@@ -87,6 +87,23 @@ public class HomeFragment extends Fragment {
             Navigation.findNavController(view).navigate(R.id.nav_profile);
         });
 
+        // Setup top Messenger Inbox Button with Live Unread Badge
+        binding.btnMessengerInbox.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.messengerInboxFragment);
+        });
+
+        long currentUserId = sessionManager.getLoggedInUserId();
+        com.borrowbox.app.data.repository.ChatMessageRepository chatRepo =
+                com.borrowbox.app.data.repository.ChatMessageRepository.getInstance(requireContext());
+        chatRepo.getUnreadCountLive(currentUserId).observe(getViewLifecycleOwner(), unreadCount -> {
+            if (unreadCount != null && unreadCount > 0) {
+                binding.tvInboxBadge.setVisibility(View.VISIBLE);
+                binding.tvInboxBadge.setText(unreadCount > 9 ? "9+" : String.valueOf(unreadCount));
+            } else {
+                binding.tvInboxBadge.setVisibility(View.GONE);
+            }
+        });
+
         viewModel.getFilteredProducts().observe(getViewLifecycleOwner(), products -> {
             adapter.submitList(products);
             if (products == null || products.isEmpty()) {

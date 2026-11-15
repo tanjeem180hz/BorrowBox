@@ -128,4 +128,61 @@ public class DomainLogicTest {
         assertTrue(likeMsg.isLike());
         assertEquals("👍", likeMsg.getText());
     }
+
+    @Test
+    public void testChatConversationModelAndUnreadCalculations() {
+        long now = System.currentTimeMillis();
+        com.borrowbox.app.model.ChatConversation conv = new com.borrowbox.app.model.ChatConversation(
+                1L, "Laptop Charger (Type-C 65W)", 2L,
+                "Md. Sabbir Hossain Shamim", "Yes, meet me at library",
+                now, 2, false, false
+        );
+
+        assertEquals(1L, conv.getProductId());
+        assertEquals("Laptop Charger (Type-C 65W)", conv.getProductName());
+        assertEquals(2L, conv.getOtherUserId());
+        assertEquals("Md. Sabbir Hossain Shamim", conv.getOtherUserName());
+        assertEquals("Yes, meet me at library", conv.getLastMessage());
+        assertEquals(2, conv.getUnreadCount());
+        assertFalse(conv.isLastMessageFromMe());
+        assertFalse(conv.isLike());
+    }
+
+    @Test
+    public void testChatAttachmentTypes() {
+        com.borrowbox.app.model.ChatMessage imgMsg = new com.borrowbox.app.model.ChatMessage(
+                3L, 4L, 1L, 4L, "📷 Photo attached from Camera",
+                System.currentTimeMillis(), true, "DELIVERED", false,
+                "IMAGE", "content://media/photos/101"
+        );
+        assertEquals("IMAGE", imgMsg.getAttachmentType());
+        assertEquals("content://media/photos/101", imgMsg.getAttachmentUri());
+        assertFalse(imgMsg.isLike());
+
+        com.borrowbox.app.model.ChatMessage audioMsg = new com.borrowbox.app.model.ChatMessage(
+                4L, 4L, 1L, 4L, "🎙️ Voice message (0:08)",
+                System.currentTimeMillis(), true, "SENT", false,
+                "AUDIO", ""
+        );
+        assertEquals("AUDIO", audioMsg.getAttachmentType());
+    }
+
+    @Test
+    public void testMultiUserConversationDirectionality() {
+        long userTanjeem = 1L;
+        long userTasnim = 4L;
+
+        com.borrowbox.app.model.ChatMessage msgFromTanjeem = new com.borrowbox.app.model.ChatMessage(
+                5L, 4L, userTanjeem, userTasnim, "Can I borrow your DSLR camera?",
+                System.currentTimeMillis(), false, "SENT", false
+        );
+
+        // When Tanjeem is logged in:
+        msgFromTanjeem.setFromMe(msgFromTanjeem.getSenderId() == userTanjeem);
+        assertTrue(msgFromTanjeem.isFromMe());
+
+        // When Tasnim is logged in:
+        msgFromTanjeem.setFromMe(msgFromTanjeem.getSenderId() == userTasnim);
+        assertFalse(msgFromTanjeem.isFromMe());
+    }
 }

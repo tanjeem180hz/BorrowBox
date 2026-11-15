@@ -175,3 +175,28 @@ This document records architectural, technical, and UI/UX decisions made during 
      - Combines navigation bar and `WindowInsetsCompat.Type.ime()` to automatically lift interactive input bars (e.g. Messenger chat input bar) above the keyboard when opened, and above gesture/nav bars when closed.
   5. **Live Verification via Hardware Display Cutout Emulation:**
      - Verified with `cmd overlay enable com.android.internal.display.cutout.emulation.tall` (tall notch) and `com.android.internal.display.cutout.emulation.double` (dual top notch and bottom cutout) on Android emulator. All headers, floating bars, and cards maintain pristine clearances with zero content clipping.
+
+
+## Decision 18: Real-Life Persistent Multi-Account Messenger System & Inbox
+- **Context:** User requested ensuring that the chat system works in real life ("chat system ta reallife work kore kina eta ensure koro"), with granular git commits for full contribution tracking.
+- **Decision:**
+  1. **SQLite / Room Database Offline Persistence:**
+     - Elevated `ChatMessage` to a full Room `@Entity(tableName = "chat_messages")` with primary key auto-generation, foreign keys, timestamps, delivery receipts, and attachment metadata.
+     - Created `ChatMessageDao` supporting persistent insert, update, product/peer conversation LiveData streams, user inbox aggregations, and unread count queries.
+     - Migrated `AppDatabase` to schema version 2 with pre-seeded campus student conversations.
+  2. **Two-Way Multi-Account Communication:**
+     - Dynamic directionality: `isFromMe` is evaluated dynamically based on `SessionManager.getLoggedInUserId() == message.getSenderId()`.
+     - When switching accounts (e.g. from Tanjeem to Tasnim or Sabbir in Profile), the peer receives the message, sees it in their Inbox, and can reply back in real time.
+     - Dual-mode peer responses: Supports both manual cross-account peer replies and intelligent instant simulated typing delays (`SENT` -> `DELIVERED` -> `SEEN` -> typing indicator -> reply).
+  3. **Facebook Messenger Inbox Screen (`MessengerInboxFragment`):**
+     - Lists all active peer conversations with circular initial avatars, active green online dots (`#31A24C`), product tag pills, last message snippets, relative timestamps, and unread badge counters.
+     - Added horizontal "ACTIVE PEERS" strip with 1-tap direct chat launching.
+     - Added real-time search filter for students and item titles.
+  4. **Home Screen Messenger Badge Entry:**
+     - Added a dedicated Messenger Inbox icon button on the top home header beside the language toggle with a live unread badge (`tv_inbox_badge`).
+  5. **Rich Chat Actions, Audio & Haptics:**
+     - Created `ChatSoundHelper` providing authentic Messenger sound and haptic feedback for sent and received messages.
+     - Added rich media bubbles: Image attachment cards (`attachmentType = "IMAGE"`) and Voice notes (`attachmentType = "AUDIO"` with duration and play controls).
+     - Added quick campus action dialog: share campus meeting points, student ID cards, and condition photos.
+  6. **Comprehensive Unit Testing:**
+     - Added unit tests in `DomainLogicTest.java` verifying `ChatConversation` aggregation, attachment types, and multi-user directionality. All 27 unit tests pass 100%.

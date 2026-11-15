@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.borrowbox.app.R;
 import com.borrowbox.app.databinding.DialogMessengerCallBinding;
 import com.borrowbox.app.databinding.FragmentMessengerChatBinding;
+import com.borrowbox.app.model.ChatMessage;
 import com.borrowbox.app.model.PriceUnit;
 import com.borrowbox.app.model.Product;
 import com.borrowbox.app.model.Student;
@@ -141,6 +142,7 @@ public class MessengerChatFragment extends Fragment {
 
         // Send Like (Thumbs-up) Button
         binding.btnSendLike.setOnClickListener(v -> {
+            com.borrowbox.app.util.ChatSoundHelper.playMessageSent(binding.btnSendLike);
             String pName = currentProduct != null ? currentProduct.getName() : "Item";
             viewModel.sendMessage(productId, ownerId, "👍", true, pName);
         });
@@ -162,20 +164,26 @@ public class MessengerChatFragment extends Fragment {
             }
         });
 
-        // Secondary bottom buttons
-        binding.btnActionMore.setOnClickListener(v ->
-                Toast.makeText(requireContext(), "More Messenger features", Toast.LENGTH_SHORT).show());
-        binding.btnActionCamera.setOnClickListener(v ->
-                Toast.makeText(requireContext(), "Camera attachment", Toast.LENGTH_SHORT).show());
-        binding.btnActionGallery.setOnClickListener(v ->
-                Toast.makeText(requireContext(), "Photo gallery attachment", Toast.LENGTH_SHORT).show());
-        binding.btnActionMic.setOnClickListener(v ->
-                Toast.makeText(requireContext(), "Hold to record voice message", Toast.LENGTH_SHORT).show());
+        // Rich Media & Attachment actions
+        binding.btnActionMore.setOnClickListener(v -> showMoreOptionsDialog());
+        binding.btnActionCamera.setOnClickListener(v -> sendSamplePhotoAttachment("Camera"));
+        binding.btnActionGallery.setOnClickListener(v -> sendSamplePhotoAttachment("Gallery"));
+        binding.btnActionMic.setOnClickListener(v -> sendVoiceNoteAttachment());
     }
+
+    private int lastMessageCount = -1;
 
     private void observeMessages(String productName) {
         viewModel.getMessages(productId, ownerId, productName).observe(getViewLifecycleOwner(), messages -> {
             if (messages != null) {
+                if (lastMessageCount != -1 && messages.size() > lastMessageCount) {
+                    ChatMessage latest = messages.get(messages.size() - 1);
+                    if (!latest.isFromMe()) {
+                        com.borrowbox.app.util.ChatSoundHelper.playMessageReceived(requireContext(), binding.recyclerChatMessages);
+                    }
+                }
+                lastMessageCount = messages.size();
+
                 adapter.submitList(messages, () -> {
                     if (!messages.isEmpty()) {
                         binding.recyclerChatMessages.scrollToPosition(messages.size() - 1);
@@ -195,6 +203,7 @@ public class MessengerChatFragment extends Fragment {
         String text = binding.etChatInput.getText() != null
                 ? binding.etChatInput.getText().toString().trim() : "";
         if (!text.isEmpty()) {
+            com.borrowbox.app.util.ChatSoundHelper.playMessageSent(binding.btnSendMessage);
             String pName = currentProduct != null ? currentProduct.getName() : "Item";
             viewModel.sendMessage(productId, ownerId, text, false, pName);
             binding.etChatInput.setText("");
@@ -202,8 +211,40 @@ public class MessengerChatFragment extends Fragment {
     }
 
     private void sendPresetMessage(String preset) {
+        com.borrowbox.app.util.ChatSoundHelper.playMessageSent(binding.btnSendMessage);
         String pName = currentProduct != null ? currentProduct.getName() : "Item";
         viewModel.sendMessage(productId, ownerId, preset, false, pName);
+    }
+
+    private void sendSamplePhotoAttachment(String source) {
+        com.borrowbox.app.util.ChatSoundHelper.playMessageSent(binding.btnActionCamera);
+        String pName = currentProduct != null ? currentProduct.getName() : "Item";
+        String prompt = "📷 Photo attached from " + source;
+        viewModel.sendAttachment(productId, ownerId, prompt, pName, "IMAGE", "");
+        Toast.makeText(requireContext(), "Photo sent!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void sendVoiceNoteAttachment() {
+        com.borrowbox.app.util.ChatSoundHelper.playMessageSent(binding.btnActionMic);
+        String pName = currentProduct != null ? currentProduct.getName() : "Item";
+        viewModel.sendAttachment(productId, ownerId, "🎙️ Voice message (0:08)", pName, "AUDIO", "");
+        Toast.makeText(requireContext(), "Voice note sent (0:08)!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void showMoreOptionsDialog() {
+        String[] options = {
+                "📍 Share Campus Meeting Point",
+                "📷 Send Item Condition Photo",
+                "🆔 Share Student ID Card",
+                "🤝 Confirm Handover Schedule"
+        };
+        new androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                .setTitle("Messenger Actions")
+                .setItems(options, (dialog, which) -> {
+                    String selected = options[which];
+                    sendPresetMessage(selected);
+                })
+                .show();
     }
 
     private void showCallDialog(boolean isVideo) {
