@@ -237,4 +237,14 @@
     <string name="messenger_end_call">কল সমাপ্ত</string>
     <string name="messenger_typing">%s টাইপ করছেন…</string>
     <string name="messenger_connected_hint">BorrowBox মেসেঞ্জারে আপনারা সংযুক্ত</string>
+    <string name="messenger_inbox_title">চ্যাট</string>
+    <string name="messenger_search_hint">চ্যাট অথবা সহপাঠী খুঁজুন…</string>
+    <string name="messenger_active_now_header">অনলাইন সহপাঠী</string>
+    <string name="messenger_conversations_header">সাম্প্রতিক চ্যাট তালিকা</string>
+    <string name="messenger_no_conversations">এখনও কোনো চ্যাট নেই</string>
+    <string name="messenger_no_conversations_desc">মার্কেটপ্লেস পোস্টের মেসেঞ্জার বাটনে ট্যাপ করে সহজে সহপাঠীদের সাথে চ্যাট শুরু করুন!</string>
+    <string name="messenger_photo_sent">📷 ছবি পাঠিয়েছেন</string>
+    <string name="messenger_voice_sent">🎙️ ভয়েস বার্তা (০:০৮)</string>
+    <string name="messenger_thumbs_sent">👍 থাম্বস আপ</string>
+    <string name="messenger_you_prefix">আপনি: %s</string>
 </resources>

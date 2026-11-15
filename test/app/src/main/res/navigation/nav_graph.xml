@@ -99,4 +99,9 @@
         android:name="com.borrowbox.app.ui.chat.MessengerChatFragment"
         android:label="Messenger" />
 
+    <fragment
+        android:id="@+id/messengerInboxFragment"
+        android:name="com.borrowbox.app.ui.chat.MessengerInboxFragment"
+        android:label="Chats" />
+
 </navigation>

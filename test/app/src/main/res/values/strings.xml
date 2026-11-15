@@ -237,4 +237,14 @@
     <string name="messenger_end_call">End Call</string>
     <string name="messenger_typing">%s is typing…</string>
     <string name="messenger_connected_hint">You\'re connected on BorrowBox Messenger</string>
+    <string name="messenger_inbox_title">Chats</string>
+    <string name="messenger_search_hint">Search chats or peers…</string>
+    <string name="messenger_active_now_header">ACTIVE PEERS</string>
+    <string name="messenger_conversations_header">RECENT CONVERSATIONS</string>
+    <string name="messenger_no_conversations">No chats yet</string>
+    <string name="messenger_no_conversations_desc">Tap the Messenger icon on any marketplace post to start chatting!</string>
+    <string name="messenger_photo_sent">📷 Sent a photo</string>
+    <string name="messenger_voice_sent">🎙️ Voice message (0:08)</string>
+    <string name="messenger_thumbs_sent">👍 Thumbs up</string>
+    <string name="messenger_you_prefix">You: %s</string>
 </resources>
