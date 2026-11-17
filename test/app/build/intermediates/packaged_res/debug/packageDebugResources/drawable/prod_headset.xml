@@ -1,0 +1,83 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="160dp"
+    android:viewportWidth="200"
+    android:viewportHeight="160">
+    <!-- Background Card Canvas -->
+    <path
+        android:fillColor="#F5F3FF"
+        android:pathData="M0,0h200v160h-200z" />
+    <!-- Ambient glow circle -->
+    <path
+        android:fillColor="#EDE9FE"
+        android:pathData="M100,80m-55,0a55,55 0 1,0 110,0a55,55 0 1,0 -110,0" />
+
+    <!-- Ambient Audio Soundwaves -->
+    <path
+        android:strokeColor="#8B5CF6"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M26,80 A30,30 0 0,1 26,70 M20,85 A45,45 0 0,1 20,65 M174,80 A30,30 0 0,0 174,70 M180,85 A45,45 0 0,0 180,65" />
+
+    <!-- Cushioned Headband Arc Outer -->
+    <path
+        android:strokeColor="#1E1B4B"
+        android:strokeWidth="10"
+        android:strokeLineCap="round"
+        android:pathData="M52,90 C50,40 150,40 148,90" />
+    <!-- Soft Cushion Pad (Inner) -->
+    <path
+        android:strokeColor="#4338CA"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:pathData="M64,74 C75,54 125,54 136,74" />
+
+    <!-- Metallic Extension Sliders -->
+    <path
+        android:strokeColor="#CBD5E1"
+        android:strokeWidth="4"
+        android:pathData="M50,88v12 M150,88v12" />
+
+    <!-- Left Ear Cup Assembly -->
+    <!-- Left Cup Shadow -->
+    <path
+        android:fillColor="#DDD6FE"
+        android:pathData="M38,94h20a10,10 0 0,1 10,10v24a10,10 0 0,1 -10,10h-20a10,10 0 0,1 -10,-10v-24a10,10 0 0,1 10,-10z" />
+    <!-- Left Outer Shell -->
+    <path
+        android:fillColor="#1E1B4B"
+        android:pathData="M40,94h18a8,8 0 0,1 8,8v24a8,8 0 0,1 -8,8h-18a8,8 0 0,1 -8,-8v-24a8,8 0 0,1 8,-8z" />
+    <!-- Left Memory Foam Cushion -->
+    <path
+        android:fillColor="#312E81"
+        android:pathData="M54,96h8a4,4 0 0,1 4,4v20a4,4 0 0,1 -4,4h-8a4,4 0 0,1 -4,-4v-20a4,4 0 0,1 4,-4z" />
+    <!-- Left Metallic Logo Ring -->
+    <path
+        android:strokeColor="#818CF8"
+        android:strokeWidth="2"
+        android:pathData="M45,110m-5,0a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
+
+    <!-- Right Ear Cup Assembly -->
+    <!-- Right Cup Shadow -->
+    <path
+        android:fillColor="#DDD6FE"
+        android:pathData="M142,94h20a10,10 0 0,1 10,10v24a10,10 0 0,1 -10,10h-20a10,10 0 0,1 -10,-10v-24a10,10 0 0,1 10,-10z" />
+    <!-- Right Outer Shell -->
+    <path
+        android:fillColor="#1E1B4B"
+        android:pathData="M142,94h18a8,8 0 0,1 8,8v24a8,8 0 0,1 -8,8h-18a8,8 0 0,1 -8,-8v-24a8,8 0 0,1 8,-8z" />
+    <!-- Right Memory Foam Cushion -->
+    <path
+        android:fillColor="#312E81"
+        android:pathData="M138,96h8a4,4 0 0,1 4,4v20a4,4 0 0,1 -4,4h-8a4,4 0 0,1 -4,-4v-20a4,4 0 0,1 4,-4z" />
+    <!-- Right Metallic Logo Ring -->
+    <path
+        android:strokeColor="#818CF8"
+        android:strokeWidth="2"
+        android:pathData="M155,110m-5,0a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
+
+    <!-- Active Noise Cancelling (ANC) Green Dot -->
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M162,126m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0" />
+</vector>
