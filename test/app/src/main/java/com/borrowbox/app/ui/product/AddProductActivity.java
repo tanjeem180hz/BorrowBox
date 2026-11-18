@@ -21,7 +21,6 @@ import com.borrowbox.app.data.local.SessionManager;
 import com.borrowbox.app.data.repository.ProductRepository;
 import com.borrowbox.app.data.repository.RepositoryProvider;
 import com.borrowbox.app.databinding.ActivityAddProductBinding;
-import com.borrowbox.app.model.PriceUnit;
 import com.borrowbox.app.model.Product;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -35,25 +34,17 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
-/**
- * Activity for Product Catalog & Media Management module (Member 02 Assignment).
- * Implements clean UI form, CameraX direct photo capture, and Firebase Storage integration.
- */
 public class AddProductActivity extends AppCompatActivity {
 
     private static final String TAG = "AddProductActivity";
     private ActivityAddProductBinding binding;
     private ImageCapture imageCapture;
     private File photoFile;
-    private String capturedImagePath = "";
 
     private final ActivityResultLauncher<String> cameraPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
-                if (isGranted) {
-                    startCamera();
-                } else {
-                    Toast.makeText(this, "Camera permission is required to capture product photos", Toast.LENGTH_SHORT).show();
-                }
+                if (isGranted) startCamera();
+                else Toast.makeText(this, "Camera permission required", Toast.LENGTH_SHORT).show();
             });
 
     @Override
@@ -68,7 +59,6 @@ public class AddProductActivity extends AppCompatActivity {
         checkCameraPermissionAndStart();
 
         binding.btnBack.setOnClickListener(v -> finish());
-
         binding.btnCapturePhoto.setOnClickListener(v -> takePhoto());
 
         binding.btnSaveProduct.setOnClickListener(v -> {
@@ -84,8 +74,7 @@ public class AddProductActivity extends AppCompatActivity {
                 return;
             }
 
-            double dailyPrice = 100.0;
-            double deposit = 500.0;
+            double dailyPrice = 100.0, deposit = 500.0;
             try {
                 dailyPrice = Double.parseDouble(dailyPriceStr);
                 deposit = Double.parseDouble(depositStr);
@@ -98,18 +87,15 @@ public class AddProductActivity extends AppCompatActivity {
             binding.btnSaveProduct.setEnabled(false);
 
             if (photoFile != null && photoFile.exists()) {
-                uploadPhotoAndSaveProduct(productId, ownerId, name, category, desc, dailyPrice, deposit, condition, productRepository, v);
+                uploadPhotoAndSaveProduct(productId, ownerId, name, category, desc, dailyPrice, deposit, condition, productRepository);
             } else {
-                saveProductData(productId, ownerId, name, category, desc, dailyPrice, deposit, condition,
-                        capturedImagePath.isEmpty() ? Collections.emptyList() : Collections.singletonList(capturedImagePath),
-                        productRepository, v);
+                saveProductData(productId, ownerId, name, category, desc, dailyPrice, deposit, condition, Collections.emptyList(), productRepository);
             }
         });
     }
 
     private void checkCameraPermissionAndStart() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             startCamera();
         } else {
             cameraPermissionLauncher.launch(Manifest.permission.CAMERA);
@@ -117,114 +103,69 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void startCamera() {
-        ListenableFuture<ProcessCameraProvider> cameraProviderFuture =
-                ProcessCameraProvider.getInstance(this);
-
+        ListenableFuture<ProcessCameraProvider> cameraProviderFuture = ProcessCameraProvider.getInstance(this);
         cameraProviderFuture.addListener(() -> {
             try {
                 ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
                 Preview preview = new Preview.Builder().build();
                 preview.setSurfaceProvider(binding.viewFinder.getSurfaceProvider());
-
-                imageCapture = new ImageCapture.Builder()
-                        .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
-                        .build();
-
-                CameraSelector cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA;
+                imageCapture = new ImageCapture.Builder().setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY).build();
 
                 cameraProvider.unbindAll();
-                cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture);
-
+                cameraProvider.bindToLifecycle(this, CameraSelector.DEFAULT_BACK_CAMERA, preview, imageCapture);
             } catch (ExecutionException | InterruptedException e) {
-                Log.e(TAG, "Error starting CameraX", e);
+                Log.e(TAG, "Camera error", e);
             }
         }, ContextCompat.getMainExecutor(this));
     }
 
     private void takePhoto() {
         if (imageCapture == null) return;
-
         photoFile = new File(getCacheDir(), "product_" + System.currentTimeMillis() + ".jpg");
 
-        ImageCapture.OutputFileOptions outputFileOptions =
-                new ImageCapture.OutputFileOptions.Builder(photoFile).build();
+        ImageCapture.OutputFileOptions options = new ImageCapture.OutputFileOptions.Builder(photoFile).build();
+        imageCapture.takePicture(options, ContextCompat.getMainExecutor(this), new ImageCapture.OnImageSavedCallback() {
+            @Override
+            public void onImageSaved(@NonNull ImageCapture.OutputFileResults results) {
+                binding.ivCapturedPreview.setImageURI(Uri.fromFile(photoFile));
+                binding.ivCapturedPreview.setVisibility(View.VISIBLE);
+                binding.viewFinder.setVisibility(View.GONE);
+                Toast.makeText(AddProductActivity.this, "Photo captured!", Toast.LENGTH_SHORT).show();
+            }
 
-        imageCapture.takePicture(outputFileOptions, ContextCompat.getMainExecutor(this),
-                new ImageCapture.OnImageSavedCallback() {
-                    @Override
-                    public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
-                        capturedImagePath = photoFile.getAbsolutePath();
-                        Uri savedUri = Uri.fromFile(photoFile);
-                        binding.ivCapturedPreview.setImageURI(savedUri);
-                        binding.ivCapturedPreview.setVisibility(View.VISIBLE);
-                        binding.viewFinder.setVisibility(View.GONE);
-                        Toast.makeText(AddProductActivity.this, "Photo captured successfully!", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onError(@NonNull ImageCaptureException exception) {
-                        Log.e(TAG, "Photo capture failed: " + exception.getMessage(), exception);
-                        Toast.makeText(AddProductActivity.this, "Failed to capture photo", Toast.LENGTH_SHORT).show();
-                    }
-                });
+            @Override
+            public void onError(@NonNull ImageCaptureException exception) {
+                Log.e(TAG, "Capture failed", exception);
+            }
+        });
     }
 
     private void uploadPhotoAndSaveProduct(String productId, long ownerId, String name, String category,
                                            String desc, double dailyPrice, double deposit,
-                                           String condition, ProductRepository repository, View view) {
+                                           String condition, ProductRepository repository) {
         try {
-            StorageReference storageRef = FirebaseStorage.getInstance().getReference()
-                    .child("product_images/" + productId + ".jpg");
-
-            Uri fileUri = Uri.fromFile(photoFile);
-            storageRef.putFile(fileUri)
-                    .continueWithTask(task -> {
-                        if (!task.isSuccessful() && task.getException() != null) {
-                            throw task.getException();
-                        }
-                        return storageRef.getDownloadUrl();
-                    })
-                    .addOnSuccessListener(downloadUri -> {
-                        String downloadUrl = downloadUri.toString();
-                        saveProductData(productId, ownerId, name, category, desc, dailyPrice, deposit,
-                                condition, Collections.singletonList(downloadUrl), repository, view);
-                    })
-                    .addOnFailureListener(e -> {
-                        Log.w(TAG, "Firebase Storage upload failed, fallback to local path", e);
-                        saveProductData(productId, ownerId, name, category, desc, dailyPrice, deposit,
-                                condition, Collections.singletonList(photoFile.getAbsolutePath()), repository, view);
-                    });
+            StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("product_images/" + productId + ".jpg");
+            storageRef.putFile(Uri.fromFile(photoFile))
+                    .continueWithTask(task -> storageRef.getDownloadUrl())
+                    .addOnSuccessListener(downloadUri -> saveProductData(productId, ownerId, name, category, desc, dailyPrice, deposit, condition, Collections.singletonList(downloadUri.toString()), repository))
+                    .addOnFailureListener(e -> saveProductData(productId, ownerId, name, category, desc, dailyPrice, deposit, condition, Collections.singletonList(photoFile.getAbsolutePath()), repository));
         } catch (Exception e) {
-            Log.w(TAG, "Firebase not initialized, using local image path", e);
-            saveProductData(productId, ownerId, name, category, desc, dailyPrice, deposit,
-                    condition, Collections.singletonList(photoFile.getAbsolutePath()), repository, view);
+            saveProductData(productId, ownerId, name, category, desc, dailyPrice, deposit, condition, Collections.singletonList(photoFile.getAbsolutePath()), repository);
         }
     }
 
     private void saveProductData(String productId, long ownerId, String name, String category,
-                                 String desc, double dailyPrice, double deposit,
-                                 String condition, List<String> imageUrls,
-                                 ProductRepository repository, View view) {
+                                 String desc, double dailyPrice, double deposit, String condition,
+                                 List<String> imageUrls, ProductRepository repository) {
         String mainImagePath = !imageUrls.isEmpty() ? imageUrls.get(0) : "";
-        Product product = new Product(0, ownerId, name, category, desc, (int) dailyPrice, PriceUnit.HOUR, condition, true, 23.8759, 90.3198, mainImagePath);
-        product.setProductId(productId);
-        product.setDailyRentalPrice(dailyPrice);
-        product.setSecurityDeposit(deposit);
-        product.setImageUrls(imageUrls);
+        Product product = new Product(productId, ownerId, name, category, desc, dailyPrice, deposit, condition, true, imageUrls);
+        product.setImagePath(mainImagePath);
 
-        // Save locally in Room
         repository.insertProduct(product);
 
-        // Try saving to Firestore
         try {
-            FirebaseFirestore.getInstance().collection("products")
-                    .document(productId)
-                    .set(product)
-                    .addOnSuccessListener(aVoid -> Log.d(TAG, "Saved to Firestore"))
-                    .addOnFailureListener(e -> Log.w(TAG, "Firestore write error", e));
-        } catch (Exception e) {
-            Log.w(TAG, "Firebase Firestore not configured, saved locally", e);
-        }
+            FirebaseFirestore.getInstance().collection("products").document(productId).set(product);
+        } catch (Exception ignored) {}
 
         binding.progressUpload.setVisibility(View.GONE);
         Toast.makeText(this, "Product listed successfully!", Toast.LENGTH_SHORT).show();
