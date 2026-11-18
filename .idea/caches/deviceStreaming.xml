@@ -329,6 +329,21 @@
           <option name="screenY" value="1600" />
         </PersistentDeviceSelectionData>
         <PersistentDeviceSelectionData>
+ Branch--Ahona
+          <option name="api" value="34" />
+          <option name="brand" value="samsung" />
+          <option name="codename" value="a14m" />
+          <option name="id" value="a14m" />
+          <option name="labId" value="google" />
+          <option name="manufacturer" value="Samsung" />
+          <option name="name" value="Galaxy A14" />
+          <option name="screenDensity" value="450" />
+          <option name="screenX" value="1080" />
+          <option name="screenY" value="2408" />
+        </PersistentDeviceSelectionData>
+        <PersistentDeviceSelectionData>
+
+ main
           <option name="api" value="35" />
           <option name="brand" value="samsung" />
           <option name="codename" value="a14xmsq" />
@@ -1556,6 +1571,8 @@
           <option name="screenY" value="1848" />
         </PersistentDeviceSelectionData>
         <PersistentDeviceSelectionData>
+ Branch--Ahona
+
           <option name="accessStatus">
             <list>
               <option value="EULA_NOT_ACCEPTED" />
@@ -1573,6 +1590,7 @@
           <option name="screenY" value="2352" />
         </PersistentDeviceSelectionData>
         <PersistentDeviceSelectionData>
+ main
           <option name="api" value="35" />
           <option name="brand" value="Xiaomi" />
           <option name="codename" value="houji" />
@@ -2398,6 +2416,8 @@
           <option name="screenY" value="2424" />
         </PersistentDeviceSelectionData>
         <PersistentDeviceSelectionData>
+ Branch--Ahona
+
           <option name="accessStatus">
             <list>
               <option value="EULA_NOT_ACCEPTED" />
@@ -2466,6 +2486,7 @@
           <option name="screenY" value="2400" />
         </PersistentDeviceSelectionData>
         <PersistentDeviceSelectionData>
+ main
           <option name="api" value="34" />
           <option name="brand" value="samsung" />
           <option name="codename" value="xcover7" />
