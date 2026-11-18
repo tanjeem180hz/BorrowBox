@@ -9,16 +9,18 @@ import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.borrowbox.app.model.ChatMessage;
 import com.borrowbox.app.model.Dispute;
+import com.borrowbox.app.model.NotificationModel;
 import com.borrowbox.app.model.Payment;
 import com.borrowbox.app.model.Product;
+import com.borrowbox.app.model.ProductCondition;
 import com.borrowbox.app.model.Rating;
 import com.borrowbox.app.model.Rental;
 import com.borrowbox.app.model.Student;
 import com.borrowbox.app.util.AppExecutors;
 
 @Database(
-        entities = {Student.class, Product.class, Rental.class, Rating.class, Payment.class, ChatMessage.class, Dispute.class},
-        version = 3,
+        entities = {Student.class, Product.class, Rental.class, Rating.class, Payment.class, ChatMessage.class, Dispute.class, NotificationModel.class, ProductCondition.class},
+        version = 4,
         exportSchema = false
 )
 @TypeConverters({Converters.class})
@@ -34,6 +36,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract PaymentDao paymentDao();
     public abstract ChatMessageDao chatMessageDao();
     public abstract DisputeDao disputeDao();
+    public abstract NotificationDao notificationDao();
+    public abstract ProductConditionDao productConditionDao();
 
     public static AppDatabase getInstance(final Context context) {
         if (instance == null) {

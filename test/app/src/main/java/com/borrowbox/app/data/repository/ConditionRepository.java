@@ -101,7 +101,7 @@ public class ConditionRepository {
                 File file = new File(photoPath);
                 if (!file.exists()) {
                     if (callback != null) {
-                        AppExecutors.getInstance().mainThread().execute(() -> callback::onError);
+                        AppExecutors.getInstance().mainThread().execute(() -> callback.onError(new Exception("File does not exist")));
                     }
                     return;
                 }
