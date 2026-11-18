@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand Primary Tokens (Brightened for dark theme high contrast) -->
+    <color name="brand_primary">#818CF8</color>
+    <color name="brand_primary_light">#A5B4FC</color>
+    <color name="brand_lid">#6366F1</color>
+    <color name="brand_tint">#1E1B4B</color>
+
+    <!-- Neutral & Typography Tokens (Dark Theme: High-contrast crisp light text on dark surfaces) -->
+    <color name="ink">#F8FAFC</color>              <!-- Crisp bright text, 100% readable on dark -->
+    <color name="ink_secondary">#E2E8F0</color>    <!-- Bright secondary headings -->
+    <color name="muted">#94A3B8</color>            <!-- Clear readable secondary text -->
+    <color name="surface">#1E293B</color>          <!-- Elevated dark slate cards -->
+    <color name="surface_variant">#0F172A</color>  <!-- Deep neutral container -->
+    <color name="background">#0B0F19</color>       <!-- Deep rich midnight background -->
+    <color name="divider">#334155</color>          <!-- Clear visible border/divider -->
+    <color name="search_bar_bg">#1E293B</color>
+
+    <!-- Semantic Feedback Tokens (Vibrant on dark) -->
+    <color name="success">#34D399</color>
+    <color name="success_light">#064E3B</color>
+    <color name="warning">#FBBF24</color>
+    <color name="warning_light">#78350F</color>
+    <color name="danger">#F87171</color>
+    <color name="danger_light">#7F1D1D</color>
+
+    <!-- Dark Theme Specific Tokens -->
+    <color name="dark_background">#0B0F19</color>
+    <color name="dark_surface">#1E293B</color>
+    <color name="dark_ink">#F8FAFC</color>
+    <color name="dark_muted">#94A3B8</color>
+    <color name="dark_divider">#334155</color>
+
+    <!-- System / Basic -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Facebook Messenger Brand Tokens (Dark Mode) -->
+    <color name="messenger_blue">#0084FF</color>
+    <color name="messenger_blue_pressed">#0074E4</color>
+    <color name="messenger_blue_light">#1A2E44</color>
+    <color name="messenger_bubble_incoming">#3A3B3C</color>
+    <color name="messenger_bubble_incoming_text">#E4E6EB</color>
+    <color name="messenger_bubble_outgoing">#0084FF</color>
+    <color name="messenger_bubble_outgoing_text">#FFFFFF</color>
+    <color name="messenger_online">#31A24C</color>
+    <color name="messenger_input_bg">#242526</color>
+    <color name="messenger_chip_bg">#242526</color>
+    <color name="messenger_chip_stroke">#3A3B3C</color>
+    <color name="messenger_card_border">#3A3B3C</color>
+    <color name="messenger_icon_tint">#0084FF</color>
+    <color name="messenger_icon_secondary">#B0B3B8</color>
+</resources>
