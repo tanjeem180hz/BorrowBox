@@ -1,0 +1,128 @@
+package com.borrowbox.app.data.local;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import androidx.appcompat.app.AppCompatDelegate;
+import com.borrowbox.app.model.User;
+
+/**
+ * Manages user login session, role-based authorization, dynamic theme, and demo settings.
+ */
+public class SessionManager {
+
+    private static final String PREF_NAME = "borrowbox_session";
+    private static final String KEY_USER_ID = "logged_user_id";
+    private static final String KEY_USER_ROLE = "logged_user_role";
+    private static final String KEY_IS_LOGGED_IN = "is_logged_in";
+    private static final String KEY_ONBOARDING_COMPLETED = "onboarding_completed";
+    private static final String KEY_AUTO_ACCEPT = "auto_accept_demo";
+    private static final String KEY_THEME_MODE = "app_theme_mode";
+    private static final String KEY_LANGUAGE = "app_language";
+
+    public static final int THEME_SYSTEM = 0; // Automatic device theme (Follow System)
+    public static final int THEME_LIGHT = 1;  // Explicit Light Mode
+    public static final int THEME_DARK = 2;   // Explicit Dark Mode
+
+    public static final String LANG_EN = "en";
+    public static final String LANG_BN = "bn";
+
+    private final SharedPreferences prefs;
+
+    public SessionManager(Context context) {
+        this.prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+    }
+
+    public void setLogin(long userId) {
+        setLogin(userId, User.ROLE_STUDENT);
+    }
+
+    public void setLogin(long userId, String role) {
+        prefs.edit()
+                .putLong(KEY_USER_ID, userId)
+                .putString(KEY_USER_ROLE, role != null ? role : User.ROLE_STUDENT)
+                .putBoolean(KEY_IS_LOGGED_IN, true)
+                .apply();
+    }
+
+    public void logout() {
+        prefs.edit()
+                .remove(KEY_USER_ID)
+                .remove(KEY_USER_ROLE)
+                .putBoolean(KEY_IS_LOGGED_IN, false)
+                .apply();
+    }
+
+    public boolean isLoggedIn() {
+        return prefs.getBoolean(KEY_IS_LOGGED_IN, false);
+    }
+
+    public long getLoggedInUserId() {
+        return prefs.getLong(KEY_USER_ID, 1L); // default to student 1 (Tanjeem)
+    }
+
+    public String getLoggedInUserRole() {
+        return prefs.getString(KEY_USER_ROLE, User.ROLE_STUDENT);
+    }
+
+    public boolean isAdmin() {
+        return User.ROLE_ADMIN.equalsIgnoreCase(getLoggedInUserRole());
+    }
+
+    public boolean isOnboardingCompleted() {
+        return prefs.getBoolean(KEY_ONBOARDING_COMPLETED, false);
+    }
+
+    public void setOnboardingCompleted(boolean completed) {
+        prefs.edit().putBoolean(KEY_ONBOARDING_COMPLETED, completed).apply();
+    }
+
+    public boolean isAutoAcceptEnabled() {
+        return prefs.getBoolean(KEY_AUTO_ACCEPT, false);
+    }
+
+    public void setAutoAcceptEnabled(boolean enabled) {
+        prefs.edit().putBoolean(KEY_AUTO_ACCEPT, enabled).apply();
+    }
+
+    public int getThemeMode() {
+        return prefs.getInt(KEY_THEME_MODE, THEME_SYSTEM); // default: System / Automatic
+    }
+
+    public void setThemeMode(int mode) {
+        prefs.edit().putInt(KEY_THEME_MODE, mode).apply();
+    }
+
+    public void applyAppTheme() {
+        int mode = getThemeMode();
+        if (mode == THEME_LIGHT) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else if (mode == THEME_DARK) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        }
+    }
+
+    public boolean isDarkModeEnabled() {
+        return getThemeMode() == THEME_DARK;
+    }
+
+    public void setDarkModeEnabled(boolean enabled) {
+        setThemeMode(enabled ? THEME_DARK : THEME_LIGHT);
+    }
+
+    public String getLanguage() {
+        return prefs.getString(KEY_LANGUAGE, LANG_EN);
+    }
+
+    public void setLanguage(String lang) {
+        prefs.edit().putString(KEY_LANGUAGE, lang).apply();
+        applyAppLanguage();
+    }
+
+    public void applyAppLanguage() {
+        String lang = getLanguage();
+        androidx.core.os.LocaleListCompat locales = androidx.core.os.LocaleListCompat.forLanguageTags(lang);
+        AppCompatDelegate.setApplicationLocales(locales);
+    }
+}

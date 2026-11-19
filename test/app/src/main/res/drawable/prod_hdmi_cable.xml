@@ -1,0 +1,66 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="160dp"
+    android:viewportWidth="200"
+    android:viewportHeight="160">
+    <!-- Background Card Canvas -->
+    <path
+        android:fillColor="#F0F9FF"
+        android:pathData="M0,0h200v160h-200z" />
+    <!-- Ambient glow circle -->
+    <path
+        android:fillColor="#E0F2FE"
+        android:pathData="M100,80m-55,0a55,55 0 1,0 110,0a55,55 0 1,0 -110,0" />
+
+    <!-- Braided Cable Coil Loop -->
+    <path
+        android:strokeColor="#1E293B"
+        android:strokeWidth="7"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M52,85 C50,135 150,135 150,85 C150,45 80,40 75,75 C70,110 135,115 138,82" />
+    <path
+        android:strokeColor="#38BDF8"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M52,85 C50,135 150,135 150,85 C150,45 80,40 75,75 C70,110 135,115 138,82" />
+
+    <!-- Left HDMI Connector Hood -->
+    <path
+        android:fillColor="#334155"
+        android:pathData="M38,70h16a4,4 0 0,1 4,4v22a4,4 0 0,1 -4,4h-16a4,4 0 0,1 -4,-4v-22a4,4 0 0,1 4,-4z" />
+    <path
+        android:fillColor="#0284C7"
+        android:pathData="M40,73h12v3h-12z" />
+    <!-- Left Gold Head -->
+    <path
+        android:fillColor="#F59E0B"
+        android:pathData="M22,74h12v18h-12a2,2 0 0,1 -2,-2v-14a2,2 0 0,1 2,-2z" />
+    <path
+        android:fillColor="#D97706"
+        android:pathData="M24,78h8v10h-8z" />
+
+    <!-- Right HDMI Connector Hood -->
+    <path
+        android:fillColor="#334155"
+        android:pathData="M136,66h16a4,4 0 0,1 4,4v22a4,4 0 0,1 -4,4h-16a4,4 0 0,1 -4,-4v-22a4,4 0 0,1 4,-4z" />
+    <path
+        android:fillColor="#0284C7"
+        android:pathData="M138,69h12v3h-12z" />
+    <!-- Right Gold Head -->
+    <path
+        android:fillColor="#F59E0B"
+        android:pathData="M156,70h12a2,2 0 0,1 2,2v14a2,2 0 0,1 -2,2h-12v-18z" />
+    <path
+        android:fillColor="#D97706"
+        android:pathData="M158,74h8v10h-8z" />
+
+    <!-- 4K Ultra HD Badge -->
+    <path
+        android:fillColor="#0284C7"
+        android:pathData="M84,24h32a4,4 0 0,1 4,4v14a4,4 0 0,1 -4,4h-32a4,4 0 0,1 -4,-4v-14a4,4 0 0,1 4,-4z" />
+    <!-- 4K Lettering -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M89,30h2v4h3v-4h2v10h-2v-4h-5z M103,30h2v4l3,-4h3l-4,5 4,5h-3l-3,-4v4h-2z" />
+</vector>

@@ -1,0 +1,155 @@
+package com.borrowbox.app.ui.home;
+
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import com.borrowbox.app.R;
+import com.borrowbox.app.databinding.FragmentHomeBinding;
+
+public class HomeFragment extends Fragment {
+
+    private FragmentHomeBinding binding;
+    private HomeViewModel viewModel;
+    private ProductAdapter adapter;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+
+        // Automatic top display cutout / notch and status bar adaptation
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutout(binding.layoutTopHeader);
+
+        adapter = new ProductAdapter(
+                product -> {
+                    Bundle args = new Bundle();
+                    args.putLong("product_id", product.getId());
+                    Navigation.findNavController(view).navigate(R.id.productDetailsFragment, args);
+                },
+                product -> {
+                    Bundle args = new Bundle();
+                    args.putLong("product_id", product.getId());
+                    args.putLong("owner_id", product.getOwnerId());
+                    Navigation.findNavController(view).navigate(R.id.messengerChatFragment, args);
+                }
+        );
+
+        binding.recyclerProducts.setLayoutManager(new androidx.recyclerview.widget.GridLayoutManager(requireContext(), 2));
+        binding.recyclerProducts.setAdapter(adapter);
+
+        com.borrowbox.app.data.local.SessionManager sessionManager =
+                new com.borrowbox.app.data.local.SessionManager(requireContext());
+
+        viewModel.getCurrentUserLive().observe(getViewLifecycleOwner(), student -> {
+            if (student != null) {
+                String name = student.getName() != null && !student.getName().trim().isEmpty()
+                        ? student.getName().trim() : "Student";
+                binding.tvGreeting.setText(getString(R.string.auth_login_title) + ", " + name);
+            }
+        });
+
+        // Setup top Language Toggle Button
+        boolean isBengali = com.borrowbox.app.data.local.SessionManager.LANG_BN.equals(sessionManager.getLanguage());
+        binding.tvLangCurrent.setText(isBengali ? "EN" : "বাং");
+
+        binding.btnLanguageToggle.setOnClickListener(v -> {
+            String currentLang = sessionManager.getLanguage();
+            String targetLang = com.borrowbox.app.data.local.SessionManager.LANG_BN.equals(currentLang)
+                    ? com.borrowbox.app.data.local.SessionManager.LANG_EN
+                    : com.borrowbox.app.data.local.SessionManager.LANG_BN;
+            sessionManager.setLanguage(targetLang);
+
+            String message = com.borrowbox.app.data.local.SessionManager.LANG_BN.equals(targetLang)
+                    ? "ভাষা পরিবর্তন করা হয়েছে: বাংলা"
+                    : "Language switched to English";
+            android.widget.Toast.makeText(requireContext(), message, android.widget.Toast.LENGTH_SHORT).show();
+        });
+
+        // Click on greeting header opens Profile screen
+        binding.layoutUserHeader.setOnClickListener(v -> {
+            Navigation.findNavController(view).navigate(R.id.nav_profile);
+        });
+
+        // Setup top Messenger Inbox Button with Live Unread Badge
+        binding.btnMessengerInbox.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.messengerInboxFragment);
+        });
+
+        long currentUserId = sessionManager.getLoggedInUserId();
+        com.borrowbox.app.data.repository.ChatMessageRepository chatRepo =
+                com.borrowbox.app.data.repository.ChatMessageRepository.getInstance(requireContext());
+        chatRepo.getUnreadCountLive(currentUserId).observe(getViewLifecycleOwner(), unreadCount -> {
+            if (unreadCount != null && unreadCount > 0) {
+                binding.tvInboxBadge.setVisibility(View.VISIBLE);
+                binding.tvInboxBadge.setText(unreadCount > 9 ? "9+" : String.valueOf(unreadCount));
+            } else {
+                binding.tvInboxBadge.setVisibility(View.GONE);
+            }
+        });
+
+        viewModel.getFilteredProducts().observe(getViewLifecycleOwner(), products -> {
+            adapter.submitList(products);
+            if (products == null || products.isEmpty()) {
+                binding.tvEmpty.setVisibility(View.VISIBLE);
+            } else {
+                binding.tvEmpty.setVisibility(View.GONE);
+            }
+        });
+
+        // Search text listener
+        binding.etSearch.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+                viewModel.setSearchQuery(s != null ? s.toString() : "");
+            }
+            @Override public void afterTextChanged(Editable s) {}
+        });
+
+        // Category chips
+        binding.chipGroupCategories.setOnCheckedStateChangeListener((group, checkedIds) -> {
+            if (checkedIds.isEmpty()) return;
+            int id = checkedIds.get(0);
+            if (id == R.id.chip_all) viewModel.setCategory("All");
+            else if (id == R.id.chip_electronics) viewModel.setCategory("Electronics");
+            else if (id == R.id.chip_study) viewModel.setCategory("Study");
+            else if (id == R.id.chip_accessories) viewModel.setCategory("Accessories");
+            else if (id == R.id.chip_camera) viewModel.setCategory("Camera");
+        });
+
+        // Emergency FAB
+        binding.fabEmergency.setOnClickListener(v -> {
+            Navigation.findNavController(view).navigate(R.id.emergencyFragment);
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (viewModel != null) {
+            viewModel.refreshUser();
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+}

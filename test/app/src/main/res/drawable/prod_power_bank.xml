@@ -1,0 +1,57 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="160dp"
+    android:viewportWidth="200"
+    android:viewportHeight="160">
+    <path
+        android:fillColor="#F0F9FF"
+        android:pathData="M0,0h200v160h-200z" />
+    <path
+        android:fillColor="#E0F2FE"
+        android:pathData="M100,80m-55,0a55,55 0 1,0 110,0a55,55 0 1,0 -110,0" />
+    <!-- Power Bank Body -->
+    <path
+        android:fillColor="#0F172A"
+        android:pathData="M55,30h90a12,12 0 0,1 12,12v82a12,12 0 0,1 -12,12h-90a12,12 0 0,1 -12,-12v-82a12,12 0 0,1 12,-12z" />
+    <!-- Matte Texture Overlay -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M58,34h84a8,8 0 0,1 8,8v74a8,8 0 0,1 -8,8h-84a8,8 0 0,1 -8,-8v-74a8,8 0 0,1 8,-8z" />
+    <!-- Top Connector Header (Ports) -->
+    <path
+        android:fillColor="#334155"
+        android:pathData="M55,30h90a12,12 0 0,1 12,12v10h-114v-10a12,12 0 0,1 12,-12z" />
+    <!-- USB-A Port 1 (Fast Charge Orange) -->
+    <path
+        android:fillColor="#F97316"
+        android:pathData="M65,36h18v6h-18z" />
+    <path
+        android:fillColor="#475569"
+        android:pathData="M67,37h14v2h-14z" />
+    <!-- USB-C Bidirectional Port -->
+    <path
+        android:fillColor="#0F172A"
+        android:pathData="M92,36h16a3,3 0 0,1 3,3v0a3,3 0 0,1 -3,3h-16a3,3 0 0,1 -3,-3v0a3,3 0 0,1 3,-3z" />
+    <!-- USB-A Port 2 -->
+    <path
+        android:fillColor="#F97316"
+        android:pathData="M117,36h18v6h-18z" />
+    <path
+        android:fillColor="#475569"
+        android:pathData="M119,37h14v2h-14z" />
+    <!-- 4 LED Battery Level Indicator Lights (Full Charge) -->
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M78,65m-2.5,0a2.5,2.5 0 1,0 5,0a2.5,2.5 0 1,0 -5,0
+                          M92,65m-2.5,0a2.5,2.5 0 1,0 5,0a2.5,2.5 0 1,0 -5,0
+                          M106,65m-2.5,0a2.5,2.5 0 1,0 5,0a2.5,2.5 0 1,0 -5,0
+                          M120,65m-2.5,0a2.5,2.5 0 1,0 5,0a2.5,2.5 0 1,0 -5,0" />
+    <!-- Battery / Lightning Emblem -->
+    <path
+        android:fillColor="#64748B"
+        android:pathData="M97,85l-4,10h5l-2,12 8,-14h-5l3,-8z" />
+    <!-- 20,000mAh Text Bar -->
+    <path
+        android:fillColor="#475569"
+        android:pathData="M75,115h50v4h-50z" />
+</vector>
