@@ -52,6 +52,7 @@ public class ProductDetailsFragment extends Fragment {
                 binding.tvTitle.setText(product.getName());
                 String unit = product.getPriceUnit() == PriceUnit.DAY ? "/day" : "/h";
                 binding.tvPriceTag.setText(CurrencyUtils.format(product.getPrice()) + unit);
+                binding.tvSecurityDeposit.setText(CurrencyUtils.format(product.getSecurityDeposit()));
                 binding.tvCondition.setText(product.getCondition() + " condition");
                 binding.tvDescription.setText(product.getDescription());
 
