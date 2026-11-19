@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.borrowbox.app-mergeDebugResources-60:/values-az/values-az.xml",
+            "outputFile": "com.borrowbox.app-mergeDebugResources-62:/values-az/values-az.xml",
             "map": [
                 {
                     "source": "C:\\Users\\PG User -01958281205\\.gradle\\caches\\8.11.1\\transforms\\9c683bcbac868a22ca545a04ade8f74d\\transformed\\navigation-ui-2.8.4\\res\\values-az\\values-az.xml",
