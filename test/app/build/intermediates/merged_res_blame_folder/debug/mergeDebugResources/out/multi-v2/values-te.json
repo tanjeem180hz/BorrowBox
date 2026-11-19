@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.borrowbox.app-mergeDebugResources-60:/values-te/values-te.xml",
+            "outputFile": "com.borrowbox.app-mergeDebugResources-62:/values-te/values-te.xml",
             "map": [
                 {
                     "source": "C:\\Users\\PG User -01958281205\\.gradle\\caches\\8.11.1\\transforms\\c426b5254902a7396bc746258623a519\\transformed\\play-services-base-18.5.0\\res\\values-te\\values.xml",

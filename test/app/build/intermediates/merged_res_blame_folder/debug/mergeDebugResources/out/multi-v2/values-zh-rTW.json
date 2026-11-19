@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.borrowbox.app-mergeDebugResources-60:/values-zh-rTW/values-zh-rTW.xml",
+            "outputFile": "com.borrowbox.app-mergeDebugResources-62:/values-zh-rTW/values-zh-rTW.xml",
             "map": [
                 {
                     "source": "C:\\Users\\PG User -01958281205\\.gradle\\caches\\8.11.1\\transforms\\0c035ecabfdcc9f1760cda3227e40e87\\transformed\\zxing-android-embedded-4.3.0\\res\\values-zh-rTW\\values-zh-rTW.xml",
