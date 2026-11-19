@@ -17,8 +17,6 @@ import com.borrowbox.app.model.Student;
 import com.borrowbox.app.util.AppExecutors;
 
 @Database(
-        entities = {Student.class, Product.class, Rental.class, Rating.class, Payment.class, ChatMessage.class, Dispute.class},
-        version = 3,
         exportSchema = false
 )
 @TypeConverters({Converters.class})
