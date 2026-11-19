@@ -40,14 +40,14 @@ public final class AppDatabase_Impl extends AppDatabase {
 
   private volatile DisputeDao _disputeDao;
 
-  private volatile NotificationDao _notificationDao;
-
   private volatile ProductConditionDao _productConditionDao;
+
+  private volatile NotificationDao _notificationDao;
 
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(4) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(1) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS `students` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `university` TEXT NOT NULL, `department` TEXT NOT NULL, `studentId` TEXT NOT NULL, `trustScore` INTEGER NOT NULL, `ratingAverage` REAL NOT NULL, `ratingCount` INTEGER NOT NULL, `completedRentals` INTEGER NOT NULL, `verified` INTEGER NOT NULL, `isSuspended` INTEGER NOT NULL, `statusMessage` TEXT NOT NULL, `lateReturnsCount` INTEGER NOT NULL, `disputePenaltiesCount` INTEGER NOT NULL, `name` TEXT NOT NULL, `email` TEXT NOT NULL, `passwordHash` TEXT NOT NULL, `salt` TEXT NOT NULL, `role` TEXT NOT NULL, `phone` TEXT NOT NULL, `phoneVisible` INTEGER NOT NULL, `createdAt` INTEGER NOT NULL)");
@@ -57,8 +57,8 @@ public final class AppDatabase_Impl extends AppDatabase {
         db.execSQL("CREATE TABLE IF NOT EXISTS `payments` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `rentalId` INTEGER NOT NULL, `userId` INTEGER NOT NULL, `amount` INTEGER NOT NULL, `type` TEXT NOT NULL, `method` TEXT NOT NULL, `status` TEXT NOT NULL, `createdAt` INTEGER NOT NULL)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `chat_messages` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `productId` INTEGER NOT NULL, `senderId` INTEGER NOT NULL, `receiverId` INTEGER NOT NULL, `text` TEXT NOT NULL, `timestamp` INTEGER NOT NULL, `isFromMe` INTEGER NOT NULL, `status` TEXT NOT NULL, `isLike` INTEGER NOT NULL, `attachmentType` TEXT NOT NULL, `attachmentUri` TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS `disputes` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `rentalId` INTEGER NOT NULL, `reporterId` INTEGER NOT NULL, `reporterName` TEXT NOT NULL, `reportedStudentId` INTEGER NOT NULL, `reportedStudentName` TEXT NOT NULL, `productId` INTEGER NOT NULL, `productTitle` TEXT NOT NULL, `disputeType` TEXT NOT NULL, `description` TEXT NOT NULL, `evidenceUri` TEXT NOT NULL, `depositAmount` REAL NOT NULL, `status` TEXT NOT NULL, `adminVerdict` TEXT NOT NULL, `depositRefundPercentage` INTEGER NOT NULL, `createdAt` INTEGER NOT NULL, `resolvedAt` INTEGER NOT NULL)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `notifications` (`notifId` TEXT NOT NULL, `recipientId` INTEGER NOT NULL, `title` TEXT NOT NULL, `body` TEXT NOT NULL, `deepLinkScreen` TEXT NOT NULL, `isRead` INTEGER NOT NULL, `sentAt` INTEGER NOT NULL, PRIMARY KEY(`notifId`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS `product_conditions` (`checkId` TEXT NOT NULL, `rentalId` INTEGER NOT NULL, `prePhotoUrl` TEXT NOT NULL, `postPhotoUrl` TEXT NOT NULL, `preNotes` TEXT NOT NULL, `postNotes` TEXT NOT NULL, `preTimestamp` INTEGER NOT NULL, `postTimestamp` INTEGER NOT NULL, `preGpsLocation` TEXT NOT NULL, `postGpsLocation` TEXT NOT NULL, PRIMARY KEY(`checkId`))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `notifications` (`notifId` TEXT NOT NULL, `recipientId` INTEGER NOT NULL, `title` TEXT NOT NULL, `body` TEXT NOT NULL, `deepLinkScreen` TEXT NOT NULL, `isRead` INTEGER NOT NULL, `sentAt` INTEGER NOT NULL, PRIMARY KEY(`notifId`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
         db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1af4c87d2d29789362b1023304020fec')");
       }
@@ -72,8 +72,8 @@ public final class AppDatabase_Impl extends AppDatabase {
         db.execSQL("DROP TABLE IF EXISTS `payments`");
         db.execSQL("DROP TABLE IF EXISTS `chat_messages`");
         db.execSQL("DROP TABLE IF EXISTS `disputes`");
-        db.execSQL("DROP TABLE IF EXISTS `notifications`");
         db.execSQL("DROP TABLE IF EXISTS `product_conditions`");
+        db.execSQL("DROP TABLE IF EXISTS `notifications`");
         final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
         if (_callbacks != null) {
           for (RoomDatabase.Callback _callback : _callbacks) {
@@ -286,23 +286,6 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoDisputes + "\n"
                   + " Found:\n" + _existingDisputes);
         }
-        final HashMap<String, TableInfo.Column> _columnsNotifications = new HashMap<String, TableInfo.Column>(7);
-        _columnsNotifications.put("notifId", new TableInfo.Column("notifId", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsNotifications.put("recipientId", new TableInfo.Column("recipientId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsNotifications.put("title", new TableInfo.Column("title", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsNotifications.put("body", new TableInfo.Column("body", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsNotifications.put("deepLinkScreen", new TableInfo.Column("deepLinkScreen", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsNotifications.put("isRead", new TableInfo.Column("isRead", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsNotifications.put("sentAt", new TableInfo.Column("sentAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        final HashSet<TableInfo.ForeignKey> _foreignKeysNotifications = new HashSet<TableInfo.ForeignKey>(0);
-        final HashSet<TableInfo.Index> _indicesNotifications = new HashSet<TableInfo.Index>(0);
-        final TableInfo _infoNotifications = new TableInfo("notifications", _columnsNotifications, _foreignKeysNotifications, _indicesNotifications);
-        final TableInfo _existingNotifications = TableInfo.read(db, "notifications");
-        if (!_infoNotifications.equals(_existingNotifications)) {
-          return new RoomOpenHelper.ValidationResult(false, "notifications(com.borrowbox.app.model.NotificationModel).\n"
-                  + " Expected:\n" + _infoNotifications + "\n"
-                  + " Found:\n" + _existingNotifications);
-        }
         final HashMap<String, TableInfo.Column> _columnsProductConditions = new HashMap<String, TableInfo.Column>(10);
         _columnsProductConditions.put("checkId", new TableInfo.Column("checkId", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsProductConditions.put("rentalId", new TableInfo.Column("rentalId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -323,6 +306,23 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoProductConditions + "\n"
                   + " Found:\n" + _existingProductConditions);
         }
+        final HashMap<String, TableInfo.Column> _columnsNotifications = new HashMap<String, TableInfo.Column>(7);
+        _columnsNotifications.put("notifId", new TableInfo.Column("notifId", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNotifications.put("recipientId", new TableInfo.Column("recipientId", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNotifications.put("title", new TableInfo.Column("title", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNotifications.put("body", new TableInfo.Column("body", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNotifications.put("deepLinkScreen", new TableInfo.Column("deepLinkScreen", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNotifications.put("isRead", new TableInfo.Column("isRead", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNotifications.put("sentAt", new TableInfo.Column("sentAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysNotifications = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesNotifications = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoNotifications = new TableInfo("notifications", _columnsNotifications, _foreignKeysNotifications, _indicesNotifications);
+        final TableInfo _existingNotifications = TableInfo.read(db, "notifications");
+        if (!_infoNotifications.equals(_existingNotifications)) {
+          return new RoomOpenHelper.ValidationResult(false, "notifications(com.borrowbox.app.model.NotificationModel).\n"
+                  + " Expected:\n" + _infoNotifications + "\n"
+                  + " Found:\n" + _existingNotifications);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
     }, "1af4c87d2d29789362b1023304020fec", "c9dc2f607d47b34eddc66e7b7b8e62ed");
@@ -336,7 +336,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     final HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "students","products","rentals","ratings","payments","chat_messages","disputes","notifications","product_conditions");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "students","products","rentals","ratings","payments","chat_messages","disputes","product_conditions","notifications");
   }
 
   @Override
@@ -352,8 +352,8 @@ public final class AppDatabase_Impl extends AppDatabase {
       _db.execSQL("DELETE FROM `payments`");
       _db.execSQL("DELETE FROM `chat_messages`");
       _db.execSQL("DELETE FROM `disputes`");
-      _db.execSQL("DELETE FROM `notifications`");
       _db.execSQL("DELETE FROM `product_conditions`");
+      _db.execSQL("DELETE FROM `notifications`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -375,8 +375,8 @@ public final class AppDatabase_Impl extends AppDatabase {
     _typeConvertersMap.put(PaymentDao.class, PaymentDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(ChatMessageDao.class, ChatMessageDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(DisputeDao.class, DisputeDao_Impl.getRequiredConverters());
-    _typeConvertersMap.put(NotificationDao.class, NotificationDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(ProductConditionDao.class, ProductConditionDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(NotificationDao.class, NotificationDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -494,20 +494,6 @@ public final class AppDatabase_Impl extends AppDatabase {
   }
 
   @Override
-  public NotificationDao notificationDao() {
-    if (_notificationDao != null) {
-      return _notificationDao;
-    } else {
-      synchronized(this) {
-        if(_notificationDao == null) {
-          _notificationDao = new NotificationDao_Impl(this);
-        }
-        return _notificationDao;
-      }
-    }
-  }
-
-  @Override
   public ProductConditionDao productConditionDao() {
     if (_productConditionDao != null) {
       return _productConditionDao;
@@ -517,6 +503,20 @@ public final class AppDatabase_Impl extends AppDatabase {
           _productConditionDao = new ProductConditionDao_Impl(this);
         }
         return _productConditionDao;
+      }
+    }
+  }
+
+  @Override
+  public NotificationDao notificationDao() {
+    if (_notificationDao != null) {
+      return _notificationDao;
+    } else {
+      synchronized(this) {
+        if(_notificationDao == null) {
+          _notificationDao = new NotificationDao_Impl(this);
+        }
+        return _notificationDao;
       }
     }
   }
