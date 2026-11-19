@@ -34,6 +34,9 @@ public interface ProductDao {
     @Query("SELECT * FROM products ORDER BY id DESC")
     LiveData<List<Product>> getAllProductsLive();
 
+    @Query("SELECT * FROM products ORDER BY id DESC")
+    List<Product> getAllProducts();
+
     @Query("SELECT * FROM products WHERE ownerId = :ownerId ORDER BY id DESC")
     LiveData<List<Product>> getProductsByOwnerLive(long ownerId);
 
@@ -45,4 +48,13 @@ public interface ProductDao {
 
     @Query("SELECT COUNT(*) FROM products")
     int getProductCount();
+
+    @Query("SELECT COUNT(*) FROM products")
+    LiveData<Integer> getProductCountLive();
+
+    @Query("SELECT COUNT(*) FROM products WHERE available = 1")
+    LiveData<Integer> getAvailableProductCountLive();
+
+    @Query("UPDATE products SET available = :available WHERE id = :productId")
+    void updateAvailability(long productId, boolean available);
 }

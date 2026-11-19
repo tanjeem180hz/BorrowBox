@@ -95,8 +95,24 @@
         android:label="Settings" />
 
     <fragment
+ Branch--Sabbir
         android:id="@+id/myProductsFragment"
         android:name="com.borrowbox.app.ui.product.MyProductsFragment"
         android:label="My Product Listings" />
+
+        android:id="@+id/messengerChatFragment"
+        android:name="com.borrowbox.app.ui.chat.MessengerChatFragment"
+        android:label="Messenger" />
+
+    <fragment
+        android:id="@+id/messengerInboxFragment"
+        android:name="com.borrowbox.app.ui.chat.MessengerInboxFragment"
+        android:label="Chats" />
+
+    <fragment
+        android:id="@+id/adminDashboardFragment"
+        android:name="com.borrowbox.app.ui.admin.AdminDashboardFragment"
+        android:label="Admin Console" />
+ main
 
 </navigation>

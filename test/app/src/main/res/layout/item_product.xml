@@ -46,6 +46,30 @@
                 android:textSize="10sp"
                 android:textStyle="bold"
                 android:visibility="gone" />
+
+            <!-- Floating Facebook Messenger Button on Post Photo -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_post_message"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="17dp"
+                app:cardElevation="3dp"
+                app:strokeColor="@color/messenger_card_border"
+                app:strokeWidth="1dp">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="Chat on Messenger"
+                    android:src="@drawable/ic_messenger_logo" />
+            </com.google.android.material.card.MaterialCardView>
         </FrameLayout>
 
         <!-- Divider line -->

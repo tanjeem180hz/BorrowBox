@@ -30,10 +30,17 @@ public class LocalUserRepository implements UserRepository {
     @Override
     public void registerStudent(Student student, OnUserCallback callback) {
         executors.diskIO().execute(() -> {
-            Student existing = studentDao.getStudentByEmail(student.getEmail());
-            if (existing != null) {
-                executors.mainThread().execute(() -> callback.onError("Account already exists with this email"));
+            Student existingEmail = studentDao.getStudentByEmail(student.getEmail());
+            if (existingEmail != null) {
+                executors.mainThread().execute(() -> callback.onError("Account already exists with email: " + student.getEmail()));
                 return;
+            }
+            if (!student.getStudentId().isEmpty()) {
+                Student existingId = studentDao.getStudentByStudentId(student.getStudentId());
+                if (existingId != null) {
+                    executors.mainThread().execute(() -> callback.onError("Student ID " + student.getStudentId() + " is already registered."));
+                    return;
+                }
             }
             long id = studentDao.insert(student);
             student.setId(id);
@@ -46,9 +53,13 @@ public class LocalUserRepository implements UserRepository {
         executors.diskIO().execute(() -> {
             Student student = studentDao.getStudentByEmail(email);
             if (student == null) {
-                // Check if this is a seeded demo student before initial DB callback completes
+                // Also check if entered student ID instead of email
+                student = studentDao.getStudentByStudentId(email);
+            }
+            if (student == null) {
+                // Fallback check against initial seeded list in case initial DB callback was interrupted
                 for (Student s : com.borrowbox.app.data.local.SeedData.getInitialStudents()) {
-                    if (s.getEmail().equalsIgnoreCase(email)) {
+                    if (s.getEmail().equalsIgnoreCase(email) || s.getStudentId().equalsIgnoreCase(email)) {
                         studentDao.insert(s);
                         student = s;
                         break;
@@ -56,15 +67,23 @@ public class LocalUserRepository implements UserRepository {
                 }
             }
             if (student == null) {
-                executors.mainThread().execute(() -> callback.onError("Invalid email or password"));
+                executors.mainThread().execute(() -> callback.onError("Invalid credentials. Please check your email and password."));
                 return;
             }
+
+            // Check if student account is suspended
+            if (student.isSuspended()) {
+                final String reason = student.getStatusMessage().isEmpty() ? "Violation of campus sharing policy" : student.getStatusMessage();
+                executors.mainThread().execute(() -> callback.onError("Account Suspended: " + reason + ". Contact DIU Proctorial Admin."));
+                return;
+            }
+
             boolean match = SecurityUtils.verifyPassword(password, student.getSalt(), student.getPasswordHash());
             if (match) {
                 final Student authenticated = student;
                 executors.mainThread().execute(() -> callback.onSuccess(authenticated));
             } else {
-                executors.mainThread().execute(() -> callback.onError("Invalid email or password"));
+                executors.mainThread().execute(() -> callback.onError("Invalid credentials. Please check your email and password."));
             }
         });
     }
@@ -72,5 +91,35 @@ public class LocalUserRepository implements UserRepository {
     @Override
     public void updateStudent(Student student) {
         executors.diskIO().execute(() -> studentDao.update(student));
+    }
+
+    @Override
+    public void suspendStudent(long studentId, boolean suspend, String reason, Runnable onComplete) {
+        executors.diskIO().execute(() -> {
+            studentDao.updateSuspension(studentId, suspend, reason);
+            if (onComplete != null) {
+                executors.mainThread().execute(onComplete);
+            }
+        });
+    }
+
+    @Override
+    public void updateVerification(long studentId, boolean verified, Runnable onComplete) {
+        executors.diskIO().execute(() -> {
+            studentDao.updateVerification(studentId, verified);
+            if (onComplete != null) {
+                executors.mainThread().execute(onComplete);
+            }
+        });
+    }
+
+    @Override
+    public void resetTrustScore(long studentId, int newScore, Runnable onComplete) {
+        executors.diskIO().execute(() -> {
+            studentDao.updateTrustScore(studentId, newScore);
+            if (onComplete != null) {
+                executors.mainThread().execute(onComplete);
+            }
+        });
     }
 }

@@ -34,10 +34,8 @@ public class BorrowBoxApp extends Application {
         sessionManager.applyAppTheme();
         sessionManager.applyAppLanguage();
 
-        // 4. Pre-warm database
-        com.borrowbox.app.util.AppExecutors.getInstance().diskIO().execute(() -> {
-            com.borrowbox.app.data.local.AppDatabase.getInstance(this).studentDao().getAllStudents();
-        });
+        // 4. Pre-warm database and ensure campus seeds exist
+        com.borrowbox.app.data.local.AppDatabase.ensureSeeded(this);
     }
 
     private void createNotificationChannels() {

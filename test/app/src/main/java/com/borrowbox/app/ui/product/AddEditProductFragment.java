@@ -72,6 +72,9 @@ public class AddEditProductFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutout(binding.getRoot());
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyBottomCutout(binding.getRoot());
+
         ProductRepository productRepository = RepositoryProvider.getInstance(requireContext()).getProductRepository();
         SessionManager sessionManager = new SessionManager(requireContext());
 

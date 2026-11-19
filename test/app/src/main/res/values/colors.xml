@@ -35,4 +35,20 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
+
+    <!-- Facebook Messenger Brand Tokens -->
+    <color name="messenger_blue">#0084FF</color>
+    <color name="messenger_blue_pressed">#0074E4</color>
+    <color name="messenger_blue_light">#E7F3FF</color>
+    <color name="messenger_bubble_incoming">#F0F2F5</color>
+    <color name="messenger_bubble_incoming_text">#050505</color>
+    <color name="messenger_bubble_outgoing">#0084FF</color>
+    <color name="messenger_bubble_outgoing_text">#FFFFFF</color>
+    <color name="messenger_online">#31A24C</color>
+    <color name="messenger_input_bg">#F0F2F5</color>
+    <color name="messenger_chip_bg">#F0F2F5</color>
+    <color name="messenger_chip_stroke">#D8DADF</color>
+    <color name="messenger_card_border">#E4E6EB</color>
+    <color name="messenger_icon_tint">#0084FF</color>
+    <color name="messenger_icon_secondary">#65676B</color>
 </resources>

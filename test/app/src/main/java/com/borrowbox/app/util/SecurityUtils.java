@@ -1,6 +1,5 @@
 package com.borrowbox.app.util;
 
-import android.util.Base64;
 import androidx.annotation.NonNull;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -8,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 /**
- * Utility for hashing student passwords with salted SHA-256 (Android API 24+ compatible).
+ * Utility for hashing student passwords with salted SHA-256 (Android API 24+ & JVM unit test compatible).
  */
 public final class SecurityUtils {
 
@@ -17,11 +16,19 @@ public final class SecurityUtils {
     private SecurityUtils() {
     }
 
+    private static String encodeBase64(byte[] bytes) {
+        try {
+            return java.util.Base64.getEncoder().encodeToString(bytes);
+        } catch (Throwable t) {
+            return android.util.Base64.encodeToString(bytes, android.util.Base64.NO_WRAP);
+        }
+    }
+
     @NonNull
     public static String generateSalt() {
         byte[] salt = new byte[16];
         RANDOM.nextBytes(salt);
-        return Base64.encodeToString(salt, Base64.NO_WRAP);
+        return encodeBase64(salt);
     }
 
     @NonNull
@@ -30,7 +37,7 @@ public final class SecurityUtils {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             digest.update(salt.getBytes(StandardCharsets.UTF_8));
             byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
-            return Base64.encodeToString(hash, Base64.NO_WRAP);
+            return encodeBase64(hash);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("SHA-256 not available", e);
         }

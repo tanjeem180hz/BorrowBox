@@ -27,6 +27,9 @@ public interface RentalDao {
     @Query("SELECT * FROM rentals WHERE id = :id")
     Rental getRentalById(long id);
 
+    @Query("SELECT * FROM rentals ORDER BY id DESC")
+    LiveData<List<Rental>> getAllRentalsLive();
+
     @Query("SELECT * FROM rentals WHERE borrowerId = :userId OR ownerId = :userId ORDER BY id DESC")
     LiveData<List<Rental>> getRentalsForUserLive(long userId);
 
@@ -41,4 +44,13 @@ public interface RentalDao {
 
     @Query("SELECT * FROM rentals WHERE (borrowerId = :userId OR ownerId = :userId) AND status IN ('RETURNED', 'REJECTED', 'CANCELLED') ORDER BY id DESC")
     LiveData<List<Rental>> getHistoryRentalsLive(long userId);
+
+    @Query("SELECT COUNT(*) FROM rentals WHERE status IN ('ACTIVE', 'OVERDUE')")
+    LiveData<Integer> getGlobalActiveRentalsCountLive();
+
+    @Query("SELECT COUNT(*) FROM rentals WHERE status = 'OVERDUE'")
+    LiveData<Integer> getOverdueRentalsCountLive();
+
+    @Query("SELECT COUNT(*) FROM rentals")
+    LiveData<Integer> getTotalRentalsCountLive();
 }
