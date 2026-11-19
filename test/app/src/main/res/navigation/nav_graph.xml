@@ -94,4 +94,9 @@
         android:name="com.borrowbox.app.ui.settings.SettingsFragment"
         android:label="Settings" />
 
+    <fragment
+        android:id="@+id/myProductsFragment"
+        android:name="com.borrowbox.app.ui.product.MyProductsFragment"
+        android:label="My Product Listings" />
+
 </navigation>

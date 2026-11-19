@@ -53,6 +53,10 @@ public class ProfileFragment extends Fragment {
         binding.btnUserHimel.setOnClickListener(v -> switchUser(3L, "Chandan Acharjee Himel"));
         binding.btnUserTasnim.setOnClickListener(v -> switchUser(4L, "Mst Tasnim Binty Ekram"));
 
+        binding.btnMyProducts.setOnClickListener(v -> {
+            Navigation.findNavController(view).navigate(R.id.myProductsFragment);
+        });
+
         binding.btnAddProduct.setOnClickListener(v -> {
             Navigation.findNavController(view).navigate(R.id.addEditProductFragment);
         });
