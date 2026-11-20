@@ -3,14 +3,16 @@ package com.borrowbox.app.data.local;
 import android.content.Context;
 import android.content.SharedPreferences;
 import androidx.appcompat.app.AppCompatDelegate;
+import com.borrowbox.app.model.User;
 
 /**
- * Manages user login session, dynamic theme, and demo settings.
+ * Manages user login session, role-based authorization, dynamic theme, and demo settings.
  */
 public class SessionManager {
 
     private static final String PREF_NAME = "borrowbox_session";
     private static final String KEY_USER_ID = "logged_user_id";
+    private static final String KEY_USER_ROLE = "logged_user_role";
     private static final String KEY_IS_LOGGED_IN = "is_logged_in";
     private static final String KEY_ONBOARDING_COMPLETED = "onboarding_completed";
     private static final String KEY_AUTO_ACCEPT = "auto_accept_demo";
@@ -31,8 +33,13 @@ public class SessionManager {
     }
 
     public void setLogin(long userId) {
+        setLogin(userId, User.ROLE_STUDENT);
+    }
+
+    public void setLogin(long userId, String role) {
         prefs.edit()
                 .putLong(KEY_USER_ID, userId)
+                .putString(KEY_USER_ROLE, role != null ? role : User.ROLE_STUDENT)
                 .putBoolean(KEY_IS_LOGGED_IN, true)
                 .apply();
     }
@@ -40,6 +47,7 @@ public class SessionManager {
     public void logout() {
         prefs.edit()
                 .remove(KEY_USER_ID)
+                .remove(KEY_USER_ROLE)
                 .putBoolean(KEY_IS_LOGGED_IN, false)
                 .apply();
     }
@@ -50,6 +58,14 @@ public class SessionManager {
 
     public long getLoggedInUserId() {
         return prefs.getLong(KEY_USER_ID, 1L); // default to student 1 (Tanjeem)
+    }
+
+    public String getLoggedInUserRole() {
+        return prefs.getString(KEY_USER_ROLE, User.ROLE_STUDENT);
+    }
+
+    public boolean isAdmin() {
+        return User.ROLE_ADMIN.equalsIgnoreCase(getLoggedInUserRole());
     }
 
     public boolean isOnboardingCompleted() {

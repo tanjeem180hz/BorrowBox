@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_xs"
-            android:text="@string/auth_register_subtitle"
+            android:text="Join DIU peer equipment sharing network"
             android:textColor="@color/muted"
             android:textSize="@dimen/text_body"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_sm"
-            android:hint="@string/auth_email"
+            android:hint="University Email (e.g. name@diu.edu.bd)"
             app:layout_constraintTop_toBottomOf="@id/til_name">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -72,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_sm"
-            android:hint="@string/auth_student_id"
+            android:hint="Student ID (e.g. 252-15-817)"
             app:layout_constraintTop_toBottomOf="@id/til_email">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -83,19 +83,19 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_university"
+            android:id="@+id/til_phone"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_sm"
-            android:hint="@string/auth_university"
+            android:hint="Mobile Number (e.g. 01712-345678)"
             app:layout_constraintTop_toBottomOf="@id/til_student_id">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_university"
+                android:id="@+id/et_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Daffodil International University" />
+                android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -105,13 +105,29 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_sm"
             android:hint="@string/auth_department"
-            app:layout_constraintTop_toBottomOf="@id/til_university">
+            app:layout_constraintTop_toBottomOf="@id/til_phone">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_department"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="CSE" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_university"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:hint="@string/auth_university"
+            app:layout_constraintTop_toBottomOf="@id/til_department">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_university"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daffodil International University" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -122,10 +138,27 @@
             android:layout_marginTop="@dimen/spacing_sm"
             android:hint="@string/auth_password"
             app:endIconMode="password_toggle"
-            app:layout_constraintTop_toBottomOf="@id/til_department">
+            app:layout_constraintTop_toBottomOf="@id/til_university">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_confirm_password"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:hint="Confirm Password"
+            app:endIconMode="password_toggle"
+            app:layout_constraintTop_toBottomOf="@id/til_password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword" />
@@ -138,7 +171,7 @@
             android:layout_marginTop="@dimen/spacing_sm"
             android:textColor="@color/danger"
             android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/til_password" />
+            app:layout_constraintTop_toBottomOf="@id/til_confirm_password" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_register"
@@ -156,6 +189,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_md"
+            android:paddingBottom="@dimen/spacing_lg"
             android:text="@string/auth_already_have_account"
             android:textColor="@color/brand_primary"
             app:layout_constraintEnd_toEndOf="parent"

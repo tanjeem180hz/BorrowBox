@@ -17,14 +17,20 @@ public class Student extends User {
     private String department = "CSE";
     @NonNull
     private String studentId = "";
-    private int trustScore = 75;
+    private int trustScore = 80;
     private double ratingAverage = 5.0;
     private int ratingCount = 0;
     private int completedRentals = 0;
     private boolean verified = true;
+    private boolean isSuspended = false;
+    @NonNull
+    private String statusMessage = "Active";
+    private int lateReturnsCount = 0;
+    private int disputePenaltiesCount = 0;
 
     public Student() {
         super();
+        this.role = ROLE_STUDENT;
     }
 
     @Ignore
@@ -33,7 +39,21 @@ public class Student extends User {
                    @NonNull String university, @NonNull String department,
                    @NonNull String studentId, int trustScore, double ratingAverage,
                    int ratingCount, int completedRentals, boolean verified) {
-        super(id, name, email, passwordHash, salt, createdAt);
+        this(id, name, email, passwordHash, salt, createdAt, university, department,
+                studentId, trustScore, ratingAverage, ratingCount, completedRentals,
+                verified, false, "Active", 0, 0, ROLE_STUDENT, "", true);
+    }
+
+    @Ignore
+    public Student(long id, @NonNull String name, @NonNull String email,
+                   @NonNull String passwordHash, @NonNull String salt, long createdAt,
+                   @NonNull String university, @NonNull String department,
+                   @NonNull String studentId, int trustScore, double ratingAverage,
+                   int ratingCount, int completedRentals, boolean verified,
+                   boolean isSuspended, @NonNull String statusMessage,
+                   int lateReturnsCount, int disputePenaltiesCount,
+                   @NonNull String role, @NonNull String phone, boolean phoneVisible) {
+        super(id, name, email, passwordHash, salt, role, phone, phoneVisible, createdAt);
         this.id = id;
         this.university = university;
         this.department = department;
@@ -43,6 +63,10 @@ public class Student extends User {
         this.ratingCount = ratingCount;
         this.completedRentals = completedRentals;
         this.verified = verified;
+        this.isSuspended = isSuspended;
+        this.statusMessage = statusMessage;
+        this.lateReturnsCount = lateReturnsCount;
+        this.disputePenaltiesCount = disputePenaltiesCount;
     }
 
     @Override
@@ -73,4 +97,16 @@ public class Student extends User {
 
     public boolean isVerified() { return verified; }
     public void setVerified(boolean verified) { this.verified = verified; }
+
+    public boolean isSuspended() { return isSuspended; }
+    public void setSuspended(boolean suspended) { isSuspended = suspended; }
+
+    @NonNull public String getStatusMessage() { return statusMessage; }
+    public void setStatusMessage(@NonNull String statusMessage) { this.statusMessage = statusMessage; }
+
+    public int getLateReturnsCount() { return lateReturnsCount; }
+    public void setLateReturnsCount(int lateReturnsCount) { this.lateReturnsCount = lateReturnsCount; }
+
+    public int getDisputePenaltiesCount() { return disputePenaltiesCount; }
+    public void setDisputePenaltiesCount(int disputePenaltiesCount) { this.disputePenaltiesCount = disputePenaltiesCount; }
 }

@@ -20,11 +20,21 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
         void onProductClick(Product product);
     }
 
+    public interface OnProductMessageClickListener {
+        void onProductMessageClick(Product product);
+    }
+
     private final OnProductClickListener listener;
+    private final OnProductMessageClickListener messageListener;
 
     public ProductAdapter(OnProductClickListener listener) {
+        this(listener, null);
+    }
+
+    public ProductAdapter(OnProductClickListener listener, OnProductMessageClickListener messageListener) {
         super(DIFF_CALLBACK);
         this.listener = listener;
+        this.messageListener = messageListener;
     }
 
     private static final DiffUtil.ItemCallback<Product> DIFF_CALLBACK = new DiffUtil.ItemCallback<Product>() {
@@ -63,6 +73,14 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
             itemView.setOnClickListener(v -> {
                 int pos = getBindingAdapterPosition();
                 if (pos != RecyclerView.NO_POSITION && listener != null) {
+                    listener.onProductClick(getItem(pos));
+                }
+            });
+            binding.btnPostMessage.setOnClickListener(v -> {
+                int pos = getBindingAdapterPosition();
+                if (pos != RecyclerView.NO_POSITION && messageListener != null) {
+                    messageListener.onProductMessageClick(getItem(pos));
+                } else if (pos != RecyclerView.NO_POSITION && listener != null) {
                     listener.onProductClick(getItem(pos));
                 }
             });

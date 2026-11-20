@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import com.borrowbox.app.R;
 import com.borrowbox.app.databinding.FragmentLoginBinding;
+import com.borrowbox.app.model.User;
+import com.borrowbox.app.util.EdgeToEdgeHelper;
 
 public class LoginFragment extends Fragment {
 
@@ -30,6 +32,29 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(AuthViewModel.class);
 
+        // Automatic display cutout (notch/punch-hole) and keyboard/bottom cutout adaptation
+        EdgeToEdgeHelper.applyTopCutout(binding.getRoot());
+        EdgeToEdgeHelper.applyImeAndBottomCutout(binding.btnLogin);
+
+        // Quick demo persona selectors for evaluation and testing
+        binding.btnChipTanjeem.setOnClickListener(v -> {
+            binding.etEmail.setText("tanjeem@diu.edu.bd");
+            binding.etPassword.setText("123456");
+            binding.tvError.setVisibility(View.GONE);
+        });
+
+        binding.btnChipSabbir.setOnClickListener(v -> {
+            binding.etEmail.setText("sabbir@diu.edu.bd");
+            binding.etPassword.setText("123456");
+            binding.tvError.setVisibility(View.GONE);
+        });
+
+        binding.btnChipAdmin.setOnClickListener(v -> {
+            binding.etEmail.setText("admin@diu.edu.bd");
+            binding.etPassword.setText("admin123");
+            binding.tvError.setVisibility(View.GONE);
+        });
+
         binding.btnLogin.setOnClickListener(v -> {
             String email = binding.etEmail.getText() != null ? binding.etEmail.getText().toString().trim() : "";
             String pass = binding.etPassword.getText() != null ? binding.etPassword.getText().toString() : "";
@@ -42,10 +67,16 @@ public class LoginFragment extends Fragment {
 
         viewModel.getAuthSuccess().observe(getViewLifecycleOwner(), success -> {
             if (Boolean.TRUE.equals(success)) {
+                String role = viewModel.getUserRole().getValue();
                 androidx.navigation.NavOptions navOptions = new androidx.navigation.NavOptions.Builder()
                         .setPopUpTo(R.id.loginFragment, true)
                         .build();
-                Navigation.findNavController(view).navigate(R.id.nav_home, null, navOptions);
+
+                if (User.ROLE_ADMIN.equalsIgnoreCase(role)) {
+                    Navigation.findNavController(view).navigate(R.id.adminDashboardFragment, null, navOptions);
+                } else {
+                    Navigation.findNavController(view).navigate(R.id.nav_home, null, navOptions);
+                }
             }
         });
 
@@ -56,6 +87,10 @@ public class LoginFragment extends Fragment {
             } else {
                 binding.tvError.setVisibility(View.GONE);
             }
+        });
+
+        viewModel.getLoading().observe(getViewLifecycleOwner(), loading -> {
+            binding.btnLogin.setEnabled(!Boolean.TRUE.equals(loading));
         });
     }
 

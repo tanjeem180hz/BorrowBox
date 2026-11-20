@@ -1,0 +1,88 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="160dp"
+    android:viewportWidth="200"
+    android:viewportHeight="160">
+    <!-- Background Card Canvas -->
+    <path
+        android:fillColor="#F0FDF4"
+        android:pathData="M0,0h200v160h-200z" />
+    <!-- Ambient glow circle -->
+    <path
+        android:fillColor="#DCFCE7"
+        android:pathData="M100,80m-55,0a55,55 0 1,0 110,0a55,55 0 1,0 -110,0" />
+
+    <!-- Coat Hanger at Top -->
+    <path
+        android:strokeColor="#78350F"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round"
+        android:pathData="M100,24 C100,16 106,16 106,20 C106,24 100,26 100,30 M65,48 L100,32 L135,48" />
+
+    <!-- Coat Main Body (Crisp White/Slate-50) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M60,46 L100,38 L140,46 L152,142 L48,142 Z" />
+    <!-- Coat Shadow Base / Crease -->
+    <path
+        android:fillColor="#E2E8F0"
+        android:pathData="M48,138 L152,138 L152,142 L48,142 Z" />
+
+    <!-- Left & Right Folded Sleeves / Shoulders -->
+    <path
+        android:fillColor="#F1F5F9"
+        android:pathData="M60,46 L44,95 L58,97 L68,66 Z M140,46 L156,95 L142,97 L132,66 Z" />
+
+    <!-- Sharp Notched Lapel / Collars -->
+    <path
+        android:fillColor="#F8FAFC"
+        android:strokeColor="#CBD5E1"
+        android:strokeWidth="1.5"
+        android:pathData="M80,38 L100,72 L86,64 L80,48 Z M120,38 L100,72 L114,64 L120,48 Z" />
+
+    <!-- Center Opening & Button Line -->
+    <path
+        android:strokeColor="#94A3B8"
+        android:strokeWidth="1.5"
+        android:pathData="M100,72v70" />
+
+    <!-- Round Buttons -->
+    <path
+        android:fillColor="#64748B"
+        android:pathData="M100,82m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0 M100,98m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0 M100,114m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0 M100,130m-2,0a2,2 0 1,0 4,0a2,2 0 1,0 -4,0" />
+
+    <!-- Left Chest Pocket -->
+    <path
+        android:fillColor="#F1F5F9"
+        android:strokeColor="#CBD5E1"
+        android:strokeWidth="1.5"
+        android:pathData="M70,82h18v22h-18z" />
+
+    <!-- Ballpoint Pens Tucked in Pocket -->
+    <!-- Blue Pen Clip -->
+    <path
+        android:fillColor="#2563EB"
+        android:pathData="M74,74h3v14h-3z" />
+    <path
+        android:fillColor="#93C5FD"
+        android:pathData="M73,78h1v8h-1z" />
+    <!-- Red Pen Clip -->
+    <path
+        android:fillColor="#DC2626"
+        android:pathData="M80,75h3v13h-3z" />
+    <path
+        android:fillColor="#FCA5A5"
+        android:pathData="M79,79h1v7h-1z" />
+
+    <!-- DIU Student ID Badge Card (clipped to right) -->
+    <path
+        android:fillColor="#059669"
+        android:pathData="M116,84h18v24h-18z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M118,88h14v3h-14z M118,94h14v12h-14z" />
+    <!-- ID lanyard clip -->
+    <path
+        android:fillColor="#64748B"
+        android:pathData="M123,80h4v4h-4z" />
+</vector>

@@ -1,0 +1,74 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="160dp"
+    android:viewportWidth="200"
+    android:viewportHeight="160">
+    <!-- Background Card Canvas -->
+    <path
+        android:fillColor="#F8FAFC"
+        android:pathData="M0,0h200v160h-200z" />
+    <!-- Ambient glow circle -->
+    <path
+        android:fillColor="#E2E8F0"
+        android:pathData="M95,80m-50,0a50,50 0 1,0 100,0a50,50 0 1,0 -100,0" />
+
+    <!-- Wireless USB Dongle (resting near top right) -->
+    <path
+        android:fillColor="#94A3B8"
+        android:pathData="M148,42h14v10h-14z" />
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M144,40h6a2,2 0 0,1 2,2v10a2,2 0 0,1 -2,2h-6a2,2 0 0,1 -2,-2v-10a2,2 0 0,1 2,-2z" />
+    <!-- Wireless signal waves -->
+    <path
+        android:strokeColor="#6366F1"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M140,43 A8,8 0 0,0 140,51 M136,39 A14,14 0 0,0 136,55" />
+
+    <!-- Mouse Drop Shadow -->
+    <path
+        android:fillColor="#CBD5E1"
+        android:pathData="M60,132 C60,132 75,138 95,138 C115,138 130,132 130,132 C130,132 115,135 95,135 C75,135 60,132 60,132 Z" />
+
+    <!-- Mouse Main Ergonomic Body -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M68,60 C68,36 122,36 122,60 C124,85 128,115 118,128 C108,138 82,138 72,128 C62,115 66,85 68,60 Z" />
+
+    <!-- Ergonomic Thumb Rest Contour (Left) -->
+    <path
+        android:fillColor="#0F172A"
+        android:pathData="M68,75 C60,82 58,102 65,116 C67,112 68,95 68,75 Z" />
+
+    <!-- Top Left & Right Click Seam -->
+    <path
+        android:strokeColor="#334155"
+        android:strokeWidth="1.5"
+        android:pathData="M95,38v38 M72,66 C80,68 110,68 118,66" />
+
+    <!-- Scroll Wheel Well & Wheel -->
+    <path
+        android:fillColor="#0F172A"
+        android:pathData="M90,44h10a2,2 0 0,1 2,2v22a2,2 0 0,1 -2,2h-10a2,2 0 0,1 -2,-2v-22a2,2 0 0,1 2,-2z" />
+    <!-- Metallic Wheel Core -->
+    <path
+        android:fillColor="#94A3B8"
+        android:pathData="M92,48h6a1,1 0 0,1 1,1v14a1,1 0 0,1 -1,1h-6a1,1 0 0,1 -1,-1v-14a1,1 0 0,1 1,-1z" />
+    <!-- Wheel Grip Ribs -->
+    <path
+        android:fillColor="#475569"
+        android:pathData="M92,51h6v2h-6z M92,55h6v2h-6z M92,59h6v2h-6z" />
+
+    <!-- DPI Button -->
+    <path
+        android:fillColor="#475569"
+        android:pathData="M93,73h4a1,1 0 0,1 1,1v5a1,1 0 0,1 -1,1h-4a1,1 0 0,1 -1,-1v-5a1,1 0 0,1 1,-1z" />
+
+    <!-- Ergonomic Blue LED Accent Stripe -->
+    <path
+        android:strokeColor="#38BDF8"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M78,110 C86,118 104,118 112,110" />
+</vector>

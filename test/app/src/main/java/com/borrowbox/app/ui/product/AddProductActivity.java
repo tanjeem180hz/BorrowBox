@@ -4,12 +4,17 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+ Branch--Rafi
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
+ main
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -20,7 +25,9 @@ import androidx.camera.core.ImageCaptureException;
 import androidx.camera.core.Preview;
 import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.core.content.ContextCompat;
+ Branch--Rafi
 
+ main
 import com.borrowbox.app.data.local.SessionManager;
 import com.borrowbox.app.data.repository.ProductRepository;
 import com.borrowbox.app.data.repository.RepositoryProvider;
@@ -31,15 +38,25 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+ Branch--Rafi
+import com.google.android.material.snackbar.Snackbar;
+
+import java.io.File;
+
 
 import java.io.File;
 import java.io.IOException;
+ main
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 /**
+ Branch--Rafi
+ * Activity for Product Catalog & Media Management module (Member 02 Assignment).
+ * Implements clean UI form, CameraX direct photo capture, and Firebase Storage integration.
+
  * AddProductActivity - Product Catalog & Media Management Module (Member 02 Assignment).
  * <p>
  * Key Features:
@@ -47,10 +64,17 @@ import java.util.concurrent.ExecutionException;
  * 2. On-device CameraX integration for product photo capture with retake support.
  * 3. Asynchronous Firebase Storage image upload and Firebase Firestore document persistence.
  * 4. Local Room Database synchronization for offline resilience.
+ main
  */
 public class AddProductActivity extends AppCompatActivity {
 
     private static final String TAG = "AddProductActivity";
+ Branch--Rafi
+    private ActivityAddProductBinding binding;
+    private ImageCapture imageCapture;
+    private File photoFile;
+    private String capturedImagePath = "";
+
 
     private ActivityAddProductBinding binding;
     private ImageCapture imageCapture;
@@ -59,13 +83,18 @@ public class AddProductActivity extends AppCompatActivity {
 
     private ProductRepository productRepository;
     private SessionManager sessionManager;
+ main
 
     private final ActivityResultLauncher<String> cameraPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if (isGranted) {
                     startCamera();
                 } else {
+ Branch--Rafi
+                    Toast.makeText(this, "Camera permission is required to capture product photos", Toast.LENGTH_SHORT).show();
+
                     Toast.makeText(this, "Camera permission is required to capture product photos", Toast.LENGTH_LONG).show();
+ main
                 }
             });
 
@@ -74,6 +103,56 @@ public class AddProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityAddProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+ Branch--Rafi
+        ProductRepository productRepository = RepositoryProvider.getInstance(this).getProductRepository();
+        SessionManager sessionManager = new SessionManager(this);
+
+        checkCameraPermissionAndStart();
+
+        binding.btnBack.setOnClickListener(v -> finish());
+
+        binding.btnCapturePhoto.setOnClickListener(v -> takePhoto());
+
+        binding.btnSaveProduct.setOnClickListener(v -> {
+            String name = binding.etName.getText() != null ? binding.etName.getText().toString().trim() : "";
+            String category = binding.etCategory.getText() != null ? binding.etCategory.getText().toString().trim() : "Electronics";
+            String dailyPriceStr = binding.etDailyPrice.getText() != null ? binding.etDailyPrice.getText().toString().trim() : "100";
+            String depositStr = binding.etSecurityDeposit.getText() != null ? binding.etSecurityDeposit.getText().toString().trim() : "500";
+            String condition = binding.etCondition.getText() != null ? binding.etCondition.getText().toString().trim() : "Good";
+            String desc = binding.etDescription.getText() != null ? binding.etDescription.getText().toString().trim() : "";
+
+            if (name.isEmpty()) {
+                Snackbar.make(v, "Please enter product name", Snackbar.LENGTH_SHORT).show();
+                return;
+            }
+
+            double dailyPrice = 100.0;
+            double deposit = 500.0;
+            try {
+                dailyPrice = Double.parseDouble(dailyPriceStr);
+                deposit = Double.parseDouble(depositStr);
+            } catch (NumberFormatException ignored) {}
+
+            long ownerId = sessionManager.getLoggedInUserId();
+            String productId = "PROD_" + UUID.randomUUID().toString().substring(0, 8);
+
+            binding.progressUpload.setVisibility(View.VISIBLE);
+            binding.btnSaveProduct.setEnabled(false);
+
+            if (photoFile != null && photoFile.exists()) {
+                uploadPhotoAndSaveProduct(productId, ownerId, name, category, desc, dailyPrice, deposit, condition, productRepository, v);
+            } else {
+                saveProductData(productId, ownerId, name, category, desc, dailyPrice, deposit, condition,
+                        capturedImagePath.isEmpty() ? Collections.emptyList() : Collections.singletonList(capturedImagePath),
+                        productRepository, v);
+            }
+        });
+    }
+
+    private void checkCameraPermissionAndStart() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED) {
 
         productRepository = RepositoryProvider.getInstance(this).getProductRepository();
         sessionManager = new SessionManager(this);
@@ -129,11 +208,21 @@ public class AddProductActivity extends AppCompatActivity {
      */
     private void checkCameraPermissionAndStart() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+ main
             startCamera();
         } else {
             cameraPermissionLauncher.launch(Manifest.permission.CAMERA);
         }
     }
+
+ Branch--Rafi
+    private void startCamera() {
+        ListenableFuture<ProcessCameraProvider> cameraProviderFuture =
+                ProcessCameraProvider.getInstance(this);
+
+        cameraProviderFuture.addListener(() -> {
+            try {
+                ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
 
     /**
      * Binds CameraX Preview and ImageCapture to Activity lifecycle.
@@ -144,6 +233,7 @@ public class AddProductActivity extends AppCompatActivity {
             try {
                 ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
 
+ main
                 Preview preview = new Preview.Builder().build();
                 preview.setSurfaceProvider(binding.viewFinder.getSurfaceProvider());
 
@@ -157,10 +247,47 @@ public class AddProductActivity extends AppCompatActivity {
                 cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture);
 
             } catch (ExecutionException | InterruptedException e) {
+ Branch--Rafi
+                Log.e(TAG, "Error starting CameraX", e);
+
                 Log.e(TAG, "Error initializing CameraX provider", e);
+ main
             }
         }, ContextCompat.getMainExecutor(this));
     }
+
+ Branch--Rafi
+    private void takePhoto() {
+        if (imageCapture == null) return;
+
+        photoFile = new File(getCacheDir(), "product_" + System.currentTimeMillis() + ".jpg");
+
+        ImageCapture.OutputFileOptions outputFileOptions =
+                new ImageCapture.OutputFileOptions.Builder(photoFile).build();
+
+        imageCapture.takePicture(outputFileOptions, ContextCompat.getMainExecutor(this),
+                new ImageCapture.OnImageSavedCallback() {
+                    @Override
+                    public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
+                        capturedImagePath = photoFile.getAbsolutePath();
+                        Uri savedUri = Uri.fromFile(photoFile);
+                        binding.ivCapturedPreview.setImageURI(savedUri);
+                        binding.ivCapturedPreview.setVisibility(View.VISIBLE);
+                        binding.viewFinder.setVisibility(View.GONE);
+                        Toast.makeText(AddProductActivity.this, "Photo captured successfully!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(@NonNull ImageCaptureException exception) {
+                        Log.e(TAG, "Photo capture failed: " + exception.getMessage(), exception);
+                        Toast.makeText(AddProductActivity.this, "Failed to capture photo", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void uploadPhotoAndSaveProduct(String productId, long ownerId, String name, String category,
+                                           String desc, double dailyPrice, double deposit,
+                                           String condition, ProductRepository repository, View view) {
 
     /**
      * Captures photo via CameraX and stores in cache directory.
@@ -274,6 +401,7 @@ public class AddProductActivity extends AppCompatActivity {
      */
     private void uploadPhotoToFirebase(String productId, long ownerId, String name, String category,
                                        String desc, double dailyPrice, double deposit, String condition) {
+ main
         try {
             StorageReference storageRef = FirebaseStorage.getInstance().getReference()
                     .child("product_images/" + productId + ".jpg");
@@ -287,6 +415,29 @@ public class AddProductActivity extends AppCompatActivity {
                         return storageRef.getDownloadUrl();
                     })
                     .addOnSuccessListener(downloadUri -> {
+ Branch--Rafi
+                        String downloadUrl = downloadUri.toString();
+                        saveProductData(productId, ownerId, name, category, desc, dailyPrice, deposit,
+                                condition, Collections.singletonList(downloadUrl), repository, view);
+                    })
+                    .addOnFailureListener(e -> {
+                        Log.w(TAG, "Firebase Storage upload failed, fallback to local path", e);
+                        saveProductData(productId, ownerId, name, category, desc, dailyPrice, deposit,
+                                condition, Collections.singletonList(photoFile.getAbsolutePath()), repository, view);
+                    });
+        } catch (Exception e) {
+            Log.w(TAG, "Firebase not initialized, using local image path", e);
+            saveProductData(productId, ownerId, name, category, desc, dailyPrice, deposit,
+                    condition, Collections.singletonList(photoFile.getAbsolutePath()), repository, view);
+        }
+    }
+
+    private void saveProductData(String productId, long ownerId, String name, String category,
+                                 String desc, double dailyPrice, double deposit,
+                                 String condition, List<String> imageUrls,
+                                 ProductRepository repository, View view) {
+        String mainImagePath = !imageUrls.isEmpty() ? imageUrls.get(0) : "";
+
                         List<String> imageUrls = Collections.singletonList(downloadUri.toString());
                         saveProductToDatabases(productId, ownerId, name, category, desc, dailyPrice, deposit, condition, imageUrls);
                     })
@@ -310,20 +461,41 @@ public class AddProductActivity extends AppCompatActivity {
                                         List<String> imageUrls) {
         String mainImagePath = !imageUrls.isEmpty() ? imageUrls.get(0) : "";
 
+ main
         Product product = new Product(0, ownerId, name, category, desc, (int) dailyPrice, PriceUnit.HOUR, condition, true, 23.8759, 90.3198, mainImagePath);
         product.setProductId(productId);
         product.setDailyRentalPrice(dailyPrice);
         product.setSecurityDeposit(deposit);
         product.setImageUrls(imageUrls);
 
+ Branch--Rafi
+        // Save locally in Room
+        repository.insertProduct(product);
+
+        // Try saving to Firestore
+
         // 1. Local Room DB Persistence
         productRepository.insertProduct(product);
 
         // 2. Firebase Firestore Cloud Persistence
+ main
         try {
             FirebaseFirestore.getInstance().collection("products")
                     .document(productId)
                     .set(product)
+ Branch--Rafi
+                    .addOnSuccessListener(aVoid -> Log.d(TAG, "Saved to Firestore"))
+                    .addOnFailureListener(e -> Log.w(TAG, "Firestore write error", e));
+        } catch (Exception e) {
+            Log.w(TAG, "Firebase Firestore not configured, saved locally", e);
+        }
+
+        binding.progressUpload.setVisibility(View.GONE);
+        Toast.makeText(this, "Product listed successfully!", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+}
+
                     .addOnSuccessListener(aVoid -> Log.d(TAG, "Successfully synced to Firestore"))
                     .addOnFailureListener(e -> Log.w(TAG, "Firestore sync failed", e));
         } catch (Exception e) {
@@ -344,3 +516,4 @@ public class AddProductActivity extends AppCompatActivity {
         binding.btnCapturePhoto.setEnabled(!isLoading);
     }
 }
+ main

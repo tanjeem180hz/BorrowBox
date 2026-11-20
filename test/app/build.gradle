@@ -86,6 +86,14 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:33.7.0')
     implementation 'com.google.firebase:firebase-storage'
     implementation 'com.google.firebase:firebase-firestore'
+ Branch--Rafi
+
+    implementation 'com.google.firebase:firebase-messaging'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+ main
 
     // Testing
     testImplementation 'junit:junit:4.13.2'

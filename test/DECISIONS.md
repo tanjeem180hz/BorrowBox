@@ -128,3 +128,108 @@ This document records architectural, technical, and UI/UX decisions made during 
      - `[ 🔗 Share Location ]` (triggers Android system share sheet)
   7. **Bilingual Localization:** Fully localized all new headers, chips, walking ETAs, layer sheets, and toast notifications across English and Bengali.
   8. **Live Emulator Verification:** Verified on live Android emulator that zooming in/out, switching layers via bottom sheet, rotating compass, and navigating functions seamlessly with 0 errors.
+
+
+## Decision 16: Facebook Messenger-Style Chat for Marketplace Posts
+- **Context:** User requested that clicking on a post on the home page (or the student who posted the borrow listing) provides a messaging option that looks and behaves "same to same messenger app er moto".
+- **Decision:**
+  1. **Post Card Messenger Quick Access:**
+     - Added a floating Facebook Messenger button on every product card in the 2-column home feed (`item_product.xml`), allowing 1-tap direct chat opening.
+     - Tapping the card opens `ProductDetailsFragment`, which embeds a Facebook Marketplace-style Messenger section.
+  2. **Product Details Marketplace Messenger Section:**
+     - Added a Facebook Marketplace quick message card with Messenger logo, pre-filled personalized greeting ("Hi [Name], is this still available?"), instant blue Send button, and quick suggestion chips.
+     - Added a dedicated `[ 💬 Message ]` Messenger button in the bottom action bar alongside the `[ Request to Borrow ]` button.
+  3. **Dedicated Facebook Messenger Chat Experience (`MessengerChatFragment`):**
+     - **Top App Bar:** Back navigation, owner avatar with active green status dot (`#31A24C`), full owner name, "Active now" subtitle, and action buttons for Audio Call, Video Call, and Info.
+     - **Marketplace Context Card:** Shows item photo, title, price, "BorrowBox Marketplace Listing • Active", and a "View Details" button.
+     - **Message Stream:** Left-aligned soft neutral bubbles for incoming owner messages with owner mini avatar and timestamps; right-aligned Messenger Blue (`#0084FF`) gradient bubbles with white text and delivery receipts ("Sent", "Delivered", "Seen").
+     - **Dynamic Typing Indicator:** Shows animated 3-dot typing bubble with owner avatar when owner is typing.
+     - **Quick Suggestion Chips:** Horizontal scrollable pills ("Is this still available?", "Can we meet at DIU Library?", "Can I pick it up now?", "Where is your pickup location?").
+     - **Bottom Input Bar:** Icons for attachments (`+`), camera (`📷`), gallery (`🖼️`), and voice note (`🎙️`); rounded input pill ("Message…") with emoji; dynamically swaps between the iconic Messenger Like thumbs-up button (`👍`) and the Blue Send button (`➤`).
+     - **Interactive Messenger Calling Sheet:** Audio/video call simulation with caller avatar, active dot, ringing status, speaker, mute, and red end call buttons.
+     - **Smart Simulated Replies:** Automatic contextual replies acknowledging the product and answering campus location/timing inquiries.
+  4. **Bilingual Localization & Insets:**
+     - English and Bengali translations across `values/strings.xml` and `values-bn/strings.xml`.
+     - Window insets applied via `ViewCompat.setOnApplyWindowInsetsListener` to ensure status bar and system navigation buttons do not obstruct header or bottom input bar.
+  5. **Verification & Tests:**
+     - Added unit tests in `DomainLogicTest.java` for `ChatMessage` attributes, status flow, and like flags.
+     - Verified all 24 unit tests pass cleanly, assembled debug APK, and tested live on Android emulator in both English and Bengali.
+
+
+## Decision 17: Automatic Edge-to-Edge Display Cutout (Notch/Punch-Hole) & Navigation Bar Cutout Management
+- **Context:** Devices feature a variety of display form factors including camera punch-holes, top notches, waterdrop cutouts, bottom home gesture pills, and 3-button navigation bars. User requested that BorrowBox automatically and beautifully maintain top cutouts (notches) and bottom cuts across any device without UI overlap or clipping ("notch and prottek ta device wise jate nicher cut and uporer cut sundor babe automatic maintain korte pare amon babe edit koro.").
+- **Decision:**
+  1. **Universal EdgeToEdgeHelper (`EdgeToEdgeHelper.java`):**
+     - Invokes `WindowCompat.setDecorFitsSystemWindows(activity.getWindow(), false)` to enable full edge-to-edge drawing.
+     - Configures `LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS` (API 35+) and `LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES` (API 28-34) to cleanly draw into notch and cutout areas.
+     - Applies fully transparent status bar (`Color.TRANSPARENT`) and navigation bar (`Color.TRANSPARENT`).
+     - Dynamically synchronizes status bar and navigation bar icon contrast (`setAppearanceLightStatusBars`, `setAppearanceLightNavigationBars`) with Day/Night theme.
+  2. **Top Cutout Adaptation (`applyTopCutout` & `applyTopCutoutMargin`):**
+     - Queries `WindowInsetsCompat.Type.statusBars() | WindowInsetsCompat.Type.displayCutout()`.
+     - Automatically calculates notch depth and status bar height, adding them to view padding or floating card margins (`cardTopSearch` in Map).
+     - Applied to `HomeFragment`, `ProductDetailsFragment`, `MessengerChatFragment`, `RentalsFragment`, `ProfileFragment`, `SettingsFragment`, `MapFragment`, `AddEditProductFragment`, and auth screens.
+  3. **Bottom Cutout & Navigation Adaptation (`applyBottomCutout` & `applyBottomCutoutMargin`):**
+     - Queries `WindowInsetsCompat.Type.navigationBars() | WindowInsetsCompat.Type.displayCutout()`.
+     - Dynamically adds bottom insets to bottom navigation bar, floating action buttons, and bottom cards (`cardPlaceDetail` in Map).
+  4. **Software Keyboard (IME) & Bottom Cutout Synergy (`applyImeAndBottomCutout`):**
+     - Combines navigation bar and `WindowInsetsCompat.Type.ime()` to automatically lift interactive input bars (e.g. Messenger chat input bar) above the keyboard when opened, and above gesture/nav bars when closed.
+  5. **Live Verification via Hardware Display Cutout Emulation:**
+     - Verified with `cmd overlay enable com.android.internal.display.cutout.emulation.tall` (tall notch) and `com.android.internal.display.cutout.emulation.double` (dual top notch and bottom cutout) on Android emulator. All headers, floating bars, and cards maintain pristine clearances with zero content clipping.
+
+
+## Decision 18: Real-Life Persistent Multi-Account Messenger System & Inbox
+- **Context:** User requested ensuring that the chat system works in real life ("chat system ta reallife work kore kina eta ensure koro"), with granular git commits for full contribution tracking.
+- **Decision:**
+  1. **SQLite / Room Database Offline Persistence:**
+     - Elevated `ChatMessage` to a full Room `@Entity(tableName = "chat_messages")` with primary key auto-generation, foreign keys, timestamps, delivery receipts, and attachment metadata.
+     - Created `ChatMessageDao` supporting persistent insert, update, product/peer conversation LiveData streams, user inbox aggregations, and unread count queries.
+     - Migrated `AppDatabase` to schema version 2 with pre-seeded campus student conversations.
+  2. **Two-Way Multi-Account Communication:**
+     - Dynamic directionality: `isFromMe` is evaluated dynamically based on `SessionManager.getLoggedInUserId() == message.getSenderId()`.
+     - When switching accounts (e.g. from Tanjeem to Tasnim or Sabbir in Profile), the peer receives the message, sees it in their Inbox, and can reply back in real time.
+     - Dual-mode peer responses: Supports both manual cross-account peer replies and intelligent instant simulated typing delays (`SENT` -> `DELIVERED` -> `SEEN` -> typing indicator -> reply).
+  3. **Facebook Messenger Inbox Screen (`MessengerInboxFragment`):**
+     - Lists all active peer conversations with circular initial avatars, active green online dots (`#31A24C`), product tag pills, last message snippets, relative timestamps, and unread badge counters.
+     - Added horizontal "ACTIVE PEERS" strip with 1-tap direct chat launching.
+     - Added real-time search filter for students and item titles.
+  4. **Home Screen Messenger Badge Entry:**
+     - Added a dedicated Messenger Inbox icon button on the top home header beside the language toggle with a live unread badge (`tv_inbox_badge`).
+  5. **Rich Chat Actions, Audio & Haptics:**
+     - Created `ChatSoundHelper` providing authentic Messenger sound and haptic feedback for sent and received messages.
+     - Added rich media bubbles: Image attachment cards (`attachmentType = "IMAGE"`) and Voice notes (`attachmentType = "AUDIO"` with duration and play controls).
+     - Added quick campus action dialog: share campus meeting points, student ID cards, and condition photos.
+  6. **Comprehensive Unit Testing:**
+     - Added unit tests in `DomainLogicTest.java` verifying `ChatConversation` aggregation, attachment types, and multi-user directionality. All 27 unit tests pass 100%.
+
+
+---
+
+### Decision 19: SRS-Compliant SQLite Database Schema, Real Student Registration, Role-Based Authentication, and Central Proctorial Admin Panel
+- **Context:** The user requested full alignment with the course Software Requirements Specification (`BorrowBox_SRS_v2.docx` / `BorrowBox_SRS_Short.docx`) for database persistence, real-life registration, secure login with suspension checks, a comprehensive admin console for student/listing moderation and dispute resolution, and realistic campus data.
+- **Architectural Implementation:**
+  1. **SRS Domain Hierarchy & Database Schema Alignment:**
+     - Extended base abstract class `User` with `role` (`ROLE_STUDENT`, `ROLE_ADMIN`), `phone`, and `phoneVisible`.
+     - Implemented concrete `Admin` model extending `User` with department authorization methods (`canSuspendStudents()`, `canModerateListings()`, `canResolveDisputes()`).
+     - Enhanced `Student` Room `@Entity` with `isSuspended`, `statusMessage`, `phone`, `lateReturnsCount`, and `disputePenaltiesCount`.
+     - Created `Dispute` Room `@Entity` (`disputes` table) and `DisputeDao` supporting the complete report lifecycle (`SUBMITTED` -> `UNDER_REVIEW` -> `RESOLVED` / `DISMISSED`) and escrow deposit adjustments per SRS Module 5 (FR-41 through FR-43).
+     - Upgraded `AppDatabase` to version 3 with destructive migration fallback and real-life campus seeds.
+  2. **SRS FR-39 Trust Score Engine:**
+     - Implemented exact SRS FR-39 formula: `Trust Score = 80 + 1.5 × Completed + 2.0 × AvgRating − 4.0 × LateReturns − 10.0 × DisputePenalties`, clamped between 0 and 100.
+     - Added "Trusted Campus Peer" badge eligibility checks (Score >= 90 with >= 10 completed rentals per FR-40).
+  3. **Real-Life Student Registration (`RegisterFragment` & `AuthViewModel`):**
+     - Mandatory field validations: Full Name, DIU Email (`@diu.edu.bd`), Student ID format, Mobile Number, Department, and Password (min 6 characters with confirmation check).
+     - Database uniqueness checks against existing emails and Student IDs in Room SQLite to prevent duplicates.
+     - Cryptographic password hashing using salted SHA-256 via `SecurityUtils`.
+  4. **Secure Authentication & Role-Based Access Control (`LoginFragment` & `SessionManager`):**
+     - Credential verification against Room SQLite database supporting both email and student ID login.
+     - Account suspension verification: blocks login with an administrative notice if `student.isSuspended()` is true.
+     - Role-based navigation routing: routes `ROLE_ADMIN` users directly to the Admin Dashboard and `ROLE_STUDENT` users to the main Home feed.
+     - Added Quick Switch chips (`Tanjeem`, `Sabbir`, `Admin`) for seamless evaluation and role switching.
+  5. **Comprehensive Proctorial Admin Console (`AdminDashboardFragment`):**
+     - Platform KPI cards connected to Room LiveData: Total Registered Students, Listed Equipment, Active Rentals, and Open Disputes.
+     - Students Directory Tab: View students, toggle verification badge, toggle suspension/reinstatement, and reset trust scores to baseline (80).
+     - Equipment Moderation Tab: Review listings, take down suspicious items, or reinstate approved items.
+     - Dispute Resolution Tab: Inspect dispute reports, review deposit amounts and evidence, issue administrative verdicts (Full Refund to Borrower, 50% Condition Penalty, or Dismissal).
+     - Quick access entry point added in Settings under Account & Security.
+  6. **Testing & Verification:**
+     - Added comprehensive unit tests in `DomainLogicTest.java` covering SRS FR-39 trust score calculations, badge thresholds, User/Admin OOP inheritance, student suspension states, dispute lifecycle transitions, and salted password hashing. 100% test pass rate.

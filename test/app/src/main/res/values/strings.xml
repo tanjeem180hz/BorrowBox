@@ -212,4 +212,39 @@
     <string name="notif_reminder_15m_msg">Please prepare to meet the owner for return.</string>
     <string name="notif_reminder_0m_title">Rental Time Expired</string>
     <string name="notif_reminder_0m_msg">Your rental has reached its scheduled return time.</string>
+
+    <!-- Facebook Messenger Chat Tokens -->
+    <string name="messenger_title">Chat with Lender</string>
+    <string name="messenger_active_now">Active now</string>
+    <string name="messenger_send_seller_message">Send seller a message</string>
+    <string name="messenger_default_inquiry">Hi %s, is this still available?</string>
+    <string name="messenger_quick_chip_1">Is this still available?</string>
+    <string name="messenger_quick_chip_2">Can we meet at DIU Library?</string>
+    <string name="messenger_quick_chip_3">Can I pick it up now?</string>
+    <string name="messenger_quick_chip_4">Where is your pickup location?</string>
+    <string name="messenger_type_hint">Message…</string>
+    <string name="messenger_btn_send">Send</string>
+    <string name="messenger_btn_message">Message</string>
+    <string name="messenger_marketplace_listing">BorrowBox Marketplace Listing • Active</string>
+    <string name="messenger_view_details">View Details</string>
+    <string name="messenger_seen">Seen</string>
+    <string name="messenger_delivered">Delivered</string>
+    <string name="messenger_sent">Sent</string>
+    <string name="messenger_calling">Calling %s…</string>
+    <string name="messenger_calling_subtitle">Messenger Audio Call</string>
+    <string name="messenger_video_calling_subtitle">Messenger Video Call</string>
+    <string name="messenger_ringing">Ringing…</string>
+    <string name="messenger_end_call">End Call</string>
+    <string name="messenger_typing">%s is typing…</string>
+    <string name="messenger_connected_hint">You\'re connected on BorrowBox Messenger</string>
+    <string name="messenger_inbox_title">Chats</string>
+    <string name="messenger_search_hint">Search chats or peers…</string>
+    <string name="messenger_active_now_header">ACTIVE PEERS</string>
+    <string name="messenger_conversations_header">RECENT CONVERSATIONS</string>
+    <string name="messenger_no_conversations">No chats yet</string>
+    <string name="messenger_no_conversations_desc">Tap the Messenger icon on any marketplace post to start chatting!</string>
+    <string name="messenger_photo_sent">📷 Sent a photo</string>
+    <string name="messenger_voice_sent">🎙️ Voice message (0:08)</string>
+    <string name="messenger_thumbs_sent">👍 Thumbs up</string>
+    <string name="messenger_you_prefix">You: %s</string>
 </resources>

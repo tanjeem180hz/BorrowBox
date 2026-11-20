@@ -29,6 +29,10 @@ public class SettingsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         sessionManager = new SessionManager(requireContext());
 
+        // Automatic display cutout (notch/punch-hole) and bottom cutout adaptation
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutout(binding.getRoot());
+        com.borrowbox.app.util.EdgeToEdgeHelper.applyBottomCutout(binding.getRoot());
+
         binding.btnBack.setOnClickListener(v -> androidx.navigation.Navigation.findNavController(v).navigateUp());
 
         // Theme selection setup
@@ -71,6 +75,11 @@ public class SettingsFragment extends Fragment {
             if (!targetLang.equals(sessionManager.getLanguage())) {
                 sessionManager.setLanguage(targetLang);
             }
+        });
+
+        // Admin Console Navigation (SRS Module 5)
+        binding.rowAdminConsole.setOnClickListener(v -> {
+            androidx.navigation.Navigation.findNavController(v).navigate(com.borrowbox.app.R.id.adminDashboardFragment);
         });
     }
 

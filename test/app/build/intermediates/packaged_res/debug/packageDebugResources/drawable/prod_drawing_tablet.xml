@@ -1,0 +1,80 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="160dp"
+    android:viewportWidth="200"
+    android:viewportHeight="160">
+    <!-- Background Card Canvas -->
+    <path
+        android:fillColor="#FAF5FF"
+        android:pathData="M0,0h200v160h-200z" />
+    <!-- Ambient glow circle -->
+    <path
+        android:fillColor="#F3E8FF"
+        android:pathData="M100,80m-55,0a55,55 0 1,0 110,0a55,55 0 1,0 -110,0" />
+
+    <!-- Tablet Shadow -->
+    <path
+        android:fillColor="#E9D5FF"
+        android:pathData="M34,136h132a8,8 0 0,0 8,-8v-4h-148v4a8,8 0 0,0 8,8z" />
+
+    <!-- Tablet Main Body -->
+    <path
+        android:fillColor="#1E1B4B"
+        android:pathData="M34,36h132a8,8 0 0,1 8,8v80a8,8 0 0,1 -8,8h-132a8,8 0 0,1 -8,-8v-80a8,8 0 0,1 8,-8z" />
+
+    <!-- ExpressKeys Sidebar (Left) -->
+    <path
+        android:fillColor="#312E81"
+        android:pathData="M34,36h22a2,2 0 0,1 2,2v84a2,2 0 0,1 -2,2h-22a8,8 0 0,1 -8,-8v-72a8,8 0 0,1 8,-8z" />
+
+    <!-- ExpressKeys Buttons -->
+    <path
+        android:fillColor="#4338CA"
+        android:pathData="M34,48h14a2,2 0 0,1 2,2v8a2,2 0 0,1 -2,2h-14a2,2 0 0,1 -2,-2v-8a2,2 0 0,1 2,-2z M34,64h14a2,2 0 0,1 2,2v8a2,2 0 0,1 -2,2h-14a2,2 0 0,1 -2,-2v-8a2,2 0 0,1 2,-2z M34,80h14a2,2 0 0,1 2,2v8a2,2 0 0,1 -2,2h-14a2,2 0 0,1 -2,-2v-8a2,2 0 0,1 2,-2z M34,96h14a2,2 0 0,1 2,2v8a2,2 0 0,1 -2,2h-14a2,2 0 0,1 -2,-2v-8a2,2 0 0,1 2,-2z" />
+
+    <!-- Active Working Surface -->
+    <path
+        android:fillColor="#0F172A"
+        android:pathData="M66,44h100a4,4 0 0,1 4,4v68a4,4 0 0,1 -4,4h-100a4,4 0 0,1 -4,-4v-68a4,4 0 0,1 4,-4z" />
+
+    <!-- Working Area Corner Grid Marks -->
+    <path
+        android:strokeColor="#818CF8"
+        android:strokeWidth="1.5"
+        android:pathData="M72,50h6 M72,50v6 M164,50h-6 M164,50v6 M72,110h6 M72,110v-6 M164,110h-6 M164,110v-6" />
+
+    <!-- Creative Neon Sketch Line on Screen -->
+    <path
+        android:strokeColor="#A855F7"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M80,85 C95,65 110,105 125,75 C135,60 148,90 156,70" />
+
+    <!-- Digital Stylus Pen (resting across screen at 35 degree angle) -->
+    <!-- Stylus Shadow -->
+    <path
+        android:fillColor="#09090B"
+        android:fillAlpha="0.4"
+        android:pathData="M115,110l50,-62 6,5 -50,62z" />
+    <!-- Stylus Body -->
+    <path
+        android:fillColor="#374151"
+        android:pathData="M112,108l48,-60 6,5 -48,60z" />
+    <!-- Stylus Grip -->
+    <path
+        android:fillColor="#111827"
+        android:pathData="M112,108l16,-20 6,5 -16,20z" />
+    <!-- Stylus Rocker Button -->
+    <path
+        android:fillColor="#9CA3AF"
+        android:pathData="M120,96l6,-8 3,2.5 -6,8z" />
+    <!-- Stylus Nib/Tip -->
+    <path
+        android:fillColor="#F3F4F6"
+        android:pathData="M112,108l-6,7 10,-2z" />
+    <!-- Pen Accent Ring (Purple) -->
+    <path
+        android:strokeColor="#C084FC"
+        android:strokeWidth="2"
+        android:pathData="M142,70l6,5" />
+</vector>
