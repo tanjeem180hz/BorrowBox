@@ -10,7 +10,42 @@ import com.google.zxing.qrcode.QRCodeWriter;
 
 public final class QrUtils {
 
+    public static final String PAYLOAD_PREFIX = "BORROWBOX:RENTAL:";
+
     private QrUtils() {
+    }
+
+    /**
+     * Formats a structured QR payload string for a rental handover.
+     */
+    @NonNull
+    public static String generatePayload(long rentalId, @NonNull String token) {
+        String safeToken = token != null ? token.trim() : "";
+        return PAYLOAD_PREFIX + rentalId + ":TOKEN:" + safeToken;
+    }
+
+    /**
+     * Validates if a QR code payload belongs to BorrowBox rental verification.
+     */
+    public static boolean isValidBorrowBoxPayload(@Nullable String payload) {
+        return payload != null && payload.startsWith(PAYLOAD_PREFIX);
+    }
+
+    /**
+     * Extracts rental ID from a valid payload, or returns -1 if invalid.
+     */
+    public static long extractRentalId(@Nullable String payload) {
+        if (!isValidBorrowBoxPayload(payload)) {
+            return -1L;
+        }
+        try {
+            String[] parts = payload.split(":");
+            if (parts.length >= 3) {
+                return Long.parseLong(parts[2]);
+            }
+        } catch (NumberFormatException ignored) {
+        }
+        return -1L;
     }
 
     @Nullable
