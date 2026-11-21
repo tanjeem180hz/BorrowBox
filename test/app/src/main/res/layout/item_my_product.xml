@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+ Branch--Rafi
     android:layout_marginBottom="12dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="2dp"
@@ -85,9 +86,94 @@
             android:layout_marginVertical="12dp"
             android:background="#F1F5F9" />
 
+    android:layout_marginBottom="@dimen/spacing_sm"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="1dp"
+    app:strokeColor="@color/divider"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_md">
+
+        <ImageView
+            android:id="@+id/iv_product_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Product Image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_product_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:layout_marginEnd="@dimen/spacing_xs"
+            android:text="Scientific Calculator"
+            android:textColor="@color/ink"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/tv_price"
+            app:layout_constraintStart_toEndOf="@id/iv_product_image"
+            app:layout_constraintTop_toTopOf="@id/iv_product_image" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="৳100/day"
+            android:textColor="@color/brand_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_product_image" />
+
+        <TextView
+            android:id="@+id/tv_category_condition"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:layout_marginTop="4dp"
+            android:text="Study • Excellent"
+            android:textColor="@color/muted"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_product_image"
+            app:layout_constraintTop_toBottomOf="@id/tv_product_name" />
+
+        <TextView
+            android:id="@+id/tv_status_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/badge_pill_available"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:text="Available"
+            android:textColor="@color/success"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/iv_product_image"
+            app:layout_constraintTop_toBottomOf="@id/tv_category_condition" />
+
+        <View
+            android:id="@+id/divider_card"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:background="@color/divider"
+            app:layout_constraintTop_toBottomOf="@id/iv_product_image" />
+ main
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+ Branch--Rafi
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -108,4 +194,42 @@
 
     </LinearLayout>
 
+
+            android:layout_marginTop="@dimen/spacing_xs"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/divider_card">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_toggle_availability"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Toggle Availability"
+                android:textSize="12sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_edit_product"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_xs"
+                android:text="Edit"
+                android:textColor="@color/brand_primary"
+                android:textSize="12sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_delete_product"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_xs"
+                android:text="Delete"
+                android:textColor="@color/danger"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+ main
 </com.google.android.material.card.MaterialCardView>
