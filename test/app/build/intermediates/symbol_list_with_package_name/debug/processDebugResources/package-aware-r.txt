@@ -3514,7 +3514,9 @@ id btn_chip_admin
 id btn_chip_sabbir
 id btn_chip_tanjeem
 id btn_confirm_return
+id btn_delete_product
 id btn_dismiss_dispute
+id btn_edit_product
 id btn_emoji
 id btn_info
 id btn_language_toggle
@@ -3524,6 +3526,7 @@ id btn_message_owner
 id btn_messenger_inbox
 id btn_messenger_send_prompt
 id btn_my_location
+id btn_my_products
 id btn_next
 id btn_open_chat
 id btn_open_map
@@ -3550,10 +3553,12 @@ id btn_skip
 id btn_start_handover
 id btn_submit_rating
 id btn_switch_student
+id btn_toggle_availability
 id btn_toggle_layer
 id btn_toggle_product_status
 id btn_toggle_suspend
 id btn_toggle_verify
+id btn_update_product
 id btn_user_himel
 id btn_user_sabbir
 id btn_user_tanjeem
@@ -3577,6 +3582,7 @@ id card_bottom_controls
 id card_camera
 id card_compass
 id card_hero
+id card_hero_preview
 id card_layer_default
 id card_layer_satellite
 id card_layer_terrain
@@ -3704,6 +3710,7 @@ id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
 id disjoint
+id divider_card
 id divider_header
 id divider_input
 id divider_meta
@@ -3759,6 +3766,7 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fabFlash
+id fab_add_product
 id fab_emergency
 id fade
 id fill
@@ -3783,6 +3791,7 @@ id frost
 id fullscreen_header
 id ghost_view
 id ghost_view_holder
+id glide_custom_view_target_tag
 id gone
 id graph
 id graph_wrap
@@ -3835,6 +3844,8 @@ id ivStep3Icon
 id ivThumb
 id iv_captured_preview
 id iv_compass_needle
+id iv_product_hero
+id iv_product_image
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -3937,6 +3948,7 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id myProductsFragment
 id nav_controller_view_tag
 id nav_graph
 id nav_home
@@ -4051,6 +4063,7 @@ id rvCapturedPhotos
 id rvEvidencePhotos
 id rvNotifications
 id rv_admin_items
+id rv_my_products
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -4243,6 +4256,7 @@ id tv_call_name
 id tv_call_status
 id tv_campus_badge
 id tv_category
+id tv_category_condition
 id tv_checklist_header
 id tv_chips_title
 id tv_condition
@@ -4317,6 +4331,7 @@ id tv_rental_title
 id tv_rented_tag
 id tv_request_status_msg
 id tv_search_title
+id tv_security_deposit
 id tv_seen_avatar
 id tv_sent_status
 id tv_sent_text
@@ -4513,6 +4528,7 @@ layout activity_add_product
 layout activity_admin_moderation
 layout activity_condition_capture
 layout activity_condition_comparison
+layout activity_edit_product
 layout activity_main
 layout activity_notification_centre
 layout activity_report_incident
@@ -4544,6 +4560,7 @@ layout fragment_login
 layout fragment_map
 layout fragment_messenger_chat
 layout fragment_messenger_inbox
+layout fragment_my_products
 layout fragment_onboarding
 layout fragment_payment
 layout fragment_product_details
@@ -4565,6 +4582,7 @@ layout item_admin_student
 layout item_captured_photo
 layout item_chat_message
 layout item_conversation
+layout item_my_product
 layout item_notification
 layout item_product
 layout item_rental
@@ -4762,6 +4780,7 @@ string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string fcm_fallback_notification_channel_label
 string fiets_nl
 string first_fix_message
 string format_distance_feet

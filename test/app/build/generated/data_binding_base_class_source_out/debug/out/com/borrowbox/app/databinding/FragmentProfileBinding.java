@@ -32,6 +32,9 @@ public final class FragmentProfileBinding implements ViewBinding {
   public final MaterialButton btnLogout;
 
   @NonNull
+  public final MaterialButton btnMyProducts;
+
+  @NonNull
   public final ImageButton btnSettings;
 
   @NonNull
@@ -81,17 +84,18 @@ public final class FragmentProfileBinding implements ViewBinding {
 
   private FragmentProfileBinding(@NonNull ScrollView rootView,
       @NonNull MaterialButton btnAddProduct, @NonNull MaterialButton btnLogout,
-      @NonNull ImageButton btnSettings, @NonNull MaterialButton btnUserHimel,
-      @NonNull MaterialButton btnUserSabbir, @NonNull MaterialButton btnUserTanjeem,
-      @NonNull MaterialButton btnUserTasnim, @NonNull MaterialCardView cardTrustScore,
-      @NonNull LinearLayout layoutDemoUsers, @NonNull LinearLayout layoutNameInfo,
-      @NonNull HorizontalScrollView scrollDemoUsers,
+      @NonNull MaterialButton btnMyProducts, @NonNull ImageButton btnSettings,
+      @NonNull MaterialButton btnUserHimel, @NonNull MaterialButton btnUserSabbir,
+      @NonNull MaterialButton btnUserTanjeem, @NonNull MaterialButton btnUserTasnim,
+      @NonNull MaterialCardView cardTrustScore, @NonNull LinearLayout layoutDemoUsers,
+      @NonNull LinearLayout layoutNameInfo, @NonNull HorizontalScrollView scrollDemoUsers,
       @NonNull CircularProgressView trustProgressView, @NonNull TextView tvAvatar,
       @NonNull TextView tvDemoHeader, @NonNull TextView tvStats, @NonNull TextView tvStudentMeta,
       @NonNull TextView tvStudentName, @NonNull TextView tvTrustScoreValue) {
     this.rootView = rootView;
     this.btnAddProduct = btnAddProduct;
     this.btnLogout = btnLogout;
+    this.btnMyProducts = btnMyProducts;
     this.btnSettings = btnSettings;
     this.btnUserHimel = btnUserHimel;
     this.btnUserSabbir = btnUserSabbir;
@@ -146,6 +150,12 @@ public final class FragmentProfileBinding implements ViewBinding {
       id = R.id.btn_logout;
       MaterialButton btnLogout = ViewBindings.findChildViewById(rootView, id);
       if (btnLogout == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_my_products;
+      MaterialButton btnMyProducts = ViewBindings.findChildViewById(rootView, id);
+      if (btnMyProducts == null) {
         break missingId;
       }
 
@@ -246,9 +256,9 @@ public final class FragmentProfileBinding implements ViewBinding {
       }
 
       return new FragmentProfileBinding((ScrollView) rootView, btnAddProduct, btnLogout,
-          btnSettings, btnUserHimel, btnUserSabbir, btnUserTanjeem, btnUserTasnim, cardTrustScore,
-          layoutDemoUsers, layoutNameInfo, scrollDemoUsers, trustProgressView, tvAvatar,
-          tvDemoHeader, tvStats, tvStudentMeta, tvStudentName, tvTrustScoreValue);
+          btnMyProducts, btnSettings, btnUserHimel, btnUserSabbir, btnUserTanjeem, btnUserTasnim,
+          cardTrustScore, layoutDemoUsers, layoutNameInfo, scrollDemoUsers, trustProgressView,
+          tvAvatar, tvDemoHeader, tvStats, tvStudentMeta, tvStudentName, tvTrustScoreValue);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

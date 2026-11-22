@@ -95,6 +95,11 @@
         android:label="Settings" />
 
     <fragment
+        android:id="@+id/myProductsFragment"
+        android:name="com.borrowbox.app.ui.product.MyProductsFragment"
+        android:label="My Product Listings" />
+
+    <fragment
         android:id="@+id/messengerChatFragment"
         android:name="com.borrowbox.app.ui.chat.MessengerChatFragment"
         android:label="Messenger" />

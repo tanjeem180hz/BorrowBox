@@ -268,15 +268,26 @@
 
         <!-- Actions -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_add_product"
+            android:id="@+id/btn_my_products"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="@dimen/spacing_lg"
+            android:text="Manage My Listed Products"
+            android:textColor="@color/brand_primary"
+            app:cornerRadius="@dimen/button_corner_radius"
+            app:layout_constraintTop_toBottomOf="@id/scroll_demo_users" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add_product"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="@dimen/spacing_sm"
             android:backgroundTint="@color/brand_primary"
             android:text="@string/profile_add_product"
             android:textColor="@color/white"
             app:cornerRadius="@dimen/button_corner_radius"
-            app:layout_constraintTop_toBottomOf="@id/scroll_demo_users" />
+            app:layout_constraintTop_toBottomOf="@id/btn_my_products" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_logout"

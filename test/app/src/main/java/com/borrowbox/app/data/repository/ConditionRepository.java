@@ -101,11 +101,7 @@ public class ConditionRepository {
                 File file = new File(photoPath);
                 if (!file.exists()) {
                     if (callback != null) {
- Branch--Ahona
                         AppExecutors.getInstance().mainThread().execute(() -> callback.onError(new Exception("File does not exist")));
-
-                        AppExecutors.getInstance().mainThread().execute(() -> callback::onError);
- main
                     }
                     return;
                 }

@@ -129,6 +129,9 @@ public final class FragmentProductDetailsBinding implements ViewBinding {
   public final TextView tvRequestStatusMsg;
 
   @NonNull
+  public final TextView tvSecurityDeposit;
+
+  @NonNull
   public final TextView tvTitle;
 
   @NonNull
@@ -150,8 +153,8 @@ public final class FragmentProductDetailsBinding implements ViewBinding {
       @NonNull TextView tvMessengerCardTitle, @NonNull TextView tvOwnerAvatar,
       @NonNull TextView tvOwnerName, @NonNull TextView tvOwnerRating,
       @NonNull TextView tvOwnerTrust, @NonNull TextView tvPriceTag,
-      @NonNull TextView tvRequestStatusMsg, @NonNull TextView tvTitle,
-      @NonNull TextView tvTotalCalculated) {
+      @NonNull TextView tvRequestStatusMsg, @NonNull TextView tvSecurityDeposit,
+      @NonNull TextView tvTitle, @NonNull TextView tvTotalCalculated) {
     this.rootView = rootView;
     this.btnBack = btnBack;
     this.btnMessageOwner = btnMessageOwner;
@@ -187,6 +190,7 @@ public final class FragmentProductDetailsBinding implements ViewBinding {
     this.tvOwnerTrust = tvOwnerTrust;
     this.tvPriceTag = tvPriceTag;
     this.tvRequestStatusMsg = tvRequestStatusMsg;
+    this.tvSecurityDeposit = tvSecurityDeposit;
     this.tvTitle = tvTitle;
     this.tvTotalCalculated = tvTotalCalculated;
   }
@@ -422,6 +426,12 @@ public final class FragmentProductDetailsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tv_security_deposit;
+      TextView tvSecurityDeposit = ViewBindings.findChildViewById(rootView, id);
+      if (tvSecurityDeposit == null) {
+        break missingId;
+      }
+
       id = R.id.tv_title;
       TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
       if (tvTitle == null) {
@@ -440,7 +450,8 @@ public final class FragmentProductDetailsBinding implements ViewBinding {
           detailChipMeet, detailChipPickup, dividerMeta, dotStatus, etMessengerPrompt, imgHero,
           layoutBadges, layoutBottomActions, tvAvailability, tvCondition, tvDescription,
           tvDurationTitle, tvMessengerCardTitle, tvOwnerAvatar, tvOwnerName, tvOwnerRating,
-          tvOwnerTrust, tvPriceTag, tvRequestStatusMsg, tvTitle, tvTotalCalculated);
+          tvOwnerTrust, tvPriceTag, tvRequestStatusMsg, tvSecurityDeposit, tvTitle,
+          tvTotalCalculated);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
