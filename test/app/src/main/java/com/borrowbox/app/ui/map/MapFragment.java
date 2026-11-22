@@ -20,15 +20,18 @@ import androidx.navigation.Navigation;
 import com.borrowbox.app.R;
 import com.borrowbox.app.databinding.DialogGoogleMapLayersBinding;
 import com.borrowbox.app.databinding.FragmentMapBinding;
+import com.borrowbox.app.util.EdgeToEdgeHelper;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import org.osmdroid.events.MapListener;
 import org.osmdroid.events.ScrollEvent;
 import org.osmdroid.events.ZoomEvent;
+import org.osmdroid.util.BoundingBox;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.Polyline;
 import org.osmdroid.views.overlay.ScaleBarOverlay;
 import org.osmdroid.views.overlay.gestures.RotationGestureOverlay;
+import com.borrowbox.app.util.MapUtils;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,8 +78,8 @@ public class MapFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Automatic top display cutout / notch and bottom navigation cutout adaptation
-        com.borrowbox.app.util.EdgeToEdgeHelper.applyTopCutoutMargin(binding.cardTopSearch);
-        com.borrowbox.app.util.EdgeToEdgeHelper.applyBottomCutoutMargin(binding.cardBottomControls);
+        EdgeToEdgeHelper.applyTopCutoutMargin(binding.cardTopSearch);
+        EdgeToEdgeHelper.applyBottomCutoutMargin(binding.cardBottomControls);
 
         if (getArguments() != null) {
             rentalId = getArguments().getLong("rental_id", 1L);
@@ -146,6 +149,11 @@ public class MapFragment extends Fragment {
                 Toast.makeText(requireContext(), R.string.gmaps_toast_recenter, Toast.LENGTH_SHORT).show();
             }
         });
+        binding.btnMyLocation.setOnLongClickListener(v -> {
+            fitAllMarkers();
+            Toast.makeText(requireContext(), "Framed all campus meeting markers", Toast.LENGTH_SHORT).show();
+            return true;
+        });
 
         // 9. Google Maps Action Chips
         binding.chipDirections.setOnClickListener(v -> openInGoogleMaps());
@@ -171,8 +179,6 @@ public class MapFragment extends Fragment {
         binding.btnSimulateMeeting.setOnClickListener(v -> {
             simulationStep = (simulationStep + 1) % simulatedDistances.length;
             int dist = simulatedDistances[simulationStep];
-            int mins = simulatedWalkingMinutes[simulationStep];
-            updateDistanceDisplay(dist, mins);
 
             // Move borrower marker closer to meeting point
             double factor = (double) dist / 500.0;
@@ -180,6 +186,10 @@ public class MapFragment extends Fragment {
             double currentLon = LON_MEETING + (0.0035 * factor);
             GeoPoint currentPos = new GeoPoint(currentLat, currentLon);
             youMarker.setPosition(currentPos);
+
+            int realDist = (int) Math.round(MapUtils.calculateDistanceMeters(currentLat, currentLon, LAT_MEETING, LON_MEETING));
+            int realEta = MapUtils.calculateWalkingEtaMinutes(realDist);
+            updateDistanceDisplay(realDist, realEta);
 
             // Update route polyline
             List<GeoPoint> pts = new ArrayList<>();
@@ -205,6 +215,7 @@ public class MapFragment extends Fragment {
         }
 
         updateDistanceDisplay(simulatedDistances[0], simulatedWalkingMinutes[0]);
+        fitAllMarkers();
     }
 
     private void updateCompassRotation() {
@@ -338,6 +349,22 @@ public class MapFragment extends Fragment {
         pts.add(meetingPoint);
         routeLine.setPoints(pts);
         binding.mapView.getOverlays().add(routeLine);
+    }
+
+    private void fitAllMarkers() {
+        if (binding == null || youMarker == null || meetingMarker == null) return;
+        List<GeoPoint> points = new ArrayList<>();
+        points.add(youMarker.getPosition());
+        points.add(meetingMarker.getPosition());
+        if (ownerMarker != null) {
+            points.add(ownerMarker.getPosition());
+        }
+        BoundingBox box = BoundingBox.fromGeoPoints(points);
+        binding.mapView.post(() -> {
+            if (binding != null) {
+                binding.mapView.zoomToBoundingBox(box, true, 120);
+            }
+        });
     }
 
     private void updateDistanceDisplay(int distanceMeters, int minutesWalk) {
