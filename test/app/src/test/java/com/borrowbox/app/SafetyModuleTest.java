@@ -49,6 +49,10 @@ public class SafetyModuleTest {
         condition.setPostPhotoUrl(Collections.singletonList("http://example.com/post.jpg"));
         // Has post photo but post notes mention damage -> fails clean verification
         assertFalse(verifiable.verifyCondition(condition));
+
+        // Damage severity calculation test
+        double severity = verifiable.calculateDamageSeverity(condition);
+        assertTrue(severity >= 0.5);
     }
 
     @Test

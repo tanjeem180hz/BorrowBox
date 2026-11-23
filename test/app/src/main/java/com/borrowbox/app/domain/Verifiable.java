@@ -23,4 +23,12 @@ public interface Verifiable {
      * @return A human-readable verification summary.
      */
     String getVerificationNotes(ProductCondition condition);
+
+    /**
+     * Calculates an automated damage severity score ranging from 0.0 (Pristine) to 1.0 (Severe Damage).
+     *
+     * @param condition The {@link ProductCondition} instance to analyze.
+     * @return A severity rating between 0.0 and 1.0.
+     */
+    double calculateDamageSeverity(ProductCondition condition);
 }
