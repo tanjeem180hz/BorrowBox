@@ -30,7 +30,7 @@ public class PhotoVerification implements Verifiable {
 
         // Check if post-rental notes explicitly mention damage
         String postNotes = condition.getPostNotes().toLowerCase();
-        if (postNotes.contains("damage") || postNotes.contains("broken") || postNotes.contains("scratched") || postNotes.contains("faulty")) {
+        if (postNotes.contains("damage") || postNotes.contains("broken") || postNotes.contains("scratched")) {
             return false;
         }
 
@@ -55,36 +55,11 @@ public class PhotoVerification implements Verifiable {
                 sb.append("Verification Status: PASS - Clean Return Confirmed.");
             } else {
                 sb.append("Verification Status: ATTENTION REQUIRED - Discrepancy or Potential Damage Reported.");
-                sb.append("\nEstimated Severity Index: ").append(String.format(java.util.Locale.US, "%.0f%%", calculateDamageSeverity(condition) * 100));
             }
         } else {
             sb.append("Verification Status: INCOMPLETE EVIDENCE.");
         }
 
         return sb.toString();
-    }
-
-    @Override
-    public double calculateDamageSeverity(ProductCondition condition) {
-        if (condition == null) return 0.0;
-
-        double severity = 0.0;
-        String notes = condition.getPostNotes().toLowerCase();
-
-        if (notes.contains("broken") || notes.contains("shattered") || notes.contains("crack")) {
-            severity += 0.6;
-        } else if (notes.contains("scratch") || notes.contains("dent") || notes.contains("stain")) {
-            severity += 0.3;
-        }
-
-        if (notes.contains("heavy") || notes.contains("severe") || notes.contains("major")) {
-            severity += 0.3;
-        }
-
-        if (condition.getPostPhotoUrl() == null || condition.getPostPhotoUrl().isEmpty()) {
-            severity += 0.2;
-        }
-
-        return Math.min(1.0, severity);
     }
 }
