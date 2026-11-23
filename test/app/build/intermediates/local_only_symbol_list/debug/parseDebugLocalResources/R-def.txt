@@ -324,6 +324,7 @@ id et_security_deposit
 id et_student_id
 id et_university
 id fabFlash
+id fabSwitchCamera
 id fab_emergency
 id frame_timer
 id img_check

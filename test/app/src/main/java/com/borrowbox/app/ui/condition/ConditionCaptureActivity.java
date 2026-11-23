@@ -54,6 +54,7 @@ public class ConditionCaptureActivity extends AppCompatActivity {
     private TextView tvWatermarkTimestamp;
     private TextView tvWatermarkGps;
     private FloatingActionButton fabFlash;
+    private FloatingActionButton fabSwitchCamera;
     private MaterialButton btnCapturePhoto;
     private MaterialButton btnSaveCondition;
     private TextInputEditText etConditionNotes;
@@ -66,6 +67,7 @@ public class ConditionCaptureActivity extends AppCompatActivity {
     private ImageCapture imageCapture;
     private Camera camera;
     private boolean isFlashOn = false;
+    private boolean isUsingFrontCamera = false;
 
     private long rentalId = 1L;
     private boolean isPickup = true;
@@ -106,6 +108,7 @@ public class ConditionCaptureActivity extends AppCompatActivity {
         tvWatermarkTimestamp = findViewById(R.id.tvWatermarkTimestamp);
         tvWatermarkGps = findViewById(R.id.tvWatermarkGps);
         fabFlash = findViewById(R.id.fabFlash);
+        fabSwitchCamera = findViewById(R.id.fabSwitchCamera);
         btnCapturePhoto = findViewById(R.id.btnCapturePhoto);
         btnSaveCondition = findViewById(R.id.btnSaveCondition);
         etConditionNotes = findViewById(R.id.etConditionNotes);
@@ -133,6 +136,7 @@ public class ConditionCaptureActivity extends AppCompatActivity {
 
     private void setupListeners() {
         fabFlash.setOnClickListener(v -> toggleFlash());
+        fabSwitchCamera.setOnClickListener(v -> switchCameraLens());
         btnCapturePhoto.setOnClickListener(v -> takePhoto());
         btnSaveCondition.setOnClickListener(v -> saveConditionPipeline());
 
@@ -187,7 +191,8 @@ public class ConditionCaptureActivity extends AppCompatActivity {
                         .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
                         .build();
 
-                CameraSelector cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA;
+                CameraSelector cameraSelector = isUsingFrontCamera ?
+                        CameraSelector.DEFAULT_FRONT_CAMERA : CameraSelector.DEFAULT_BACK_CAMERA;
 
                 cameraProvider.unbindAll();
                 camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture);
@@ -196,6 +201,11 @@ public class ConditionCaptureActivity extends AppCompatActivity {
                 Toast.makeText(this, "Failed to initialize camera: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }, ContextCompat.getMainExecutor(this));
+    }
+
+    private void switchCameraLens() {
+        isUsingFrontCamera = !isUsingFrontCamera;
+        startCamera();
     }
 
     private void toggleFlash() {

@@ -3759,6 +3759,7 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fabFlash
+id fabSwitchCamera
 id fab_emergency
 id fade
 id fill

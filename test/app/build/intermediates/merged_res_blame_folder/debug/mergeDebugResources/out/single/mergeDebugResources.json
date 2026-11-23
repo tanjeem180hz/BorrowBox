@@ -1,502 +1,506 @@
 [
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_prod_mouse.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/prod_mouse.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_rating.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_rating.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_gmaps_chip_outline.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_gmaps_chip_outline.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_item_admin_product.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\item_admin_product.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_login.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_login.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_dot_green.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\dot_green.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_messenger_like.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_messenger_like.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_messenger_card.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_messenger_card.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_badge_pill_trust.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/badge_pill_trust.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_rental_confirmed.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_rental_confirmed.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_settings_gear.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_settings_gear.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_prod_usb_hub.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\prod_usb_hub.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_badge_pill_rented.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/badge_pill_rented.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_settings_gear.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_settings_gear.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_messenger_call.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_messenger_call.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_activity_admin_moderation.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\activity_admin_moderation.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_verified_check.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_verified_check.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_phone.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_phone.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_check_circle.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_check_circle.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_badge_pill_category.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\badge_pill_category.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_messenger_seen_badge.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_messenger_seen_badge.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_onboarding.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_onboarding.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_profile.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_profile.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_prod_drawing_tablet.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\prod_drawing_tablet.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_home.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_home.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_prod_scientific_calc.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\prod_scientific_calc.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_rentals.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_rentals.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_emergency.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_emergency.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_prod_headset.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/prod_headset.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_circle_avatar.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\circle_avatar.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_compass.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_compass.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_my_location.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_my_location.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_item_admin_product.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/item_admin_product.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_messenger_video.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_messenger_video.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_prod_scientific_calc.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/prod_scientific_calc.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_verified_check.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_verified_check.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/color_bottom_nav_color.xml.flat",
-        "source": "com.borrowbox.app-main-66:/color/bottom_nav_color.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_zoom_out.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_zoom_out.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_register.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_register.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_activity_add_product.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\activity_add_product.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_theme.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_theme.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_share.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_share.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_star_border.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_star_border.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_nav_rentals.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_nav_rentals.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_prod_hdmi_cable.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/prod_hdmi_cable.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_messenger_inbox.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_messenger_inbox.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_directions_walk.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_directions_walk.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_star_border.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_star_border.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_badge_pill_available.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/badge_pill_available.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_map.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_map.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_messenger_quick_chip.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_messenger_quick_chip.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_nav_map.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_nav_map.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_gmaps_chip_primary.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_gmaps_chip_primary.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_messenger_like.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_messenger_like.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_activity_report_incident.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/activity_report_incident.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_sample_product_photo.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\sample_product_photo.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_messenger_camera.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_messenger_camera.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_badge_pill_rented.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\badge_pill_rented.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_prod_umbrella.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/prod_umbrella.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_messenger_call.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_messenger_call.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_activity_add_product.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/activity_add_product.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_check_circle.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_check_circle.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_product_details.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_product_details.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_prod_mouse.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\prod_mouse.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_item_captured_photo.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/item_captured_photo.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_nav_home.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_nav_home.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_emergency.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_emergency.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_language.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_language.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_nav_profile.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_nav_profile.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_messenger_seen_badge.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_messenger_seen_badge.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_zoom_out.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_zoom_out.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_badge_pill_available.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\badge_pill_available.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_onboarding.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_onboarding.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_product_details.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_product_details.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_splash.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_splash.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_map_control_circle.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_map_control_circle.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_badge_pill_category.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/badge_pill_category.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_directions_walk.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_directions_walk.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_messenger_image.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_messenger_image.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_profile.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_profile.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_messenger_input.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_messenger_input.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_item_chat_message.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\item_chat_message.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_messenger_logo.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_messenger_logo.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_bottom_sheet.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_bottom_sheet.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_prod_drawing_tablet.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/prod_drawing_tablet.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_arrow_back.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_arrow_back.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_chevron_right.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_chevron_right.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_google_watermark.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_google_watermark.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_rentals.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_rentals.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.borrowbox.app-main-66:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_messenger_bubble_me.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_messenger_bubble_me.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_gmaps_status_pill.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_gmaps_status_pill.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_dot_gray.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\dot_gray.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_prod_power_bank.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/prod_power_bank.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_gmaps_chip_primary.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_gmaps_chip_primary.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_prod_camera.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/prod_camera.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_nav_profile.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_nav_profile.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_urgent_flash.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_urgent_flash.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_item_conversation.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\item_conversation.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_nav_home.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_nav_home.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_dialog_messenger_call.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\dialog_messenger_call.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_phone.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_phone.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_messenger_logo.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_messenger_logo.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_bottom_sheet.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_bottom_sheet.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_bell.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_bell.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_item_admin_dispute.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/item_admin_dispute.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_urgent_flash.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_urgent_flash.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_rating.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_rating.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_drag_handle.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_drag_handle.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_item_notification.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/item_notification.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_prod_power_bank.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\prod_power_bank.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/navigation_nav_graph.xml.flat",
-        "source": "com.borrowbox.app-main-66:/navigation/nav_graph.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_add_edit_product.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_add_edit_product.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_arrow_back_white.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_arrow_back_white.xml"
-    },
-    {
-        "merged": "com.borrowbox.app-debug-64:/layout_item_chat_message.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/item_chat_message.xml"
-    },
-    {
-        "merged": "com.borrowbox.app-debug-64:/drawable_circle_avatar.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/circle_avatar.xml"
-    },
-    {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_map_control_circle.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_map_control_circle.xml"
-    },
-    {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_arrow_back.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_arrow_back.xml"
-    },
-    {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_drag_handle.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_drag_handle.xml"
-    },
-    {
-        "merged": "com.borrowbox.app-debug-64:/drawable_sample_product_photo.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/sample_product_photo.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_dialog_google_map_layers.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\dialog_google_map_layers.xml"
     },
     {
         "merged": "com.borrowbox.app-debug-64:/layout_activity_condition_capture.xml.flat",
         "source": "com.borrowbox.app-main-66:/layout/activity_condition_capture.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/menu_bottom_nav_menu.xml.flat",
-        "source": "com.borrowbox.app-main-66:/menu/bottom_nav_menu.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_item_captured_photo.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\item_captured_photo.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_gmaps_directions.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_gmaps_directions.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_prod_laptop_charger.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\prod_laptop_charger.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_layers.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_layers.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_prod_clicker.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\prod_clicker.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_item_conversation.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/item_conversation.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_item_rental.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\item_rental.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_activity_main.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/activity_main.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_search.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_search.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_payment.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_payment.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_splash.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_splash.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_gmaps_my_location.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_gmaps_my_location.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_messenger_image.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_messenger_image.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_gmaps_pin_meeting.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_gmaps_pin_meeting.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_borrowbox_logo.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_borrowbox_logo.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_home.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_dialog_google_map_layers.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/dialog_google_map_layers.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_item_admin_dispute.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\item_admin_dispute.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_messenger_bubble_me.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_messenger_bubble_me.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_activity_condition_capture.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\activity_condition_capture.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.borrowbox.app-main-66:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_messenger_mic.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_messenger_mic.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_dot_online_messenger.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/dot_online_messenger.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\navigation_nav_graph.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\navigation\\nav_graph.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_search.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_search.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_timer.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_timer.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_timer.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_timer.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_item_admin_student.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\item_admin_student.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_lang_toggle.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_lang_toggle.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_shield.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_shield.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_activity_condition_comparison.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/activity_condition_comparison.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\xml_file_paths.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\xml\\file_paths.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_settings.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_settings.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_gmaps_my_location.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_gmaps_my_location.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_messenger_video.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_messenger_video.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_item_notification.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\item_notification.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_qr_handover.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_qr_handover.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_messenger_chat.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_messenger_chat.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_map.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_map.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_gmaps_status_pill.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_gmaps_status_pill.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_bell.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_bell.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_compass.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_compass.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_nav_map.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_nav_map.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_messenger_input.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_messenger_input.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_messenger_send.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_messenger_send.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_gmaps_chip_outline.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_gmaps_chip_outline.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_item_admin_student.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/item_admin_student.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_prod_headset.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\prod_headset.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_shield.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_shield.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_prod_umbrella.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\prod_umbrella.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_activity_notification_centre.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/activity_notification_centre.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_messenger_quick_chip.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_messenger_quick_chip.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_rental_confirmed.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_rental_confirmed.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_borrowbox_logo.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_borrowbox_logo.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_prod_laptop_charger.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/prod_laptop_charger.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_activity_condition_comparison.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\activity_condition_comparison.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_messenger_plus.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_messenger_plus.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_chevron_right.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_chevron_right.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_messenger_chat.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_messenger_chat.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_activity_admin_moderation.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/activity_admin_moderation.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_prod_hdmi_cable.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\prod_hdmi_cable.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_messenger_bubble_other.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_messenger_bubble_other.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_messenger_camera.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_messenger_camera.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_messenger_mic.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_messenger_mic.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_register.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_register.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_share.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_share.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_activity_report_status.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\activity_report_status.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/xml_file_paths.xml.flat",
-        "source": "com.borrowbox.app-main-66:/xml/file_paths.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_settings.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_settings.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_avatar_circle.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_avatar_circle.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_lang_toggle.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_lang_toggle.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_activity_report_status.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/activity_report_status.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_admin_dashboard.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_admin_dashboard.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_nav_rentals.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_nav_rentals.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_login.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_login.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_my_location.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_my_location.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_payment.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_payment.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_prod_clicker.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/prod_clicker.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_prod_usb_hub.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/prod_usb_hub.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_return.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_return.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_gmaps_pin_meeting.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_gmaps_pin_meeting.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_prod_camera.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\prod_camera.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_prod_lab_coat.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/prod_lab_coat.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\menu\\bottom_nav_menu.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_messenger_info.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_messenger_info.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_item_product.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\item_product.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_item_rental.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/item_rental.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_gmaps_directions.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_gmaps_directions.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_gmaps_pin_owner.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_gmaps_pin_owner.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_dot_online_messenger.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\dot_online_messenger.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_language.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_language.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\color_bottom_nav_color.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\color\\bottom_nav_color.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_add_edit_product.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_add_edit_product.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_qr_handover.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_qr_handover.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_dialog_messenger_call.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/dialog_messenger_call.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_messenger_send.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_messenger_send.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_star_filled.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_star_filled.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_messenger_bubble_other.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_messenger_bubble_other.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_messenger_inbox.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_messenger_inbox.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_activity_report_incident.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\activity_report_incident.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_dot_green.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/dot_green.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_layers.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_layers.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_return.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_return.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_arrow_back_white.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_arrow_back_white.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_item_product.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/item_product.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_fragment_admin_dashboard.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/fragment_admin_dashboard.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_messenger_plus.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_messenger_plus.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_dot_gray.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/dot_gray.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_google_watermark.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_google_watermark.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_ic_zoom_in.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/ic_zoom_in.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_badge_pill_trust.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\badge_pill_trust.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/drawable_bg_messenger_card.xml.flat",
-        "source": "com.borrowbox.app-main-66:/drawable/bg_messenger_card.xml"
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_theme.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_theme.xml"
+    },
+    {
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_prod_lab_coat.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\prod_lab_coat.xml"
+    },
+    {
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_gmaps_pin_owner.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_gmaps_pin_owner.xml"
+    },
+    {
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_zoom_in.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_zoom_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_star_filled.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_star_filled.xml"
+    },
+    {
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_avatar_circle.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_avatar_circle.xml"
+    },
+    {
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_messenger_info.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_messenger_info.xml"
+    },
+    {
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_activity_notification_centre.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\activity_notification_centre.xml"
     }
 ]

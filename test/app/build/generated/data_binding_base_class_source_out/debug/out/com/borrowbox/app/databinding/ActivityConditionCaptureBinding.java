@@ -50,6 +50,9 @@ public final class ActivityConditionCaptureBinding implements ViewBinding {
   public final FloatingActionButton fabFlash;
 
   @NonNull
+  public final FloatingActionButton fabSwitchCamera;
+
+  @NonNull
   public final ProgressBar progressBarUpload;
 
   @NonNull
@@ -71,9 +74,10 @@ public final class ActivityConditionCaptureBinding implements ViewBinding {
       @NonNull MaterialButton btnCapturePhoto, @NonNull MaterialButton btnSaveCondition,
       @NonNull ChipGroup chipGroupStage, @NonNull Chip chipPickup, @NonNull Chip chipReturn,
       @NonNull TextInputEditText etConditionNotes, @NonNull FloatingActionButton fabFlash,
-      @NonNull ProgressBar progressBarUpload, @NonNull RecyclerView rvCapturedPhotos,
-      @NonNull MaterialToolbar toolbar, @NonNull TextView tvWatermarkGps,
-      @NonNull TextView tvWatermarkTimestamp, @NonNull PreviewView viewFinder) {
+      @NonNull FloatingActionButton fabSwitchCamera, @NonNull ProgressBar progressBarUpload,
+      @NonNull RecyclerView rvCapturedPhotos, @NonNull MaterialToolbar toolbar,
+      @NonNull TextView tvWatermarkGps, @NonNull TextView tvWatermarkTimestamp,
+      @NonNull PreviewView viewFinder) {
     this.rootView = rootView;
     this.btnCapturePhoto = btnCapturePhoto;
     this.btnSaveCondition = btnSaveCondition;
@@ -82,6 +86,7 @@ public final class ActivityConditionCaptureBinding implements ViewBinding {
     this.chipReturn = chipReturn;
     this.etConditionNotes = etConditionNotes;
     this.fabFlash = fabFlash;
+    this.fabSwitchCamera = fabSwitchCamera;
     this.progressBarUpload = progressBarUpload;
     this.rvCapturedPhotos = rvCapturedPhotos;
     this.toolbar = toolbar;
@@ -159,6 +164,12 @@ public final class ActivityConditionCaptureBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.fabSwitchCamera;
+      FloatingActionButton fabSwitchCamera = ViewBindings.findChildViewById(rootView, id);
+      if (fabSwitchCamera == null) {
+        break missingId;
+      }
+
       id = R.id.progressBarUpload;
       ProgressBar progressBarUpload = ViewBindings.findChildViewById(rootView, id);
       if (progressBarUpload == null) {
@@ -197,8 +208,8 @@ public final class ActivityConditionCaptureBinding implements ViewBinding {
 
       return new ActivityConditionCaptureBinding((CoordinatorLayout) rootView, btnCapturePhoto,
           btnSaveCondition, chipGroupStage, chipPickup, chipReturn, etConditionNotes, fabFlash,
-          progressBarUpload, rvCapturedPhotos, toolbar, tvWatermarkGps, tvWatermarkTimestamp,
-          viewFinder);
+          fabSwitchCamera, progressBarUpload, rvCapturedPhotos, toolbar, tvWatermarkGps,
+          tvWatermarkTimestamp, viewFinder);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

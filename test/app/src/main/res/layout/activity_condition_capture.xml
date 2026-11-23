@@ -127,16 +127,31 @@
                             android:textSize="11sp" />
                     </LinearLayout>
 
-                    <!-- Flash Control -->
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/fabFlash"
+                    <!-- Flash Control & Lens Switch -->
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="top|end"
                         android:layout_margin="12dp"
-                        android:contentDescription="Toggle Flash"
-                        app:fabSize="mini"
-                        app:srcCompat="@android:drawable/ic_menu_camera" />
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/fabSwitchCamera"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:contentDescription="Switch Camera"
+                            app:fabSize="mini"
+                            app:srcCompat="@android:drawable/ic_menu_compass" />
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/fabFlash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="Toggle Flash"
+                            app:fabSize="mini"
+                            app:srcCompat="@android:drawable/ic_menu_camera" />
+                    </LinearLayout>
 
                 </FrameLayout>
             </com.google.android.material.card.MaterialCardView>
