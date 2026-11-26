@@ -35,6 +35,24 @@ public class Payment {
         this.createdAt = createdAt;
     }
 
+    public static boolean isValidMethod(String method) {
+        if (method == null) return false;
+        String m = method.trim().toLowerCase();
+        return m.contains("cash") || m.contains("bkash") || m.contains("nagad");
+    }
+
+    public static String normalizeMethod(String method) {
+        if (method == null) return "Cash";
+        String m = method.trim().toLowerCase();
+        if (m.contains("bkash")) return "bKash";
+        if (m.contains("nagad")) return "Nagad";
+        return "Cash";
+    }
+
+    public boolean isCompleted() {
+        return "COMPLETED".equalsIgnoreCase(status);
+    }
+
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
 
