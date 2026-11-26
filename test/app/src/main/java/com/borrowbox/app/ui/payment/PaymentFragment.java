@@ -72,9 +72,12 @@ public class PaymentFragment extends Fragment {
         });
 
         binding.btnPay.setOnClickListener(v -> {
-            String method = "Cash Handover";
-            if (binding.rbBkash.isChecked()) method = "bKash (Mock)";
-            else if (binding.rbNagad.isChecked()) method = "Nagad (Mock)";
+            String method = "Cash";
+            if (binding.rbBkash.isChecked()) {
+                method = "bKash";
+            } else if (binding.rbNagad.isChecked()) {
+                method = "Nagad";
+            }
 
             PaymentRepository paymentRepository = RepositoryProvider.getInstance(requireContext()).getPaymentRepository();
             long userId = currentRental != null ? currentRental.getBorrowerId() : 1L;
