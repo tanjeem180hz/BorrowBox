@@ -283,7 +283,7 @@ public class DomainLogicTest {
 
     @Test
     public void testPasswordSecurityHashingAndVerification() {
-        String password = "SecureStudentPass2026!";
+        String password = "Tanjeem33@@";
         String salt = com.borrowbox.app.util.SecurityUtils.generateSalt();
         assertNotNull(salt);
         assertFalse(salt.isEmpty());
