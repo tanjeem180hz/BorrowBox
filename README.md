@@ -143,8 +143,6 @@ To create a **trusted university sharing community** where students can quickly 
 
   <br>
 
-  <a href="https://tanjeem180hz.github.io/BorrowBox/">
-    <img src="https://img.shields.io/badge/OPEN%20LIVE%20DEMO-→-2563EB?style=for-the-badge&labelColor=111827" alt="Open Live Demo">
-  </a>
+
 
 </div>
