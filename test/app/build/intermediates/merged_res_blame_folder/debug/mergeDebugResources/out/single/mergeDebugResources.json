@@ -16,6 +16,10 @@
         "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_messenger_card.xml"
     },
     {
+        "merged": "com.borrowbox.app-debug-64:/layout_dialog_emergency_sos.xml.flat",
+        "source": "com.borrowbox.app-main-66:/layout/dialog_emergency_sos.xml"
+    },
+    {
         "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_fragment_rental_confirmed.xml.flat",
         "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_rental_confirmed.xml"
     },
@@ -108,12 +112,12 @@
         "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\ic_messenger_like.xml"
     },
     {
-        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_sample_product_photo.xml.flat",
-        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\sample_product_photo.xml"
-    },
-    {
         "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_badge_pill_rented.xml.flat",
         "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\badge_pill_rented.xml"
+    },
+    {
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_sample_product_photo.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\sample_product_photo.xml"
     },
     {
         "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_messenger_call.xml.flat",
@@ -236,10 +240,6 @@
         "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\dialog_google_map_layers.xml"
     },
     {
-        "merged": "com.borrowbox.app-debug-64:/layout_activity_condition_capture.xml.flat",
-        "source": "com.borrowbox.app-main-66:/layout/activity_condition_capture.xml"
-    },
-    {
         "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_item_captured_photo.xml.flat",
         "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\item_captured_photo.xml"
     },
@@ -276,12 +276,12 @@
         "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_item_admin_dispute.xml.flat",
-        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\item_admin_dispute.xml"
-    },
-    {
         "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_activity_condition_capture.xml.flat",
         "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\activity_condition_capture.xml"
+    },
+    {
+        "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\layout_item_admin_dispute.xml.flat",
+        "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\item_admin_dispute.xml"
     },
     {
         "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_ic_messenger_mic.xml.flat",
@@ -330,6 +330,10 @@
     {
         "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_messenger_input.xml.flat",
         "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\drawable\\bg_messenger_input.xml"
+    },
+    {
+        "merged": "com.borrowbox.app-debug-64:/layout_dialog_deposit_decision.xml.flat",
+        "source": "com.borrowbox.app-main-66:/layout/dialog_deposit_decision.xml"
     },
     {
         "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-debug-64:\\drawable_bg_gmaps_chip_outline.xml.flat",

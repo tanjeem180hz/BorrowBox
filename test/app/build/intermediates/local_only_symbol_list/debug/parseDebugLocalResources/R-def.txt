@@ -145,6 +145,9 @@ id adminDashboardFragment
 id badge_google
 id bottom_navigation
 id btnAddEvidencePhoto
+id btnBroadcastSos
+id btnCancelDepositDialog
+id btnCancelSos
 id btnCapturePhoto
 id btnConfirmCleanReturn
 id btnDeleteNotif
@@ -152,6 +155,7 @@ id btnExecuteVerdict
 id btnFileDamageReport
 id btnMarkAllRead
 id btnSaveCondition
+id btnSettleDeposit
 id btnSubmitReport
 id btn_accept
 id btn_action_camera
@@ -424,6 +428,7 @@ id scroll_demo_users
 id scroll_quick_chips
 id scroll_quick_roles
 id settingsFragment
+id sliderDepositRefund
 id sliderRefundPercent
 id sliderTrustPenalty
 id splashFragment
@@ -465,6 +470,7 @@ id tvAdminVerdict
 id tvCategory
 id tvDepositAmount
 id tvDescription
+id tvDialogDepositInfo
 id tvIndex
 id tvNotifBody
 id tvNotifTime
@@ -476,6 +482,8 @@ id tvPreNotes
 id tvRefundPercentLabel
 id tvReportId
 id tvReportStatusPill
+id tvSliderLabel
+id tvSosLocation
 id tvStep1Text
 id tvStep2Text
 id tvStep3Text
@@ -620,6 +628,8 @@ layout activity_main
 layout activity_notification_centre
 layout activity_report_incident
 layout activity_report_status
+layout dialog_deposit_decision
+layout dialog_emergency_sos
 layout dialog_google_map_layers
 layout dialog_messenger_call
 layout fragment_add_edit_product

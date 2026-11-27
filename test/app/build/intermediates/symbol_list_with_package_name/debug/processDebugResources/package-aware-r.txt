@@ -3488,6 +3488,9 @@ id bounceBoth
 id bounceEnd
 id bounceStart
 id btnAddEvidencePhoto
+id btnBroadcastSos
+id btnCancelDepositDialog
+id btnCancelSos
 id btnCapturePhoto
 id btnConfirmCleanReturn
 id btnDeleteNotif
@@ -3495,6 +3498,7 @@ id btnExecuteVerdict
 id btnFileDamageReport
 id btnMarkAllRead
 id btnSaveCondition
+id btnSettleDeposit
 id btnSubmitReport
 id btn_accept
 id btn_action_camera
@@ -4091,6 +4095,7 @@ id sin
 id skipCollapsed
 id skipped
 id slide
+id sliderDepositRefund
 id sliderRefundPercent
 id sliderTrustPenalty
 id sliding_pane_detail_container
@@ -4211,6 +4216,7 @@ id tvAdminVerdict
 id tvCategory
 id tvDepositAmount
 id tvDescription
+id tvDialogDepositInfo
 id tvIndex
 id tvNotifBody
 id tvNotifTime
@@ -4222,6 +4228,8 @@ id tvPreNotes
 id tvRefundPercentLabel
 id tvReportId
 id tvReportStatusPill
+id tvSliderLabel
+id tvSosLocation
 id tvStep1Text
 id tvStep2Text
 id tvStep3Text
@@ -4537,6 +4545,8 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dialog_deposit_decision
+layout dialog_emergency_sos
 layout dialog_google_map_layers
 layout dialog_messenger_call
 layout fragment_add_edit_product

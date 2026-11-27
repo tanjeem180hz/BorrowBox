@@ -65,7 +65,12 @@ public class ReturnFragment extends Fragment {
             Snackbar.make(view, "Loaded sample inspection photos", Snackbar.LENGTH_SHORT).show();
         });
 
-        binding.btnConfirmReturn.setOnClickListener(v -> confirmReturn());
+        binding.btnConfirmReturn.setOnClickListener(v -> {
+            confirmReturn();
+            com.borrowbox.app.ui.condition.DepositDecisionDialogFragment.newInstance(
+                    rentalId, currentRental != null ? currentRental.getDeposit() : 200.0
+            ).show(getChildFragmentManager(), "deposit_dialog");
+        });
     }
 
     private void loadSampleComparisonBitmaps() {

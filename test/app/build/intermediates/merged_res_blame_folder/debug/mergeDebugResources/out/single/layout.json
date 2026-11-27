@@ -32,10 +32,6 @@
         "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\item_notification.xml"
     },
     {
-        "merged": "com.borrowbox.app-mergeDebugResources-63:/layout/activity_condition_capture.xml",
-        "source": "com.borrowbox.app-main-66:/layout/activity_condition_capture.xml"
-    },
-    {
         "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-mergeDebugResources-63:\\layout\\activity_condition_capture.xml",
         "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\activity_condition_capture.xml"
     },
@@ -50,6 +46,10 @@
     {
         "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-mergeDebugResources-63:\\layout\\fragment_profile.xml",
         "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_profile.xml"
+    },
+    {
+        "merged": "com.borrowbox.app-mergeDebugResources-63:/layout/dialog_emergency_sos.xml",
+        "source": "com.borrowbox.app-main-66:/layout/dialog_emergency_sos.xml"
     },
     {
         "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-mergeDebugResources-63:\\layout\\item_admin_student.xml",
@@ -146,6 +146,10 @@
     {
         "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-mergeDebugResources-63:\\layout\\fragment_settings.xml",
         "source": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-main-66:\\layout\\fragment_settings.xml"
+    },
+    {
+        "merged": "com.borrowbox.app-mergeDebugResources-63:/layout/dialog_deposit_decision.xml",
+        "source": "com.borrowbox.app-main-66:/layout/dialog_deposit_decision.xml"
     },
     {
         "merged": "C:\\Users\\PG User -01958281205\\.gradle\\daemon\\8.11.1\\com.borrowbox.app-mergeDebugResources-63:\\layout\\dialog_messenger_call.xml",
